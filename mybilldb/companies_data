@@ -1,0 +1,2 @@
+insert into companies (companyname,afm) values ('a','2332342')
+insert into companies (companyname,afm) values ('δεη','090000045')

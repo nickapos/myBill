@@ -1,0 +1,933 @@
+# Czech translation for mybill
+# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# This file is distributed under the same license as the mybill package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mybill\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2013-01-23 17:01+0300\n"
+"PO-Revision-Date: 2013-04-27 20:51+0000\n"
+"Last-Translator: Zbyněk Schwarz <Unknown>\n"
+"Language-Team: Czech <cs@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2013-05-13 14:12+0000\n"
+"X-Generator: Launchpad (build 16614)\n"
+
+#: billsUI.jMenuItem4.text
+msgctxt "billsUI.jMenuItem4.text"
+msgid "Manage Categories"
+msgstr "Správa kategorií"
+
+#: billsUI.jMenu2.text
+msgctxt "billsUI.jMenu2.text"
+msgid "About"
+msgstr "O programu"
+
+#. #  Copyright (C) 2010 nickapos
+#. #  This program is free software: you can redistribute it and/or modify
+#. #  it under the terms of the GNU General Public License as published by
+#. #  the Free Software Foundation, either version 3 of the License, or
+#. #  (at your option) any later version.
+#. #  This program is distributed in the hope that it will be useful,
+#. #  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. #  GNU General Public License for more details.
+#. #  You should have received a copy of the GNU General Public License
+#. #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#: billsUI.aboutMenuItem.text
+msgctxt "billsUI.aboutMenuItem.text"
+msgid "About"
+msgstr "O programu"
+
+#: billsUI.jLabel11.text
+msgid "Report Parameters:"
+msgstr "Parametry výkazu:"
+
+#: billsUI.jLabel2.text
+msgid "Date of Issue (YYYY-MM-DD)"
+msgstr "Datum vystavení (RRRR-MM-DD)"
+
+#: billsUI.ReportsPanel.TabConstraints.tabTitle
+msgid "Text Reports"
+msgstr "Textové výkazy"
+
+#: billsUI.companyRetrieveButton.text
+msgctxt "billsUI.companyRetrieveButton.text"
+msgid "Retrieve"
+msgstr "Získat"
+
+#: billsUI.companyDetailsGoButton.text
+msgctxt "billsUI.companyDetailsGoButton.text"
+msgid "Go!"
+msgstr "Přejít!"
+
+#: billsUI.jLabel7.text
+msgid "Reports"
+msgstr "Výkazy"
+
+#: billsUI.jButton1.text
+msgid "Save report as csv"
+msgstr "Uložit výkaz jako csv"
+
+#: billsUI.jMenu5.text
+msgctxt "billsUI.jMenu5.text"
+msgid "Import"
+msgstr "Importovat"
+
+#: billsUI.jMenu1.text
+msgid "Operations"
+msgstr "Operace"
+
+#: billsUI.jLabel13.text
+msgctxt "billsUI.jLabel13.text"
+msgid "Action"
+msgstr "Činnost"
+
+#: billsUI.jLabel3.text
+msgid "Date of payment (YYYY-MM-DD)"
+msgstr "Datum platby (RRRR-MM-DD)"
+
+#: billsUI.jLabel4.text
+msgctxt "billsUI.jLabel4.text"
+msgid "Amount"
+msgstr "Částka"
+
+#: billsUI.billRetrieveButton.text
+msgctxt "billsUI.billRetrieveButton.text"
+msgid "Retrieve"
+msgstr "Získat"
+
+#: billsUI.billGoButton.text
+msgctxt "billsUI.billGoButton.text"
+msgid "Go!"
+msgstr "Přejít!"
+
+#: billsUI.InsertEditIncome.TabConstraints.tabTitle
+msgid "Insert/Edit Income"
+msgstr "Vložit/Upravit příjem"
+
+#: billsUI.reportButton.text
+msgctxt "billsUI.reportButton.text"
+msgid "Go"
+msgstr "Přejít"
+
+#: billsUI.jMenuItem1.text
+msgid "Validate AFM/VAT"
+msgstr "Ověřit AFM/DPH"
+
+#: billsUI.jMenu3.text
+msgid "Tools"
+msgstr "Nástroje"
+
+#: billsUI.shutdownMenuItem.text
+msgid "Quit"
+msgstr "Ukončit"
+
+#: billsUI.executeSqlMenuItem.text
+msgctxt "billsUI.executeSqlMenuItem.text"
+msgid "Execute Sql"
+msgstr "Spustit Sql"
+
+#: billsUI.jLabel1.text
+msgctxt "billsUI.jLabel1.text"
+msgid "Company Name"
+msgstr "Název firmy"
+
+#: billsUI.emptyDBMenuItem.text
+msgid "EmptyDatabase"
+msgstr "PrázdnáDatabáze"
+
+#: billsUI.emptyDBMenyItem.text
+msgid "EmptyDB"
+msgstr "PrázdnáDB"
+
+#: billsUI.jMenuItem3.text
+msgid "Export CSV By Year"
+msgstr "Exportovat CSV podle roku"
+
+#: billsUI.incomeGoButton.text
+msgctxt "billsUI.incomeGoButton.text"
+msgid "Go"
+msgstr "Přejít"
+
+#: billsUI.jLabel8.text
+msgctxt "billsUI.jLabel8.text"
+msgid "Action"
+msgstr "Činnost"
+
+#: billsUI.jLabel6.text
+msgid "Bill Id"
+msgstr "Id faktury"
+
+#: billsUI.incomeRetrieveButton.text
+msgctxt "billsUI.incomeRetrieveButton.text"
+msgid "Retrieve"
+msgstr "Získat"
+
+#: billsUI.title
+msgid "myBill"
+msgstr "mojeFaktura"
+
+#: billsUI.InsertEditBillPanel.TabConstraints.tabTitle
+msgid "Insert/Edit Bill"
+msgstr "Vložit/Upravit fakturu"
+
+#: billsUI.jLabel15.text
+msgctxt "billsUI.jLabel15.text"
+msgid "Amount"
+msgstr "Částka"
+
+#: billsUI.jLabel14.text
+msgid "Date (YYYY-MM-DD)"
+msgstr "Datum (RRRR-MM-DD)"
+
+#: billsUI.jLabel17.text
+msgctxt "billsUI.jLabel17.text"
+msgid "Company Name"
+msgstr "Název firmy"
+
+#: billsUI.jLabel16.text
+msgctxt "billsUI.jLabel16.text"
+msgid "Income ID"
+msgstr "ID příjmu"
+
+#: billsUI.exportDBMenuItem.text
+msgid "Export Database"
+msgstr "Exportovat databázi"
+
+#: billsUI.exportCSVsMenuItem.text
+msgid "Export CSV"
+msgstr "Exportovat CSV"
+
+#: billsUI.jMenuItem2.text
+msgid "Import DB Tables"
+msgstr "Importovat tabulky DB"
+
+#: billsUI.jMenu4.text
+msgid "Export"
+msgstr "Exportovat"
+
+#: billsUI.jLabel10.text
+msgid "Company Tax Service ID (AFM)"
+msgstr "ID daňové služby společnosti (AFM)"
+
+#: billsUI.jLabel12.text
+msgctxt "billsUI.jLabel12.text"
+msgid "Company Name"
+msgstr "Název firmy"
+
+#: billsUI.jLabel18.text
+msgctxt "billsUI.jLabel18.text"
+msgid "Category"
+msgstr "Kategorie"
+
+#: billsUI.jLabel5.text
+msgctxt "billsUI.jLabel5.text"
+msgid "Action"
+msgstr "Činnost"
+
+#: billsUI.InsertEditCompanyPanel.TabConstraints.tabTitle
+msgid "Insert/Edit Company"
+msgstr "Vložit/Upravit společnost"
+
+#: billsUI.jLabel9.text
+msgid "Company Id"
+msgstr "ID společnosti"
+
+#. #  Copyright (C) 2010 nickapos
+#. #  This program is free software: you can redistribute it and/or modify
+#. #  it under the terms of the GNU General Public License as published by
+#. #  the Free Software Foundation, either version 3 of the License, or
+#. #  (at your option) any later version.
+#. #  This program is distributed in the hope that it will be useful,
+#. #  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. #  GNU General Public License for more details.
+#. #  You should have received a copy of the GNU General Public License
+#. #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#: ExecuteSqlWindow.executeButton.text
+msgctxt "ExecuteSqlWindow.executeButton.text"
+msgid "Execute"
+msgstr "Spustit"
+
+#: ExecuteSqlWindow.title
+msgctxt "ExecuteSqlWindow.title"
+msgid "Execute Sql"
+msgstr "Spustit Sql"
+
+#: ExecuteSqlWindow.jLabel2.text
+msgid "Use only create,insert,delete,update,drop commands. Be careful"
+msgstr ""
+"Používejte pouze příkazy create,insert,delete,update,drop. Buďte opatrní!"
+
+#: ExportCSVByYear.title
+msgctxt "ExportCSVByYear.title"
+msgid "Extract CSV by year"
+msgstr "Extrahovat CSV podle roku"
+
+#. #  Copyright (C) 2010 nickapos
+#. #  This program is free software: you can redistribute it and/or modify
+#. #  it under the terms of the GNU General Public License as published by
+#. #  the Free Software Foundation, either version 3 of the License, or
+#. #  (at your option) any later version.
+#. #  This program is distributed in the hope that it will be useful,
+#. #  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. #  GNU General Public License for more details.
+#. #  You should have received a copy of the GNU General Public License
+#. #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#: ExportCSVByYear.validateButton.text
+msgctxt "ExportCSVByYear.validateButton.text"
+msgid "Extract"
+msgstr "Extrahovat"
+
+#: ExportCSVByYear.jLabel2.text
+msgid "Please select the year of the records to be extracted"
+msgstr "Vyberte prosím rok z kterého mají být výkazy extrahovány"
+
+#: ValidateAFM.title
+msgid "Validate AFM"
+msgstr "Ověřit AFM"
+
+#: ValidateAFM.jLabel1.text
+msgid "Result"
+msgstr "Výsledek"
+
+#: ValidateAFM.validateButton.text
+msgid "Validate"
+msgstr "Ověřit"
+
+#: ValidateAFM.jLabel2.text
+msgid "Please type in the AFM or VAT"
+msgstr "Zadejte prosím AFM nebo DPH"
+
+#: SOMETHING-WENT-WRONG-PLEASE-TRY-AGAIN!
+msgid "Something went wrong, please try again!"
+msgstr "Něco se pokazilo, zkuste to prosím znovu!"
+
+#: THE-DATABASE-ENGINE-AND-THE-APPLICATION-WILL-SHUTDOWN
+msgid "The database engine and the application will shutdown!"
+msgstr "Jádro databáze a aplikace budou vypnuty!"
+
+#: ALL-THE\ DATABASE-CONTENT-IS-GOING-TO-BE-DELETED
+msgid "All the database content is going to be deleted!"
+msgstr "Veškerý obsah databáze bude smazán!"
+
+#: THE-DATABASE-IS-NOT-EMPTY.\u0399-WILL-DO-NOTHING
+msgid "The database is not Empty. I will do nothing!"
+msgstr "Databáze není prázdná! Nice nebude provedeno!"
+
+#: INSERT
+msgid "Insert"
+msgstr "Vložit"
+
+#: EDIT
+msgid "Edit"
+msgstr "Upravit"
+
+#: DELETE
+msgid "Delete"
+msgstr "Smazat"
+
+#: COMPANIES
+msgid "Companies"
+msgstr "Firmy"
+
+#: BILLS
+msgid "Bills"
+msgstr "Výkazy"
+
+#: EXPENSES-PER-COMPANY-FOR-ALL-YEARS
+msgid "Expenses per company for all years"
+msgstr "Náklady za společnost po všechny roky"
+
+#: EXPENSES-AMOUNT-PER-COMPANY-BY-YEAR
+msgid "Expenses per company by year"
+msgstr "Náklady za společnost po roce"
+
+#: EXPENSES-AMOUNT-PER-MONTH-BY-YEAR
+msgid "Expenses per month for a year"
+msgstr "Náklady na měsíc za rok"
+
+#: INCOME
+msgid "Income"
+msgstr "Příjem"
+
+#: INCOME-FOR-ALL-YEARS
+msgid "Income for all years"
+msgstr "Příjem za všechny roky"
+
+#: INCOME-BY-YEAR
+msgid "Income by year"
+msgstr "Příjem za rok"
+
+#: INCOME-AMOUNT-PER-MONTH-BY-YEAR
+msgid "Income per month for a year"
+msgstr "Příjem za měsíc na rok"
+
+#: INCOME-EXPENSES-MONTH-PER-YEAR
+msgid "(Income-Expenses)/Month for a year"
+msgstr "(Příjmy-Výdaje)/Měsíc za rok"
+
+#: EXPENSES-PER-CATEGORY-FOR-ALL-YEARS
+msgid "Expenses per category for all years"
+msgstr "Výdaje za kategorii za všechny roky"
+
+#: EXPENSES-PER-CATEGORY-PER-YEAR
+msgid "Expenses per category per year"
+msgstr "Výdaje za kategorii za rok"
+
+#: billsUI.jLabel19.text
+msgid "Foreign Currency"
+msgstr "Cizí měna"
+
+#: billsUI.foreignCurrencyCheckBox.text
+msgid "(Check to Enable)"
+msgstr "(Zaškrtněte pro povolení)"
+
+#: ExchangeRatesFrame.title
+msgid "Exchange Rates Table"
+msgstr "Tabulka měnových kurzů"
+
+#: ExchangeRatesFrame.retrieveRatesButton.text
+msgid "Retrieve Rates"
+msgstr "Cena pro získání"
+
+#: ExchangeRatesFrame.flippedRateButton.text
+msgid "Retrieve Flipped Rates"
+msgstr "Získat převrácené míry"
+
+#: billsUI.showRatesFrameButton.text
+msgid "Show Rates"
+msgstr "Zobrazit ceny"
+
+#. #  Copyright (C) 2010 nickapos
+#. #  This program is free software: you can redistribute it and/or modify
+#. #  it under the terms of the GNU General Public License as published by
+#. #  the Free Software Foundation, either version 3 of the License, or
+#. #  (at your option) any later version.
+#. #  This program is distributed in the hope that it will be useful,
+#. #  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. #  GNU General Public License for more details.
+#. #  You should have received a copy of the GNU General Public License
+#. #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#: ConvertToNewCurrencyFrame.executeButton.text
+msgctxt "ConvertToNewCurrencyFrame.executeButton.text"
+msgid "Execute"
+msgstr "Spustit"
+
+#: ConvertToNewCurrencyFrame.jLabel2.text
+msgid "Use this form to convert all records to a new currency."
+msgstr "Tento formulář použijte k převedení všech záznamů na novou měnu."
+
+#: ConvertToNewCurrencyFrame.title
+msgid "Convert all records to new currency"
+msgstr "Převést všechny záznamy na novou měnu"
+
+#: ConvertToNewCurrencyFrame.jLabel1.text
+msgid " Insert currency exchange rate"
+msgstr " Vložte směnný kurz"
+
+#: ConvertToNewCurrencyFrame.presentExchangeRatesButton.text
+msgid "Present exchange rates"
+msgstr "Současné směnné kurzy"
+
+#: billsUI.jMenuItem5.text
+msgid "Change db currency"
+msgstr "Změnit měnu db"
+
+#: ERROR\ IN\ BILL\ INSERTION
+msgid "Error in Bill Insertion"
+msgstr "Chyba při vkládání účtu"
+
+#: ERROR\ IN\ COMPANY\ INSERTION
+msgid "Error in Company Insertion"
+msgstr "Chyba při vkládání společnosti"
+
+#: ERROR\ IN\ INCOME\ INSERTION
+msgid "Error in Income Insertion"
+msgstr "Chyba při vkládání příjmu"
+
+#: ExportCSVByPeriod.jLabel2.text
+msgid "Please select the period of the records to be extracted"
+msgstr "Prosím zvolte období záznamů pro extrakci"
+
+#. #  Copyright (C) 2010 nickapos
+#. #  This program is free software: you can redistribute it and/or modify
+#. #  it under the terms of the GNU General Public License as published by
+#. #  the Free Software Foundation, either version 3 of the License, or
+#. #  (at your option) any later version.
+#. #  This program is distributed in the hope that it will be useful,
+#. #  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. #  GNU General Public License for more details.
+#. #  You should have received a copy of the GNU General Public License
+#. #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#: ExportCSVByPeriod.validateButton.text
+msgctxt "ExportCSVByPeriod.validateButton.text"
+msgid "Extract"
+msgstr "Extrahovat"
+
+#: ExportCSVByPeriod.title
+msgctxt "ExportCSVByPeriod.title"
+msgid "Extract CSV by year"
+msgstr "Extrahovat CSV podle roku"
+
+#: ExportCSVByPeriod.jLabel1.text
+msgid "End Period"
+msgstr "Konečné období"
+
+#: ExportCSVByPeriod.jLabel4.text
+msgid "Start Period"
+msgstr "Počáteční období"
+
+#: ExportCSVByPeriod.startDateSpinner.toolTipText
+msgid "Choose the start date of the period"
+msgstr "Zvolte počáteční datum období"
+
+#: ExportCSVByPeriod.endDateSpinner.toolTipText
+msgid "Choose the end date of the period"
+msgstr "Zvolte konečné datum období"
+
+#: billsUI.jMenuItem6.text
+msgid "Export Csv By Period"
+msgstr "Exportovat Csv podle období"
+
+#: COMPANY\ ID
+msgid "Company ID"
+msgstr "ID společnosti"
+
+#: COMPANY\ NAME
+msgctxt "COMPANY\\ NAME"
+msgid "Company Name"
+msgstr "Název společnosti"
+
+#: COMPANY\ AFM
+msgid "Company Afm"
+msgstr "Společnost Afm"
+
+#: CATEGORY
+msgctxt "CATEGORY"
+msgid "Category"
+msgstr "Kategorie"
+
+#: REPORT\ COMPANIES
+msgid "Report Companies"
+msgstr "Nahlásit společnosti"
+
+#: BILL\ ID
+msgid "Bill ID"
+msgstr "ID účtu"
+
+#: DATE\ OF\ ISSUE
+msgid "Date of Issue"
+msgstr "Datum vystavení"
+
+#: DATE\ OF\ PAYMENT
+msgid "Date of Payment"
+msgstr "Datum platby"
+
+#: PRICE
+msgid "Price"
+msgstr "Cena"
+
+#: REPORT\ BILLS
+msgid "Report Bills"
+msgstr "Nahlásit účty"
+
+#: REPORT\ TOTAL\ EXPENSES\ PER\ COMPANY
+msgid "Report Total expenses Per Company"
+msgstr "Nahlásit celkové náklady za společnost"
+
+#: AMOUNT
+msgctxt "AMOUNT"
+msgid "Amount"
+msgstr "Množství"
+
+#: PERCENTAGE
+msgid "Percentage"
+msgstr "Procento"
+
+#: AFM
+msgid "AFM/VAT"
+msgstr "AFM/DPH"
+
+#: REPORT\ TOTAL\ YEARLY
+msgid "Report Total Yearly ("
+msgstr "Nahlásit celkové roční ("
+
+#: EXPENSES\ PER\ COMPANY\
+msgid ")expenses Per Company"
+msgstr ") náklady za společnost"
+
+#: REPORT\ TOTAL\ EXPENSES\ PER\ YEAR
+msgid "Report Total expenses Per Year ("
+msgstr "Nahlásit celkové náklady za rok ("
+
+#: MONTH
+msgid "Month"
+msgstr "Měsíc"
+
+#: INCOME\ ID
+msgctxt "INCOME\\ ID"
+msgid "Income ID"
+msgstr "ID příjmu"
+
+#: REPORT\ INCOME
+msgid "Report Income"
+msgstr "Nahlásit příjem"
+
+#: REPORT\ TOTAL\ INCOME
+msgid "Report Total Income"
+msgstr "Nahlásit celkový příjem"
+
+#: REPORT\ EXPENSES\ PER\ CATEGORY\ FOR\ ALL\ YEARS
+msgid "Report expenses per category for all years"
+msgstr "Nahlásit náklady za kategorii za všechny roky"
+
+#: REPORT\ CATEGORY\ EXPENSES\ PER\ YEAR
+msgid "Report Category expenses Per Year ("
+msgstr "Nahlásit náklady kategorie za rok ("
+
+#: REPORT\ MONTHLY\ PROFIT/LOSSES\ \ FOR\ YEAR
+msgid "Report monthly profit/losses  for year ("
+msgstr "Nahlásit měsíční zisky/ztráty za rok ("
+
+#: REPORT\ MONTHLY\ INCOME\ FOR\ YEAR
+msgid "Report monthly income for year ("
+msgstr "Nahlásit měsíční příjem za rok ("
+
+#: MONTHS
+msgid "Months"
+msgstr "Měsíce"
+
+#: EXPENSES\ PER\ MONTH
+msgid "Expenses Per Month"
+msgstr "Náklady za měsíc"
+
+#: PROFIT\ OR\ LOSS\ PER\ MONTH
+msgid "Profit or Loss Per Month"
+msgstr "Zisk nebo ztráty za měsíc"
+
+#: ID
+msgid "ID"
+msgstr "ID"
+
+#: COMPANY\ NAMES
+msgid "Company Names"
+msgstr "Názvy společností"
+
+#: billsUI.jLabel20.text
+msgid "Compare with year"
+msgstr "Porovnat s rokem"
+
+#: billsUI.jLabel21.text
+msgid "year"
+msgstr "rok"
+
+#: COMPARE-TWO-YEAR_EXPENCES-PER-CATEGORY
+msgid "Compare expenses/category of two years"
+msgstr "Porovnat náklady/kategorie za dva roky"
+
+#: CURRENCY
+msgid "Currency"
+msgstr "Měna"
+
+#: ONE\ EURO\ VALUE\ IN\ CURRENCY
+msgid "One euro value in currency"
+msgstr "Hodnota jednoho eura ve měně"
+
+#: WAITING\ FOR\ DATA\ DOWNLOAD\ TO\ COMPLETE.\ PLEASE\ PRESS\ THE\ BUTTON\ AGAIN\ IN\ A\ FEW\ SECONDS!
+msgid ""
+"Waiting for data download to complete. Please press the button again in a "
+"few seconds!"
+msgstr ""
+"Čekání na dokončení stažení dat. Prosím stiskněte znovu tlačítko za pár "
+"vteřin!"
+
+#: VALUE\ OF\ ONE\ CURRENCY\ COIN\ IN\ EURO
+msgid "Value of one currency coin in euro"
+msgstr "Hodnota jedné mince měny v eurech"
+
+#: billsUI.jMenuItem7.text
+msgid "Calculate amortization"
+msgstr "Vypočítat amortizaci"
+
+#: \ PER\ MONTH
+msgid " per month"
+msgstr " za měsíc"
+
+#: PresentTransactionsPerCompany.title
+msgid "Present transactions per Company"
+msgstr "Současné převody za společnost"
+
+#: PresentTransactionsPerCompany.goButton.text
+msgctxt "PresentTransactionsPerCompany.goButton.text"
+msgid "Go!"
+msgstr "Přejít!"
+
+#: PresentTransactionsPerCompany.jLabel2.text
+msgid "Company"
+msgstr "Společnost"
+
+#: PresentTransactionsPerCompany.jLabel1.text
+msgid "Transaction Type"
+msgstr "Typ převodu"
+
+#: billsUI.jMenuItem8.text
+msgid "Present Transactions Per Company"
+msgstr "Současné převody za společnost"
+
+#: \ DATE\ OF\ PAYMENT\:\
+msgid "Date of payment:"
+msgstr "Datum platby:"
+
+#: \ AMOUNT\:\
+msgctxt "\\ AMOUNT\\:\\"
+msgid "Amount:"
+msgstr "Částka:"
+
+#: ConvertToNewCurrencyFrame.progressLabel.text
+msgid "Number of records converted :"
+msgstr "Počet převedených záznamů:"
+
+#: NUMBER\ OF\ EXPENSES\ RECORDS\ CONVERTED\ \:\
+msgid "Number of expenses records converted :"
+msgstr "Počet převedených záznamů nákladů:"
+
+#: \ INCOME\ RECORDS\ CONVERTED\ \:\
+msgid " income records converted :"
+msgstr " záznamů příjmu převedeno :"
+
+#: billsUI.jMenuItem9.text
+msgctxt "billsUI.jMenuItem9.text"
+msgid "Merge Categories"
+msgstr "Sloučit kategorie"
+
+#: MergeCategoriesFrame.progressLabel.text
+msgctxt "MergeCategoriesFrame.progressLabel.text"
+msgid " Merged:"
+msgstr " sloučeno:"
+
+#: MergeCategoriesFrame.goButton.text
+msgctxt "MergeCategoriesFrame.goButton.text"
+msgid "Go!"
+msgstr "Přejít!"
+
+#: MergeCategoriesFrame.jLabel2.text
+msgctxt "MergeCategoriesFrame.jLabel2.text"
+msgid "With"
+msgstr "S"
+
+#: MergeCategoriesFrame.title
+msgctxt "MergeCategoriesFrame.title"
+msgid "Merge Categories"
+msgstr "Sloučit kategorie"
+
+#: MergeCategoriesFrame.jLabel1.text
+msgid "Merge Category"
+msgstr "Sloučit kategorii"
+
+#: ManageCategoriesFrame.goButton.text
+msgctxt "ManageCategoriesFrame.goButton.text"
+msgid "Go!"
+msgstr "Přejít!"
+
+#: ManageCategoriesFrame.retrieveCategoryButton.text
+msgctxt "ManageCategoriesFrame.retrieveCategoryButton.text"
+msgid "Retrieve"
+msgstr "Získat"
+
+#: ManageCategoriesFrame.title
+msgctxt "ManageCategoriesFrame.title"
+msgid "Manage Categories"
+msgstr "Správa kategorií"
+
+#: ManageCategoriesFrame.jLabel2.text
+msgctxt "ManageCategoriesFrame.jLabel2.text"
+msgid "Category"
+msgstr "Kategorie"
+
+#: ManageCategoriesFrame.jLabel1.text
+msgctxt "ManageCategoriesFrame.jLabel1.text"
+msgid "Action"
+msgstr "Činnost"
+
+#: ManageCategoriesFrame.jLabel3.text
+msgid "Category Name"
+msgstr "Název kategorie"
+
+#: MergeCompanyRecordsFrame.jLabel1.text
+msgid "Merge records of company"
+msgstr "Sloučit záznamy společnosti"
+
+#: MergeCompanyRecordsFrame.progressLabel.text
+msgctxt "MergeCompanyRecordsFrame.progressLabel.text"
+msgid " Merged:"
+msgstr " sloučeno:"
+
+#: MergeCompanyRecordsFrame.goButton.text
+msgctxt "MergeCompanyRecordsFrame.goButton.text"
+msgid "Go!"
+msgstr "Přejít!"
+
+#: MergeCompanyRecordsFrame.jLabel2.text
+msgctxt "MergeCompanyRecordsFrame.jLabel2.text"
+msgid "With"
+msgstr "S"
+
+#: MergeCompanyRecordsFrame.title
+msgid "Merge Company Records"
+msgstr "Sloučit záznamy společnosti"
+
+#: billsUI.jMenu6.text
+msgid "Merge Operations"
+msgstr "Operace sloučení"
+
+#: billsUI.jMenuItem10.text
+msgid "Merge Expenses Companies Records"
+msgstr "Sloučit záznamy nákladů společnosti"
+
+#: NUMBER\ OF\ ROWS\
+msgid "Number of records"
+msgstr "Počet záznamů"
+
+#: ImportPaypalRecordsFrame.jTextField1.text
+msgctxt "ImportPaypalRecordsFrame.jTextField1.text"
+msgid "jTextField1"
+msgstr "jTextovéPole1"
+
+#: ImportPaypalRecordsFrame.periodLabel.text
+msgid "Select csv file"
+msgstr "Vybrat soubor csv"
+
+#: ImportPaypalRecordsFrame.jLabel2.text
+msgid "Select companies category"
+msgstr "Vyberte kategorii společností"
+
+#: ImportPaypalRecordsFrame.title
+msgid "Import paypal records"
+msgstr "Importovat záznamy paypal"
+
+#: ImportPaypalRecordsFrame.jLabel4.text
+msgid "Welcome to the import Paypal records function"
+msgstr "Vítejte ve funkci importu záznamů Paypal"
+
+#: ImportPaypalRecordsFrame.jLabel5.text
+msgid "Records imported"
+msgstr "Záznamy importovány"
+
+#: ImportPaypalRecordsFrame.jCheckBox1.text
+msgid "Import expenses records"
+msgstr "Importovat záznamy nákladů"
+
+#: ImportPaypalRecordsFrame.jCheckBox2.text
+msgid "Import income records"
+msgstr "Importovat záznamy příjmů"
+
+#: ImportPaypalRecordsFrame.importRecordsButton.text
+msgctxt "ImportPaypalRecordsFrame.importRecordsButton.text"
+msgid "Import"
+msgstr "Importovat"
+
+#: billsUI.jLabel22.text
+msgctxt "billsUI.jLabel22.text"
+msgid "Comment"
+msgstr "Komentář"
+
+#: billsUI.jLabel23.text
+msgctxt "billsUI.jLabel23.text"
+msgid "Comment"
+msgstr "Komentář"
+
+#: COMMENT
+msgctxt "COMMENT"
+msgid "Comment"
+msgstr "Komentář"
+
+#: CalculateAmortizationFrame.jTextField1.text
+msgctxt "CalculateAmortizationFrame.jTextField1.text"
+msgid "jTextField1"
+msgstr "jTextovéPole1"
+
+#: CalculateAmortizationFrame.calcAmortizationTableButton.text
+msgid "Amortization Table"
+msgstr "Tabulka amortizací"
+
+#: CalculateAmortizationFrame.periodLabel.text
+msgid "Please insert the payoff period (months)"
+msgstr "Prosím zadejte období výplaty (měsíce)"
+
+#: CalculateAmortizationFrame.resultLabel.text
+msgid "Result:"
+msgstr "Výsledek:"
+
+#: CalculateAmortizationFrame.calculateButton.text
+msgid "Calculate"
+msgstr "Vypočítat"
+
+#: CalculateAmortizationFrame.rateLabel.text
+msgid "Please insert the interest rate without the % sign"
+msgstr "Zadejte prosím úrokovou sazbu bez znaménka %"
+
+#: CalculateAmortizationFrame.jLabel2.text
+msgid "Please insert the amount"
+msgstr "Prosím zadejte množství"
+
+#: CalculateAmortizationFrame.jLabel3.text
+msgid "Please select the payoff frequency"
+msgstr "Prosím zadejte četnost výplaty"
+
+#: CalculateAmortizationFrame.title
+msgid "Calculate Amortization"
+msgstr "Vypočítat amortizaci"
+
+#: NO
+msgid "No"
+msgstr "Ne"
+
+#: \ INSTALMENT
+msgid " instalment"
+msgstr " splátka"
+
+#: \ REM\ CAPITAL
+msgid " rem capital"
+msgstr " rem capital"
+
+#: \ INST\ CAPITAL
+msgid " inst capital"
+msgstr " úrok z kapitálu"
+
+#: \ INST\ INTEREST
+msgid " inst interest"
+msgstr " úrok splátky"
+
+#: TOTAL\ INTEREST\ PAID\:
+msgid "Total Interest paid:"
+msgstr "Celkový zaplacený úrok:"
+
+#: TOTAL\ CAPITAL\ PAID\:
+msgid "Total Capital paid:"
+msgstr "Celkem zaplacený úrok"
+
+#: AMOUNT\:\
+msgctxt "AMOUNT\\:\\"
+msgid "Amount:"
+msgstr "Částka:"
+
+#: DURATION\:\
+msgid "Duration:"
+msgstr "Trvání:"
+
+#: INTEREST\ RATE\:\
+msgid "Interest Rate:"
+msgstr "Úroková sazba:"
+
+#: FREQUENCY\:\
+msgid "Frequency:"
+msgstr "Četnost:"

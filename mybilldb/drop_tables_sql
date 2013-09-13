@@ -1,0 +1,2 @@
+drop table bills
+drop table companies

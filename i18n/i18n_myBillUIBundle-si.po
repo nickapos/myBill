@@ -1,0 +1,933 @@
+# Sinhalese translation for mybill
+# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# This file is distributed under the same license as the mybill package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mybill\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2013-01-23 17:01+0300\n"
+"PO-Revision-Date: 2013-06-03 17:52+0000\n"
+"Last-Translator: Ruksala Wimalasooriya <ruksalaw84@gmail.com>\n"
+"Language-Team: Sinhalese <si@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2013-06-19 19:20+0000\n"
+"X-Generator: Launchpad (build 16667)\n"
+
+#: billsUI.jMenuItem4.text
+msgctxt "billsUI.jMenuItem4.text"
+msgid "Manage Categories"
+msgstr "ප්‍රවර්ග කළමනාකරණය"
+
+#: billsUI.jMenu2.text
+msgctxt "billsUI.jMenu2.text"
+msgid "About"
+msgstr "මේ ගැන"
+
+#. #  Copyright (C) 2010 nickapos
+#. #  This program is free software: you can redistribute it and/or modify
+#. #  it under the terms of the GNU General Public License as published by
+#. #  the Free Software Foundation, either version 3 of the License, or
+#. #  (at your option) any later version.
+#. #  This program is distributed in the hope that it will be useful,
+#. #  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. #  GNU General Public License for more details.
+#. #  You should have received a copy of the GNU General Public License
+#. #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#: billsUI.aboutMenuItem.text
+msgctxt "billsUI.aboutMenuItem.text"
+msgid "About"
+msgstr "මේ ගැන"
+
+#: billsUI.jLabel11.text
+msgid "Report Parameters:"
+msgstr "වාර්ථා කරන්න"
+
+#: billsUI.jLabel2.text
+msgid "Date of Issue (YYYY-MM-DD)"
+msgstr "නිකුත් කළ දිනය (වසර-මාසය -දිනය)"
+
+#: billsUI.ReportsPanel.TabConstraints.tabTitle
+msgid "Text Reports"
+msgstr "වාර්තා"
+
+#: billsUI.companyRetrieveButton.text
+msgctxt "billsUI.companyRetrieveButton.text"
+msgid "Retrieve"
+msgstr "ලබාගන්න"
+
+#: billsUI.companyDetailsGoButton.text
+msgctxt "billsUI.companyDetailsGoButton.text"
+msgid "Go!"
+msgstr "යන්න"
+
+#: billsUI.jLabel7.text
+msgid "Reports"
+msgstr "වාර්තා"
+
+#: billsUI.jButton1.text
+msgid "Save report as csv"
+msgstr "වාර්තා csv එකක් ලෙස සුරකින්න."
+
+#: billsUI.jMenu5.text
+msgctxt "billsUI.jMenu5.text"
+msgid "Import"
+msgstr "ආයාත කරන්න"
+
+#: billsUI.jMenu1.text
+msgid "Operations"
+msgstr "ක්‍රියාකාරකම්"
+
+#: billsUI.jLabel13.text
+msgctxt "billsUI.jLabel13.text"
+msgid "Action"
+msgstr "ක්‍රීයාව"
+
+#: billsUI.jLabel3.text
+msgid "Date of payment (YYYY-MM-DD)"
+msgstr "ගෙවීම් සිදුකළ දිනය (වසර-මාසය-දිනය)"
+
+#: billsUI.jLabel4.text
+msgctxt "billsUI.jLabel4.text"
+msgid "Amount"
+msgstr "ප්‍රමාණය"
+
+#: billsUI.billRetrieveButton.text
+msgctxt "billsUI.billRetrieveButton.text"
+msgid "Retrieve"
+msgstr "ලබාගන්න"
+
+#: billsUI.billGoButton.text
+msgctxt "billsUI.billGoButton.text"
+msgid "Go!"
+msgstr "යන්න"
+
+#: billsUI.InsertEditIncome.TabConstraints.tabTitle
+msgid "Insert/Edit Income"
+msgstr "එකතු කරන්න/ආදායම වෙනස් කරන්න"
+
+#: billsUI.reportButton.text
+msgctxt "billsUI.reportButton.text"
+msgid "Go"
+msgstr "යන්න"
+
+#: billsUI.jMenuItem1.text
+msgid "Validate AFM/VAT"
+msgstr "තහවුරැ කරන්න AFM/VAT"
+
+#: billsUI.jMenu3.text
+msgid "Tools"
+msgstr "මෙවලම්"
+
+#: billsUI.shutdownMenuItem.text
+msgid "Quit"
+msgstr "ඉවත් වෙන්න"
+
+#: billsUI.executeSqlMenuItem.text
+msgctxt "billsUI.executeSqlMenuItem.text"
+msgid "Execute Sql"
+msgstr "කියා කරවන්න Sql"
+
+#: billsUI.jLabel1.text
+msgctxt "billsUI.jLabel1.text"
+msgid "Company Name"
+msgstr "ආයතනයේ නම"
+
+#: billsUI.emptyDBMenuItem.text
+msgid "EmptyDatabase"
+msgstr "හිස් පරිගණක දත්ත ගබඩාව"
+
+#: billsUI.emptyDBMenyItem.text
+msgid "EmptyDB"
+msgstr "හිස් පරිගණක දත්ත ගබඩාව"
+
+#: billsUI.jMenuItem3.text
+msgid "Export CSV By Year"
+msgstr "CSV අවුරැදු වශයෙන් නිර්යාත කරන්න"
+
+#: billsUI.incomeGoButton.text
+msgctxt "billsUI.incomeGoButton.text"
+msgid "Go"
+msgstr "යන්න"
+
+#: billsUI.jLabel8.text
+msgctxt "billsUI.jLabel8.text"
+msgid "Action"
+msgstr "ක්‍රියාව"
+
+#: billsUI.jLabel6.text
+msgid "Bill Id"
+msgstr "බිල්පත් අංකය"
+
+#: billsUI.incomeRetrieveButton.text
+msgctxt "billsUI.incomeRetrieveButton.text"
+msgid "Retrieve"
+msgstr "Retrieve"
+
+#: billsUI.title
+msgid "myBill"
+msgstr "මගේ බිල්පත"
+
+#: billsUI.InsertEditBillPanel.TabConstraints.tabTitle
+msgid "Insert/Edit Bill"
+msgstr "බිල්පත එකතු කරන්න/ වෙනස් කරන්න"
+
+#: billsUI.jLabel15.text
+msgctxt "billsUI.jLabel15.text"
+msgid "Amount"
+msgstr "ප්‍රමාණය"
+
+#: billsUI.jLabel14.text
+msgid "Date (YYYY-MM-DD)"
+msgstr "දිනය (වසර-මාසය-දිනය)"
+
+#: billsUI.jLabel17.text
+msgctxt "billsUI.jLabel17.text"
+msgid "Company Name"
+msgstr "ආයතනයේ නම"
+
+#: billsUI.jLabel16.text
+msgctxt "billsUI.jLabel16.text"
+msgid "Income ID"
+msgstr "ආදායම් අංකය"
+
+#: billsUI.exportDBMenuItem.text
+msgid "Export Database"
+msgstr "වියදම් දත්ත ගබඩාව"
+
+#: billsUI.exportCSVsMenuItem.text
+msgid "Export CSV"
+msgstr "CSV නිර්යාත කරන්න"
+
+#: billsUI.jMenuItem2.text
+msgid "Import DB Tables"
+msgstr "දත්ත ගබඩා වගු ආයාත කරන්න"
+
+#: billsUI.jMenu4.text
+msgid "Export"
+msgstr "නිර්යාත කරන්න"
+
+#: billsUI.jLabel10.text
+msgid "Company Tax Service ID (AFM)"
+msgstr "ආයතන බදු සේවා අංකය ((AFM)"
+
+#: billsUI.jLabel12.text
+msgctxt "billsUI.jLabel12.text"
+msgid "Company Name"
+msgstr "ආයතනයේ නම"
+
+#: billsUI.jLabel18.text
+msgctxt "billsUI.jLabel18.text"
+msgid "Category"
+msgstr "ප්‍රවර්ගය"
+
+#: billsUI.jLabel5.text
+msgctxt "billsUI.jLabel5.text"
+msgid "Action"
+msgstr "ක්‍රීයාව"
+
+#: billsUI.InsertEditCompanyPanel.TabConstraints.tabTitle
+msgid "Insert/Edit Company"
+msgstr "ආයතනය එකතු කරන්න/ වෙනස් කරන්න"
+
+#: billsUI.jLabel9.text
+msgid "Company Id"
+msgstr "ආයතන අංකය"
+
+#. #  Copyright (C) 2010 nickapos
+#. #  This program is free software: you can redistribute it and/or modify
+#. #  it under the terms of the GNU General Public License as published by
+#. #  the Free Software Foundation, either version 3 of the License, or
+#. #  (at your option) any later version.
+#. #  This program is distributed in the hope that it will be useful,
+#. #  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. #  GNU General Public License for more details.
+#. #  You should have received a copy of the GNU General Public License
+#. #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#: ExecuteSqlWindow.executeButton.text
+msgctxt "ExecuteSqlWindow.executeButton.text"
+msgid "Execute"
+msgstr "ක්‍රියාකරවන්න"
+
+#: ExecuteSqlWindow.title
+msgctxt "ExecuteSqlWindow.title"
+msgid "Execute Sql"
+msgstr "කියා කරවන්න Sql"
+
+#: ExecuteSqlWindow.jLabel2.text
+msgid "Use only create,insert,delete,update,drop commands. Be careful"
+msgstr ""
+"create,insert,delete,update,drop යන නියෝග පමණක් පිළිපදින්න. පරිස්සම් වන්න."
+
+#: ExportCSVByYear.title
+msgctxt "ExportCSVByYear.title"
+msgid "Extract CSV by year"
+msgstr "CSV වසර අනුව උපුටා ගන්න"
+
+#. #  Copyright (C) 2010 nickapos
+#. #  This program is free software: you can redistribute it and/or modify
+#. #  it under the terms of the GNU General Public License as published by
+#. #  the Free Software Foundation, either version 3 of the License, or
+#. #  (at your option) any later version.
+#. #  This program is distributed in the hope that it will be useful,
+#. #  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. #  GNU General Public License for more details.
+#. #  You should have received a copy of the GNU General Public License
+#. #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#: ExportCSVByYear.validateButton.text
+msgctxt "ExportCSVByYear.validateButton.text"
+msgid "Extract"
+msgstr "උපුටාගන්න"
+
+#: ExportCSVByYear.jLabel2.text
+msgid "Please select the year of the records to be extracted"
+msgstr "උපුටා ගත යුතු වාර්තා වල වසර තෝරාගන්න"
+
+#: ValidateAFM.title
+msgid "Validate AFM"
+msgstr "AFM තහවුරැ කරන්න"
+
+#: ValidateAFM.jLabel1.text
+msgid "Result"
+msgstr "ප්‍රතිඑලය"
+
+#: ValidateAFM.validateButton.text
+msgid "Validate"
+msgstr "තහවුරැ කරන්න"
+
+#: ValidateAFM.jLabel2.text
+msgid "Please type in the AFM or VAT"
+msgstr "AFM හෝ VAT ලෙස ටයිප් කරන්න"
+
+#: SOMETHING-WENT-WRONG-PLEASE-TRY-AGAIN!
+msgid "Something went wrong, please try again!"
+msgstr "කිසිවක් වැරදී ඇත. නැවත උත්සහ කරන්න"
+
+#: THE-DATABASE-ENGINE-AND-THE-APPLICATION-WILL-SHUTDOWN
+msgid "The database engine and the application will shutdown!"
+msgstr "පරිගණක දත්ත ගබඩාව හා වැඩසටහන නැවතේ."
+
+#: ALL-THE\ DATABASE-CONTENT-IS-GOING-TO-BE-DELETED
+msgid "All the database content is going to be deleted!"
+msgstr "සියලු දත්ත ගබඩා අන්තර්ගතයන් මැතී යාමට සැරසේ"
+
+#: THE-DATABASE-IS-NOT-EMPTY.\u0399-WILL-DO-NOTHING
+msgid "The database is not Empty. I will do nothing!"
+msgstr "පරිගණක දත්ත ගබඩාව හිස් නැත. මා කිසිවක් නොකරමි."
+
+#: INSERT
+msgid "Insert"
+msgstr "ඇතුළත් කරන්න"
+
+#: EDIT
+msgid "Edit"
+msgstr "සංස්කරණය කරන්න"
+
+#: DELETE
+msgid "Delete"
+msgstr "මකා දමන්න"
+
+#: COMPANIES
+msgid "Companies"
+msgstr "ආයතන"
+
+#: BILLS
+msgid "Bills"
+msgstr "බිල්පත්"
+
+#: EXPENSES-PER-COMPANY-FOR-ALL-YEARS
+msgid "Expenses per company for all years"
+msgstr "සියලු වර්ෂ සදහා ආයතන වල වියදම්"
+
+#: EXPENSES-AMOUNT-PER-COMPANY-BY-YEAR
+msgid "Expenses per company by year"
+msgstr "ආයතනයේ එක් එක් වර්ෂ සදහා වියදම්"
+
+#: EXPENSES-AMOUNT-PER-MONTH-BY-YEAR
+msgid "Expenses per month for a year"
+msgstr "වර්ෂයක් සදහා මාසික වියදම්"
+
+#: INCOME
+msgid "Income"
+msgstr "ආදායම"
+
+#: INCOME-FOR-ALL-YEARS
+msgid "Income for all years"
+msgstr "සියලු වර්ෂ සදහා ආදායම"
+
+#: INCOME-BY-YEAR
+msgid "Income by year"
+msgstr "වර්ෂ සදහා ආදායම"
+
+#: INCOME-AMOUNT-PER-MONTH-BY-YEAR
+msgid "Income per month for a year"
+msgstr "වර්ෂයක් සදහා මාසික වියදම"
+
+#: INCOME-EXPENSES-MONTH-PER-YEAR
+msgid "(Income-Expenses)/Month for a year"
+msgstr "(ආදායම-වියදම)/ මාසික"
+
+#: EXPENSES-PER-CATEGORY-FOR-ALL-YEARS
+msgid "Expenses per category for all years"
+msgstr "සියලු වර්ෂ සදහා එක් එක් පවර්ග වෙනුවෙන් වියදම"
+
+#: EXPENSES-PER-CATEGORY-PER-YEAR
+msgid "Expenses per category per year"
+msgstr "වර්ෂයක් සදහා එක් එක් පවර්ග සදහා වියදම"
+
+#: billsUI.jLabel19.text
+msgid "Foreign Currency"
+msgstr "විදේශ මුදල්"
+
+#: billsUI.foreignCurrencyCheckBox.text
+msgid "(Check to Enable)"
+msgstr "(කියා කරවීම සදහා පරීක්ෂා කරන්න)"
+
+#: ExchangeRatesFrame.title
+msgid "Exchange Rates Table"
+msgstr "විනිමය හුවමාරැ වගුව"
+
+#: ExchangeRatesFrame.retrieveRatesButton.text
+msgid "Retrieve Rates"
+msgstr "විනිමය අනුපාත ලබාගන්න"
+
+#: ExchangeRatesFrame.flippedRateButton.text
+msgid "Retrieve Flipped Rates"
+msgstr "අනුපාත ලබාගන්න"
+
+#: billsUI.showRatesFrameButton.text
+msgid "Show Rates"
+msgstr "විනිමය අනුපාත ලබාගන්න."
+
+#. #  Copyright (C) 2010 nickapos
+#. #  This program is free software: you can redistribute it and/or modify
+#. #  it under the terms of the GNU General Public License as published by
+#. #  the Free Software Foundation, either version 3 of the License, or
+#. #  (at your option) any later version.
+#. #  This program is distributed in the hope that it will be useful,
+#. #  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. #  GNU General Public License for more details.
+#. #  You should have received a copy of the GNU General Public License
+#. #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#: ConvertToNewCurrencyFrame.executeButton.text
+msgctxt "ConvertToNewCurrencyFrame.executeButton.text"
+msgid "Execute"
+msgstr "ක්‍රියාත්මක කරන්න"
+
+#: ConvertToNewCurrencyFrame.jLabel2.text
+msgid "Use this form to convert all records to a new currency."
+msgstr ""
+"සියලු සටහන් වෙනත් මුදල් වර්ගයක් සදහා පරිවර්තනය කිරීමට මෙම ආකෘතිය භාවිතා "
+"කරන්න."
+
+#: ConvertToNewCurrencyFrame.title
+msgid "Convert all records to new currency"
+msgstr "සියලු සටහන් වෙනත් මුදල් වර්ගයක් සදහා පරිවර්තනය කරන්න."
+
+#: ConvertToNewCurrencyFrame.jLabel1.text
+msgid " Insert currency exchange rate"
+msgstr " විනිමය අනුපාත එකතු කරන්න"
+
+#: ConvertToNewCurrencyFrame.presentExchangeRatesButton.text
+msgid "Present exchange rates"
+msgstr "වර්තමාන විනිමය අනුපාතය"
+
+#: billsUI.jMenuItem5.text
+msgid "Change db currency"
+msgstr "දත්ත ගබඩාවේ මුදල් වර්ගය වෙනස් කරන්න."
+
+#: ERROR\ IN\ BILL\ INSERTION
+msgid "Error in Bill Insertion"
+msgstr "බිල්පත එකතු කිරීමේදී වරදක් සිදුවී ඇත"
+
+#: ERROR\ IN\ COMPANY\ INSERTION
+msgid "Error in Company Insertion"
+msgstr "ආයතනය එකතු කිරීමේදී වරදක් සිදුවී ඇත."
+
+#: ERROR\ IN\ INCOME\ INSERTION
+msgid "Error in Income Insertion"
+msgstr "ආදායම එකතු කිරීමේදී වරදක් සිදුවී ඇත."
+
+#: ExportCSVByPeriod.jLabel2.text
+msgid "Please select the period of the records to be extracted"
+msgstr "කියාකරවීමට අවශ්‍ය සටහන් වල කාලපරිච්ඡේදය තෝරාගන්න."
+
+#. #  Copyright (C) 2010 nickapos
+#. #  This program is free software: you can redistribute it and/or modify
+#. #  it under the terms of the GNU General Public License as published by
+#. #  the Free Software Foundation, either version 3 of the License, or
+#. #  (at your option) any later version.
+#. #  This program is distributed in the hope that it will be useful,
+#. #  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. #  GNU General Public License for more details.
+#. #  You should have received a copy of the GNU General Public License
+#. #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#: ExportCSVByPeriod.validateButton.text
+msgctxt "ExportCSVByPeriod.validateButton.text"
+msgid "Extract"
+msgstr "උපුටාගන්න"
+
+#: ExportCSVByPeriod.title
+msgctxt "ExportCSVByPeriod.title"
+msgid "Extract CSV by year"
+msgstr "CSV වසර අනුව උපුටා ගන්න"
+
+#: ExportCSVByPeriod.jLabel1.text
+msgid "End Period"
+msgstr "කාලපරිච්ඡේදය අවසන් කරන්න."
+
+#: ExportCSVByPeriod.jLabel4.text
+msgid "Start Period"
+msgstr "කාලපරිච්ඡේදය ආරම්භ කරන්න."
+
+#: ExportCSVByPeriod.startDateSpinner.toolTipText
+msgid "Choose the start date of the period"
+msgstr "කාලපරිච්ඡේදයේ ආරම්භක දිනය තෝරාගන්න."
+
+#: ExportCSVByPeriod.endDateSpinner.toolTipText
+msgid "Choose the end date of the period"
+msgstr "කාලපරිච්ඡේදයේ අවසාන දිනය තෝරාගන්න."
+
+#: billsUI.jMenuItem6.text
+msgid "Export Csv By Period"
+msgstr "කාලපරිච්ඡේදයක් සදහා Csv උපුටා ගන්න."
+
+#: COMPANY\ ID
+msgid "Company ID"
+msgstr "ආයතන අංකය"
+
+#: COMPANY\ NAME
+msgctxt "COMPANY\\ NAME"
+msgid "Company Name"
+msgstr "ආයතනයේ නම"
+
+#: COMPANY\ AFM
+msgid "Company Afm"
+msgstr "ආයතන Afm"
+
+#: CATEGORY
+msgctxt "CATEGORY"
+msgid "Category"
+msgstr "ප්‍රවර්ගය"
+
+#: REPORT\ COMPANIES
+msgid "Report Companies"
+msgstr "ආයතන වාර්තා කරන්න"
+
+#: BILL\ ID
+msgid "Bill ID"
+msgstr "බිල්පත් අංකය"
+
+#: DATE\ OF\ ISSUE
+msgid "Date of Issue"
+msgstr "නිකුත් කළ දිනය"
+
+#: DATE\ OF\ PAYMENT
+msgid "Date of Payment"
+msgstr "ගෙවීම් කළ දිනය"
+
+#: PRICE
+msgid "Price"
+msgstr "මිල"
+
+#: REPORT\ BILLS
+msgid "Report Bills"
+msgstr "බිල් පිලිබදව වාර්තා කරන්න"
+
+#: REPORT\ TOTAL\ EXPENSES\ PER\ COMPANY
+msgid "Report Total expenses Per Company"
+msgstr "ආයතනයක් සදහා වන මුලු වියදම වාර්තා කරන්න."
+
+#: AMOUNT
+msgctxt "AMOUNT"
+msgid "Amount"
+msgstr "ප්‍රමාණය"
+
+#: PERCENTAGE
+msgid "Percentage"
+msgstr "ප්‍රතිශතය"
+
+#: AFM
+msgid "AFM/VAT"
+msgstr "AFM/VAT"
+
+#: REPORT\ TOTAL\ YEARLY
+msgid "Report Total Yearly ("
+msgstr "වර්ෂ සදහා එකතුව වාර්තා කරන්න("
+
+#: EXPENSES\ PER\ COMPANY\
+msgid ")expenses Per Company"
+msgstr ") ආයතනයක් සදහා වන වියදම"
+
+#: REPORT\ TOTAL\ EXPENSES\ PER\ YEAR
+msgid "Report Total expenses Per Year ("
+msgstr "වර්ෂයක් සදහා මුලු වියදම වාර්තා කරන්න"
+
+#: MONTH
+msgid "Month"
+msgstr "මාසය"
+
+#: INCOME\ ID
+msgctxt "INCOME\\ ID"
+msgid "Income ID"
+msgstr "ආදායම්ප අංකය"
+
+#: REPORT\ INCOME
+msgid "Report Income"
+msgstr "ආදායම වාර්තා කරන්න."
+
+#: REPORT\ TOTAL\ INCOME
+msgid "Report Total Income"
+msgstr "මුලු ආදායම වාර්තා කරන්න."
+
+#: REPORT\ EXPENSES\ PER\ CATEGORY\ FOR\ ALL\ YEARS
+msgid "Report expenses per category for all years"
+msgstr "සියලුම වර්ෂ සදහා එක් එක් පවර්ග වල වියදම වාර්තා කරන්න."
+
+#: REPORT\ CATEGORY\ EXPENSES\ PER\ YEAR
+msgid "Report Category expenses Per Year ("
+msgstr "වර්ෂයක් සදහා පවර්ග වල වියදම වාර්තා කරන්න("
+
+#: REPORT\ MONTHLY\ PROFIT/LOSSES\ \ FOR\ YEAR
+msgid "Report monthly profit/losses  for year ("
+msgstr "වර්ෂයක් සදහා ලාබය/හානිය වාර්තා කරන්න"
+
+#: REPORT\ MONTHLY\ INCOME\ FOR\ YEAR
+msgid "Report monthly income for year ("
+msgstr "වර්ෂයක් සදහා මාසික ආදායම වාර්තා කරන්න"
+
+#: MONTHS
+msgid "Months"
+msgstr "මාසය"
+
+#: EXPENSES\ PER\ MONTH
+msgid "Expenses Per Month"
+msgstr "මාසයක් සදහා වියදම"
+
+#: PROFIT\ OR\ LOSS\ PER\ MONTH
+msgid "Profit or Loss Per Month"
+msgstr "මාසයක් සදහා ලාබය හෝ හානිය"
+
+#: ID
+msgid "ID"
+msgstr "ID"
+
+#: COMPANY\ NAMES
+msgid "Company Names"
+msgstr "ආයතන වල නම්"
+
+#: billsUI.jLabel20.text
+msgid "Compare with year"
+msgstr "වර්ෂය අනුව සසදන්න"
+
+#: billsUI.jLabel21.text
+msgid "year"
+msgstr "වසර"
+
+#: COMPARE-TWO-YEAR_EXPENCES-PER-CATEGORY
+msgid "Compare expenses/category of two years"
+msgstr "වසර 2ක් සදහා වියදම් සසදන්න."
+
+#: CURRENCY
+msgid "Currency"
+msgstr "මුදල්"
+
+#: ONE\ EURO\ VALUE\ IN\ CURRENCY
+msgid "One euro value in currency"
+msgstr "යුරෝ අගය මුදල් ඒකකයෙන්"
+
+#: WAITING\ FOR\ DATA\ DOWNLOAD\ TO\ COMPLETE.\ PLEASE\ PRESS\ THE\ BUTTON\ AGAIN\ IN\ A\ FEW\ SECONDS!
+msgid ""
+"Waiting for data download to complete. Please press the button again in a "
+"few seconds!"
+msgstr "දත්ත භාගත වන තුරැ සිටින්න. තත්පර කිහිපයකින් පසු නැවත බොත්තම ඔබන්න."
+
+#: VALUE\ OF\ ONE\ CURRENCY\ COIN\ IN\ EURO
+msgid "Value of one currency coin in euro"
+msgstr "එක් කාසියක යුරෝ වටිනාකම"
+
+#: billsUI.jMenuItem7.text
+msgid "Calculate amortization"
+msgstr "කමක්ෂය ගණනය කරන්න."
+
+#: \ PER\ MONTH
+msgid " per month"
+msgstr " මාසික"
+
+#: PresentTransactionsPerCompany.title
+msgid "Present transactions per Company"
+msgstr "ආයතනයක වර්තමාන හුවමාරැ තත්වය"
+
+#: PresentTransactionsPerCompany.goButton.text
+msgctxt "PresentTransactionsPerCompany.goButton.text"
+msgid "Go!"
+msgstr "යන්න"
+
+#: PresentTransactionsPerCompany.jLabel2.text
+msgid "Company"
+msgstr "ආයතනය"
+
+#: PresentTransactionsPerCompany.jLabel1.text
+msgid "Transaction Type"
+msgstr "ගනුදෙනු වර්ගය"
+
+#: billsUI.jMenuItem8.text
+msgid "Present Transactions Per Company"
+msgstr "ආයතනයක වර්තමාන හුවමාරැ තත්වය"
+
+#: \ DATE\ OF\ PAYMENT\:\
+msgid "Date of payment:"
+msgstr "ගෙවීම් කළ දිනය"
+
+#: \ AMOUNT\:\
+msgctxt "\\ AMOUNT\\:\\"
+msgid "Amount:"
+msgstr "අගය"
+
+#: ConvertToNewCurrencyFrame.progressLabel.text
+msgid "Number of records converted :"
+msgstr "පරිවර්තනය කළ සටහන් ගණන"
+
+#: NUMBER\ OF\ EXPENSES\ RECORDS\ CONVERTED\ \:\
+msgid "Number of expenses records converted :"
+msgstr "පරිවර්තනය කළ වියදම් සටහන් ගණන"
+
+#: \ INCOME\ RECORDS\ CONVERTED\ \:\
+msgid " income records converted :"
+msgstr " පරිවර්තනය කළ ආදායම් සටහන් ගණන"
+
+#: billsUI.jMenuItem9.text
+msgctxt "billsUI.jMenuItem9.text"
+msgid "Merge Categories"
+msgstr "ඒකාබද්ධ කල පවර්ග"
+
+#: MergeCategoriesFrame.progressLabel.text
+msgctxt "MergeCategoriesFrame.progressLabel.text"
+msgid " Merged:"
+msgstr " ඒකාබද්ධ කළ"
+
+#: MergeCategoriesFrame.goButton.text
+msgctxt "MergeCategoriesFrame.goButton.text"
+msgid "Go!"
+msgstr "යන්න"
+
+#: MergeCategoriesFrame.jLabel2.text
+msgctxt "MergeCategoriesFrame.jLabel2.text"
+msgid "With"
+msgstr "සමග"
+
+#: MergeCategoriesFrame.title
+msgctxt "MergeCategoriesFrame.title"
+msgid "Merge Categories"
+msgstr "ඒකාබද්ධ කල පවර්ග"
+
+#: MergeCategoriesFrame.jLabel1.text
+msgid "Merge Category"
+msgstr "පවර්ග ඒකාබද්ධ කරන්න"
+
+#: ManageCategoriesFrame.goButton.text
+msgctxt "ManageCategoriesFrame.goButton.text"
+msgid "Go!"
+msgstr "යන්න"
+
+#: ManageCategoriesFrame.retrieveCategoryButton.text
+msgctxt "ManageCategoriesFrame.retrieveCategoryButton.text"
+msgid "Retrieve"
+msgstr "ලබාගන්න"
+
+#: ManageCategoriesFrame.title
+msgctxt "ManageCategoriesFrame.title"
+msgid "Manage Categories"
+msgstr "ප්‍රවර්ග කළමනාකරණය"
+
+#: ManageCategoriesFrame.jLabel2.text
+msgctxt "ManageCategoriesFrame.jLabel2.text"
+msgid "Category"
+msgstr "ප්‍රවර්ගය"
+
+#: ManageCategoriesFrame.jLabel1.text
+msgctxt "ManageCategoriesFrame.jLabel1.text"
+msgid "Action"
+msgstr "ක්‍රීයාව"
+
+#: ManageCategoriesFrame.jLabel3.text
+msgid "Category Name"
+msgstr "ප්‍රවර්ග නාමය"
+
+#: MergeCompanyRecordsFrame.jLabel1.text
+msgid "Merge records of company"
+msgstr "ආයතනයේ ඒකාබද්ධ කළ සටහන්"
+
+#: MergeCompanyRecordsFrame.progressLabel.text
+msgctxt "MergeCompanyRecordsFrame.progressLabel.text"
+msgid " Merged:"
+msgstr " ඒකාබද්ධ කළ"
+
+#: MergeCompanyRecordsFrame.goButton.text
+msgctxt "MergeCompanyRecordsFrame.goButton.text"
+msgid "Go!"
+msgstr "යන්න"
+
+#: MergeCompanyRecordsFrame.jLabel2.text
+msgctxt "MergeCompanyRecordsFrame.jLabel2.text"
+msgid "With"
+msgstr "සමග"
+
+#: MergeCompanyRecordsFrame.title
+msgid "Merge Company Records"
+msgstr "ආයතන සටහන් ඒකාබද්ධ කරන්න."
+
+#: billsUI.jMenu6.text
+msgid "Merge Operations"
+msgstr "කියාකාරකම් ඒකාබද්ධ කරන්න."
+
+#: billsUI.jMenuItem10.text
+msgid "Merge Expenses Companies Records"
+msgstr "ආයතනයේ වියදම් සටහන් ඒකාබද්ධ කරන්න."
+
+#: NUMBER\ OF\ ROWS\
+msgid "Number of records"
+msgstr "සටහන් ගණන"
+
+#: ImportPaypalRecordsFrame.jTextField1.text
+msgctxt "ImportPaypalRecordsFrame.jTextField1.text"
+msgid "jTextField1"
+msgstr "jTextField1"
+
+#: ImportPaypalRecordsFrame.periodLabel.text
+msgid "Select csv file"
+msgstr "csv ගොනුව තෝරාගන්න"
+
+#: ImportPaypalRecordsFrame.jLabel2.text
+msgid "Select companies category"
+msgstr "ආයතන වර්ගය තෝරා ගන්න."
+
+#: ImportPaypalRecordsFrame.title
+msgid "Import paypal records"
+msgstr "paypal සටහන් ආයාත කරන්න."
+
+#: ImportPaypalRecordsFrame.jLabel4.text
+msgid "Welcome to the import Paypal records function"
+msgstr "paypal සටහන් ආයාත කිරීමේ කියාවට පිළිගනිමු"
+
+#: ImportPaypalRecordsFrame.jLabel5.text
+msgid "Records imported"
+msgstr "සටහන් ආයාත කරන ලදී."
+
+#: ImportPaypalRecordsFrame.jCheckBox1.text
+msgid "Import expenses records"
+msgstr "වියදම් සටහන් ආයාත කරන්න"
+
+#: ImportPaypalRecordsFrame.jCheckBox2.text
+msgid "Import income records"
+msgstr "ආදායම් සටහන් ආයාත කරන්න"
+
+#: ImportPaypalRecordsFrame.importRecordsButton.text
+msgctxt "ImportPaypalRecordsFrame.importRecordsButton.text"
+msgid "Import"
+msgstr "ආයාත කරන්න"
+
+#: billsUI.jLabel22.text
+msgctxt "billsUI.jLabel22.text"
+msgid "Comment"
+msgstr "අදහස් දැක්වීම"
+
+#: billsUI.jLabel23.text
+msgctxt "billsUI.jLabel23.text"
+msgid "Comment"
+msgstr "අදහස් දැක්වීම"
+
+#: COMMENT
+msgctxt "COMMENT"
+msgid "Comment"
+msgstr "අදහස් දැක්වීම"
+
+#: CalculateAmortizationFrame.jTextField1.text
+msgctxt "CalculateAmortizationFrame.jTextField1.text"
+msgid "jTextField1"
+msgstr "jTextField1"
+
+#: CalculateAmortizationFrame.calcAmortizationTableButton.text
+msgid "Amortization Table"
+msgstr "කමක්ෂය වගුව"
+
+#: CalculateAmortizationFrame.periodLabel.text
+msgid "Please insert the payoff period (months)"
+msgstr "ගෙවා අවසන් කරන ලද කාල පරිච්ඡේද ඇතුල් කරන්න."
+
+#: CalculateAmortizationFrame.resultLabel.text
+msgid "Result:"
+msgstr "ප්‍රථිපලය:"
+
+#: CalculateAmortizationFrame.calculateButton.text
+msgid "Calculate"
+msgstr "ගණනය කරන්න"
+
+#: CalculateAmortizationFrame.rateLabel.text
+msgid "Please insert the interest rate without the % sign"
+msgstr "විනිමය අනුපාතය % ලකුණ නොමැතිව ඇතුල් කරන්න."
+
+#: CalculateAmortizationFrame.jLabel2.text
+msgid "Please insert the amount"
+msgstr "අගය ඇතුල් කරන්න."
+
+#: CalculateAmortizationFrame.jLabel3.text
+msgid "Please select the payoff frequency"
+msgstr "ගෙවා අවසන් කරන ලද සංඛයාතය ඇතුල් කරන්න."
+
+#: CalculateAmortizationFrame.title
+msgid "Calculate Amortization"
+msgstr "කමක්ෂය ගණනය කරන්න."
+
+#: NO
+msgid "No"
+msgstr "නැත"
+
+#: \ INSTALMENT
+msgid " instalment"
+msgstr " වාරිකය"
+
+#: \ REM\ CAPITAL
+msgid " rem capital"
+msgstr " rem පාග්ධනය"
+
+#: \ INST\ CAPITAL
+msgid " inst capital"
+msgstr " inst පාග්ධනය"
+
+#: \ INST\ INTEREST
+msgid " inst interest"
+msgstr " inst පොලිය"
+
+#: TOTAL\ INTEREST\ PAID\:
+msgid "Total Interest paid:"
+msgstr "ගෙවන ලද මුලු පොලිය"
+
+#: TOTAL\ CAPITAL\ PAID\:
+msgid "Total Capital paid:"
+msgstr "ගෙවන ලද මුලු පාග්ධනය"
+
+#: AMOUNT\:\
+msgctxt "AMOUNT\\:\\"
+msgid "Amount:"
+msgstr "අගය"
+
+#: DURATION\:\
+msgid "Duration:"
+msgstr "කාලසීමාව:"
+
+#: INTEREST\ RATE\:\
+msgid "Interest Rate:"
+msgstr "පොලී අනුපාතය"
+
+#: FREQUENCY\:\
+msgid "Frequency:"
+msgstr "සංඛ්‍යාතය"

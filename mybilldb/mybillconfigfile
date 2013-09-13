@@ -1,0 +1,11 @@
+#mybill config file
+#Sun Oct 09 08:30:22 EEST 2011
+url=jdbc\:hsqldb\:
+dbname=file\:mydb
+dbdriver=org.hsqldb.jdbcDriver
+DatabaseName=db0
+username=sa
+DataDir=/home/nickapos/testing/myBill/mybilldb/datadir/
+BrowseDir=/home/nickapos
+password=
+InDataSet=/home/nickapos/testing/myBill/mybilldb/dataset/

@@ -1,0 +1,933 @@
+# English (United Kingdom) translation for mybill
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the mybill package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mybill\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2013-01-23 17:01+0300\n"
+"PO-Revision-Date: 2013-06-25 12:19+0000\n"
+"Last-Translator: Anthony Harrington <untaintableangel@ubuntu.com>\n"
+"Language-Team: English (United Kingdom) <en_GB@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2013-07-02 20:12+0000\n"
+"X-Generator: Launchpad (build 16692)\n"
+
+#: billsUI.jMenuItem4.text
+msgctxt "billsUI.jMenuItem4.text"
+msgid "Manage Categories"
+msgstr "Manage Categories"
+
+#: billsUI.jMenu2.text
+msgctxt "billsUI.jMenu2.text"
+msgid "About"
+msgstr "About"
+
+#. #  Copyright (C) 2010 nickapos
+#. #  This program is free software: you can redistribute it and/or modify
+#. #  it under the terms of the GNU General Public License as published by
+#. #  the Free Software Foundation, either version 3 of the License, or
+#. #  (at your option) any later version.
+#. #  This program is distributed in the hope that it will be useful,
+#. #  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. #  GNU General Public License for more details.
+#. #  You should have received a copy of the GNU General Public License
+#. #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#: billsUI.aboutMenuItem.text
+msgctxt "billsUI.aboutMenuItem.text"
+msgid "About"
+msgstr "About"
+
+#: billsUI.jLabel11.text
+msgid "Report Parameters:"
+msgstr "Report Parameters:"
+
+#: billsUI.jLabel2.text
+msgid "Date of Issue (YYYY-MM-DD)"
+msgstr "Date of Issue (YYYY-MM-DD)"
+
+#: billsUI.ReportsPanel.TabConstraints.tabTitle
+msgid "Text Reports"
+msgstr "Text Reports"
+
+#: billsUI.companyRetrieveButton.text
+msgctxt "billsUI.companyRetrieveButton.text"
+msgid "Retrieve"
+msgstr "Retrieve"
+
+#: billsUI.companyDetailsGoButton.text
+msgctxt "billsUI.companyDetailsGoButton.text"
+msgid "Go!"
+msgstr "Go!"
+
+#: billsUI.jLabel7.text
+msgid "Reports"
+msgstr "Reports"
+
+#: billsUI.jButton1.text
+msgid "Save report as csv"
+msgstr "Save report as csv"
+
+#: billsUI.jMenu5.text
+msgctxt "billsUI.jMenu5.text"
+msgid "Import"
+msgstr "Import"
+
+#: billsUI.jMenu1.text
+msgid "Operations"
+msgstr "Operations"
+
+#: billsUI.jLabel13.text
+msgctxt "billsUI.jLabel13.text"
+msgid "Action"
+msgstr "Action"
+
+#: billsUI.jLabel3.text
+msgid "Date of payment (YYYY-MM-DD)"
+msgstr "Date of payment (YYYY-MM-DD)"
+
+#: billsUI.jLabel4.text
+msgctxt "billsUI.jLabel4.text"
+msgid "Amount"
+msgstr "Amount"
+
+#: billsUI.billRetrieveButton.text
+msgctxt "billsUI.billRetrieveButton.text"
+msgid "Retrieve"
+msgstr "Retrieve"
+
+#: billsUI.billGoButton.text
+msgctxt "billsUI.billGoButton.text"
+msgid "Go!"
+msgstr "Go!"
+
+#: billsUI.InsertEditIncome.TabConstraints.tabTitle
+msgid "Insert/Edit Income"
+msgstr "Insert/Edit Income"
+
+#: billsUI.reportButton.text
+msgctxt "billsUI.reportButton.text"
+msgid "Go"
+msgstr "Go"
+
+#: billsUI.jMenuItem1.text
+msgid "Validate AFM/VAT"
+msgstr "Validate AFM/VAT"
+
+#: billsUI.jMenu3.text
+msgid "Tools"
+msgstr "Tools"
+
+#: billsUI.shutdownMenuItem.text
+msgid "Quit"
+msgstr "Quit"
+
+#: billsUI.executeSqlMenuItem.text
+msgctxt "billsUI.executeSqlMenuItem.text"
+msgid "Execute Sql"
+msgstr "Execute SQL"
+
+#: billsUI.jLabel1.text
+msgctxt "billsUI.jLabel1.text"
+msgid "Company Name"
+msgstr "Company Name"
+
+#: billsUI.emptyDBMenuItem.text
+msgid "EmptyDatabase"
+msgstr "EmptyDatabase"
+
+#: billsUI.emptyDBMenyItem.text
+msgid "EmptyDB"
+msgstr "EmptyDB"
+
+#: billsUI.jMenuItem3.text
+msgid "Export CSV By Year"
+msgstr "Export CSV By Year"
+
+#: billsUI.incomeGoButton.text
+msgctxt "billsUI.incomeGoButton.text"
+msgid "Go"
+msgstr "Go"
+
+#: billsUI.jLabel8.text
+msgctxt "billsUI.jLabel8.text"
+msgid "Action"
+msgstr "Action"
+
+#: billsUI.jLabel6.text
+msgid "Bill Id"
+msgstr "Bill Id"
+
+#: billsUI.incomeRetrieveButton.text
+msgctxt "billsUI.incomeRetrieveButton.text"
+msgid "Retrieve"
+msgstr "Retrieve"
+
+#: billsUI.title
+msgid "myBill"
+msgstr "myBill"
+
+#: billsUI.InsertEditBillPanel.TabConstraints.tabTitle
+msgid "Insert/Edit Bill"
+msgstr "Insert/Edit Bill"
+
+#: billsUI.jLabel15.text
+msgctxt "billsUI.jLabel15.text"
+msgid "Amount"
+msgstr "Amount"
+
+#: billsUI.jLabel14.text
+msgid "Date (YYYY-MM-DD)"
+msgstr "Date (YYYY-MM-DD)"
+
+#: billsUI.jLabel17.text
+msgctxt "billsUI.jLabel17.text"
+msgid "Company Name"
+msgstr "Company Name"
+
+#: billsUI.jLabel16.text
+msgctxt "billsUI.jLabel16.text"
+msgid "Income ID"
+msgstr "Income ID"
+
+#: billsUI.exportDBMenuItem.text
+msgid "Export Database"
+msgstr "Export Database"
+
+#: billsUI.exportCSVsMenuItem.text
+msgid "Export CSV"
+msgstr "Export CSV"
+
+#: billsUI.jMenuItem2.text
+msgid "Import DB Tables"
+msgstr "Import DB Tables"
+
+#: billsUI.jMenu4.text
+msgid "Export"
+msgstr "Export"
+
+#: billsUI.jLabel10.text
+msgid "Company Tax Service ID (AFM)"
+msgstr "Company Tax Service ID (AFM)"
+
+#: billsUI.jLabel12.text
+msgctxt "billsUI.jLabel12.text"
+msgid "Company Name"
+msgstr "Company Name"
+
+#: billsUI.jLabel18.text
+msgctxt "billsUI.jLabel18.text"
+msgid "Category"
+msgstr "Category"
+
+#: billsUI.jLabel5.text
+msgctxt "billsUI.jLabel5.text"
+msgid "Action"
+msgstr "Action"
+
+#: billsUI.InsertEditCompanyPanel.TabConstraints.tabTitle
+msgid "Insert/Edit Company"
+msgstr "Insert/Edit Company"
+
+#: billsUI.jLabel9.text
+msgid "Company Id"
+msgstr "Company Id"
+
+#. #  Copyright (C) 2010 nickapos
+#. #  This program is free software: you can redistribute it and/or modify
+#. #  it under the terms of the GNU General Public License as published by
+#. #  the Free Software Foundation, either version 3 of the License, or
+#. #  (at your option) any later version.
+#. #  This program is distributed in the hope that it will be useful,
+#. #  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. #  GNU General Public License for more details.
+#. #  You should have received a copy of the GNU General Public License
+#. #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#: ExecuteSqlWindow.executeButton.text
+msgctxt "ExecuteSqlWindow.executeButton.text"
+msgid "Execute"
+msgstr "Execute"
+
+#: ExecuteSqlWindow.title
+msgctxt "ExecuteSqlWindow.title"
+msgid "Execute Sql"
+msgstr "Execute SQL"
+
+#: ExecuteSqlWindow.jLabel2.text
+msgid "Use only create,insert,delete,update,drop commands. Be careful"
+msgstr ""
+"Use only create, insert, delete, update and drop commands. Be careful!"
+
+#: ExportCSVByYear.title
+msgctxt "ExportCSVByYear.title"
+msgid "Extract CSV by year"
+msgstr "Extract CSV by year"
+
+#. #  Copyright (C) 2010 nickapos
+#. #  This program is free software: you can redistribute it and/or modify
+#. #  it under the terms of the GNU General Public License as published by
+#. #  the Free Software Foundation, either version 3 of the License, or
+#. #  (at your option) any later version.
+#. #  This program is distributed in the hope that it will be useful,
+#. #  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. #  GNU General Public License for more details.
+#. #  You should have received a copy of the GNU General Public License
+#. #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#: ExportCSVByYear.validateButton.text
+msgctxt "ExportCSVByYear.validateButton.text"
+msgid "Extract"
+msgstr "Extract"
+
+#: ExportCSVByYear.jLabel2.text
+msgid "Please select the year of the records to be extracted"
+msgstr "Please select the year of the records to be extracted"
+
+#: ValidateAFM.title
+msgid "Validate AFM"
+msgstr "Validate AFM"
+
+#: ValidateAFM.jLabel1.text
+msgid "Result"
+msgstr "Result"
+
+#: ValidateAFM.validateButton.text
+msgid "Validate"
+msgstr "Validate"
+
+#: ValidateAFM.jLabel2.text
+msgid "Please type in the AFM or VAT"
+msgstr "Please type in the AFM or VAT"
+
+#: SOMETHING-WENT-WRONG-PLEASE-TRY-AGAIN!
+msgid "Something went wrong, please try again!"
+msgstr "Something went wrong, please try again!"
+
+#: THE-DATABASE-ENGINE-AND-THE-APPLICATION-WILL-SHUTDOWN
+msgid "The database engine and the application will shutdown!"
+msgstr "The database engine and the application will shutdown!"
+
+#: ALL-THE\ DATABASE-CONTENT-IS-GOING-TO-BE-DELETED
+msgid "All the database content is going to be deleted!"
+msgstr "All the database content is going to be deleted!"
+
+#: THE-DATABASE-IS-NOT-EMPTY.\u0399-WILL-DO-NOTHING
+msgid "The database is not Empty. I will do nothing!"
+msgstr "The database is not empty. Nothing will be done!"
+
+#: INSERT
+msgid "Insert"
+msgstr "Insert"
+
+#: EDIT
+msgid "Edit"
+msgstr "Edit"
+
+#: DELETE
+msgid "Delete"
+msgstr "Delete"
+
+#: COMPANIES
+msgid "Companies"
+msgstr "Companies"
+
+#: BILLS
+msgid "Bills"
+msgstr "Bills"
+
+#: EXPENSES-PER-COMPANY-FOR-ALL-YEARS
+msgid "Expenses per company for all years"
+msgstr "Expenses per company for all years"
+
+#: EXPENSES-AMOUNT-PER-COMPANY-BY-YEAR
+msgid "Expenses per company by year"
+msgstr "Expenses per company by year"
+
+#: EXPENSES-AMOUNT-PER-MONTH-BY-YEAR
+msgid "Expenses per month for a year"
+msgstr "Expenses per month for a year"
+
+#: INCOME
+msgid "Income"
+msgstr "Income"
+
+#: INCOME-FOR-ALL-YEARS
+msgid "Income for all years"
+msgstr "Income for all years"
+
+#: INCOME-BY-YEAR
+msgid "Income by year"
+msgstr "Income by year"
+
+#: INCOME-AMOUNT-PER-MONTH-BY-YEAR
+msgid "Income per month for a year"
+msgstr "Income per month for a year"
+
+#: INCOME-EXPENSES-MONTH-PER-YEAR
+msgid "(Income-Expenses)/Month for a year"
+msgstr "(Income-Expenses)/Month for a year"
+
+#: EXPENSES-PER-CATEGORY-FOR-ALL-YEARS
+msgid "Expenses per category for all years"
+msgstr "Expenses per category for all years"
+
+#: EXPENSES-PER-CATEGORY-PER-YEAR
+msgid "Expenses per category per year"
+msgstr "Expenses per category per year"
+
+#: billsUI.jLabel19.text
+msgid "Foreign Currency"
+msgstr "Foreign Currency"
+
+#: billsUI.foreignCurrencyCheckBox.text
+msgid "(Check to Enable)"
+msgstr "(Check to Enable)"
+
+#: ExchangeRatesFrame.title
+msgid "Exchange Rates Table"
+msgstr "Exchange Rates Table"
+
+#: ExchangeRatesFrame.retrieveRatesButton.text
+msgid "Retrieve Rates"
+msgstr "Retrieve Rates"
+
+#: ExchangeRatesFrame.flippedRateButton.text
+msgid "Retrieve Flipped Rates"
+msgstr "Retrieve Flipped Rates"
+
+#: billsUI.showRatesFrameButton.text
+msgid "Show Rates"
+msgstr "Show Rates"
+
+#. #  Copyright (C) 2010 nickapos
+#. #  This program is free software: you can redistribute it and/or modify
+#. #  it under the terms of the GNU General Public License as published by
+#. #  the Free Software Foundation, either version 3 of the License, or
+#. #  (at your option) any later version.
+#. #  This program is distributed in the hope that it will be useful,
+#. #  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. #  GNU General Public License for more details.
+#. #  You should have received a copy of the GNU General Public License
+#. #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#: ConvertToNewCurrencyFrame.executeButton.text
+msgctxt "ConvertToNewCurrencyFrame.executeButton.text"
+msgid "Execute"
+msgstr "Execute"
+
+#: ConvertToNewCurrencyFrame.jLabel2.text
+msgid "Use this form to convert all records to a new currency."
+msgstr "Use this form to convert all records to a new currency."
+
+#: ConvertToNewCurrencyFrame.title
+msgid "Convert all records to new currency"
+msgstr "Convert all records to new currency"
+
+#: ConvertToNewCurrencyFrame.jLabel1.text
+msgid " Insert currency exchange rate"
+msgstr " Insert currency exchange rate"
+
+#: ConvertToNewCurrencyFrame.presentExchangeRatesButton.text
+msgid "Present exchange rates"
+msgstr "Present exchange rates"
+
+#: billsUI.jMenuItem5.text
+msgid "Change db currency"
+msgstr "Change db currency"
+
+#: ERROR\ IN\ BILL\ INSERTION
+msgid "Error in Bill Insertion"
+msgstr "Error in Bill Insertion"
+
+#: ERROR\ IN\ COMPANY\ INSERTION
+msgid "Error in Company Insertion"
+msgstr "Error in Company Insertion"
+
+#: ERROR\ IN\ INCOME\ INSERTION
+msgid "Error in Income Insertion"
+msgstr "Error in Income Insertion"
+
+#: ExportCSVByPeriod.jLabel2.text
+msgid "Please select the period of the records to be extracted"
+msgstr "Please select the period of the records to be extracted"
+
+#. #  Copyright (C) 2010 nickapos
+#. #  This program is free software: you can redistribute it and/or modify
+#. #  it under the terms of the GNU General Public License as published by
+#. #  the Free Software Foundation, either version 3 of the License, or
+#. #  (at your option) any later version.
+#. #  This program is distributed in the hope that it will be useful,
+#. #  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#. #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#. #  GNU General Public License for more details.
+#. #  You should have received a copy of the GNU General Public License
+#. #  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#: ExportCSVByPeriod.validateButton.text
+msgctxt "ExportCSVByPeriod.validateButton.text"
+msgid "Extract"
+msgstr "Extract"
+
+#: ExportCSVByPeriod.title
+msgctxt "ExportCSVByPeriod.title"
+msgid "Extract CSV by year"
+msgstr "Extract CSV by year"
+
+#: ExportCSVByPeriod.jLabel1.text
+msgid "End Period"
+msgstr "End Period"
+
+#: ExportCSVByPeriod.jLabel4.text
+msgid "Start Period"
+msgstr "Start Period"
+
+#: ExportCSVByPeriod.startDateSpinner.toolTipText
+msgid "Choose the start date of the period"
+msgstr "Choose the start date of the period"
+
+#: ExportCSVByPeriod.endDateSpinner.toolTipText
+msgid "Choose the end date of the period"
+msgstr "Choose the end date of the period"
+
+#: billsUI.jMenuItem6.text
+msgid "Export Csv By Period"
+msgstr "Export CSV By Period"
+
+#: COMPANY\ ID
+msgid "Company ID"
+msgstr "Company ID"
+
+#: COMPANY\ NAME
+msgctxt "COMPANY\\ NAME"
+msgid "Company Name"
+msgstr "Company Name"
+
+#: COMPANY\ AFM
+msgid "Company Afm"
+msgstr "Company Afm"
+
+#: CATEGORY
+msgctxt "CATEGORY"
+msgid "Category"
+msgstr "Category"
+
+#: REPORT\ COMPANIES
+msgid "Report Companies"
+msgstr "Report Companies"
+
+#: BILL\ ID
+msgid "Bill ID"
+msgstr "Bill ID"
+
+#: DATE\ OF\ ISSUE
+msgid "Date of Issue"
+msgstr "Date of Issue"
+
+#: DATE\ OF\ PAYMENT
+msgid "Date of Payment"
+msgstr "Date of Payment"
+
+#: PRICE
+msgid "Price"
+msgstr "Price"
+
+#: REPORT\ BILLS
+msgid "Report Bills"
+msgstr "Report Bills"
+
+#: REPORT\ TOTAL\ EXPENSES\ PER\ COMPANY
+msgid "Report Total expenses Per Company"
+msgstr "Report Total expenses Per Company"
+
+#: AMOUNT
+msgctxt "AMOUNT"
+msgid "Amount"
+msgstr "Amount"
+
+#: PERCENTAGE
+msgid "Percentage"
+msgstr "Percentage"
+
+#: AFM
+msgid "AFM/VAT"
+msgstr "AFM/VAT"
+
+#: REPORT\ TOTAL\ YEARLY
+msgid "Report Total Yearly ("
+msgstr "Report Total Yearly ("
+
+#: EXPENSES\ PER\ COMPANY\
+msgid ")expenses Per Company"
+msgstr ")expenses Per Company"
+
+#: REPORT\ TOTAL\ EXPENSES\ PER\ YEAR
+msgid "Report Total expenses Per Year ("
+msgstr "Report Total expenses Per Year ("
+
+#: MONTH
+msgid "Month"
+msgstr "Month"
+
+#: INCOME\ ID
+msgctxt "INCOME\\ ID"
+msgid "Income ID"
+msgstr "Income ID"
+
+#: REPORT\ INCOME
+msgid "Report Income"
+msgstr "Report Income"
+
+#: REPORT\ TOTAL\ INCOME
+msgid "Report Total Income"
+msgstr "Report Total Income"
+
+#: REPORT\ EXPENSES\ PER\ CATEGORY\ FOR\ ALL\ YEARS
+msgid "Report expenses per category for all years"
+msgstr "Report expenses per category for all years"
+
+#: REPORT\ CATEGORY\ EXPENSES\ PER\ YEAR
+msgid "Report Category expenses Per Year ("
+msgstr "Report Category expenses Per Year ("
+
+#: REPORT\ MONTHLY\ PROFIT/LOSSES\ \ FOR\ YEAR
+msgid "Report monthly profit/losses  for year ("
+msgstr "Report monthly profit/losses  for year ("
+
+#: REPORT\ MONTHLY\ INCOME\ FOR\ YEAR
+msgid "Report monthly income for year ("
+msgstr "Report monthly income for year ("
+
+#: MONTHS
+msgid "Months"
+msgstr "Months"
+
+#: EXPENSES\ PER\ MONTH
+msgid "Expenses Per Month"
+msgstr "Expenses Per Month"
+
+#: PROFIT\ OR\ LOSS\ PER\ MONTH
+msgid "Profit or Loss Per Month"
+msgstr "Profit or Loss Per Month"
+
+#: ID
+msgid "ID"
+msgstr "ID"
+
+#: COMPANY\ NAMES
+msgid "Company Names"
+msgstr "Company Names"
+
+#: billsUI.jLabel20.text
+msgid "Compare with year"
+msgstr "Compare with year"
+
+#: billsUI.jLabel21.text
+msgid "year"
+msgstr "year"
+
+#: COMPARE-TWO-YEAR_EXPENCES-PER-CATEGORY
+msgid "Compare expenses/category of two years"
+msgstr "Compare expenses/category of two years"
+
+#: CURRENCY
+msgid "Currency"
+msgstr "Currency"
+
+#: ONE\ EURO\ VALUE\ IN\ CURRENCY
+msgid "One euro value in currency"
+msgstr "One euro value in currency"
+
+#: WAITING\ FOR\ DATA\ DOWNLOAD\ TO\ COMPLETE.\ PLEASE\ PRESS\ THE\ BUTTON\ AGAIN\ IN\ A\ FEW\ SECONDS!
+msgid ""
+"Waiting for data download to complete. Please press the button again in a "
+"few seconds!"
+msgstr ""
+"Waiting for data download to complete. Please press the button again in a "
+"few seconds!"
+
+#: VALUE\ OF\ ONE\ CURRENCY\ COIN\ IN\ EURO
+msgid "Value of one currency coin in euro"
+msgstr "Value of one currency coin in euro"
+
+#: billsUI.jMenuItem7.text
+msgid "Calculate amortization"
+msgstr "Calculate amortisation"
+
+#: \ PER\ MONTH
+msgid " per month"
+msgstr " per month"
+
+#: PresentTransactionsPerCompany.title
+msgid "Present transactions per Company"
+msgstr "Present transactions per Company"
+
+#: PresentTransactionsPerCompany.goButton.text
+msgctxt "PresentTransactionsPerCompany.goButton.text"
+msgid "Go!"
+msgstr "Go!"
+
+#: PresentTransactionsPerCompany.jLabel2.text
+msgid "Company"
+msgstr "Company"
+
+#: PresentTransactionsPerCompany.jLabel1.text
+msgid "Transaction Type"
+msgstr "Transaction Type"
+
+#: billsUI.jMenuItem8.text
+msgid "Present Transactions Per Company"
+msgstr "Present Transactions Per Company"
+
+#: \ DATE\ OF\ PAYMENT\:\
+msgid "Date of payment:"
+msgstr "Date of payment:"
+
+#: \ AMOUNT\:\
+msgctxt "\\ AMOUNT\\:\\"
+msgid "Amount:"
+msgstr "Amount:"
+
+#: ConvertToNewCurrencyFrame.progressLabel.text
+msgid "Number of records converted :"
+msgstr "Number of records converted :"
+
+#: NUMBER\ OF\ EXPENSES\ RECORDS\ CONVERTED\ \:\
+msgid "Number of expenses records converted :"
+msgstr "Number of expense records converted :"
+
+#: \ INCOME\ RECORDS\ CONVERTED\ \:\
+msgid " income records converted :"
+msgstr " income records converted :"
+
+#: billsUI.jMenuItem9.text
+msgctxt "billsUI.jMenuItem9.text"
+msgid "Merge Categories"
+msgstr "Merge Categories"
+
+#: MergeCategoriesFrame.progressLabel.text
+msgctxt "MergeCategoriesFrame.progressLabel.text"
+msgid " Merged:"
+msgstr " Merged:"
+
+#: MergeCategoriesFrame.goButton.text
+msgctxt "MergeCategoriesFrame.goButton.text"
+msgid "Go!"
+msgstr "Go!"
+
+#: MergeCategoriesFrame.jLabel2.text
+msgctxt "MergeCategoriesFrame.jLabel2.text"
+msgid "With"
+msgstr "With"
+
+#: MergeCategoriesFrame.title
+msgctxt "MergeCategoriesFrame.title"
+msgid "Merge Categories"
+msgstr "Merge Categories"
+
+#: MergeCategoriesFrame.jLabel1.text
+msgid "Merge Category"
+msgstr "Merge Category"
+
+#: ManageCategoriesFrame.goButton.text
+msgctxt "ManageCategoriesFrame.goButton.text"
+msgid "Go!"
+msgstr "Go!"
+
+#: ManageCategoriesFrame.retrieveCategoryButton.text
+msgctxt "ManageCategoriesFrame.retrieveCategoryButton.text"
+msgid "Retrieve"
+msgstr "Retrieve"
+
+#: ManageCategoriesFrame.title
+msgctxt "ManageCategoriesFrame.title"
+msgid "Manage Categories"
+msgstr "Manage Categories"
+
+#: ManageCategoriesFrame.jLabel2.text
+msgctxt "ManageCategoriesFrame.jLabel2.text"
+msgid "Category"
+msgstr "Category"
+
+#: ManageCategoriesFrame.jLabel1.text
+msgctxt "ManageCategoriesFrame.jLabel1.text"
+msgid "Action"
+msgstr "Action"
+
+#: ManageCategoriesFrame.jLabel3.text
+msgid "Category Name"
+msgstr "Category Name"
+
+#: MergeCompanyRecordsFrame.jLabel1.text
+msgid "Merge records of company"
+msgstr "Merge records of company"
+
+#: MergeCompanyRecordsFrame.progressLabel.text
+msgctxt "MergeCompanyRecordsFrame.progressLabel.text"
+msgid " Merged:"
+msgstr " Merged:"
+
+#: MergeCompanyRecordsFrame.goButton.text
+msgctxt "MergeCompanyRecordsFrame.goButton.text"
+msgid "Go!"
+msgstr "Go!"
+
+#: MergeCompanyRecordsFrame.jLabel2.text
+msgctxt "MergeCompanyRecordsFrame.jLabel2.text"
+msgid "With"
+msgstr "With"
+
+#: MergeCompanyRecordsFrame.title
+msgid "Merge Company Records"
+msgstr "Merge Company Records"
+
+#: billsUI.jMenu6.text
+msgid "Merge Operations"
+msgstr "Merge Operations"
+
+#: billsUI.jMenuItem10.text
+msgid "Merge Expenses Companies Records"
+msgstr "Merge Expenses Companies Records"
+
+#: NUMBER\ OF\ ROWS\
+msgid "Number of records"
+msgstr "Number of records"
+
+#: ImportPaypalRecordsFrame.jTextField1.text
+msgctxt "ImportPaypalRecordsFrame.jTextField1.text"
+msgid "jTextField1"
+msgstr "jTextField1"
+
+#: ImportPaypalRecordsFrame.periodLabel.text
+msgid "Select csv file"
+msgstr "Select csv file"
+
+#: ImportPaypalRecordsFrame.jLabel2.text
+msgid "Select companies category"
+msgstr "Select companies category"
+
+#: ImportPaypalRecordsFrame.title
+msgid "Import paypal records"
+msgstr "Import paypal records"
+
+#: ImportPaypalRecordsFrame.jLabel4.text
+msgid "Welcome to the import Paypal records function"
+msgstr "Welcome to the import Paypal records function"
+
+#: ImportPaypalRecordsFrame.jLabel5.text
+msgid "Records imported"
+msgstr "Records imported"
+
+#: ImportPaypalRecordsFrame.jCheckBox1.text
+msgid "Import expenses records"
+msgstr "Import expense records"
+
+#: ImportPaypalRecordsFrame.jCheckBox2.text
+msgid "Import income records"
+msgstr "Import income records"
+
+#: ImportPaypalRecordsFrame.importRecordsButton.text
+msgctxt "ImportPaypalRecordsFrame.importRecordsButton.text"
+msgid "Import"
+msgstr "Import"
+
+#: billsUI.jLabel22.text
+msgctxt "billsUI.jLabel22.text"
+msgid "Comment"
+msgstr "Comment"
+
+#: billsUI.jLabel23.text
+msgctxt "billsUI.jLabel23.text"
+msgid "Comment"
+msgstr "Comment"
+
+#: COMMENT
+msgctxt "COMMENT"
+msgid "Comment"
+msgstr "Comment"
+
+#: CalculateAmortizationFrame.jTextField1.text
+msgctxt "CalculateAmortizationFrame.jTextField1.text"
+msgid "jTextField1"
+msgstr "jTextField1"
+
+#: CalculateAmortizationFrame.calcAmortizationTableButton.text
+msgid "Amortization Table"
+msgstr "Amortisation Table"
+
+#: CalculateAmortizationFrame.periodLabel.text
+msgid "Please insert the payoff period (months)"
+msgstr "Please insert the payoff period (months)"
+
+#: CalculateAmortizationFrame.resultLabel.text
+msgid "Result:"
+msgstr "Result:"
+
+#: CalculateAmortizationFrame.calculateButton.text
+msgid "Calculate"
+msgstr "Calculate"
+
+#: CalculateAmortizationFrame.rateLabel.text
+msgid "Please insert the interest rate without the % sign"
+msgstr "Please insert the interest rate without the % sign"
+
+#: CalculateAmortizationFrame.jLabel2.text
+msgid "Please insert the amount"
+msgstr "Please insert the amount"
+
+#: CalculateAmortizationFrame.jLabel3.text
+msgid "Please select the payoff frequency"
+msgstr "Please select the payoff frequency"
+
+#: CalculateAmortizationFrame.title
+msgid "Calculate Amortization"
+msgstr "Calculate Amortisation"
+
+#: NO
+msgid "No"
+msgstr "No"
+
+#: \ INSTALMENT
+msgid " instalment"
+msgstr " installment"
+
+#: \ REM\ CAPITAL
+msgid " rem capital"
+msgstr " rem capital"
+
+#: \ INST\ CAPITAL
+msgid " inst capital"
+msgstr " inst capital"
+
+#: \ INST\ INTEREST
+msgid " inst interest"
+msgstr " inst interest"
+
+#: TOTAL\ INTEREST\ PAID\:
+msgid "Total Interest paid:"
+msgstr "Total Interest paid:"
+
+#: TOTAL\ CAPITAL\ PAID\:
+msgid "Total Capital paid:"
+msgstr "Total Capital paid:"
+
+#: AMOUNT\:\
+msgctxt "AMOUNT\\:\\"
+msgid "Amount:"
+msgstr "Amount:"
+
+#: DURATION\:\
+msgid "Duration:"
+msgstr "Duration:"
+
+#: INTEREST\ RATE\:\
+msgid "Interest Rate:"
+msgstr "Interest Rate:"
+
+#: FREQUENCY\:\
+msgid "Frequency:"
+msgstr "Frequency:"

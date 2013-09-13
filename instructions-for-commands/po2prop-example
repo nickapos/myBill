@@ -1,0 +1,1 @@
+po2prop -t myBillUIBundle.properties i18n_myBillUIBundle-es.po myBillUIBundle_es_ES.properties

@@ -1,0 +1,92 @@
+/*
+myBill, bills tracking program
+Copyright (C) 2010  Nick Apostolakis
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package gr.oncrete.nick.myBill.BusinessLogic;
+
+import gr.oncrete.nick.myBill.BusinessLogic.SelectInfo.SelectCompanyDetails;
+import gr.oncrete.nick.myBill.RDBMS.InsertIntoTable;
+
+/**
+ *
+ * @author nickapos
+ *
+ * This class is used to insert new bill entries into the database
+ */
+public class InsertBills {
+
+    InsertIntoTable in;
+
+    /**
+     * Constructor insert bill without an id
+     *
+     * @param cName
+     * @param price
+     * @param dateOfIssue
+     * @param dateOfPayment
+     */
+    public InsertBills(String cName, String price, String dateOfIssue, String dateOfPayment, String comment) {
+        if (cName.length() > 0 && price.length() > 0 && dateOfIssue.length() > 0 && dateOfPayment.length() > 0) {
+            SelectCompanyDetails a = new SelectCompanyDetails();
+            a.SelectCompanyDetailsWithName(cName);
+            String cid = a.getID();
+            String sql = "";
+            if (comment.length() > 0) {
+                sql = "insert into bills (cid,price,dateofissue,dayofpayment,comment) values (" + cid + "," + price + ",'" + dateOfIssue + "','" + dateOfPayment + "','" + comment + "')";
+            } else {
+                sql = "insert into bills (cid,price,dateofissue,dayofpayment) values (" + cid + "," + price + ",'" + dateOfIssue + "','" + dateOfPayment + "')";
+            }
+            in = new InsertIntoTable(sql);
+            //System.out.println(sql);
+        } else {
+            in = new InsertIntoTable();
+            in.warningPopUp(java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("ERROR IN BILL INSERTION"));
+        }
+
+    }
+
+    /**
+     * /**
+     * Constructor insert bill with a specific id
+     * used in restoring the database from csv file format
+     *
+     * @param bid
+     * @param cid
+     * @param price
+     * @param dateOfIssue
+     * @param dateOfPayment
+     */
+    public InsertBills(String bid, String cid, String price, String dateOfIssue, String dateOfPayment, String comment) {
+        if (bid.length() > 0 && cid.length() > 0 && price.length() > 0 && dateOfIssue.length() > 0 && dateOfPayment.length() > 0) {
+            String sql = "";
+            if (comment.length() > 0) {
+                sql = "insert into bills (bid,cid,price,dateofissue,dayofpayment,comment) values (" + bid + "," + cid + "," + price + ",'" + dateOfIssue + "','" + dateOfPayment + "','" + comment + "')";
+            } else {
+                sql = "insert into bills (bid,cid,price,dateofissue,dayofpayment) values (" + bid + "," + cid + "," + price + ",'" + dateOfIssue + "','" + dateOfPayment + "')";
+            }
+            in = new InsertIntoTable(sql);
+            //System.out.println(sql);
+        } else {
+            in = new InsertIntoTable();
+            in.warningPopUp(java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("ERROR IN BILL INSERTION"));
+        }
+
+    }
+}
