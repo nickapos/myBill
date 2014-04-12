@@ -833,11 +833,10 @@ public class billsUI extends javax.swing.JFrame {
 }//GEN-LAST:event_shutdownMenuItemActionPerformed
 
     private void emptyDBMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emptyDBMenuItemActionPerformed
-        PopupMessageFrame mes = new PopupMessageFrame();
-        mes.setNotification(java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("ALL-THE DATABASE-CONTENT-IS-GOING-TO-BE-DELETED"));
-        gr.oncrete.nick.myBill.RDBMS.EmptyTables e = new gr.oncrete.nick.myBill.RDBMS.EmptyTables();
-        this.refreshCompaniesCombo();
-        this.refreshCatIDCombo();
+        EmptyDatabaseWindow emptyDB= new EmptyDatabaseWindow(this);
+        emptyDB.runEmptyDB();
+        //this.refreshCompaniesCombo();
+        //this.refreshCatIDCombo();
     }//GEN-LAST:event_emptyDBMenuItemActionPerformed
 
     private void exportCSVsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportCSVsMenuItemActionPerformed
@@ -1254,7 +1253,7 @@ public class billsUI extends javax.swing.JFrame {
      * this method refreshes the companies combo box in bills tab
      *
      */
-    private void refreshCompaniesCombo() {
+    public void refreshCompaniesCombo() {
         billInsertEditCompanyNameComboBox.setModel(new javax.swing.DefaultComboBoxModel(this.getCompaniesCombo()));
         incomeCompanyComboBox.setModel(new javax.swing.DefaultComboBoxModel(this.getCompaniesCombo()));
     }
@@ -1792,7 +1791,7 @@ public class billsUI extends javax.swing.JFrame {
 
     }
 
-    private void refreshCatIDCombo() {
+    public void refreshCatIDCombo() {
         catComboBox.setModel(new javax.swing.DefaultComboBoxModel(this.getCategoriesCombo()));
     }
 
