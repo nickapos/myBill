@@ -1,0 +1,7 @@
+.bzr/
+.bzrignore
+build/
+dist/
+mybilldb/
+nbproject/
+.DS_Store
