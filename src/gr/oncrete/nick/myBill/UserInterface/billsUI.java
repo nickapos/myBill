@@ -892,12 +892,23 @@ public class billsUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void reportComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportComboBoxActionPerformed
+    /**
+     * this little method will return to the world an string array to be used in combo boxes
+     * @param numOfYears
+     * @return 
+     */
+    private String [] yearsCombo(int numOfYears)
+    {
         int startyear = 2006;
-        String[] years = new String[125];
+        String[] years = new String[numOfYears];
         for (int o = startyear, i = 0; i < 125; o++, i++) {
             years[i] = "" + o;
         }
+        return years;
+    }
+    
+    private void reportComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportComboBoxActionPerformed
+        String[] years=this.yearsCombo(125);
         int a = reportComboBox.getSelectedIndex();
         if (a == 0 || a == 1 || a == 2 || a == 5 || a == 6 || a == 10)//if report does not need year filtering
         {
