@@ -833,6 +833,7 @@ public class billsUI extends javax.swing.JFrame {
 }//GEN-LAST:event_shutdownMenuItemActionPerformed
 
     private void emptyDBMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emptyDBMenuItemActionPerformed
+        //open a new window and require authorization to empty the db
         EmptyDatabaseWindow emptyDB= new EmptyDatabaseWindow(this);
         emptyDB.runEmptyDB();
         //this.refreshCompaniesCombo();
@@ -840,6 +841,7 @@ public class billsUI extends javax.swing.JFrame {
     }//GEN-LAST:event_emptyDBMenuItemActionPerformed
 
     private void exportCSVsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportCSVsMenuItemActionPerformed
+        //export all expenses into csv format
         DumpDatabase d = new DumpDatabase();
         ArrayList a = d.getEforiaCsv("");
         //this.writeFile("eforiaCSV.csv", a);
@@ -847,26 +849,9 @@ public class billsUI extends javax.swing.JFrame {
     }//GEN-LAST:event_exportCSVsMenuItemActionPerformed
 
     private void exportDBMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportDBMenuItemActionPerformed
-        DumpDatabase d = new DumpDatabase();
-        //dump companies csv first
-        ArrayList a = d.getCompaniesCsv();
-        //this.writeFile("companiesCsv.csv", a);
-        this.writeFileNewThread("companiesCsv.csv", a);
-
-        //dump categories csv
-        a = d.getCategoriesCsv();
-        //this.writeFile("categoriesCsv.csv", a);
-        this.writeFileNewThread("categoriesCsv.csv", a);
-
-        //dump bills csv next
-        a = d.getBillsCsv();
-        //this.writeFile("billsCsv.csv", a);
-        this.writeFileNewThread("billsCsv.csv", a);
-
-        //dump income csv
-        a = d.getIncomeCsv();
-        //this.writeFile("incomeCsv.csv", a);
-        this.writeFileNewThread("incomeCsv.csv", a);
+        //export all the records of the db in csv format
+        ExportAllRecords exp = new ExportAllRecords();
+        exp.displayGUI();
     }//GEN-LAST:event_exportDBMenuItemActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed

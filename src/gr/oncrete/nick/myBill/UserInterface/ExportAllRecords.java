@@ -33,13 +33,15 @@ import gr.oncrete.nick.myBill.BusinessLogic.FileHandlers.NewThreadFileWriter;
  *
  * @author nickapos
  */
-public class ExportCSVByYear extends javax.swing.JFrame {
+public class ExportAllRecords extends javax.swing.JFrame {
 
+    //the counter that will hold the number of affected rows
+    int counter=0;
   
     /**
      * Creates new form AboutWindow
      */
-    public ExportCSVByYear() {
+    public ExportAllRecords() {
         initComponents();
     }
 
@@ -54,26 +56,22 @@ public class ExportCSVByYear extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        yearsComboBox = new javax.swing.JComboBox();
         validateButton = new javax.swing.JButton();
         rowsAffectedLabel = new javax.swing.JLabel();
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle"); // NOI18N
-        jLabel1.setText(bundle.getString("ExportCSVByYear.jLabel1.text")); // NOI18N
+        jLabel1.setText(bundle.getString("ExportAllRecords.jLabel1.text")); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle(bundle.getString("ExportCSVByYear.title")); // NOI18N
+        setTitle(bundle.getString("ExportAllRecords.title")); // NOI18N
         getContentPane().setLayout(new java.awt.GridLayout(0, 1));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText(bundle.getString("ExportCSVByYear.jLabel2.text")); // NOI18N
+        jLabel2.setText(bundle.getString("ExportAllRecords.jLabel2.text")); // NOI18N
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel2);
 
-        yearsComboBox.setModel(new javax.swing.DefaultComboBoxModel(this.yearsCombo(125)));
-        getContentPane().add(yearsComboBox);
-
-        validateButton.setText(bundle.getString("ExportCSVByYear.validateButton.text")); // NOI18N
+        validateButton.setText(bundle.getString("ExportAllRecords.validateButton.text")); // NOI18N
         validateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 validateButtonActionPerformed(evt);
@@ -81,37 +79,38 @@ public class ExportCSVByYear extends javax.swing.JFrame {
         });
         getContentPane().add(validateButton);
 
-        rowsAffectedLabel.setText(bundle.getString("ExportCSVByYear.rowsAffectedLabel.text")); // NOI18N
+        rowsAffectedLabel.setText(bundle.getString("ExportAllRecords.rowsAffectedLabel.text")); // NOI18N
         getContentPane().add(rowsAffectedLabel);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * this little method will return to the world an string array to be used in
-     * combo boxes
-     *
-     * @param numOfYears
-     * @return
-     */
-    private String[] yearsCombo(int numOfYears) {
-        int startyear = 2006;
-        String[] years = new String[numOfYears];
-        for (int o = startyear, i = 0; i < 125; o++, i++) {
-            years[i] = "" + o;
-        }
-        return years;
-    }
+    
 
     private void validateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateButtonActionPerformed
 
         
-        String selYear= (String) yearsComboBox.getSelectedItem();
-        //System.out.println("Selected year "+ selYear);
-        DumpDatabase dump = new DumpDatabase();
-        ArrayList a = dump.getEforiaCsv("" + selYear);
-        //this.writeFile("eforia-"+df1.format(d1)+".csv", a);
-        this.writeFileNewThread("eforia-" + selYear + ".csv", a);
+     DumpDatabase d = new DumpDatabase();
+        //dump companies csv first
+        ArrayList a = d.getCompaniesCsv();
+        //this.writeFile("companiesCsv.csv", a);
+        this.writeFileNewThread("companiesCsv.csv", a);
+
+        //dump categories csv
+        a = d.getCategoriesCsv();
+        //this.writeFile("categoriesCsv.csv", a);
+        this.writeFileNewThread("categoriesCsv.csv", a);
+
+        //dump bills csv next
+        a = d.getBillsCsv();
+        //this.writeFile("billsCsv.csv", a);
+        this.writeFileNewThread("billsCsv.csv", a);
+
+        //dump income csv
+        a = d.getIncomeCsv();
+        //this.writeFile("incomeCsv.csv", a);
+        this.writeFileNewThread("incomeCsv.csv", a);
+    
 
     }//GEN-LAST:event_validateButtonActionPerformed
 
@@ -122,7 +121,7 @@ public class ExportCSVByYear extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new ExportCSVByYear().setVisible(true);
+                new ExportAllRecords().setVisible(true);
             }
         });
     }
@@ -131,7 +130,6 @@ public class ExportCSVByYear extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel rowsAffectedLabel;
     private javax.swing.JButton validateButton;
-    private javax.swing.JComboBox yearsComboBox;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -170,7 +168,7 @@ public class ExportCSVByYear extends javax.swing.JFrame {
     private void writeFileNewThread(String filename, ArrayList a) {
         String content = "";
         Iterator i = a.iterator();
-        int counter=0;
+        
         while (i.hasNext()) {
             String nextLine = (String) i.next();
             if (nextLine.length() > 0) {

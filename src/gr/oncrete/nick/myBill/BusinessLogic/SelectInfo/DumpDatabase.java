@@ -38,6 +38,7 @@ public class DumpDatabase {
     String queryC = "SELECT cid,companyname,afm FROM companies where catid is null";
     String queryB = "SELECT * FROM bills";
     String queryD = "SELECT * FROM income";
+    
 
     /** Creates a new instance of DumpDatabase */
     public DumpDatabase() {

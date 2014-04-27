@@ -1,2 +1,2 @@
 #!/bin/bash
-java -cp ../libs/hsqldb.jar org.hsqldb.util.DatabaseManagerSwing
+java -cp ./lib/hsqldb.jar org.hsqldb.util.DatabaseManagerSwing
