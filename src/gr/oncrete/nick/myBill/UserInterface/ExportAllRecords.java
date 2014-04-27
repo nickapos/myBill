@@ -189,7 +189,7 @@ public class ExportAllRecords extends javax.swing.JFrame {
      */
     private void updateRowsAffectedCount(int rows)
     {
-        String defaultLabel=" Rows exported: ";
+        String defaultLabel=java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString(" ROWS EXPORTED: ");
         rowsAffectedLabel.setText(defaultLabel+rows);
     }
 }
