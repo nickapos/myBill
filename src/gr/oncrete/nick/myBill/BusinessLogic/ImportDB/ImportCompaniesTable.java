@@ -51,11 +51,13 @@ public class ImportCompaniesTable extends ImportFile {
                     if (splitLine[0].length() > 0 && splitLine[1].length() > 0 && splitLine[2].length() > 0) {
                         System.out.println("Importing line " + line);
                         InsertCompany ins = new InsertCompany(splitLine[0], splitLine[1], splitLine[2]);
+                        this.increaseRowsAffectedByOne();
                     }
                 } else if (splitLine.length == 4) {
                     if (splitLine[0].length() > 0 && splitLine[1].length() > 0 && splitLine[2].length() > 0 && splitLine[3].length() > 0) {
                         System.out.println("Importing line " + line);
                         InsertCompany ins = new InsertCompany(splitLine[0], splitLine[1], splitLine[2], splitLine[3]);
+                        this.increaseRowsAffectedByOne();
                     }
                 }
 

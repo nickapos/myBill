@@ -855,26 +855,9 @@ public class billsUI extends javax.swing.JFrame {
     }//GEN-LAST:event_exportDBMenuItemActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        SelectAllCompaniesIDS s = new SelectAllCompaniesIDS();
-        SelectAllBillsIDS s1 = new SelectAllBillsIDS();
-        if (s.isEmpty() && s1.isEmpty()) {
-            ImportCategoriesTable impCat = new ImportCategoriesTable();
-            impCat.importFileToDB();
-
-            ImportCompaniesTable impComp = new ImportCompaniesTable();
-            impComp.importFileToDB();
-
-            ImportBillsTable impBill = new ImportBillsTable();
-            impBill.importFileToDB();
-
-            ImportIncomeTable impIncome = new ImportIncomeTable();
-            impIncome.importFileToDB();
-            this.refreshCompaniesCombo();
-            this.refreshCatIDCombo();
-        } else {
-            PopupMessageFrame mes = new PopupMessageFrame();
-            mes.setNotification(java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("THE-DATABASE-IS-NOT-EMPTY.Ι-WILL-DO-NOTHING"));
-        }
+        ImportAllRecords imp = new ImportAllRecords();
+        imp.displayGUI();
+        
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**

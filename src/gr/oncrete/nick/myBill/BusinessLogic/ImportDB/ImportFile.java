@@ -14,25 +14,26 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package gr.oncrete.nick.myBill.BusinessLogic.ImportDB;
+
 import gr.oncrete.nick.myBill.BusinessLogic.FileHandlers.FileHandlerReadFile;
 import java.util.ArrayList;
 import java.util.Iterator;
+
 /**
  *
  * @author nickapos
  */
 public class ImportFile {
 
-
     private String fileName;//the file name to be imported
     private FileHandlerReadFile reader;
+    private int rowsAffected = 0;
+
     /**
      *
      */
-    public ImportFile()
-    {
+    public ImportFile() {
 
     }
 
@@ -40,28 +41,42 @@ public class ImportFile {
      *
      * @param fname
      */
-    public void setFileName(String fname)
-    {
-        fileName=fname;
+    public void setFileName(String fname) {
+        fileName = fname;
     }
+
+    /**
+     * this method will return the rows affected from an import operation
+     * @return 
+     */
+    public int getRowsAffected() {
+        return rowsAffected;
+    }
+    
+    /**
+     * this method will increase the rows affected by one
+     */
+    public void increaseRowsAffectedByOne(){
+        rowsAffected++;
+    }
+    
 
     /**
      *
      * @return
      */
-    public String getFileName()
-    {
+    public String getFileName() {
         return fileName;
     }
 
     /**
-     * this method will read the file provided by filename and return its contents in an arraylist
+     * this method will read the file provided by filename and return its
+     * contents in an arraylist
      *
      *
      * @return the contents of the file read
      */
-    protected ArrayList<String> readFile()
-    {
+    protected ArrayList<String> readFile() {
         reader = new FileHandlerReadFile(fileName);
         reader.readFile();
         return reader.returnContents();
@@ -70,16 +85,13 @@ public class ImportFile {
     /**
      *
      */
-    public void importFileToDB()
-    {
+    public void importFileToDB() {
         ArrayList a = this.readFile();
 
         Iterator b = a.iterator();
-        while (b.hasNext() && b.next()!=null)
-        {
+        while (b.hasNext() && b.next() != null) {
             System.out.println(b.next());
         }
     }
-
 
 }

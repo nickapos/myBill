@@ -52,6 +52,7 @@ public class ImportIncomeTable extends ImportFile {
                     //see if splitLine[4] exists. if not catch the exception and replace the splitline[4] with a space character
                     try {
                         InsertIncome ins = new InsertIncome(splitLine[0], splitLine[1], splitLine[2], splitLine[3], splitLine[4]);
+                        this.increaseRowsAffectedByOne();
                     } catch (java.lang.ArrayIndexOutOfBoundsException e) {
                         InsertIncome ins = new InsertIncome(splitLine[0], splitLine[1], splitLine[2], splitLine[3], " ");
                     }
