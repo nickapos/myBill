@@ -48,14 +48,14 @@
         <Property name="horizontalTextPosition" type="int" value="0"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="validateButton">
+    <Component class="javax.swing.JButton" name="exportRecordsButton">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-          <ResourceString bundle="gr/oncrete/nick/myBill/UserInterface/myBillUIBundle.properties" key="ExportAllRecords.validateButton.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+          <ResourceString bundle="gr/oncrete/nick/myBill/UserInterface/myBillUIBundle.properties" key="ExportAllRecords.exportRecordsButton.text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="validateButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exportRecordsButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="rowsAffectedLabel">

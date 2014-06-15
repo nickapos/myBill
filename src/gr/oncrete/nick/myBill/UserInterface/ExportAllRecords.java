@@ -56,7 +56,7 @@ public class ExportAllRecords extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        validateButton = new javax.swing.JButton();
+        exportRecordsButton = new javax.swing.JButton();
         rowsAffectedLabel = new javax.swing.JLabel();
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle"); // NOI18N
@@ -71,13 +71,13 @@ public class ExportAllRecords extends javax.swing.JFrame {
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel2);
 
-        validateButton.setText(bundle.getString("ExportAllRecords.validateButton.text")); // NOI18N
-        validateButton.addActionListener(new java.awt.event.ActionListener() {
+        exportRecordsButton.setText(bundle.getString("ExportAllRecords.exportRecordsButton.text")); // NOI18N
+        exportRecordsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                validateButtonActionPerformed(evt);
+                exportRecordsButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(validateButton);
+        getContentPane().add(exportRecordsButton);
 
         rowsAffectedLabel.setText(bundle.getString("ExportAllRecords.rowsAffectedLabel.text")); // NOI18N
         getContentPane().add(rowsAffectedLabel);
@@ -87,7 +87,7 @@ public class ExportAllRecords extends javax.swing.JFrame {
 
     
 
-    private void validateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateButtonActionPerformed
+    private void exportRecordsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportRecordsButtonActionPerformed
 
         
      DumpDatabase d = new DumpDatabase();
@@ -112,7 +112,7 @@ public class ExportAllRecords extends javax.swing.JFrame {
         this.writeFileNewThread("incomeCsv.csv", a);
     
 
-    }//GEN-LAST:event_validateButtonActionPerformed
+    }//GEN-LAST:event_exportRecordsButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,10 +126,10 @@ public class ExportAllRecords extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton exportRecordsButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel rowsAffectedLabel;
-    private javax.swing.JButton validateButton;
     // End of variables declaration//GEN-END:variables
 
     /**
