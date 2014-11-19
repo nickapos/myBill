@@ -1035,7 +1035,9 @@ public class billsUI extends javax.swing.JFrame {
     }//GEN-LAST:event_foreignCurrencyCheckBoxActionPerformed
 
     private void showRatesFrameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showRatesFrameButtonActionPerformed
-        ExchangeRatesFrame exrf = new ExchangeRatesFrame();
+        //Textratestextfield foreignCurrencyTextField
+        //foreignCurrencyCheckBox
+        ExchangeRatesFrame exrf = new ExchangeRatesFrame(foreignCurrencyTextField,foreignCurrencyCheckBox);
         exrf.presentExchangeRateFrame();
     }//GEN-LAST:event_showRatesFrameButtonActionPerformed
 

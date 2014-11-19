@@ -24,6 +24,7 @@
 package gr.oncrete.nick.myBill.UserInterface;
 
 import gr.oncrete.nick.myBill.BusinessLogic.NewThreadExchangeRatesParser;
+import javax.swing.*;
 
 /**
  *
@@ -32,9 +33,29 @@ import gr.oncrete.nick.myBill.BusinessLogic.NewThreadExchangeRatesParser;
 public class ExchangeRatesFrame extends javax.swing.JFrame {
 
     NewThreadExchangeRatesParser eParser = new NewThreadExchangeRatesParser();
-
-    /** Creates new form AboutWindow */
+    //these two instance variables will be fed into the exchange rates parser in order
+    //for us to be able to update the content of the text field when we click the use it
+    //button
+    JTextField fcTextField;
+    JCheckBox fcCheckBox;
+    
+    /** Creates new form ExchangeRatesWindow */
+    public ExchangeRatesFrame(JTextField foreignCurrencyTextField,JCheckBox foreignCurrencyCheckBox) {
+        fcTextField=foreignCurrencyTextField;
+        fcCheckBox=foreignCurrencyCheckBox;
+        this.initClass();
+    }
+    
     public ExchangeRatesFrame() {
+        this.initClass();
+    }
+    
+    /**
+     * This is a helper method that will 
+     * be used from both constructors in order to avoid code repetition
+     */
+    private void initClass()
+    {
         initComponents();
         eParser.execute();
     }
