@@ -91,7 +91,7 @@ public class NewThreadExchangeRatesParser extends SwingWorker<String, String> {
      *
      * @return a string array that will contain the exchange rate values
      */
-    public String[][] presentRatesArray(int invert) {
+    public Object[][] presentRatesArray(int invert) {
         return parser.presentRatesArray(invert);
     }
 

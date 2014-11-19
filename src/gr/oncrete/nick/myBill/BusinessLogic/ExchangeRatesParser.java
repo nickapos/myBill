@@ -178,8 +178,8 @@ public class ExchangeRatesParser {
      *
      * @return a string array that will contain the exchange rate values
      */
-    public String[][] presentRatesArray(int inversion) {
-        String[][] resultAr = new String[this.numberOfRecords()][3];
+    public Object[][] presentRatesArray(int inversion) {
+        Object[][] resultAr = new Object[this.numberOfRecords()][3];
 
         Set rateKeySet = rateMap.keySet();
         Iterator it = rateKeySet.iterator();
@@ -188,7 +188,7 @@ public class ExchangeRatesParser {
             String rateSymbol = (String) it.next();
             String rateValue = (String) rateMap.get(rateSymbol);
             //this will be used to set the use it boolean to false
-            resultAr[counter][2] = "False";
+            resultAr[counter][2] = false;
             //cover with one block of code both inversion and straight exchange rates
             if (inversion == 0) {
                 resultAr[counter][0] = rateSymbol;
