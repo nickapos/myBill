@@ -148,7 +148,7 @@ public class ExchangeRatesFrame extends javax.swing.JFrame {
     private void retrieveRatesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retrieveRatesButtonActionPerformed
 
         if (!eParser.isEmpty()) {
-            String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("CURRENCY"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("ONE EURO VALUE IN CURRENCY")};
+            String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("CURRENCY"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("ONE EURO VALUE IN CURRENCY"),"Use it?"};
             reportRatesTable.setModel(new MyTableModel(eParser.presentRatesArray(0), columnNames));
             reportRatesTable.setAutoCreateRowSorter(true);//add a primitive sort by column function
         } else {
