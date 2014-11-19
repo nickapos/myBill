@@ -51,6 +51,7 @@ public class ExchangeRatesFrame extends javax.swing.JFrame {
         topPanel = new javax.swing.JPanel();
         retrieveRatesButton = new javax.swing.JButton();
         flippedRateButton = new javax.swing.JButton();
+        useItButton = new javax.swing.JButton();
         centerPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         reportRatesTable = new javax.swing.JTable();
@@ -60,23 +61,26 @@ public class ExchangeRatesFrame extends javax.swing.JFrame {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle"); // NOI18N
         setTitle(bundle.getString("ExchangeRatesFrame.title")); // NOI18N
 
-        topPanel.setLayout(new java.awt.BorderLayout());
-
         retrieveRatesButton.setText(bundle.getString("ExchangeRatesFrame.retrieveRatesButton.text")); // NOI18N
         retrieveRatesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 retrieveRatesButtonActionPerformed(evt);
             }
         });
-        topPanel.add(retrieveRatesButton, java.awt.BorderLayout.WEST);
+        topPanel.add(retrieveRatesButton);
 
         flippedRateButton.setText(bundle.getString("ExchangeRatesFrame.flippedRateButton.text")); // NOI18N
+        flippedRateButton.setToolTipText(bundle.getString("ExchangeRatesFrame.flippedRateButton.toolTipText")); // NOI18N
         flippedRateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 flippedRateButtonActionPerformed(evt);
             }
         });
-        topPanel.add(flippedRateButton, java.awt.BorderLayout.LINE_END);
+        topPanel.add(flippedRateButton);
+
+        useItButton.setText(bundle.getString("ExchangeRatesFrame.useItButton.text")); // NOI18N
+        useItButton.setToolTipText(bundle.getString("ExchangeRatesFrame.useItButton.toolTipText")); // NOI18N
+        topPanel.add(useItButton);
 
         getContentPane().add(topPanel, java.awt.BorderLayout.NORTH);
 
@@ -162,6 +166,7 @@ public class ExchangeRatesFrame extends javax.swing.JFrame {
     private javax.swing.JTable reportRatesTable;
     private javax.swing.JButton retrieveRatesButton;
     private javax.swing.JPanel topPanel;
+    private javax.swing.JButton useItButton;
     // End of variables declaration//GEN-END:variables
 
     /**
