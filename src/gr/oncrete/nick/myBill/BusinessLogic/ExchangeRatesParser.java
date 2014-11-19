@@ -35,6 +35,8 @@ import java.io.ObjectOutputStream;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 import java.lang.ClassNotFoundException;
+import javax.swing.JCheckBox;
+import javax.swing.JTextField;
 
 /**
  *
@@ -45,17 +47,25 @@ public class ExchangeRatesParser {
     HashMap rateMap = new HashMap();
     URL exchangeRatesUrl;
     InputStream stream;
+    JTextField fcTextField = null;
+    JCheckBox fcCheckBox = null;
 
     /**
-     *If you want to parse from the internet call the prepareStreamFromNet method
-     *if you want to parse from a file on the disc call the prepareStreamFromFile method
+     * If you want to parse from the internet call the prepareStreamFromNet
+     * method if you want to parse from a file on the disc call the
+     * prepareStreamFromFile method
      */
     public ExchangeRatesParser() {
         //if there is a local file load it fast in order for the user to not wait
-       // this.prepareRatesFromDisk();
+        // this.prepareRatesFromDisk();
         //rateMap=rateMapFromDisk;
         //then update the rates from the net
         //this.prepareRatesFromNet();
+    }
+
+    public ExchangeRatesParser(JTextField foreignCurrencyTextField, JCheckBox foreignCurrencyCheckBox) {
+        fcTextField = foreignCurrencyTextField;
+        fcCheckBox = foreignCurrencyCheckBox;
     }
 
     public void prepareRatesFromNet() {
@@ -71,14 +81,14 @@ public class ExchangeRatesParser {
     }
 
     public void prepareRatesFromDisk() {
-        if(this.isMapEmpty())
-        {
+        if (this.isMapEmpty()) {
             this.readRatesFromDisk();
         }
     }
 
     /**
-     * this method will read and parse the exchange rates published by ecb in a hash map
+     * this method will read and parse the exchange rates published by ecb in a
+     * hash map
      */
     public void parseXML(InputStream st) {
         try {
@@ -131,9 +141,8 @@ public class ExchangeRatesParser {
     }
 
     /**
-    with the inversion flag we can choose to invert or not the exchange rate
-     * 0 for normal
-     * 1 for inversion
+     * with the inversion flag we can choose to invert or not the exchange rate
+     * 0 for normal 1 for inversion
      *
      * @return a string that will contain the exchange rate values
      */
@@ -164,15 +173,13 @@ public class ExchangeRatesParser {
     }
 
     /**
-     *with the inversion flag we can choose to invert or not the exchange rate
-     * 0 for normal
-     * 1 for inversion
+     * with the inversion flag we can choose to invert or not the exchange rate
+     * 0 for normal 1 for inversion
      *
      * @return a string array that will contain the exchange rate values
      */
     public String[][] presentRatesArray(int inversion) {
         String[][] resultAr = new String[this.numberOfRecords()][3];
-
 
         Set rateKeySet = rateMap.keySet();
         Iterator it = rateKeySet.iterator();
@@ -198,8 +205,8 @@ public class ExchangeRatesParser {
     }
 
     /**
-     * Use this method to save the exchangeRates to the disk
-     * as a serialized hasmap file
+     * Use this method to save the exchangeRates to the disk as a serialized
+     * hasmap file
      */
     private void saveExchangeRatesToDisk() {
         if (!this.isMapEmpty()) {
@@ -216,8 +223,8 @@ public class ExchangeRatesParser {
     }
 
     /**
-     * this method will read the serialized rates hasmap from the disk
-     * if it exists
+     * this method will read the serialized rates hasmap from the disk if it
+     * exists
      *
      */
     private void readRatesFromDisk() {
@@ -226,11 +233,9 @@ public class ExchangeRatesParser {
             ObjectInputStream ois = new ObjectInputStream(fis);
             rateMap = (HashMap) ois.readObject();
             ois.close();
-        } catch (FileNotFoundException fnf)
-        {
+        } catch (FileNotFoundException fnf) {
             System.out.println("Rates cache file not found, will create one.");
-        }
-        catch (ClassNotFoundException clnf) {
+        } catch (ClassNotFoundException clnf) {
             clnf.printStackTrace();
         } catch (IOException ex) {
             ex.printStackTrace();

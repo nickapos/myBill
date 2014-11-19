@@ -36,8 +36,8 @@ public class ExchangeRatesFrame extends javax.swing.JFrame {
     //these two instance variables will be fed into the exchange rates parser in order
     //for us to be able to update the content of the text field when we click the use it
     //button
-    JTextField fcTextField;
-    JCheckBox fcCheckBox;
+    JTextField fcTextField=null;
+    JCheckBox fcCheckBox=null;
     
     /** Creates new form ExchangeRatesWindow */
     public ExchangeRatesFrame(JTextField foreignCurrencyTextField,JCheckBox foreignCurrencyCheckBox) {

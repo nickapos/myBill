@@ -19,6 +19,8 @@ package gr.oncrete.nick.myBill.BusinessLogic;
 import gr.oncrete.nick.myBill.BusinessLogic.FileHandlers.*;
 import javax.swing.SwingWorker;
 import java.util.ArrayList;
+import javax.swing.JCheckBox;
+import javax.swing.JTextField;
 
 /**
  *This class is intentend to be used when we want a write or read file activity
@@ -29,11 +31,29 @@ public class NewThreadExchangeRatesParser extends SwingWorker<String, String> {
 
     ExchangeRatesParser parserNet,parserFile,parser;
 
+    
     /**
      *
      */
+    
+    public NewThreadExchangeRatesParser(JTextField foreignCurrencyTextField,JCheckBox foreignCurrencyCheckBox) {
+        parserFile = new ExchangeRatesParser(foreignCurrencyTextField,foreignCurrencyCheckBox);
+        this.initParser();
+    }
+            
+            
     public NewThreadExchangeRatesParser() {
         parserFile = new ExchangeRatesParser();
+        this.initParser();
+        
+    }
+    
+    /**
+     * This is a helper method that will 
+     * be used from both constructors in order to avoid code repetition
+     */
+    private void initParser()
+    {
         parserFile.prepareRatesFromDisk();
         parser=parserFile;
     }
