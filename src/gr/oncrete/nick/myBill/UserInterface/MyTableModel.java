@@ -14,55 +14,56 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package gr.oncrete.nick.myBill.UserInterface;
 
 /**
  *
  * @author nickapos
  */
-
 /**
-     * table model class used for reports
-     *
-     *
+ * table model class used for reports
+ *
+ *
+ */
+class MyTableModel extends javax.swing.table.AbstractTableModel {
+
+    private String[] columnNames;
+    private Object[][] data;
+    private boolean[][] editable_cells; // 2d array to represent rows and columns
+    /*
+     * Constructor of the class that will allow me to
+     * insert the header line of the report to the arraylist
      */
-    class MyTableModel extends javax.swing.table.AbstractTableModel {
 
-        private String[] columnNames;
-        private Object[][] data;
-
-        /*
-         * Constructor of the class that will allow me to
-         * insert the header line of the report to the arraylist
-         */
-        public MyTableModel(String[][] d, String[] cName) {
-            data = d;
-            columnNames = cName;
-        }
-
-        public MyTableModel(Object[][] d, String[] cName) {
-            data = d;
-            columnNames = cName;
-        }
-
-        public int getColumnCount() {
-            return columnNames.length;
-        }
-
-        public int getRowCount() {
-            return data.length;
-        }
-
-        public String getColumnName(int col) {
-            return columnNames[col];
-        }
-
-        public Object getValueAt(int row, int col) {
-            return data[row][col];
-        }
-
-        public Class getColumnClass(int c) {
-            return getValueAt(0, c).getClass();
-        }
+    public MyTableModel(String[][] d, String[] cName) {
+        data = d;
+        columnNames = cName;
     }
+
+    public MyTableModel(Object[][] d, String[] cName) {
+        data = d;
+        columnNames = cName;
+    }
+
+    public int getColumnCount() {
+        return columnNames.length;
+    }
+
+    public int getRowCount() {
+        return data.length;
+    }
+
+    public String getColumnName(int col) {
+        return columnNames[col];
+    }
+
+    public Object getValueAt(int row, int col) {
+        return data[row][col];
+    }
+
+    public Class getColumnClass(int c) {
+        return getValueAt(0, c).getClass();
+    }
+
+
+}
