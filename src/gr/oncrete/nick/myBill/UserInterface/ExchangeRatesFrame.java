@@ -36,13 +36,15 @@ public class ExchangeRatesFrame extends javax.swing.JFrame {
     //these two instance variables will be fed into the exchange rates parser in order
     //for us to be able to update the content of the text field when we click the use it
     //button
-    JTextField fcTextField=null;
-    JCheckBox fcCheckBox=null;
+    JTextField expensesFcTextField=null;
+   JTextField incomeFcTextField=null;
+    //this will hold the exchange rates data values so that we can pass it back to the main app if needed
+    String[][] exchangeData=null;
     
     /** Creates new form ExchangeRatesWindow */
-    public ExchangeRatesFrame(JTextField foreignCurrencyTextField,JCheckBox foreignCurrencyCheckBox) {
-        fcTextField=foreignCurrencyTextField;
-        fcCheckBox=foreignCurrencyCheckBox;
+    public ExchangeRatesFrame(JTextField expensesForeignCurrencyTextField,JTextField incomeForeignCurrencyTextField) {
+        expensesFcTextField=expensesForeignCurrencyTextField;
+        incomeFcTextField=incomeForeignCurrencyTextField;
         this.initClass();
     }
     
@@ -101,6 +103,11 @@ public class ExchangeRatesFrame extends javax.swing.JFrame {
 
         useItButton.setText(bundle.getString("ExchangeRatesFrame.useItButton.text")); // NOI18N
         useItButton.setToolTipText(bundle.getString("ExchangeRatesFrame.useItButton.toolTipText")); // NOI18N
+        useItButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                useItButtonActionPerformed(evt);
+            }
+        });
         topPanel.add(useItButton);
 
         getContentPane().add(topPanel, java.awt.BorderLayout.NORTH);
@@ -109,20 +116,20 @@ public class ExchangeRatesFrame extends javax.swing.JFrame {
 
         reportRatesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Currency", "Value", "Use it?"
+                "Currency", "Value"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Boolean.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -149,8 +156,9 @@ public class ExchangeRatesFrame extends javax.swing.JFrame {
     private void retrieveRatesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retrieveRatesButtonActionPerformed
 
         if (!eParser.isEmpty()) {
-            String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("CURRENCY"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("ONE EURO VALUE IN CURRENCY"),"Use it?"};
-            reportRatesTable.setModel(new ExchangeRatesTableModel(eParser.presentRatesArray(0), columnNames));
+            String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("CURRENCY"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("ONE EURO VALUE IN CURRENCY")};
+            exchangeData=eParser.presentRatesArray(0);
+            reportRatesTable.setModel(new ExchangeRatesTableModel(exchangeData, columnNames));
             reportRatesTable.setAutoCreateRowSorter(true);//add a primitive sort by column function
         } else {
             this.parserIsEmptyMessage();
@@ -161,13 +169,29 @@ public class ExchangeRatesFrame extends javax.swing.JFrame {
     private void flippedRateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flippedRateButtonActionPerformed
 
         if (!eParser.isEmpty()) {
-            String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("CURRENCY"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("VALUE OF ONE CURRENCY COIN IN EURO"),"Use it?"};
-            reportRatesTable.setModel(new ExchangeRatesTableModel(eParser.presentRatesArray(1), columnNames));
+            String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("CURRENCY"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("VALUE OF ONE CURRENCY COIN IN EURO")};
+            exchangeData=eParser.presentRatesArray(1);
+            reportRatesTable.setModel(new ExchangeRatesTableModel(exchangeData, columnNames));
             reportRatesTable.setAutoCreateRowSorter(true);//add a primitive sort by column function
         } else {
             this.parserIsEmptyMessage();
         }
     }//GEN-LAST:event_flippedRateButtonActionPerformed
+/**
+ * This method will checkout if there is a selected cell in the exchange rates table
+ * and if there is, at the click of the button Use it, it will pass it back to 
+ * the exchanges rate text field so that it can be used by the app
+ * @param evt 
+ */
+    private void useItButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useItButtonActionPerformed
+        //System.out.println("Selected row num is: "+reportRatesTable.getSelectedRow());
+        if (exchangeData!=null && expensesFcTextField!=null && incomeFcTextField!=null){
+            String selectedValue=exchangeData[reportRatesTable.getSelectedRow()][1];
+            expensesFcTextField.setText(selectedValue);
+            incomeFcTextField.setText(selectedValue);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_useItButtonActionPerformed
 
     /**
      * @param args the command line arguments

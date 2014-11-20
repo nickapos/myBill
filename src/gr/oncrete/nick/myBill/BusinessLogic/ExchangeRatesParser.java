@@ -47,8 +47,7 @@ public class ExchangeRatesParser {
     HashMap rateMap = new HashMap();
     URL exchangeRatesUrl;
     InputStream stream;
-    JTextField fcTextField = null;
-    JCheckBox fcCheckBox = null;
+    
 
     /**
      * If you want to parse from the internet call the prepareStreamFromNet
@@ -61,11 +60,6 @@ public class ExchangeRatesParser {
         //rateMap=rateMapFromDisk;
         //then update the rates from the net
         //this.prepareRatesFromNet();
-    }
-
-    public ExchangeRatesParser(JTextField foreignCurrencyTextField, JCheckBox foreignCurrencyCheckBox) {
-        fcTextField = foreignCurrencyTextField;
-        fcCheckBox = foreignCurrencyCheckBox;
     }
 
     public void prepareRatesFromNet() {
@@ -178,8 +172,8 @@ public class ExchangeRatesParser {
      *
      * @return a string array that will contain the exchange rate values
      */
-    public Object[][] presentRatesArray(int inversion) {
-        Object[][] resultAr = new Object[this.numberOfRecords()][3];
+    public String[][] presentRatesArray(int inversion) {
+        String[][] resultAr = new String[this.numberOfRecords()][2];
 
         Set rateKeySet = rateMap.keySet();
         Iterator it = rateKeySet.iterator();
@@ -187,8 +181,6 @@ public class ExchangeRatesParser {
         while (it.hasNext()) {
             String rateSymbol = (String) it.next();
             String rateValue = (String) rateMap.get(rateSymbol);
-            //this will be used to set the use it boolean to false
-            resultAr[counter][2] = false;
             //cover with one block of code both inversion and straight exchange rates
             if (inversion == 0) {
                 resultAr[counter][0] = rateSymbol;

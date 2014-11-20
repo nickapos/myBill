@@ -1039,7 +1039,7 @@ public class billsUI extends javax.swing.JFrame {
     private void showRatesFrameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showRatesFrameButtonActionPerformed
         //Textratestextfield foreignCurrencyTextField
         //foreignCurrencyCheckBox
-        ExchangeRatesFrame exrf = new ExchangeRatesFrame(foreignCurrencyTextField, foreignCurrencyCheckBox);
+        ExchangeRatesFrame exrf = new ExchangeRatesFrame(foreignCurrencyTextField, foreignCurrencyTextField1);
         exrf.presentExchangeRateFrame();
     }//GEN-LAST:event_showRatesFrameButtonActionPerformed
 
@@ -1078,7 +1078,7 @@ public class billsUI extends javax.swing.JFrame {
     }//GEN-LAST:event_billCommentTextFieldActionPerformed
 
     private void showRatesFrameButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showRatesFrameButton1ActionPerformed
-        ExchangeRatesFrame exrf = new ExchangeRatesFrame();
+        ExchangeRatesFrame exrf = new ExchangeRatesFrame(foreignCurrencyTextField, foreignCurrencyTextField1);
         exrf.presentExchangeRateFrame();        // TODO add your handling code here:
     }//GEN-LAST:event_showRatesFrameButton1ActionPerformed
 
