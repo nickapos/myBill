@@ -6,7 +6,8 @@
         <group>
             <file>file:/home/nickapos/testing/myBill/src/gr/oncrete/nick/myBill/BusinessLogic/ExchangeRatesParser.java</file>
             <file>file:/home/nickapos/testing/myBill/src/gr/oncrete/nick/myBill/UserInterface/ExchangeRatesFrame.java</file>
-            <file>file:/home/nickapos/testing/myBill/src/gr/oncrete/nick/myBill/UserInterface/billsUI.java</file>
+            <file>file:/home/nickapos/testing/myBill/src/gr/oncrete/nick/myBill/UserInterface/ExchangeRatesTableModel.java</file>
+            <file>file:/home/nickapos/testing/myBill/src/gr/oncrete/nick/myBill/UserInterface/MyTableModel.java</file>
         </group>
     </open-files>
 </project-private>

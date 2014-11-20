@@ -101,6 +101,7 @@
                     <Column editable="true" title="Use it?" type="java.lang.Boolean"/>
                   </Table>
                 </Property>
+                <Property name="cellSelectionEnabled" type="boolean" value="true"/>
               </Properties>
             </Component>
           </SubComponents>

@@ -760,6 +760,8 @@ public class billsUI extends javax.swing.JFrame {
         {
             this.companyDetailsIDTextField.setEditable(false);
             this.companyRetrieveButton.setEnabled(false);
+            this.companyDetailsAfmTextField.setEditable(true);
+            this.companyDetailsCNameTextField.setEditable(true);
 
         } else if (a == 1)//if selected value is edit
         {
@@ -834,7 +836,7 @@ public class billsUI extends javax.swing.JFrame {
 
     private void emptyDBMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emptyDBMenuItemActionPerformed
         //open a new window and require authorization to empty the db
-        EmptyDatabaseWindow emptyDB= new EmptyDatabaseWindow(this);
+        EmptyDatabaseWindow emptyDB = new EmptyDatabaseWindow(this);
         emptyDB.runEmptyDB();
         //this.refreshCompaniesCombo();
         //this.refreshCatIDCombo();
@@ -857,16 +859,17 @@ public class billsUI extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         ImportAllRecords imp = new ImportAllRecords();
         imp.displayGUI();
-        
+
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
-     * this little method will return to the world an string array to be used in combo boxes
+     * this little method will return to the world an string array to be used in
+     * combo boxes
+     *
      * @param numOfYears
-     * @return 
+     * @return
      */
-    private String [] yearsCombo(int numOfYears)
-    {
+    private String[] yearsCombo(int numOfYears) {
         int startyear = 2006;
         String[] years = new String[numOfYears];
         for (int o = startyear, i = 0; i < 125; o++, i++) {
@@ -874,9 +877,9 @@ public class billsUI extends javax.swing.JFrame {
         }
         return years;
     }
-    
+
     private void reportComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportComboBoxActionPerformed
-        String[] years=this.yearsCombo(125);
+        String[] years = this.yearsCombo(125);
         int a = reportComboBox.getSelectedIndex();
         if (a == 0 || a == 1 || a == 2 || a == 5 || a == 6 || a == 10)//if report does not need year filtering
         {
@@ -896,7 +899,6 @@ public class billsUI extends javax.swing.JFrame {
             reportParametersComboBox.setModel(new javax.swing.DefaultComboBoxModel(years));
             reportParametersFinalComboBox.setModel(new javax.swing.DefaultComboBoxModel(years));
         }
-
 
 
     }//GEN-LAST:event_reportComboBoxActionPerformed
@@ -1037,7 +1039,7 @@ public class billsUI extends javax.swing.JFrame {
     private void showRatesFrameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showRatesFrameButtonActionPerformed
         //Textratestextfield foreignCurrencyTextField
         //foreignCurrencyCheckBox
-        ExchangeRatesFrame exrf = new ExchangeRatesFrame(foreignCurrencyTextField,foreignCurrencyCheckBox);
+        ExchangeRatesFrame exrf = new ExchangeRatesFrame(foreignCurrencyTextField, foreignCurrencyCheckBox);
         exrf.presentExchangeRateFrame();
     }//GEN-LAST:event_showRatesFrameButtonActionPerformed
 
@@ -1211,7 +1213,6 @@ public class billsUI extends javax.swing.JFrame {
         dateOfPaymentTextField.setText(today.getToday());
         billCommentTextField.setText("");
 
-
     }
 
     private void clearIncomeTextFields() {
@@ -1352,7 +1353,6 @@ public class billsUI extends javax.swing.JFrame {
             reportTable.setModel(new MyTableModel(d, columnNames));
             reportTable.setAutoCreateRowSorter(true);//add a primitive sort by column function
         }
-
 
     }
 
@@ -1867,8 +1867,6 @@ public class billsUI extends javax.swing.JFrame {
                 DeleteIncome del = new DeleteIncome(inid);
                 this.clearIncomeTextFields();
             }
-
-
 
         }
     }

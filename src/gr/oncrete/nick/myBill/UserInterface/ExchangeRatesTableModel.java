@@ -25,25 +25,38 @@ package gr.oncrete.nick.myBill.UserInterface;
  *
  *
  */
-class ExchangeRatesTableModel extends MyTableModel {
-
+class ExchangeRatesTableModel extends javax.swing.table.DefaultTableModel {
 
     public ExchangeRatesTableModel(String[][] d, String[] cName) {
-       super (d,cName);
+        super(d, cName);
     }
 
     public ExchangeRatesTableModel(Object[][] d, String[] cName) {
-         super (d,cName);
+        super(d, cName);
+    }
+    boolean[] canEdit = new boolean []
+         {
+            false, false, true
+         };
+    
+    @Override
+    public Class getColumnClass(int c) {
+        if (c == 2) {
+            return java.lang.Boolean.class;
+        } else {
+            return java.lang.String.class;
+        }
     }
 
     /**
      * by overriding this method we can set the table cells editable or not
+     *
      * @param row
      * @param column
-     * @return 
+     * @return
      */
+    @Override
     public boolean isCellEditable(int row, int column) {
-        return true;
+        return canEdit [column];
     }
-
 }

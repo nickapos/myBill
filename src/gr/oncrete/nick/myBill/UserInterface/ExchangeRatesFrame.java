@@ -133,6 +133,7 @@ public class ExchangeRatesFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        reportRatesTable.setCellSelectionEnabled(true);
         jScrollPane1.setViewportView(reportRatesTable);
 
         centerPanel.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -150,7 +151,6 @@ public class ExchangeRatesFrame extends javax.swing.JFrame {
         if (!eParser.isEmpty()) {
             String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("CURRENCY"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("ONE EURO VALUE IN CURRENCY"),"Use it?"};
             reportRatesTable.setModel(new ExchangeRatesTableModel(eParser.presentRatesArray(0), columnNames));
-         
             reportRatesTable.setAutoCreateRowSorter(true);//add a primitive sort by column function
         } else {
             this.parserIsEmptyMessage();

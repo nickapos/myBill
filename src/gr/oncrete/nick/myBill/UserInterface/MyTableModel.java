@@ -28,13 +28,12 @@ package gr.oncrete.nick.myBill.UserInterface;
 class MyTableModel extends javax.swing.table.AbstractTableModel {
 
     private String[] columnNames;
-    private Object[][] data;
-    private boolean[][] editable_cells; // 2d array to represent rows and columns
+    protected Object[][] data;
+
     /*
      * Constructor of the class that will allow me to
      * insert the header line of the report to the arraylist
      */
-
     public MyTableModel(String[][] d, String[] cName) {
         data = d;
         columnNames = cName;
@@ -61,9 +60,23 @@ class MyTableModel extends javax.swing.table.AbstractTableModel {
         return data[row][col];
     }
 
-    public Class getColumnClass(int c) {
-        return getValueAt(0, c).getClass();
+    public void setData(Object[][] dataArr) {
+        this.data = dataArr;
     }
 
+/*    public Class getColumnClass(int c) {
+        return getValueAt(0, c).getClass();
+    }
+*/
+    /**
+     * by overriding this method we can set the table cells editable or not
+     *
+     * @param row
+     * @param column
+     * @return
+     */
+    public boolean isCellEditable(int row, int column) {
+        return false;
+    }
 
 }
