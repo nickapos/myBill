@@ -64,7 +64,7 @@ public class ExchangeRatesParser {
 
     public void prepareRatesFromNet() {
         try {
-            exchangeRatesUrl = new URL("http://www.ecb.int/stats/eurofxref/eurofxref-daily.xml");
+            exchangeRatesUrl = new URL("http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml");
             stream = exchangeRatesUrl.openStream();
             this.parseXML(stream);
             this.saveExchangeRatesToDisk();
