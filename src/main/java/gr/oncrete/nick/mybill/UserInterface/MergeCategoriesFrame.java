@@ -23,10 +23,10 @@
  */
 package gr.oncrete.nick.mybill.UserInterface;
 
-import gr.oncrete.nick.myBill.BusinessLogic.SelectInfo.Category;
-import gr.oncrete.nick.myBill.BusinessLogic.SelectInfo.SelectAllCompaniesPerCategory;
-import gr.oncrete.nick.myBill.BusinessLogic.Categories;
-import gr.oncrete.nick.myBill.BusinessLogic.NewThreadMergeCategories;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.Category;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectAllCompaniesPerCategory;
+import gr.oncrete.nick.mybill.BusinessLogic.Categories;
+import gr.oncrete.nick.mybill.BusinessLogic.NewThreadMergeCategories;
 import javax.swing.JComboBox;
 import java.util.List;
 /**

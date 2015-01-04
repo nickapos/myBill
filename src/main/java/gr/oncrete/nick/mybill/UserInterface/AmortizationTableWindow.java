@@ -22,7 +22,7 @@
  * Created on 11 Αυγ 2010, 9:51:33 μμ
  */
 
-package gr.oncrete.nick.myBill.UserInterface;
+package gr.oncrete.nick.mybill.UserInterface;
 
 /**
  *

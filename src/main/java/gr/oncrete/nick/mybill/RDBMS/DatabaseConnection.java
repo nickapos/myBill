@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Created on 25 Μάϊος 2005, 7:38 μμ
  */
-package gr.oncrete.nick.myBill.RDBMS;
+package gr.oncrete.nick.mybill.RDBMS;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

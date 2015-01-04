@@ -23,7 +23,7 @@
  */
 package gr.oncrete.nick.mybill.UserInterface;
 
-import gr.oncrete.nick.myBill.BusinessLogic.NewThreadExchangeRatesParser;
+import gr.oncrete.nick.mybill.BusinessLogic.NewThreadExchangeRatesParser;
 import javax.swing.*;
 
 /**

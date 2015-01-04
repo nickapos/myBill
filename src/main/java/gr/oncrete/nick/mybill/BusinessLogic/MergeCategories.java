@@ -14,16 +14,16 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package gr.oncrete.nick.myBill.BusinessLogic;
+package gr.oncrete.nick.mybill.BusinessLogic;
 
-import gr.oncrete.nick.myBill.BusinessLogic.SelectInfo.SelectCompanyDetails;
-import gr.oncrete.nick.myBill.BusinessLogic.UpdateInfo.UpdateCompanyRecord;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
+import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateCompanyRecord;
 import java.util.List;
 import java.util.Iterator;
 import javax.swing.JLabel;
 
 /**
- *This class wil be used to change the all the records of the database the belong to
+ *This class will be used to change the all the records of the database the belong to
  * a specific category to another
  * @author nickapos 6 Σεπ 2010
  */

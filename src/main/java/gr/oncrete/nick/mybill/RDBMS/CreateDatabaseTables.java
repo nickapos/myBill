@@ -21,7 +21,7 @@
  * Created on 29 Ιούλιος 2005, 6:31 μμ
  */
 
-package gr.oncrete.nick.myBill.RDBMS;
+package gr.oncrete.nick.mybill.RDBMS;
 import gr.oncrete.nick.myBill.BusinessLogic.FileHandlers.FileHandlerReadFile;
 import java.util.ArrayList;
 import java.util.Iterator;

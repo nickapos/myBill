@@ -24,7 +24,7 @@
 package gr.oncrete.nick.mybill.RDBMS;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import gr.oncrete.nick.myBill.UserInterface.PopupMessageFrame;
+import gr.oncrete.nick.mybill.UserInterface.PopupMessageFrame;
 /**
  *
  * @author nickapos

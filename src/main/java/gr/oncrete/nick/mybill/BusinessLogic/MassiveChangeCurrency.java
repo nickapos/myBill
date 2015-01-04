@@ -14,17 +14,17 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package gr.oncrete.nick.myBill.BusinessLogic;
+package gr.oncrete.nick.mybill.BusinessLogic;
 
-import gr.oncrete.nick.myBill.BusinessLogic.SelectInfo.SelectAllBillsIDS;
-import gr.oncrete.nick.myBill.BusinessLogic.SelectInfo.SelectBillDetails;
-import gr.oncrete.nick.myBill.BusinessLogic.UpdateInfo.UpdateBillRecord;
-import gr.oncrete.nick.myBill.BusinessLogic.SelectInfo.SelectCompanyDetails;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectAllBillsIDS;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectBillDetails;
+import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateBillRecord;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
 import java.util.List;
 import java.util.Iterator;
-import gr.oncrete.nick.myBill.BusinessLogic.SelectInfo.SelectAllIncomeDetails;
-import gr.oncrete.nick.myBill.BusinessLogic.SelectInfo.SelectIncomeDetails;
-import gr.oncrete.nick.myBill.BusinessLogic.UpdateInfo.UpdateIncomeRecord;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectAllIncomeDetails;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectIncomeDetails;
+import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateIncomeRecord;
 import javax.swing.JLabel;
 
 /**

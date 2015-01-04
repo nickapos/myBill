@@ -21,10 +21,10 @@
  * will present in the text are a message, be it an about or a readme.
  * Created on 11 Αυγ 2010, 9:51:33 μμ
  */
-package gr.oncrete.nick.myBill.UserInterface;
+package gr.oncrete.nick.mybill.UserInterface;
 
-import gr.oncrete.nick.myBill.BusinessLogic.CheckAFM;
-import gr.oncrete.nick.myBill.BusinessLogic.CheckVAT;
+import gr.oncrete.nick.mybill.BusinessLogic.CheckAFM;
+import gr.oncrete.nick.mybill.BusinessLogic.CheckVAT;
 
 /**
  *

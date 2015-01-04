@@ -23,12 +23,12 @@
  */
 package gr.oncrete.nick.mybill.UserInterface;
 
-import gr.oncrete.nick.myBill.BusinessLogic.ImportDB.ImportBillsTable;
-import gr.oncrete.nick.myBill.BusinessLogic.ImportDB.ImportCategoriesTable;
-import gr.oncrete.nick.myBill.BusinessLogic.ImportDB.ImportCompaniesTable;
-import gr.oncrete.nick.myBill.BusinessLogic.ImportDB.ImportIncomeTable;
-import gr.oncrete.nick.myBill.BusinessLogic.SelectInfo.SelectAllBillsIDS;
-import gr.oncrete.nick.myBill.BusinessLogic.SelectInfo.SelectAllCompaniesIDS;
+import gr.oncrete.nick.mybill.BusinessLogic.ImportDB.ImportBillsTable;
+import gr.oncrete.nick.mybill.BusinessLogic.ImportDB.ImportCategoriesTable;
+import gr.oncrete.nick.mybill.BusinessLogic.ImportDB.ImportCompaniesTable;
+import gr.oncrete.nick.mybill.BusinessLogic.ImportDB.ImportIncomeTable;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectAllBillsIDS;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectAllCompaniesIDS;
 
 /**
  *

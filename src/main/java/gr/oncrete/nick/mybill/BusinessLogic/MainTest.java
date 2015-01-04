@@ -19,12 +19,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package gr.oncrete.nick.myBill.BusinessLogic;
+package gr.oncrete.nick.mybill.BusinessLogic;
 
-import java.util.*;
+
 import gr.oncrete.nick.myBill.BusinessLogic.FileHandlers.MyFileWriter;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+
 
 /**
  *

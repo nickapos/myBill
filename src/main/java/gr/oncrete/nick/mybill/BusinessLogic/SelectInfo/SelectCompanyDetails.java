@@ -21,7 +21,7 @@
  */
 package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
 
-import gr.oncrete.nick.myBill.RDBMS.SelectFromTable;
+import gr.oncrete.nick.mybill.RDBMS.SelectFromTable;
 import java.util.*;
 
 /**

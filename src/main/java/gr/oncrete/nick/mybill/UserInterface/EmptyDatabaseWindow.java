@@ -22,6 +22,7 @@
  * Created on 11 Αυγ 2010, 9:51:33 μμ
  */
 package gr.oncrete.nick.mybill.UserInterface;
+import gr.oncrete.nick.mybill.RDBMS.EmptyTables;
 
 /**
  *
@@ -91,7 +92,7 @@ public class EmptyDatabaseWindow extends javax.swing.JFrame {
     private void yesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesButtonActionPerformed
         PopupMessageFrame mes = new PopupMessageFrame();
         mes.setNotification(java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("ALL-THE DATABASE-CONTENT-IS-GOING-TO-BE-DELETED"));
-        gr.oncrete.nick.myBill.RDBMS.EmptyTables e = new gr.oncrete.nick.myBill.RDBMS.EmptyTables();
+        EmptyTables e = new EmptyTables();
         if (mainui != null) {
             mainui.refreshCompaniesCombo();
             mainui.refreshCatIDCombo();

@@ -19,9 +19,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package gr.oncrete.nick.myBill.BusinessLogic.UpdateInfo;
+package gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo;
 
-import gr.oncrete.nick.myBill.RDBMS.InsertIntoTable;
+import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
 
 /**
  *

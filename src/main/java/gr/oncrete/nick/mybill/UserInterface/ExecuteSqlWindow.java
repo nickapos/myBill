@@ -22,8 +22,8 @@
  * Created on 11 Αυγ 2010, 9:51:33 μμ
  */
 
-package gr.oncrete.nick.myBill.UserInterface;
-import gr.oncrete.nick.myBill.RDBMS.InsertIntoTable;
+package gr.oncrete.nick.mybill.UserInterface;
+import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
 
 /**
  *

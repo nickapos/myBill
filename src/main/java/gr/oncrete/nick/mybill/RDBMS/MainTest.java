@@ -20,7 +20,7 @@
  * and open the template in the editor.
  */
 
-package gr.oncrete.nick.myBill.RDBMS;
+package gr.oncrete.nick.mybill.RDBMS;
 
 /**
  *

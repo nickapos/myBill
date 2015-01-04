@@ -21,7 +21,7 @@
  * Created on 12 Ιούλιος 2005, 11:27 πμ
  */
 
-package gr.oncrete.nick.myBill.RDBMS;
+package gr.oncrete.nick.mybill.RDBMS;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedList;

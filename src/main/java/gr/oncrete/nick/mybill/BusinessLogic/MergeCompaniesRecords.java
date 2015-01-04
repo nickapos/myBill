@@ -16,7 +16,7 @@
  */
 package gr.oncrete.nick.mybill.BusinessLogic;
 
-import gr.oncrete.nick.myBill.BusinessLogic.SelectInfo.SelectBillDetails;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectBillDetails;
 import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateBillRecord;
 import java.util.List;
 import java.util.Iterator;

@@ -19,10 +19,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package gr.oncrete.nick.myBill.BusinessLogic;
+package gr.oncrete.nick.mybill.BusinessLogic;
 
-import gr.oncrete.nick.myBill.BusinessLogic.SelectInfo.SelectCompanyDetails;
-import gr.oncrete.nick.myBill.RDBMS.InsertIntoTable;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
+import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
 
 /**
  *

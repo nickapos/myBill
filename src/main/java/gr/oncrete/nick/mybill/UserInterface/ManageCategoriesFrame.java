@@ -21,12 +21,12 @@
  * will present in the text are a message, be it an about or a readme.
  * Created on 11 Αυγ 2010, 9:51:33 μμ
  */
-package gr.oncrete.nick.myBill.UserInterface;
+package gr.oncrete.nick.mybill.UserInterface;
 
-import gr.oncrete.nick.myBill.BusinessLogic.InsertCategory;
-import gr.oncrete.nick.myBill.BusinessLogic.DeleteCategory;
-import gr.oncrete.nick.myBill.BusinessLogic.Categories;
-import gr.oncrete.nick.myBill.BusinessLogic.UpdateInfo.UpdateCategoryRecord;
+import gr.oncrete.nick.mybill.BusinessLogic.InsertCategory;
+import gr.oncrete.nick.mybill.BusinessLogic.DeleteCategory;
+import gr.oncrete.nick.mybill.BusinessLogic.Categories;
+import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateCategoryRecord;
 import javax.swing.JComboBox;
 
 /**

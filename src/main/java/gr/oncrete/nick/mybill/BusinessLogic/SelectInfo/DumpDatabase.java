@@ -20,11 +20,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Created on 21 Ιούλιος 2005, 9:39 πμ
  */
-package gr.oncrete.nick.myBill.BusinessLogic.SelectInfo;
+package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import gr.oncrete.nick.myBill.RDBMS.SelectFromTable;
+import gr.oncrete.nick.mybill.RDBMS.SelectFromTable;
 
 /**
  *This class implements the dump database

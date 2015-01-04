@@ -19,9 +19,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package gr.oncrete.nick.myBill.BusinessLogic.SelectInfo;
+package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
 
-import gr.oncrete.nick.myBill.RDBMS.SelectFromTable;
+import gr.oncrete.nick.mybill.RDBMS.SelectFromTable;
 import java.util.*;
 
 /**

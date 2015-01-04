@@ -23,10 +23,10 @@
  */
 package gr.oncrete.nick.mybill.UserInterface;
 
-import gr.oncrete.nick.myBill.BusinessLogic.Companies;
-import gr.oncrete.nick.myBill.BusinessLogic.SelectInfo.SelectCompanyDetails;
-import gr.oncrete.nick.myBill.BusinessLogic.SelectInfo.SelectAllBillsDetailsForSpecificCompany;
-import gr.oncrete.nick.myBill.BusinessLogic.SelectInfo.SelectAllIncomeDetailsForSpecificCompany;
+import gr.oncrete.nick.mybill.BusinessLogic.Companies;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectAllBillsDetailsForSpecificCompany;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectAllIncomeDetailsForSpecificCompany;
 import java.util.*;
 import javax.swing.JComboBox;
 

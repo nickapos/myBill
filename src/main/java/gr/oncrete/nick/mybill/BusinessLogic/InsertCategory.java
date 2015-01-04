@@ -20,8 +20,8 @@
  * and open the template in the editor.
  */
 
-package gr.oncrete.nick.myBill.BusinessLogic;
-import gr.oncrete.nick.myBill.RDBMS.InsertIntoTable;
+package gr.oncrete.nick.mybill.BusinessLogic;
+import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
 
 /**
  *

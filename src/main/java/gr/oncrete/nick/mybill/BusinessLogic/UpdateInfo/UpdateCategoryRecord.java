@@ -19,7 +19,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package gr.oncrete.nick.myBill.BusinessLogic.UpdateInfo;
+package gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo;
 
 
 

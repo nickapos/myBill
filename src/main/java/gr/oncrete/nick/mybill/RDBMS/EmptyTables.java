@@ -21,7 +21,7 @@
  * Created on 8 Ιούλιος 2005, 10:53 πμ
  */
 
-package gr.oncrete.nick.myBill.RDBMS;
+package gr.oncrete.nick.mybill.RDBMS;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

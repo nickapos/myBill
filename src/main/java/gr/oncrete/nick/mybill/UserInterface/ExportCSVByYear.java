@@ -21,11 +21,11 @@
  * will present in the text are a message, be it an about or a readme.
  * Created on 11 Αυγ 2010, 9:51:33 μμ
  */
-package gr.oncrete.nick.myBill.UserInterface;
+package gr.oncrete.nick.mybill.UserInterface;
 
 import java.util.*;
 import java.text.*;
-import gr.oncrete.nick.myBill.BusinessLogic.SelectInfo.DumpDatabase;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.DumpDatabase;
 import gr.oncrete.nick.myBill.BusinessLogic.FileHandlers.MyFileWriter;
 import gr.oncrete.nick.myBill.BusinessLogic.FileHandlers.NewThreadFileWriter;
 
