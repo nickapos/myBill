@@ -73,7 +73,7 @@ public class MergeCompanyRecordsFrame extends javax.swing.JFrame {
         progressLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle"); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle"); // NOI18N
         setTitle(bundle.getString("MergeCompanyRecordsFrame.title")); // NOI18N
         setName("Manage Categories"); // NOI18N
 

@@ -58,7 +58,7 @@ public class ExportCSVByYear extends javax.swing.JFrame {
         validateButton = new javax.swing.JButton();
         rowsAffectedLabel = new javax.swing.JLabel();
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle"); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle"); // NOI18N
         jLabel1.setText(bundle.getString("ExportCSVByYear.jLabel1.text")); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -191,7 +191,7 @@ public class ExportCSVByYear extends javax.swing.JFrame {
      */
     private void updateRowsAffectedCount(int rows)
     {
-        String defaultLabel=java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString(" ROWS EXPORTED: ");
+        String defaultLabel=java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString(" ROWS EXPORTED: ");
         rowsAffectedLabel.setText(defaultLabel+rows);
     }
 }

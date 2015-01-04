@@ -60,7 +60,7 @@ public class ExportCSVByPeriod extends javax.swing.JFrame {
         validateButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle"); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle"); // NOI18N
         setTitle(bundle.getString("ExportCSVByPeriod.title")); // NOI18N
         getContentPane().setLayout(new java.awt.GridLayout(2, 1));
 

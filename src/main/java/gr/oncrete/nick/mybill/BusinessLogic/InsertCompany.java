@@ -58,7 +58,7 @@ public class InsertCompany {
             //System.out.println(sql);
         } else {
             in = new InsertIntoTable();
-            in.warningPopUp(java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("ERROR IN COMPANY INSERTION"));
+            in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN COMPANY INSERTION"));
         }
 
     }
@@ -82,7 +82,7 @@ public class InsertCompany {
             //System.out.println(sql);
         } else {
             in = new InsertIntoTable();
-            in.warningPopUp(java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("ERROR IN COMPANY INSERTION"));
+            in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN COMPANY INSERTION"));
         }
 
     }
@@ -105,7 +105,7 @@ public class InsertCompany {
             //System.out.println(sql);
         } else {
             in = new InsertIntoTable();
-            in.warningPopUp(java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("ERROR IN COMPANY INSERTION"));
+            in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN COMPANY INSERTION"));
         }
 
     }

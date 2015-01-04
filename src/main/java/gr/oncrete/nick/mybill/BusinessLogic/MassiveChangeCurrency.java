@@ -95,7 +95,7 @@ public class MassiveChangeCurrency {
                 //System.out.println("Changing expenses " + billPrice + " with " + newPrice);
                 UpdateBillRecord uptdBill = new UpdateBillRecord(bdt.getBID(), cdt.getName(), newPrice, bdt.getDateOfIssue(), bdt.getDateOfPayment(),bdt.getComment());
                 counter++;
-                expensesProgressText=java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("NUMBER OF EXPENSES RECORDS CONVERTED : ")+counter;
+                expensesProgressText=java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("NUMBER OF EXPENSES RECORDS CONVERTED : ")+counter;
                 l.setText(expensesProgressText);
             }
 
@@ -114,7 +114,7 @@ public class MassiveChangeCurrency {
                 int companyID = Integer.parseInt(indet.getCID());
                 //System.out.println("Changing income " + incPriceStr + " with " + newPrice);
                 UpdateIncomeRecord upinr = new UpdateIncomeRecord(indet.getInID(), companyID, newPrice, indet.getDateOfPayment(),indet.getComment());
-                String incomeProgressText=java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString(" INCOME RECORDS CONVERTED : ")+counter;
+                String incomeProgressText=java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString(" INCOME RECORDS CONVERTED : ")+counter;
                l.setText(expensesProgressText+incomeProgressText);
             }
 

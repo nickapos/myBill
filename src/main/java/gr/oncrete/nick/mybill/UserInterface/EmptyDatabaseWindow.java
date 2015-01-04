@@ -59,7 +59,7 @@ public class EmptyDatabaseWindow extends javax.swing.JFrame {
         noButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle"); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle"); // NOI18N
         setTitle(bundle.getString("EmptyDatabaseWindow.title")); // NOI18N
         getContentPane().setLayout(new java.awt.GridLayout(2, 1));
 
@@ -91,7 +91,7 @@ public class EmptyDatabaseWindow extends javax.swing.JFrame {
 
     private void yesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yesButtonActionPerformed
         PopupMessageFrame mes = new PopupMessageFrame();
-        mes.setNotification(java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("ALL-THE DATABASE-CONTENT-IS-GOING-TO-BE-DELETED"));
+        mes.setNotification(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ALL-THE DATABASE-CONTENT-IS-GOING-TO-BE-DELETED"));
         EmptyTables e = new EmptyTables();
         if (mainui != null) {
             mainui.refreshCompaniesCombo();

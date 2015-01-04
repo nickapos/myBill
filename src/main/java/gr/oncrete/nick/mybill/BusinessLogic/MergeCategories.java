@@ -72,7 +72,7 @@ public class MergeCategories {
 
                 counter++;
                 double percentage =100*counter/idListTobeMerged.size();
-                expensesProgressText = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("MergeCategories.progressLabel.text") + counter+" "+percentage +"%";
+                expensesProgressText = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("MergeCategories.progressLabel.text") + counter+" "+percentage +"%";
                 l.setText(expensesProgressText);
             }
 

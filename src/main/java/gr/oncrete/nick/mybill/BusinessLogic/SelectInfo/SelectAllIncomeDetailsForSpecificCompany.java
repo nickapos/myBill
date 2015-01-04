@@ -60,7 +60,7 @@ public class SelectAllIncomeDetailsForSpecificCompany extends SelectAllIncomeDet
                 //with ids
                 String[] a=(String[])results.get(i);
                 //String row = a[0]+a[1]+a[2]+a[3]+a[4];
-                String row = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString(" DATE OF PAYMENT: ")+a[3]+","+java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString(" AMOUNT: ")+a[2];
+                String row = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString(" DATE OF PAYMENT: ")+a[3]+","+java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString(" AMOUNT: ")+a[2];
                 rows.add(row);
                 //System.out.println(row);
         }

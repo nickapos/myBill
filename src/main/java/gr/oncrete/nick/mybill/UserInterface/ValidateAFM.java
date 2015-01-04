@@ -53,7 +53,7 @@ public class ValidateAFM extends javax.swing.JFrame {
         afmResultLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle"); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle"); // NOI18N
         setTitle(bundle.getString("ValidateAFM.title")); // NOI18N
         getContentPane().setLayout(new java.awt.GridLayout(5, 1));
 

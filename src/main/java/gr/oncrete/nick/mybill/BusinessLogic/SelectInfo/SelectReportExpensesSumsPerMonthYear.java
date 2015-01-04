@@ -34,7 +34,7 @@ public class SelectReportExpensesSumsPerMonthYear extends SelectAllIDS {
     //String sql="select sum(price),month(dayofpayment) from bills where dayofpayment >= '2010-01-01' and dayofpayment <= '2010-12-31'  group by month(dayofpayment) order by month(dayofpayment)";
 
     String sql;
-    PlotDataObject plotData = new PlotDataObject(java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("MONTHS"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("EXPENSES PER MONTH"));
+    PlotDataObject plotData = new PlotDataObject(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("MONTHS"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("EXPENSES PER MONTH"));
 
     /**
      *

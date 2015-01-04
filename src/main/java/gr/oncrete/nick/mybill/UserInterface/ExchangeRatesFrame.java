@@ -81,7 +81,7 @@ public class ExchangeRatesFrame extends javax.swing.JFrame {
         bottomPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle"); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle"); // NOI18N
         setTitle(bundle.getString("ExchangeRatesFrame.title")); // NOI18N
 
         retrieveRatesButton.setText(bundle.getString("ExchangeRatesFrame.retrieveRatesButton.text")); // NOI18N
@@ -156,7 +156,7 @@ public class ExchangeRatesFrame extends javax.swing.JFrame {
     private void retrieveRatesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retrieveRatesButtonActionPerformed
 
         if (!eParser.isEmpty()) {
-            String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("CURRENCY"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("ONE EURO VALUE IN CURRENCY")};
+            String[] columnNames = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("CURRENCY"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ONE EURO VALUE IN CURRENCY")};
             exchangeData=eParser.presentRatesArray(0);
             reportRatesTable.setModel(new ExchangeRatesTableModel(exchangeData, columnNames));
             reportRatesTable.setAutoCreateRowSorter(true);//add a primitive sort by column function
@@ -169,7 +169,7 @@ public class ExchangeRatesFrame extends javax.swing.JFrame {
     private void flippedRateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flippedRateButtonActionPerformed
 
         if (!eParser.isEmpty()) {
-            String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("CURRENCY"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("VALUE OF ONE CURRENCY COIN IN EURO")};
+            String[] columnNames = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("CURRENCY"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("VALUE OF ONE CURRENCY COIN IN EURO")};
             exchangeData=eParser.presentRatesArray(1);
             reportRatesTable.setModel(new ExchangeRatesTableModel(exchangeData, columnNames));
             reportRatesTable.setAutoCreateRowSorter(true);//add a primitive sort by column function
@@ -228,6 +228,6 @@ public class ExchangeRatesFrame extends javax.swing.JFrame {
      */
     private void parserIsEmptyMessage() {
         PopupMessageFrame p = new PopupMessageFrame();
-        p.setNotification(java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("WAITING FOR DATA DOWNLOAD TO COMPLETE. PLEASE PRESS THE BUTTON AGAIN IN A FEW SECONDS!"));
+        p.setNotification(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("WAITING FOR DATA DOWNLOAD TO COMPLETE. PLEASE PRESS THE BUTTON AGAIN IN A FEW SECONDS!"));
     }
 }

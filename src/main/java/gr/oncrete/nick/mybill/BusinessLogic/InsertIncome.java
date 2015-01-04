@@ -57,7 +57,7 @@ public class InsertIncome {
             //System.out.println(sql);
         } else {
             in = new InsertIntoTable();
-            in.warningPopUp(java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("ERROR IN INCOME INSERTION"));
+            in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN INCOME INSERTION"));
         }
 
     }
@@ -85,7 +85,7 @@ public class InsertIncome {
             //System.out.println(sql);
         } else {
             in = new InsertIntoTable();
-            in.warningPopUp(java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("ERROR IN INCOME INSERTION"));
+            in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN INCOME INSERTION"));
         }
 
     }

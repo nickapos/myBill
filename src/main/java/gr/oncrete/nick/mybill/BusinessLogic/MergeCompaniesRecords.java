@@ -73,7 +73,7 @@ public class MergeCompaniesRecords {
 
                 counter++;
                 double percentage =100*counter/idListTobeMerged.size();
-                mergeProgressText = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("MergeCompanyRecordsFrame.progressLabel.text") + counter+" "+percentage +"%";
+                mergeProgressText = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("MergeCompanyRecordsFrame.progressLabel.text") + counter+" "+percentage +"%";
                 l.setText(mergeProgressText);
             }
 

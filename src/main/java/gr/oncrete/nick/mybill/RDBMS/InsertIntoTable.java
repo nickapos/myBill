@@ -78,7 +78,7 @@ public class InsertIntoTable extends BasicTableOperation {
     public void warningPopUp()
     {
         PopupMessageFrame mes = new PopupMessageFrame();
-            mes.setWarning(java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("SOMETHING-WENT-WRONG-PLEASE-TRY-AGAIN!"));
+            mes.setWarning(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("SOMETHING-WENT-WRONG-PLEASE-TRY-AGAIN!"));
     }
 
     /**this method will present a specific message with a warning that something has gone awry with the

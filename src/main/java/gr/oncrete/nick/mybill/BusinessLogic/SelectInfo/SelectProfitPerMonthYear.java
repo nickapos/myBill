@@ -33,7 +33,7 @@ public class SelectProfitPerMonthYear {
     SelectReportIncomeSumsPerMonthYear income;
     SelectReportExpensesSumsPerMonthYear expenses;
     String[][] profitColumns, incomeColumns, expensesColumns, paddedIncomeColumns, paddedexpensesColumns;
-    PlotDataObject plotData = new PlotDataObject(java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("MONTHS"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("PROFIT OR LOSS PER MONTH"));
+    PlotDataObject plotData = new PlotDataObject(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("MONTHS"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("PROFIT OR LOSS PER MONTH"));
     int arraySize;
 
     /**

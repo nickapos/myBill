@@ -36,7 +36,7 @@ import java.util.List;
 public class MergeCategoriesFrame extends javax.swing.JFrame {
 
     JComboBox box;
-    String[] comboBoxActions = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("INSERT"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("EDIT"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("DELETE")};//the dropdown list at the action combo boxes
+    String[] comboBoxActions = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("INSERT"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("EDIT"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("DELETE")};//the dropdown list at the action combo boxes
 
     /** Creates new form AboutWindow
      * @param a
@@ -73,7 +73,7 @@ public class MergeCategoriesFrame extends javax.swing.JFrame {
         progressLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle"); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle"); // NOI18N
         setTitle(bundle.getString("MergeCategoriesFrame.title")); // NOI18N
         setName("Manage Categories"); // NOI18N
 

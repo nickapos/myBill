@@ -62,7 +62,7 @@ public class AmortizationTable {
      */
     public AmortizationTable(String tableHeader,Amortization a) {
         amortizationTableString+=tableHeader+"\n\n\n";
-        amortizationTableString =amortizationTableString+ java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("NO")+"\t"+java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString(" INSTALMENT")+"\t"+java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString(" REM CAPITAL")+"\t"+java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString(" INST CAPITAL")+"\t"+java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString(" INST INTEREST")+"\n";
+        amortizationTableString =amortizationTableString+ java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("NO")+"\t"+java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString(" INSTALMENT")+"\t"+java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString(" REM CAPITAL")+"\t"+java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString(" INST CAPITAL")+"\t"+java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString(" INST INTEREST")+"\n";
         amortizationTableString =amortizationTableString+ "----------------------------------------------------------------";
         a.calculateAmortization();
         initialAmount = remainingAmount = a.getAmount();
@@ -107,7 +107,7 @@ public class AmortizationTable {
             }
            
         }
-        amortizationTableString = amortizationTableString+"\n"+"\n"+java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("TOTAL INTEREST PAID:")+df.format(totalInterest)+"\n"+java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("TOTAL CAPITAL PAID:")+df.format(initialAmount);
+        amortizationTableString = amortizationTableString+"\n"+"\n"+java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("TOTAL INTEREST PAID:")+df.format(totalInterest)+"\n"+java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("TOTAL CAPITAL PAID:")+df.format(initialAmount);
     }
 
     /**

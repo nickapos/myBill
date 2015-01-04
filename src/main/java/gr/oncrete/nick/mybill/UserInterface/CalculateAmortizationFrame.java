@@ -60,7 +60,7 @@ public class CalculateAmortizationFrame extends javax.swing.JFrame {
         resultLabel = new javax.swing.JLabel();
         presentResultLabel = new javax.swing.JLabel();
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle"); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle"); // NOI18N
         jTextField1.setText(bundle.getString("CalculateAmortizationFrame.jTextField1.text")); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -202,10 +202,10 @@ public class CalculateAmortizationFrame extends javax.swing.JFrame {
     private String createTableHeader()
     {
         String th="";
-        th+=java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("AMOUNT: ")+amountTextField.getText();
-        th+="\n"+java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("DURATION: ")+periodTextField.getText();
-        th+="\n"+java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("INTEREST RATE: ")+rateTextField.getText();
-        th+="\n"+java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("FREQUENCY: ")+payoffFrequencyComboBox.getSelectedItem().toString();
+        th+=java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("AMOUNT: ")+amountTextField.getText();
+        th+="\n"+java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("DURATION: ")+periodTextField.getText();
+        th+="\n"+java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("INTEREST RATE: ")+rateTextField.getText();
+        th+="\n"+java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("FREQUENCY: ")+payoffFrequencyComboBox.getSelectedItem().toString();
 
         return th;
     }

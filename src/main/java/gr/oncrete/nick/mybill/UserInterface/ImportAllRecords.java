@@ -71,7 +71,7 @@ public class ImportAllRecords extends javax.swing.JFrame {
         validateButton = new javax.swing.JButton();
         rowsAffectedLabel = new javax.swing.JLabel();
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle"); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle"); // NOI18N
         jLabel1.setText(bundle.getString("ImportAllRecords.jLabel1.text")); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -128,7 +128,7 @@ public class ImportAllRecords extends javax.swing.JFrame {
             
         } else {
             PopupMessageFrame mes = new PopupMessageFrame();
-            mes.setNotification(java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("THE-DATABASE-IS-NOT-EMPTY.Ι-WILL-DO-NOTHING"));
+            mes.setNotification(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("THE-DATABASE-IS-NOT-EMPTY.Ι-WILL-DO-NOTHING"));
         }
 
 
@@ -166,7 +166,7 @@ public class ImportAllRecords extends javax.swing.JFrame {
      * @param rows
      */
     private void updateRowsAffectedCount(int rows) {
-        String defaultLabel = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString(" ROWS IMPORTED: ");
+        String defaultLabel = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString(" ROWS IMPORTED: ");
         rowsAffectedLabel.setText(defaultLabel + rows);
     }
 }

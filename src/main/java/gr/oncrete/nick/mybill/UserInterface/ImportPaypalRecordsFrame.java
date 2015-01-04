@@ -63,7 +63,7 @@ public class ImportPaypalRecordsFrame extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         presentResultLabel = new javax.swing.JLabel();
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle"); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle"); // NOI18N
         jTextField1.setText(bundle.getString("ImportPaypalRecordsFrame.jTextField1.text")); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
