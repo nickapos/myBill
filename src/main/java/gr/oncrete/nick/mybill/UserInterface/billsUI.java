@@ -54,19 +54,19 @@ public class billsUI extends javax.swing.JFrame {
     PlotPanel plPanel;
     Today today = new Today();
     ArrayList<String[]> currentReport;//a report table used in save report as txt
-    String[] comboBoxActions = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("INSERT"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("EDIT"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("DELETE")};//the dropdown list at the action combo boxes
-    String[] comboBoxReports = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("COMPANIES"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("BILLS"),
-        java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("EXPENSES-PER-COMPANY-FOR-ALL-YEARS"),
-        java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("EXPENSES-AMOUNT-PER-COMPANY-BY-YEAR"),
-        java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("EXPENSES-AMOUNT-PER-MONTH-BY-YEAR"),
-        java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("INCOME"),
-        java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("INCOME-FOR-ALL-YEARS"),
-        java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("INCOME-BY-YEAR"),
-        java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("INCOME-AMOUNT-PER-MONTH-BY-YEAR"),
-        java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("INCOME-EXPENSES-MONTH-PER-YEAR"),
-        java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("EXPENSES-PER-CATEGORY-FOR-ALL-YEARS"),
-        java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("EXPENSES-PER-CATEGORY-PER-YEAR"),
-        java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("COMPARE-TWO-YEAR_EXPENCES-PER-CATEGORY")};//the labels of the reports
+    String[] comboBoxActions = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("INSERT"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("EDIT"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("DELETE")};//the dropdown list at the action combo boxes
+    String[] comboBoxReports = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("COMPANIES"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("BILLS"),
+        java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("EXPENSES-PER-COMPANY-FOR-ALL-YEARS"),
+        java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("EXPENSES-AMOUNT-PER-COMPANY-BY-YEAR"),
+        java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("EXPENSES-AMOUNT-PER-MONTH-BY-YEAR"),
+        java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("INCOME"),
+        java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("INCOME-FOR-ALL-YEARS"),
+        java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("INCOME-BY-YEAR"),
+        java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("INCOME-AMOUNT-PER-MONTH-BY-YEAR"),
+        java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("INCOME-EXPENSES-MONTH-PER-YEAR"),
+        java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("EXPENSES-PER-CATEGORY-FOR-ALL-YEARS"),
+        java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("EXPENSES-PER-CATEGORY-PER-YEAR"),
+        java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("COMPARE-TWO-YEAR_EXPENCES-PER-CATEGORY")};//the labels of the reports
 
     /**
      * Creates new form billsUI
@@ -449,7 +449,8 @@ public class billsUI extends javax.swing.JFrame {
         });
         InsertEditCompanyPanel.add(companyDetailsCNameTextField);
 
-        companyRetrieveButton.setText(bundle.getString("billsUI.companyRetrieveButton.text")); // NOI18N
+        java.util.ResourceBundle bundle1 = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle"); // NOI18N
+        companyRetrieveButton.setText(bundle1.getString("billsUI.companyRetrieveButton.text")); // NOI18N
         companyRetrieveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 companyRetrieveButtonActionPerformed(evt);
@@ -457,7 +458,7 @@ public class billsUI extends javax.swing.JFrame {
         });
         InsertEditCompanyPanel.add(companyRetrieveButton);
 
-        companyDetailsGoButton.setText(bundle.getString("billsUI.companyDetailsGoButton.text")); // NOI18N
+        companyDetailsGoButton.setText(bundle1.getString("billsUI.companyDetailsGoButton.text")); // NOI18N
         companyDetailsGoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 companyDetailsGoButtonActionPerformed(evt);
@@ -550,7 +551,7 @@ public class billsUI extends javax.swing.JFrame {
 
         tabs.addTab(bundle.getString("billsUI.ReportsPanel.TabConstraints.tabTitle"), ReportsPanel); // NOI18N
 
-        jMenu1.setText(bundle.getString("billsUI.jMenu1.text")); // NOI18N
+        jMenu1.setText(bundle1.getString("billsUI.jMenu1.text")); // NOI18N
 
         jMenu5.setText(bundle.getString("billsUI.jMenu5.text")); // NOI18N
 
@@ -631,7 +632,7 @@ public class billsUI extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu3.setText(bundle.getString("billsUI.jMenu3.text")); // NOI18N
+        jMenu3.setText(bundle1.getString("billsUI.jMenu3.text")); // NOI18N
         jMenu3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu3ActionPerformed(evt);
@@ -700,7 +701,7 @@ public class billsUI extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu2.setText(bundle.getString("billsUI.jMenu2.text")); // NOI18N
+        jMenu2.setText(bundle1.getString("billsUI.jMenu2.text")); // NOI18N
 
         aboutMenuItem.setText(bundle.getString("billsUI.aboutMenuItem.text")); // NOI18N
         aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -718,7 +719,7 @@ public class billsUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tabs, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE)
+            .add(tabs, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 792, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -833,7 +834,7 @@ public class billsUI extends javax.swing.JFrame {
 
     private void shutdownMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shutdownMenuItemActionPerformed
         PopupMessageFrame mes = new PopupMessageFrame();
-        mes.setNotification(java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("THE-DATABASE-ENGINE-AND-THE-APPLICATION-WILL-SHUTDOWN"));
+        mes.setNotification(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("THE-DATABASE-ENGINE-AND-THE-APPLICATION-WILL-SHUTDOWN"));
         ShutdownDB s = new ShutdownDB();
         System.exit(0);
 }//GEN-LAST:event_shutdownMenuItemActionPerformed
@@ -1328,7 +1329,7 @@ public class billsUI extends javax.swing.JFrame {
         //TODO: change this with a faster algorithm, like the bill report
         SelectAllCompaniesIDS compIDS = new SelectAllCompaniesIDS();
         java.util.LinkedList cIdList = (LinkedList) compIDS.getAllRows();
-        String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("COMPANY ID"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("COMPANY NAME"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("COMPANY AFM"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("CATEGORY")};
+        String[] columnNames = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("COMPANY ID"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("COMPANY NAME"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("COMPANY AFM"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("CATEGORY")};
         Object[][] d;
         if (cIdList == null) {
             String[] blank = {"", "", "", ""};
@@ -1339,7 +1340,7 @@ public class billsUI extends javax.swing.JFrame {
             d = new Object[cIdList.size()][4];
         }
         currentReport = new ArrayList(cIdList.size() + 2);//for the save as txt function
-        String[] reportName = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("REPORT COMPANIES"), "", "", ""};
+        String[] reportName = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("REPORT COMPANIES"), "", "", ""};
         currentReport.add(reportName);
 
         currentReport.add(columnNames);
@@ -1368,7 +1369,7 @@ public class billsUI extends javax.swing.JFrame {
     private void reportPresentBills() {
         SelectAllBillsDetails billDet = new SelectAllBillsDetails();
         java.util.LinkedList bIdList = (LinkedList) billDet.getAllRows();
-        String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("BILL ID"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("COMPANY NAME"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("DATE OF ISSUE"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("DATE OF PAYMENT"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("PRICE"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("COMMENT")};
+        String[] columnNames = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("BILL ID"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("COMPANY NAME"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("DATE OF ISSUE"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("DATE OF PAYMENT"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("PRICE"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("COMMENT")};
         Object[][] d;
         if (bIdList == null) {
             String[] blank = {"", "", "", "", "", ""};
@@ -1380,7 +1381,7 @@ public class billsUI extends javax.swing.JFrame {
         }
 
         currentReport = new ArrayList(bIdList.size() + 2);//for the save as txt function
-        String[] reportName = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("REPORT BILLS"), "", "", "", "", ""};
+        String[] reportName = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("REPORT BILLS"), "", "", "", "", ""};
         currentReport.add(reportName);
         currentReport.add(columnNames);
         Iterator it = bIdList.iterator();
@@ -1406,9 +1407,9 @@ public class billsUI extends javax.swing.JFrame {
     private void reportExpenceTotalsPerCompany() {
         SelectReportTotalExpenseSums s = new SelectReportTotalExpenseSums();
         currentReport = new ArrayList(s.getColumns().length + 2);
-        String[] reportName = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("REPORT TOTAL EXPENSES PER COMPANY"), "", "", ""};
+        String[] reportName = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("REPORT TOTAL EXPENSES PER COMPANY"), "", "", ""};
         currentReport.add(reportName);
-        String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("PERCENTAGE"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("COMPANY NAME"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("AFM")};
+        String[] columnNames = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("PERCENTAGE"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("COMPANY NAME"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("AFM")};
         currentReport.add(columnNames);
         int o = 0;
         while (o < s.getColumns().length) {
@@ -1432,10 +1433,10 @@ public class billsUI extends javax.swing.JFrame {
         String year = (String) reportParametersComboBox.getSelectedItem();
         SelectReportExpenseSumsPerYear s = new SelectReportExpenseSumsPerYear(year);
         currentReport = new ArrayList(s.getColumns().length + 2);
-        String reportTitle = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("REPORT TOTAL YEARLY") + year + java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("EXPENSES PER COMPANY ");
+        String reportTitle = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("REPORT TOTAL YEARLY") + year + java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("EXPENSES PER COMPANY ");
         String[] reportName = {reportTitle, "", "", ""};
         currentReport.add(reportName);
-        String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("PERCENTAGE"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("COMPANY NAME"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("AFM")};
+        String[] columnNames = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("PERCENTAGE"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("COMPANY NAME"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("AFM")};
         currentReport.add(columnNames);
         int o = 0;
         while (o < s.getColumns().length) {
@@ -1458,10 +1459,10 @@ public class billsUI extends javax.swing.JFrame {
         SelectReportExpensesSumsPerMonthYear s = new SelectReportExpensesSumsPerMonthYear(year);
         String[][] dataCols = s.getColumns();
         currentReport = new ArrayList(dataCols.length + 2);
-        String reportTitle = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("REPORT TOTAL EXPENSES PER YEAR") + year + ")";
+        String reportTitle = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("REPORT TOTAL EXPENSES PER YEAR") + year + ")";
         String[] reportName = {reportTitle, "", ""};
         currentReport.add(reportName);
-        String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("PERCENTAGE"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("MONTH")};
+        String[] columnNames = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("PERCENTAGE"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("MONTH")};
         currentReport.add(columnNames);
         int o = 0;
         while (o < dataCols.length) {
@@ -1484,7 +1485,7 @@ public class billsUI extends javax.swing.JFrame {
     private void reportIncomeRows() {
         SelectAllIncomeDetails incDet = new SelectAllIncomeDetails();
         java.util.LinkedList incList = (LinkedList) incDet.getAllRows();
-        String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("INCOME ID"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("COMPANY NAME"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("DATE OF PAYMENT"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("COMMENT")};
+        String[] columnNames = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("INCOME ID"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("COMPANY NAME"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("DATE OF PAYMENT"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("COMMENT")};
         Object[][] d;
         if (incList == null) {
             String[] blank = {"", "", "", "", ""};
@@ -1495,7 +1496,7 @@ public class billsUI extends javax.swing.JFrame {
             d = new Object[incList.size()][5];
         }
         currentReport = new ArrayList(d.length + 2);
-        String[] reportName = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("REPORT INCOME"), "", "", ""};
+        String[] reportName = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("REPORT INCOME"), "", "", ""};
         currentReport.add(reportName);
 
         currentReport.add(columnNames);
@@ -1526,9 +1527,9 @@ public class billsUI extends javax.swing.JFrame {
     private void reportTotalIncomeForAllYears() {
         SelectReportTotalIncomeSums s = new SelectReportTotalIncomeSums();
         currentReport = new ArrayList(s.getColumns().length + 2);
-        String[] reportName = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("REPORT TOTAL INCOME"), "", ""};
+        String[] reportName = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("REPORT TOTAL INCOME"), "", ""};
         currentReport.add(reportName);
-        String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("PERCENTAGE"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("COMPANY NAME")};
+        String[] columnNames = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("PERCENTAGE"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("COMPANY NAME")};
         currentReport.add(columnNames);
         int o = 0;
         while (o < s.getColumns().length) {
@@ -1549,9 +1550,9 @@ public class billsUI extends javax.swing.JFrame {
     private void reportExpensesPerCategoryForAllYears() {
         SelectReportExpensesPerCategoryForAllYears e = new SelectReportExpensesPerCategoryForAllYears();
         currentReport = new ArrayList(e.getColumns().length + 2);
-        String[] reportName = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("REPORT EXPENSES PER CATEGORY FOR ALL YEARS"), "", ""};
+        String[] reportName = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("REPORT EXPENSES PER CATEGORY FOR ALL YEARS"), "", ""};
         currentReport.add(reportName);
-        String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("PERCENTAGE"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("COMPANY NAME")};
+        String[] columnNames = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("PERCENTAGE"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("COMPANY NAME")};
         currentReport.add(columnNames);
         int o = 0;
         while (o < e.getColumns().length) {
@@ -1573,10 +1574,10 @@ public class billsUI extends javax.swing.JFrame {
         String year = (String) reportParametersComboBox.getSelectedItem();
         SelectReportExpensesPerCategoryForAYear e = new SelectReportExpensesPerCategoryForAYear(year);
         currentReport = new ArrayList(e.getColumns().length + 2);
-        String reportTitle = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("REPORT CATEGORY EXPENSES PER YEAR") + year + ")";
+        String reportTitle = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("REPORT CATEGORY EXPENSES PER YEAR") + year + ")";
         String[] reportName = {reportTitle, "", ""};
         currentReport.add(reportName);
-        String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("PERCENTAGE"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("COMPANY NAME")};
+        String[] columnNames = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("PERCENTAGE"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("COMPANY NAME")};
         currentReport.add(columnNames);
         String[][] columnData = e.getColumns();
         int o = 0;
@@ -1600,10 +1601,10 @@ public class billsUI extends javax.swing.JFrame {
         String finalYear = (String) reportParametersFinalComboBox.getSelectedItem();
         CompareExpensesPerCategoryForTwoYears e = new CompareExpensesPerCategoryForTwoYears(initialYear, finalYear);
         currentReport = new ArrayList(e.getColumns().length);
-        String reportTitle = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("COMPARE-TWO-YEAR_EXPENCES-PER-CATEGORY") + initialYear + "-" + finalYear + ")";
+        String reportTitle = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("COMPARE-TWO-YEAR_EXPENCES-PER-CATEGORY") + initialYear + "-" + finalYear + ")";
         String[] reportName = {reportTitle, "", ""};
         currentReport.add(reportName);
-        String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("CATEGORY"), initialYear, finalYear, java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("PERCENTAGE")};
+        String[] columnNames = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("CATEGORY"), initialYear, finalYear, java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("PERCENTAGE")};
         currentReport.add(columnNames);
         int o = 0;
         while (o < e.getColumns().length) {
@@ -1624,10 +1625,10 @@ public class billsUI extends javax.swing.JFrame {
         String year = (String) reportParametersComboBox.getSelectedItem();
         SelectReportIncomeSumsPerYear s = new SelectReportIncomeSumsPerYear(year);
         currentReport = new ArrayList(s.getColumns().length + 2);
-        String reportTitle = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("REPORT TOTAL EXPENSES PER YEAR") + year + ")";
+        String reportTitle = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("REPORT TOTAL EXPENSES PER YEAR") + year + ")";
         String[] reportName = {reportTitle, "", ""};
         currentReport.add(reportName);
-        String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("PERCENTAGE"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("COMPANY NAME")};
+        String[] columnNames = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("PERCENTAGE"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("COMPANY NAME")};
         currentReport.add(columnNames);
         int o = 0;
         while (o < s.getColumns().length) {
@@ -1649,10 +1650,10 @@ public class billsUI extends javax.swing.JFrame {
         String year = (String) reportParametersComboBox.getSelectedItem();
         SelectProfitPerMonthYear s = new SelectProfitPerMonthYear(year);
         currentReport = new ArrayList(s.getColumns().length + 2);
-        String reportTitle = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("REPORT MONTHLY PROFIT/LOSSES  FOR YEAR") + year + ")";
+        String reportTitle = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("REPORT MONTHLY PROFIT/LOSSES  FOR YEAR") + year + ")";
         String[] reportName = {reportTitle, "", ""};
         currentReport.add(reportName);
-        String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("PERCENTAGE"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("MONTH")};
+        String[] columnNames = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("PERCENTAGE"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("MONTH")};
         currentReport.add(columnNames);
         int o = 0;
         while (o < s.getColumns().length) {
@@ -1677,10 +1678,10 @@ public class billsUI extends javax.swing.JFrame {
         SelectReportIncomeSumsPerMonthYear s = new SelectReportIncomeSumsPerMonthYear(year);
         String[][] dataCols = s.getColumns();
         currentReport = new ArrayList(dataCols.length + 2);
-        String reportTitle = java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("REPORT MONTHLY INCOME FOR YEAR") + year + ")";
+        String reportTitle = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("REPORT MONTHLY INCOME FOR YEAR") + year + ")";
         String[] reportName = {reportTitle, "", ""};
         currentReport.add(reportName);
-        String[] columnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("PERCENTAGE"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("MONTH")};
+        String[] columnNames = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("AMOUNT"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("PERCENTAGE"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("MONTH")};
         currentReport.add(columnNames);
         int o = 0;
         while (o < dataCols.length) {
@@ -1700,7 +1701,7 @@ public class billsUI extends javax.swing.JFrame {
      * for the report table.
      */
     private void interNReportJtableColNames() {
-        String[] jTableDefaultColumnNames = {java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("ID"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("COMPANY NAMES"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("AFM"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("DATE OF ISSUE"), java.util.ResourceBundle.getBundle("gr/oncrete/nick/myBill/UserInterface/myBillUIBundle").getString("DATE OF PAYMENT")};//the jtable default column names
+        String[] jTableDefaultColumnNames = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ID"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("COMPANY NAMES"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("AFM"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("DATE OF ISSUE"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("DATE OF PAYMENT")};//the jtable default column names
         String[][] dataCols = {};
         reportTable.setModel(new MyTableModel(dataCols, jTableDefaultColumnNames));
     }
