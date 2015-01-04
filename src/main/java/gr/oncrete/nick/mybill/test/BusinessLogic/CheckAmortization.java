@@ -15,10 +15,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package gr.oncrete.nick.myBill.BusinessLogic;
+package gr.oncrete.nick.mybill.test.BusinessLogic;
 
-import org.junit.After;
-import org.junit.Before;
+import gr.oncrete.nick.mybill.BusinessLogic.Amortization;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

@@ -13,11 +13,6 @@
     </repositories>
     <dependencies>
         <dependency>
-            <groupId>org.swinglabs</groupId>
-            <artifactId>swing-layout</artifactId>
-            <version>1.0.3</version>
-        </dependency>
-        <dependency>
             <artifactId>PlotPackage</artifactId>
             <groupId>jahuwaldt.plot</groupId>
             <version>1.0</version>
@@ -33,10 +28,57 @@
             <version>2.3.2</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>gr.oncrete.mybill</groupId>
+            <artifactId>swing-layout</artifactId>
+            <version>1.0.4</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
+    <build>
+    <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>2.4</version>
+          <configuration>
+              <archive>
+                  <manifest>
+                      <addClasspath>true</addClasspath>
+                      <classpathPrefix>lib/</classpathPrefix>
+                      <mainClass>gr.oncrete.nick.mybill.UserInterface.myBill</mainClass>
+                  </manifest>
+              </archive>
+          </configuration>
+      </plugin>
+      <plugin>
+    <artifactId>maven-assembly-plugin</artifactId>
+    <version>2.4</version>
+    <configuration>
+       <descriptorRefs>
+          <descriptorRef>jar-with-dependencies</descriptorRef>
+       </descriptorRefs>
+       <archive>
+          <manifest>
+              <mainClass>gr.oncrete.nick.mybill.UserInterface.myBill</mainClass>
+          </manifest>
+       </archive>
+    </configuration>
+    <executions>
+        <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>                         
+                <goal>single</goal>
+            </goals>
+         </execution>
+     </executions>
+</plugin>
+  </plugins>
+</build>
 </project>

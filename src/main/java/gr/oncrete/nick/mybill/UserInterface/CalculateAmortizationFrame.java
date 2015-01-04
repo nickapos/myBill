@@ -23,8 +23,8 @@
  */
 package gr.oncrete.nick.mybill.UserInterface;
 
-import gr.oncrete.nick.myBill.BusinessLogic.Amortization;
-import gr.oncrete.nick.myBill.BusinessLogic.AmortizationTable;
+import gr.oncrete.nick.mybill.BusinessLogic.Amortization;
+import gr.oncrete.nick.mybill.BusinessLogic.AmortizationTable;
 
 /**
  *
