@@ -16,7 +16,7 @@
  */
 package gr.oncrete.nick.mybill.BusinessLogic.ImportDB;
 
-import gr.oncrete.nick.myBill.BusinessLogic.FileHandlers.FileHandlerReadFile;
+import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.FileHandlerReadFile;
 import java.util.ArrayList;
 import java.util.Iterator;
 

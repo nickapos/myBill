@@ -14,7 +14,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package gr.oncrete.nick.myBill.BusinessLogic.FileHandlers;
+package gr.oncrete.nick.mybill.BusinessLogic.FileHandlers;
 
 import javax.swing.SwingWorker;
 import java.util.ArrayList;

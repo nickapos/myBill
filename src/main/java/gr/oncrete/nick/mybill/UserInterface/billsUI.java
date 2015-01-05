@@ -24,13 +24,13 @@
 package gr.oncrete.nick.mybill.UserInterface;
 
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.DumpDatabase;
-import gr.oncrete.nick.myBill.BusinessLogic.FileHandlers.MyFileWriter;
-import gr.oncrete.nick.myBill.BusinessLogic.FileHandlers.NewThreadFileWriter;
-import gr.oncrete.nick.myBill.BusinessLogic.PlotDataObject;
+import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.MyFileWriter;
+import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.NewThreadFileWriter;
+import gr.oncrete.nick.mybill.BusinessLogic.PlotDataObject;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.Category;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectBillDetails;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectIncomeDetails;
-import gr.oncrete.nick.myBill.BusinessLogic.Today;
+import gr.oncrete.nick.mybill.BusinessLogic.Today;
 import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateBillRecord;
 import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateCompanyRecord;
 import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateIncomeRecord;

@@ -19,7 +19,7 @@ package gr.oncrete.nick.mybill.UserInterface;
 import java.awt.*;
 import javax.swing.*;
 import jahuwaldt.plot.*;
-import gr.oncrete.nick.myBill.BusinessLogic.PlotDataObject;
+import gr.oncrete.nick.mybill.BusinessLogic.PlotDataObject;
 
 /**
  *  <p> A simple Swing frame that can be used to display a plot panel.

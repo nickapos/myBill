@@ -26,8 +26,8 @@ package gr.oncrete.nick.mybill.UserInterface;
 import java.util.*;
 import java.text.*;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.DumpDatabase;
-import gr.oncrete.nick.myBill.BusinessLogic.FileHandlers.MyFileWriter;
-import gr.oncrete.nick.myBill.BusinessLogic.FileHandlers.NewThreadFileWriter;
+import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.MyFileWriter;
+import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.NewThreadFileWriter;
 
 /**
  *

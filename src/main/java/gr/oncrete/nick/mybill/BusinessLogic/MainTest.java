@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package gr.oncrete.nick.mybill.BusinessLogic;
 
 
-import gr.oncrete.nick.myBill.BusinessLogic.FileHandlers.MyFileWriter;
+import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.MyFileWriter;
 
 
 /**

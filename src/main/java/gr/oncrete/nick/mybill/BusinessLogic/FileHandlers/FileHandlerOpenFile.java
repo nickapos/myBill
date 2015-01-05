@@ -21,7 +21,7 @@
  * Created on 6 Ιούλιος 2005, 8:06 πμ
  */
 
-package gr.oncrete.nick.myBill.BusinessLogic.FileHandlers;
+package gr.oncrete.nick.mybill.BusinessLogic.FileHandlers;
 import java.io.*;
 /**
  *

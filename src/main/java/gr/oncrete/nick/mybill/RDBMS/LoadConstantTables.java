@@ -22,7 +22,7 @@
  */
 
 package gr.oncrete.nick.mybill.RDBMS;
-import gr.oncrete.nick.myBill.BusinessLogic.FileHandlers.FileHandlerReadFile;
+import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.FileHandlerReadFile;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

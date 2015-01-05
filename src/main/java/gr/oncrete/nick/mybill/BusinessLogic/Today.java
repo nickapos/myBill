@@ -27,19 +27,10 @@ public class Today {
     }
 
     public String getToday() {
-        String today="";
+        
         Date d = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return dateFormat.format(d);
 
-        try {
-
-            //System.out.println("Today: " + dateFormat.format(calendar.getTime()));
-            //today=dateFormat.format(calendar.getTime());
-            today=dateFormat.format(d);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return today;
     }
 }

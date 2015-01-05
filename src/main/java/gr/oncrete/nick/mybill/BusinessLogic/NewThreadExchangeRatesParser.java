@@ -16,9 +16,7 @@
  */
 package gr.oncrete.nick.mybill.BusinessLogic;
 
-import gr.oncrete.nick.myBill.BusinessLogic.FileHandlers.*;
 import javax.swing.SwingWorker;
-import java.util.ArrayList;
 
 
 /**

@@ -19,7 +19,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package gr.oncrete.nick.myBill.BusinessLogic.FileHandlers;
+package gr.oncrete.nick.mybill.BusinessLogic.FileHandlers;
 
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;

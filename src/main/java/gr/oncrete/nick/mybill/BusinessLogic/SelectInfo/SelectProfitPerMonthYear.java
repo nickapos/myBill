@@ -18,7 +18,7 @@ package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
 
 import java.text.DecimalFormat;
 import java.text.DateFormatSymbols;
-import gr.oncrete.nick.myBill.BusinessLogic.PlotDataObject;
+import gr.oncrete.nick.mybill.BusinessLogic.PlotDataObject;
 
 /**
  *
