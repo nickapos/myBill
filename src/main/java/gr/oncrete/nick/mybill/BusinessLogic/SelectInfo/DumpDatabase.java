@@ -237,7 +237,7 @@ public class DumpDatabase {
                 //strin E from the amount  and replace . with ,
                 String withoutE = results.get(i + 3).toString().replaceAll("E", "");
                 String replaceComma = withoutE.replaceAll("\\.", ",");
-                String row = "" + results.get(i + 1) + ";" + results.get(i + 2) + ";" + replaceComma+";"+results.get(i+6);
+                String row = "" + results.get(i + 1) + ";" + results.get(i + 2) + ";" + replaceComma+";"+results.get(i+5)+";"+results.get(i+6);
                 eforia.add(row);
                 //System.out.println(row);
             }

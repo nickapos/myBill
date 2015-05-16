@@ -91,7 +91,7 @@ public class AboutWindow extends javax.swing.JFrame {
                 + "created by Nick Apostolakis (nickapos@oncrete.gr)"
                 + "\nand distrubuted under the GNU GPL License"
                 + "\nfor more please take a look at:\nhttp://mybill.oncrete.gr "
-                 + "\n Release date 04-01-2015";
+                 + "\n Release date 16-05-2015";
         aboutTextArea.setText(about);
     }
 
