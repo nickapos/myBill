@@ -33,6 +33,7 @@ import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
 public class InsertCompany {
 
     InsertIntoTable in;
+    int AFMSIZE=9;
 
     /**
      *
@@ -49,7 +50,7 @@ public class InsertCompany {
      */
     public void insertCompany(String cName, String afm, String catID) {
         if (cName.length() > 0 && afm.length() > 0 && catID.length() > 0) {
-            String sql = "insert into companies (companyname,afm,catid) values ('" + cName + "','" + afm + "'," + catID + ")";
+            String sql = "insert into companies (companyname,afm,catid) values ('" + cName + "','" + this.truncateAfmString(afm,AFMSIZE) + "'," + catID + ")";
             in = new InsertIntoTable(sql);
             if (!in.hasCompletedSucesfully()) {
                 System.out.println("insertion has not completed sucesfully conficting company details are: ");
@@ -73,7 +74,7 @@ public class InsertCompany {
      */
     public InsertCompany(String id, String cName, String afm) {
         if (id.length() > 0 && cName.length() > 0 && afm.length() > 0) {
-            String sql = "insert into companies (cid, companyname,afm) values (" + id + ",'" + cName + "','" + afm + "')";
+            String sql = "insert into companies (cid, companyname,afm) values (" + id + ",'" + this.truncateAfmString(afm,AFMSIZE) + "','" + afm + "')";
             in = new InsertIntoTable(sql);
             if (!in.hasCompletedSucesfully()) {
                 System.out.println("insertion has not completed sucesfully conficting company details are: ");
@@ -96,7 +97,7 @@ public class InsertCompany {
      */
     public InsertCompany(String id, String cName, String afm, String catid) {
         if (id.length() > 0 && cName.length() > 0 && afm.length() > 0 && catid.length() > 0) {
-            String sql = "insert into companies (cid, companyname,afm,catid) values (" + id + ",'" + cName + "','" + afm + "'," + catid + ")";
+            String sql = "insert into companies (cid, companyname,afm,catid) values (" + id + ",'" + cName + "','" + this.truncateAfmString(afm,AFMSIZE) + "'," + catid + ")";
             in = new InsertIntoTable(sql);
             if (!in.hasCompletedSucesfully()) {
                 System.out.println("insertion has not completed sucesfully conficting company details are: ");
@@ -111,12 +112,23 @@ public class InsertCompany {
     }
 
     /**
-     * this private method will return the conficting company in case of a unique constraing conflict in afm (the only possible constraint conflict with the specific table)
+     * this private method will return the conflicting company in case of a unique constraint conflict in afm (the only possible constraint conflict with the specific table)
      * @param afm
      */
     private void printConflictingCompany(String afm) {
         SelectCompanyDetails conflictingCompany = new SelectCompanyDetails();
         conflictingCompany.SelectCompanyDetailsWithAfm(afm);
         System.out.println(conflictingCompany.companyToString());
+    }
+    
+    /**
+     * This method will check if the incoming afm string is more than AFMSIZE characters and if that is true, truncate it to the max size
+     */
+    public String truncateAfmString(String afm, int AFMSIZE){
+        String truncAfm=afm;
+        if(afm.length()>AFMSIZE ){
+            truncAfm=afm.substring(0, AFMSIZE);
+        }
+        return truncAfm;
     }
 }

@@ -17,8 +17,7 @@
 
 package gr.oncrete.nick.mybill.test.BusinessLogic;
 
-
-import gr.oncrete.nick.mybill.BusinessLogic.CheckAFM;
+import gr.oncrete.nick.mybill.BusinessLogic.InsertCompany;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -26,12 +25,13 @@ import static org.junit.Assert.*;
  *
  * @author nickapos
  */
-public class CheckAFMTest {
+public class CheckInsertCompany {
 
+    int AFMSIZE=9;
     /**
      *
      */
-    public CheckAFMTest() {
+    public CheckInsertCompany() {
     }
 
     /**
@@ -70,38 +70,38 @@ public class CheckAFMTest {
    
 
     /**
-     * test 000000000 afm
+     * test 123456789 afm length
      */
     @Test
     public void testCheckAFMZeros() {
         System.out.println("check zeros");
-        String a = "000000000";
-        CheckAFM instance = new CheckAFM(a);       
-        assertFalse(instance.returnResult());
+        String a = "123456789";
+        InsertCompany instance = new InsertCompany();       
+        assertTrue(instance.truncateAfmString(a, AFMSIZE).length()==9);
            
     }
 
     /**
-     * test 123456789 afm
+     * test 12345678910 afm length
      */
     @Test
     public void testCheckAFM123() {
         System.out.println("check random number");
-        String a = "123456789";
-        CheckAFM instance = new CheckAFM(a);
-        assertFalse(instance.returnResult());
+        String a = "12345678910";
+        InsertCompany instance = new InsertCompany();       
+        assertTrue(instance.truncateAfmString(a, AFMSIZE).length()==9);
 
     }
 
      /**
-     * test a true afm
+     * test 12345 afm length
      */
     @Test
     public void testCheckAFMTrue() {
         System.out.println("check real afm");
-        String a = "999678050";
-        CheckAFM instance = new CheckAFM(a);
-        assertTrue(instance.returnResult());
+        String a = "12345";
+       InsertCompany instance = new InsertCompany();       
+        assertTrue(instance.truncateAfmString(a, AFMSIZE).length()==5);
 
     }
    
