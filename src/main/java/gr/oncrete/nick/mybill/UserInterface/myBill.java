@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package gr.oncrete.nick.mybill.UserInterface;
 
 import java.awt.EventQueue;
-import gr.oncrete.nick.myBill.BusinessLogic.Config;
+import gr.oncrete.nick.mybill.BusinessLogic.Config;
 /**
  *
  * @author nickapos
