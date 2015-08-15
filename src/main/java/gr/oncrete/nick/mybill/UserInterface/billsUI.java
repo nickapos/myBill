@@ -161,9 +161,9 @@ public class billsUI extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
+        importMenu = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
+        exportMenu = new javax.swing.JMenu();
         exportDBMenuItem = new javax.swing.JMenuItem();
         exportCSVsMenuItem = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -173,14 +173,15 @@ public class billsUI extends javax.swing.JFrame {
         executeSqlMenuItem = new javax.swing.JMenuItem();
         shutdownMenuItem = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
+        validateVatMenuItem = new javax.swing.JMenuItem();
+        manageCategoriesMenuItem = new javax.swing.JMenuItem();
+        mergeOperationsJMenu = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        changeDBCurrencyMenuItem = new javax.swing.JMenuItem();
+        calculateAmortizationMenuItem = new javax.swing.JMenuItem();
+        presentTransactionsPerCompanyMenuItem = new javax.swing.JMenuItem();
+        invertRecordMenuItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
@@ -449,8 +450,7 @@ public class billsUI extends javax.swing.JFrame {
         });
         InsertEditCompanyPanel.add(companyDetailsCNameTextField);
 
-        java.util.ResourceBundle bundle1 = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle"); // NOI18N
-        companyRetrieveButton.setText(bundle1.getString("billsUI.companyRetrieveButton.text")); // NOI18N
+        companyRetrieveButton.setText(bundle.getString("billsUI.companyRetrieveButton.text")); // NOI18N
         companyRetrieveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 companyRetrieveButtonActionPerformed(evt);
@@ -458,7 +458,7 @@ public class billsUI extends javax.swing.JFrame {
         });
         InsertEditCompanyPanel.add(companyRetrieveButton);
 
-        companyDetailsGoButton.setText(bundle1.getString("billsUI.companyDetailsGoButton.text")); // NOI18N
+        companyDetailsGoButton.setText(bundle.getString("billsUI.companyDetailsGoButton.text")); // NOI18N
         companyDetailsGoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 companyDetailsGoButtonActionPerformed(evt);
@@ -551,9 +551,9 @@ public class billsUI extends javax.swing.JFrame {
 
         tabs.addTab(bundle.getString("billsUI.ReportsPanel.TabConstraints.tabTitle"), ReportsPanel); // NOI18N
 
-        jMenu1.setText(bundle1.getString("billsUI.jMenu1.text")); // NOI18N
+        jMenu1.setText(bundle.getString("billsUI.jMenu1.text")); // NOI18N
 
-        jMenu5.setText(bundle.getString("billsUI.jMenu5.text")); // NOI18N
+        importMenu.setText(bundle.getString("billsUI.importMenu.text")); // NOI18N
 
         jMenuItem2.setText(bundle.getString("billsUI.jMenuItem2.text")); // NOI18N
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -561,11 +561,11 @@ public class billsUI extends javax.swing.JFrame {
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem2);
+        importMenu.add(jMenuItem2);
 
-        jMenu1.add(jMenu5);
+        jMenu1.add(importMenu);
 
-        jMenu4.setText(bundle.getString("billsUI.jMenu4.text")); // NOI18N
+        exportMenu.setText(bundle.getString("billsUI.exportMenu.text")); // NOI18N
 
         exportDBMenuItem.setText(bundle.getString("billsUI.exportDBMenuItem.text")); // NOI18N
         exportDBMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -573,7 +573,7 @@ public class billsUI extends javax.swing.JFrame {
                 exportDBMenuItemActionPerformed(evt);
             }
         });
-        jMenu4.add(exportDBMenuItem);
+        exportMenu.add(exportDBMenuItem);
 
         exportCSVsMenuItem.setText(bundle.getString("billsUI.exportCSVsMenuItem.text")); // NOI18N
         exportCSVsMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -581,7 +581,7 @@ public class billsUI extends javax.swing.JFrame {
                 exportCSVsMenuItemActionPerformed(evt);
             }
         });
-        jMenu4.add(exportCSVsMenuItem);
+        exportMenu.add(exportCSVsMenuItem);
 
         jMenuItem3.setText(bundle.getString("billsUI.jMenuItem3.text")); // NOI18N
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -589,7 +589,7 @@ public class billsUI extends javax.swing.JFrame {
                 jMenuItem3ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem3);
+        exportMenu.add(jMenuItem3);
 
         jMenuItem6.setText(bundle.getString("billsUI.jMenuItem6.text")); // NOI18N
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -597,9 +597,9 @@ public class billsUI extends javax.swing.JFrame {
                 jMenuItem6ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem6);
+        exportMenu.add(jMenuItem6);
 
-        jMenu1.add(jMenu4);
+        jMenu1.add(exportMenu);
 
         emptyDBMenyItem.setText(bundle.getString("billsUI.emptyDBMenyItem.text")); // NOI18N
 
@@ -632,30 +632,30 @@ public class billsUI extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu3.setText(bundle1.getString("billsUI.jMenu3.text")); // NOI18N
+        jMenu3.setText(bundle.getString("billsUI.jMenu3.text")); // NOI18N
         jMenu3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu3ActionPerformed(evt);
             }
         });
 
-        jMenuItem1.setText(bundle.getString("billsUI.jMenuItem1.text")); // NOI18N
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        validateVatMenuItem.setText(bundle.getString("billsUI.validateVatMenuItem.text")); // NOI18N
+        validateVatMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                validateVatMenuItemActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem1);
+        jMenu3.add(validateVatMenuItem);
 
-        jMenuItem4.setText(bundle.getString("billsUI.jMenuItem4.text")); // NOI18N
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        manageCategoriesMenuItem.setText(bundle.getString("billsUI.manageCategoriesMenuItem.text")); // NOI18N
+        manageCategoriesMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                manageCategoriesMenuItemActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem4);
+        jMenu3.add(manageCategoriesMenuItem);
 
-        jMenu6.setText(bundle.getString("billsUI.jMenu6.text")); // NOI18N
+        mergeOperationsJMenu.setText(bundle.getString("billsUI.mergeOperationsJMenu.text")); // NOI18N
 
         jMenuItem9.setText(bundle.getString("billsUI.jMenuItem9.text")); // NOI18N
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
@@ -663,7 +663,7 @@ public class billsUI extends javax.swing.JFrame {
                 jMenuItem9ActionPerformed(evt);
             }
         });
-        jMenu6.add(jMenuItem9);
+        mergeOperationsJMenu.add(jMenuItem9);
 
         jMenuItem10.setText(bundle.getString("billsUI.jMenuItem10.text")); // NOI18N
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
@@ -671,37 +671,45 @@ public class billsUI extends javax.swing.JFrame {
                 jMenuItem10ActionPerformed(evt);
             }
         });
-        jMenu6.add(jMenuItem10);
+        mergeOperationsJMenu.add(jMenuItem10);
 
-        jMenu3.add(jMenu6);
+        jMenu3.add(mergeOperationsJMenu);
 
-        jMenuItem5.setText(bundle.getString("billsUI.jMenuItem5.text")); // NOI18N
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        changeDBCurrencyMenuItem.setText(bundle.getString("billsUI.changeDBCurrencyMenuItem.text")); // NOI18N
+        changeDBCurrencyMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                changeDBCurrencyMenuItemActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem5);
+        jMenu3.add(changeDBCurrencyMenuItem);
 
-        jMenuItem7.setText(bundle.getString("billsUI.jMenuItem7.text")); // NOI18N
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        calculateAmortizationMenuItem.setText(bundle.getString("billsUI.calculateAmortizationMenuItem.text")); // NOI18N
+        calculateAmortizationMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                calculateAmortizationMenuItemActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem7);
+        jMenu3.add(calculateAmortizationMenuItem);
 
-        jMenuItem8.setText(bundle.getString("billsUI.jMenuItem8.text")); // NOI18N
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        presentTransactionsPerCompanyMenuItem.setText(bundle.getString("billsUI.presentTransactionsPerCompanyMenuItem.text")); // NOI18N
+        presentTransactionsPerCompanyMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                presentTransactionsPerCompanyMenuItemActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem8);
+        jMenu3.add(presentTransactionsPerCompanyMenuItem);
+
+        invertRecordMenuItem.setText(bundle.getString("billsUI.invertRecordMenuItem.text")); // NOI18N
+        invertRecordMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                invertRecordMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu3.add(invertRecordMenuItem);
 
         jMenuBar1.add(jMenu3);
 
-        jMenu2.setText(bundle1.getString("billsUI.jMenu2.text")); // NOI18N
+        jMenu2.setText(bundle.getString("billsUI.jMenu2.text")); // NOI18N
 
         aboutMenuItem.setText(bundle.getString("billsUI.aboutMenuItem.text")); // NOI18N
         aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -719,7 +727,7 @@ public class billsUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tabs, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 792, Short.MAX_VALUE)
+            .add(tabs, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 792, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -964,20 +972,20 @@ public class billsUI extends javax.swing.JFrame {
         e.runExecuteSqlCommand();
     }//GEN-LAST:event_executeSqlMenuItemActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void validateVatMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateVatMenuItemActionPerformed
         ValidateAFM v = new ValidateAFM();
         v.validateAFM();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_validateVatMenuItemActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         ExportCSVByYear exp = new ExportCSVByYear();
         exp.displayGUI();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void manageCategoriesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageCategoriesMenuItemActionPerformed
         ManageCategoriesFrame m = new ManageCategoriesFrame(catComboBox);
         m.displayApp();
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_manageCategoriesMenuItemActionPerformed
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
         // TODO add your handling code here:
@@ -1048,25 +1056,25 @@ public class billsUI extends javax.swing.JFrame {
         exrf.presentExchangeRateFrame();
     }//GEN-LAST:event_showRatesFrameButtonActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void changeDBCurrencyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeDBCurrencyMenuItemActionPerformed
         ConvertToNewCurrencyFrame cv = new ConvertToNewCurrencyFrame();
         cv.showFrame();
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_changeDBCurrencyMenuItemActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         ExportCSVByPeriod cvsp = new ExportCSVByPeriod();
         cvsp.displayGUI();
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    private void calculateAmortizationMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateAmortizationMenuItemActionPerformed
         CalculateAmortizationFrame calcAmor = new CalculateAmortizationFrame();
         calcAmor.calcAmortization();
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    }//GEN-LAST:event_calculateAmortizationMenuItemActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+    private void presentTransactionsPerCompanyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_presentTransactionsPerCompanyMenuItemActionPerformed
         PresentTransactionsPerCompany tp = new PresentTransactionsPerCompany();
         tp.displayApp();
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    }//GEN-LAST:event_presentTransactionsPerCompanyMenuItemActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         MergeCategoriesFrame mc = new MergeCategoriesFrame();
@@ -1084,7 +1092,7 @@ public class billsUI extends javax.swing.JFrame {
 
     private void showRatesFrameButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showRatesFrameButton1ActionPerformed
         ExchangeRatesFrame exrf = new ExchangeRatesFrame(foreignCurrencyTextField, foreignCurrencyTextField1);
-        exrf.presentExchangeRateFrame();        // TODO add your handling code here:
+        exrf.presentExchangeRateFrame();       
     }//GEN-LAST:event_showRatesFrameButton1ActionPerformed
 
     private void foreignCurrencyCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foreignCurrencyCheckBox1ActionPerformed
@@ -1095,6 +1103,12 @@ public class billsUI extends javax.swing.JFrame {
             this.foreignCurrencyTextField1.setEnabled(false);
         }        // TODO add your handling code here:
     }//GEN-LAST:event_foreignCurrencyCheckBox1ActionPerformed
+
+    private void invertRecordMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invertRecordMenuItemActionPerformed
+
+        InvertRecordWindow invr = new InvertRecordWindow();
+        invr.showInvertRecord(); 
+    }//GEN-LAST:event_invertRecordMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1118,7 +1132,9 @@ public class billsUI extends javax.swing.JFrame {
     private javax.swing.JTextField billIdTextField;
     private javax.swing.JComboBox billInsertEditCompanyNameComboBox;
     private javax.swing.JButton billRetrieveButton;
+    private javax.swing.JMenuItem calculateAmortizationMenuItem;
     private javax.swing.JComboBox catComboBox;
+    private javax.swing.JMenuItem changeDBCurrencyMenuItem;
     private javax.swing.JTextField companyDetailsAfmTextField;
     private javax.swing.JTextField companyDetailsCNameTextField;
     private javax.swing.JComboBox companyDetailsComboBox;
@@ -1132,6 +1148,7 @@ public class billsUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem executeSqlMenuItem;
     private javax.swing.JMenuItem exportCSVsMenuItem;
     private javax.swing.JMenuItem exportDBMenuItem;
+    private javax.swing.JMenu exportMenu;
     private javax.swing.JCheckBox foreignCurrencyCheckBox;
     private javax.swing.JCheckBox foreignCurrencyCheckBox1;
     private javax.swing.JPanel foreignCurrencySelPanel;
@@ -1141,6 +1158,7 @@ public class billsUI extends javax.swing.JFrame {
     private javax.swing.JPanel foreignCurrencyValuePanel;
     private javax.swing.JPanel foreignCurrencyValuePanel1;
     private javax.swing.JPanel goPanel;
+    private javax.swing.JMenu importMenu;
     private javax.swing.JComboBox incomeActionComboBox;
     private javax.swing.JTextField incomeAmountTextField;
     private javax.swing.JTextField incomeCommentTextField;
@@ -1150,6 +1168,7 @@ public class billsUI extends javax.swing.JFrame {
     private javax.swing.JTextField incomeIDTextField;
     private javax.swing.JButton incomeRetrieveButton;
     private javax.swing.JComboBox inserEditBillComboBox;
+    private javax.swing.JMenuItem invertRecordMenuItem;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1178,21 +1197,16 @@ public class billsUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenuItem manageCategoriesMenuItem;
+    private javax.swing.JMenu mergeOperationsJMenu;
+    private javax.swing.JMenuItem presentTransactionsPerCompanyMenuItem;
     private javax.swing.JButton reportButton;
     private javax.swing.JComboBox reportComboBox;
     private javax.swing.JPanel reportPanel;
@@ -1204,6 +1218,7 @@ public class billsUI extends javax.swing.JFrame {
     private javax.swing.JButton showRatesFrameButton1;
     private javax.swing.JMenuItem shutdownMenuItem;
     private javax.swing.JTabbedPane tabs;
+    private javax.swing.JMenuItem validateVatMenuItem;
     // End of variables declaration//GEN-END:variables
 
     private String[] getCompaniesCombo() {
