@@ -24,6 +24,8 @@
 
 package gr.oncrete.nick.mybill.UserInterface;
 
+import gr.oncrete.nick.mybill.BusinessLogic.InvertRecord;
+
 /**
  *
  * @author nickapos
@@ -48,15 +50,19 @@ public class InvertRecordWindow extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        recordIdTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        amoundJabelField = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        dateLabelField = new javax.swing.JLabel();
 
         getContentPane().setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jPanel1.setLayout(new java.awt.GridLayout(4, 2));
+        jPanel1.setLayout(new java.awt.GridLayout(6, 2));
 
         jLabel3.setText("Record type");
         jPanel1.add(jLabel3);
@@ -67,15 +73,20 @@ public class InvertRecordWindow extends javax.swing.JFrame {
         jLabel2.setText("Record id");
         jPanel1.add(jLabel2);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        recordIdTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                recordIdTextFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1);
+        jPanel1.add(recordIdTextField);
         jPanel1.add(jLabel4);
 
         jButton1.setText("Invert!");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1);
 
         jLabel1.setText("Status:");
@@ -85,15 +96,50 @@ public class InvertRecordWindow extends javax.swing.JFrame {
         jLabel5.setText("Ready");
         jPanel1.add(jLabel5);
 
+        jLabel6.setText("Amount:");
+        jPanel1.add(jLabel6);
+        jPanel1.add(amoundJabelField);
+
+        jLabel8.setText("Date");
+        jPanel1.add(jLabel8);
+        jPanel1.add(dateLabelField);
+
         getContentPane().add(jPanel1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void recordIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordIdTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_recordIdTextFieldActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        InvertRecord invr = new InvertRecord();
+        String recordToBeInverted = (String) recordIdTextField.getText();
+
+        int recordToBeInvertedId = invr.convertID(recordToBeInverted);
+        if (recordToBeInvertedId == -1) {
+            jLabel5.setText("Invalid record id");
+        } else if (recordToBeInvertedId == -2) {
+            jLabel5.setText("Invalid record id");
+        } else if (recordToBeInvertedId == -3) {
+            jLabel5.setText("Empty record ID");
+        }
+        
+        
+        int recordTypeToBeInverted = jComboBox1.getSelectedIndex();
+
+        if (recordTypeToBeInverted == 0) {
+            //if we have incoming type expenses
+        } else if (recordTypeToBeInverted == 1) {
+            //if we have incoming type income
+        } else {
+            jLabel5.setText("Invalid record type selected");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    
+    
     /**
     * @param args the command line arguments
     */
@@ -106,6 +152,8 @@ public class InvertRecordWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel amoundJabelField;
+    private javax.swing.JLabel dateLabelField;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -113,8 +161,10 @@ public class InvertRecordWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField recordIdTextField;
     // End of variables declaration//GEN-END:variables
 
     /**
