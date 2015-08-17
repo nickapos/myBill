@@ -65,7 +65,7 @@ public class InsertIncome {
      /**
      * Constructor insert bill without an id and with company id
      *
-     * @param cName
+     * @param cid
      * @param amount
      * @param dateOfPayment
      */
@@ -79,7 +79,7 @@ public class InsertIncome {
             }
 
             in = new InsertIntoTable(sql);
-            //System.out.println(sql);
+            System.out.println(sql);
         } else {
             in = new InsertIntoTable();
             in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN INCOME INSERTION"));

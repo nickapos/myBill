@@ -19,8 +19,9 @@ public class InvertRecord {
     public void invertIncome(int recordID) {
         SelectIncomeDetails incDet = new SelectIncomeDetails();
         incDet.SelectBillDetailsWithID("" + recordID);
+        
         //insert the inverted new Bill
-        InsertBills newBill= new InsertBills(incDet.getCID(),incDet.getAmount(), incDet.getDateOfPayment(),incDet.getDateOfPayment(),incDet.getComment());
+        InsertBills newBill= new InsertBills(Integer.parseInt(incDet.getCID()),incDet.getAmount(), incDet.getDateOfPayment(),incDet.getDateOfPayment(),incDet.getComment());
     }
 
     /**
@@ -30,8 +31,8 @@ public class InvertRecord {
     public void invertExpense(int recordID) {
         SelectBillDetails billDet = new SelectBillDetails();
         billDet.SelectBillDetailsWithID("" + recordID);
-        
-        InsertIncome newInc = new InsertIncome(billDet.getCID(),billDet.getPrice(),billDet.getDateOfPayment(),billDet.getComment());
+        //System.out.println(billDet.toString());
+        InsertIncome newInc = new InsertIncome(Integer.parseInt(billDet.getCID()),billDet.getPrice(),billDet.getDateOfPayment(),billDet.getComment());
     }
 
     /**

@@ -127,4 +127,9 @@ public class SelectBillDetails {
     public boolean resultsExist() {
         return exists;
     }
+    
+    public String toString()
+    {
+        return "Bid:"+this.getBID()+" Cid:"+this.getCID()+" DateOfIssue: "+this.getDateOfIssue()+" Amount:"+this.getPrice();
+    }
 }

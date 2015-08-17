@@ -54,15 +54,11 @@ public class InvertRecordWindow extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        amoundJabelField = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        dateLabelField = new javax.swing.JLabel();
+        statusLabel = new javax.swing.JLabel();
 
         getContentPane().setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
-        jPanel1.setLayout(new java.awt.GridLayout(6, 2));
+        jPanel1.setLayout(new java.awt.GridLayout(4, 2));
 
         jLabel3.setText("Record type");
         jPanel1.add(jLabel3);
@@ -92,17 +88,9 @@ public class InvertRecordWindow extends javax.swing.JFrame {
         jLabel1.setText("Status:");
         jPanel1.add(jLabel1);
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Ready");
-        jPanel1.add(jLabel5);
-
-        jLabel6.setText("Amount:");
-        jPanel1.add(jLabel6);
-        jPanel1.add(amoundJabelField);
-
-        jLabel8.setText("Date");
-        jPanel1.add(jLabel8);
-        jPanel1.add(dateLabelField);
+        statusLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        statusLabel.setText("Ready");
+        jPanel1.add(statusLabel);
 
         getContentPane().add(jPanel1);
 
@@ -119,20 +107,22 @@ public class InvertRecordWindow extends javax.swing.JFrame {
 
         int recordToBeInvertedId = invr.convertID(recordToBeInverted);
         if (recordToBeInvertedId == -1) {
-            jLabel5.setText("Invalid record id");
+            statusLabel.setText("Invalid record id");
         } else if (recordToBeInvertedId == -3) {
-            jLabel5.setText("Empty record ID");
+            statusLabel.setText("Empty record ID");
         } else if (recordToBeInvertedId >0) {
             int recordTypeToBeInverted = jComboBox1.getSelectedIndex();
             if (recordTypeToBeInverted == 0) {
                 //if we have incoming type expenses
                 invr.invertExpense(recordToBeInvertedId);
+                statusLabel.setText("Done!");
             } else if (recordTypeToBeInverted == 1) {
                 //if we have incoming type income
                 invr.invertIncome(recordToBeInvertedId);
+                statusLabel.setText("Done!");
             } 
         }else {
-                jLabel5.setText("Invalid record type selected");
+                statusLabel.setText("Invalid record type selected");
             }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -150,19 +140,15 @@ public class InvertRecordWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel amoundJabelField;
-    private javax.swing.JLabel dateLabelField;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField recordIdTextField;
+    private javax.swing.JLabel statusLabel;
     // End of variables declaration//GEN-END:variables
 
     /**

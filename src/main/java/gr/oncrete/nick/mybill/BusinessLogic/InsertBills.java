@@ -65,7 +65,7 @@ public class InsertBills {
     /**
      * Constructor insert bill without an id and with numerical company id
      *
-     * @param cName
+     * @param cid
      * @param price
      * @param dateOfIssue
      * @param dateOfPayment
@@ -78,6 +78,7 @@ public class InsertBills {
             } else {
                 sql = "insert into bills (cid,price,dateofissue,dayofpayment) values (" + cid + "," + price + ",'" + dateOfIssue + "','" + dateOfPayment + "')";
             }
+            System.out.println(sql);
             this.commitToDB(sql);
         } else {
             this.commitToDB("");
@@ -117,7 +118,7 @@ public class InsertBills {
      * @param dryRun 
      */
     private void commitToDB(String sql) {
-        if(dryRun){
+        if(!dryRun){
         InsertIntoTable in;
         if (sql.length() > 0) {
             in = new InsertIntoTable(sql);
