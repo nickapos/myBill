@@ -61,6 +61,33 @@ public class InsertIncome {
         }
 
     }
+    
+     /**
+     * Constructor insert bill without an id and with company id
+     *
+     * @param cName
+     * @param amount
+     * @param dateOfPayment
+     */
+    public InsertIncome(int cid, String amount, String dateOfPayment, String comment) {
+        if (cid > 0 && amount.length() > 0 && dateOfPayment.length() > 0) {
+            String sql = "";
+            if (comment.length() > 0) {
+                sql = "insert into income (cid,amount,dateOfPayment,comment) values (" + cid + "," + amount + ",'" + dateOfPayment + "','" + comment + "')";
+            } else {
+                sql = "insert into income (cid,amount,dateOfPayment) values (" + cid + "," + amount + ",'" + dateOfPayment + "')";
+            }
+
+            in = new InsertIntoTable(sql);
+            //System.out.println(sql);
+        } else {
+            in = new InsertIntoTable();
+            in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN INCOME INSERTION"));
+        }
+
+    }
+    
+    
 
     /**
      * /**

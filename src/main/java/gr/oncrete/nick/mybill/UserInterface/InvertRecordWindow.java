@@ -120,22 +120,20 @@ public class InvertRecordWindow extends javax.swing.JFrame {
         int recordToBeInvertedId = invr.convertID(recordToBeInverted);
         if (recordToBeInvertedId == -1) {
             jLabel5.setText("Invalid record id");
-        } else if (recordToBeInvertedId == -2) {
-            jLabel5.setText("Invalid record id");
         } else if (recordToBeInvertedId == -3) {
             jLabel5.setText("Empty record ID");
-        }
-        
-        
-        int recordTypeToBeInverted = jComboBox1.getSelectedIndex();
-
-        if (recordTypeToBeInverted == 0) {
-            //if we have incoming type expenses
-        } else if (recordTypeToBeInverted == 1) {
-            //if we have incoming type income
-        } else {
-            jLabel5.setText("Invalid record type selected");
-        }
+        } else if (recordToBeInvertedId >0) {
+            int recordTypeToBeInverted = jComboBox1.getSelectedIndex();
+            if (recordTypeToBeInverted == 0) {
+                //if we have incoming type expenses
+                invr.invertExpense(recordToBeInvertedId);
+            } else if (recordTypeToBeInverted == 1) {
+                //if we have incoming type income
+                invr.invertIncome(recordToBeInvertedId);
+            } 
+        }else {
+                jLabel5.setText("Invalid record type selected");
+            }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
