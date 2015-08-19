@@ -74,7 +74,7 @@ public class CheckInsertBills {
      */
     @Test
     public void testInsertSqlWithNoComment() {
-        System.out.println("check zeros");
+        System.out.println("test insert bill without comment");
         String a = "insert into bills (cid,price,dateofissue,dayofpayment) values (464,225,'2015-08-19','2015-08-19')";
         InsertBills instance = new InsertBills();   
         String returnStr=instance.parseinsertBillsArgumentsWithoutId("464","225" ,"2015-08-19", "2015-08-19","");
@@ -88,7 +88,7 @@ public class CheckInsertBills {
      */
     @Test
     public void testInsertSqlWithComment() {
-        System.out.println("check zeros");
+        System.out.println("test insert bill with comment");
         String a = "insert into bills (cid,price,dateofissue,dayofpayment,comment) values (465,12,'2015-08-19','2015-08-19','ee')";
         InsertBills instance = new InsertBills();   
         String returnStr=instance.parseinsertBillsArgumentsWithoutId("465","12" ,"2015-08-19", "2015-08-19","ee");
@@ -100,7 +100,7 @@ public class CheckInsertBills {
      */
     @Test
     public void testInsertSqlWithZeroArgs1() {
-        System.out.println("check zeros");
+        System.out.println("test insert bill no cid argument");
         String a = "";
         InsertBills instance = new InsertBills();   
         String returnStr=instance.parseinsertBillsArgumentsWithoutId("","12" ,"2015-08-19", "2015-08-19","ee");
@@ -112,7 +112,7 @@ public class CheckInsertBills {
      */
     @Test
     public void testInsertSqlWithZeroArgs2() {
-        System.out.println("check zeros");
+        System.out.println("test insert bill with no price argument");
         String a = "";
         InsertBills instance = new InsertBills();   
         String returnStr=instance.parseinsertBillsArgumentsWithoutId("465","" ,"2015-08-19", "2015-08-19","ee");
@@ -124,7 +124,7 @@ public class CheckInsertBills {
      */
     @Test
     public void testInsertSqlWithZeroArgs3() {
-        System.out.println("check zeros");
+        System.out.println("test insert bill with no date of issue argument");
         String a = "";
         InsertBills instance = new InsertBills();   
         String returnStr=instance.parseinsertBillsArgumentsWithoutId("465","12" ,"", "2015-08-19","ee");
@@ -137,7 +137,7 @@ public class CheckInsertBills {
      */
     @Test
     public void testInsertSqlWithZeroArgs5() {
-        System.out.println("check zeros");
+        System.out.println("test insert bill with no date of payment argument");
         String a = "";
         InsertBills instance = new InsertBills();   
         String returnStr=instance.parseinsertBillsArgumentsWithoutId("465","12" ,"2015-08-19", "","ee");
