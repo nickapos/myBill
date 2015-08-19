@@ -70,40 +70,79 @@ public class CheckInsertBills {
    
 
     /**
-     * test 123456789 afm length
+     * test insert bill without comment
      */
     @Test
-    public void testCheckAFMZeros() {
+    public void testInsertSqlWithNoComment() {
         System.out.println("check zeros");
-        String a = "123456789";
-        //InsertBills instance = new InsertBills();       
-        //assertTrue(instance.truncateAfmString(a, AFMSIZE).length()==9);
+        String a = "insert into bills (cid,price,dateofissue,dayofpayment) values (464,225,'2015-08-19','2015-08-19')";
+        InsertBills instance = new InsertBills();   
+        String returnStr=instance.parseinsertBillsArgumentsWithoutId("464","225" ,"2015-08-19", "2015-08-19","");
+        assertTrue(returnStr.equals(a));
            
     }
 
+    
     /**
-     * test 12345678910 afm length
+     * test insert bill with comment
      */
     @Test
-    public void testCheckAFM123() {
-        System.out.println("check random number");
-        String a = "12345678910";
-       // InsertCompany instance = new InsertCompany();       
-        //assertTrue(instance.truncateAfmString(a, AFMSIZE).length()==9);
-
+    public void testInsertSqlWithComment() {
+        System.out.println("check zeros");
+        String a = "insert into bills (cid,price,dateofissue,dayofpayment,comment) values (465,12,'2015-08-19','2015-08-19','ee')";
+        InsertBills instance = new InsertBills();   
+        String returnStr=instance.parseinsertBillsArgumentsWithoutId("465","12" ,"2015-08-19", "2015-08-19","ee");
+        assertTrue(returnStr.equals(a));
+           
     }
-
-     /**
-     * test 12345 afm length
+   /**
+     * test insert bill no cid argument
      */
     @Test
-    public void testCheckAFMTrue() {
-        System.out.println("check real afm");
-        String a = "12345";
-       //InsertCompany instance = new InsertCompany();       
-       // assertTrue(instance.truncateAfmString(a, AFMSIZE).length()==5);
-
+    public void testInsertSqlWithZeroArgs1() {
+        System.out.println("check zeros");
+        String a = "";
+        InsertBills instance = new InsertBills();   
+        String returnStr=instance.parseinsertBillsArgumentsWithoutId("","12" ,"2015-08-19", "2015-08-19","ee");
+        assertTrue(returnStr.equals(a));
+           
     }
-   
+    /**
+     * test insert bill with no price argument
+     */
+    @Test
+    public void testInsertSqlWithZeroArgs2() {
+        System.out.println("check zeros");
+        String a = "";
+        InsertBills instance = new InsertBills();   
+        String returnStr=instance.parseinsertBillsArgumentsWithoutId("465","" ,"2015-08-19", "2015-08-19","ee");
+        assertTrue(returnStr.equals(a));
+           
+    }
+   /**
+     * test insert bill with no date of issue argument
+     */
+    @Test
+    public void testInsertSqlWithZeroArgs3() {
+        System.out.println("check zeros");
+        String a = "";
+        InsertBills instance = new InsertBills();   
+        String returnStr=instance.parseinsertBillsArgumentsWithoutId("465","12" ,"", "2015-08-19","ee");
+        assertTrue(returnStr.equals(a));
+           
+    }
+    
+    /**
+     * test insert bill with no date of payment argument
+     */
+    @Test
+    public void testInsertSqlWithZeroArgs5() {
+        System.out.println("check zeros");
+        String a = "";
+        InsertBills instance = new InsertBills();   
+        String returnStr=instance.parseinsertBillsArgumentsWithoutId("465","12" ,"2015-08-19", "","ee");
+        assertTrue(returnStr.equals(a));
+           
+    }
 
 }

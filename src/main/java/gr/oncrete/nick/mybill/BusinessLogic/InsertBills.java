@@ -32,10 +32,14 @@ import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
  */
 public class InsertBills {
 
-    boolean dryRun=false;
-    
-     
-    
+    boolean dryRun = false;
+
+    /**
+     * empty constructor that can be used for decoupling class creation from entry insertion
+     */
+    public InsertBills() {
+    }
+
     /**
      * Constructor insert bill without an id
      *
@@ -45,23 +49,10 @@ public class InsertBills {
      * @param dateOfPayment
      */
     public InsertBills(String cName, String price, String dateOfIssue, String dateOfPayment, String comment) {
-        if (cName.length() > 0 && price.length() > 0 && dateOfIssue.length() > 0 && dateOfPayment.length() > 0) {
-            SelectCompanyDetails a = new SelectCompanyDetails();
-            a.SelectCompanyDetailsWithName(cName);
-            String cid = a.getID();
-            String sql = "";
-            if (comment.length() > 0) {
-                sql = "insert into bills (cid,price,dateofissue,dayofpayment,comment) values (" + cid + "," + price + ",'" + dateOfIssue + "','" + dateOfPayment + "','" + comment + "')";
-            } else {
-                sql = "insert into bills (cid,price,dateofissue,dayofpayment) values (" + cid + "," + price + ",'" + dateOfIssue + "','" + dateOfPayment + "')";
-            }
-            this.commitToDB(sql);
-        } else {
-            this.commitToDB("");
-        }
+        this.insertBillsWithoutId(cName, price, dateOfIssue, dateOfPayment, comment);
 
     }
-    
+
     /**
      * Constructor insert bill without an id and with numerical company id
      *
@@ -71,19 +62,53 @@ public class InsertBills {
      * @param dateOfPayment
      */
     public InsertBills(int cid, String price, String dateOfIssue, String dateOfPayment, String comment) {
-        if (cid > 0 && price.length() > 0 && dateOfIssue.length() > 0 && dateOfPayment.length() > 0) {
-            String sql = "";
+        this.parseinsertBillsArgumentsWithoutId("" + cid, price, dateOfIssue, dateOfPayment, comment);
+
+    }
+
+    /**
+     * Wrapper of parse arguments without id, the only thing this method does is to get the cid from the cname
+     *
+     * @param cName
+     * @param price
+     * @param dateOfIssue
+     * @param dateOfPayment
+     */
+    public void insertBillsWithoutId(String cName, String price, String dateOfIssue, String dateOfPayment, String comment) {
+        if (cName.length() > 0 && price.length() > 0 && dateOfIssue.length() > 0 && dateOfPayment.length() > 0) {
+            SelectCompanyDetails a = new SelectCompanyDetails();
+            a.SelectCompanyDetailsWithName(cName);
+            String cid = a.getID();
+            String sql=this.parseinsertBillsArgumentsWithoutId(cid, price, dateOfIssue, dateOfPayment, comment);
+            this.commitToDB(sql);
+        }
+
+    }
+
+    /**
+     * this method will be used by two constructors to create records without an
+     * id and with company id either numerical or string
+     *
+     * @param cid
+     * @param price
+     * @param dateOfIssue
+     * @param dateOfPayment
+     * @param comment
+     */
+    public String parseinsertBillsArgumentsWithoutId(String cid, String price, String dateOfIssue, String dateOfPayment, String comment) {
+        String sql = "";
+        if (cid.length() > 0 && price.length() > 0 && dateOfIssue.length() > 0 && dateOfPayment.length() > 0) {
             if (comment.length() > 0) {
                 sql = "insert into bills (cid,price,dateofissue,dayofpayment,comment) values (" + cid + "," + price + ",'" + dateOfIssue + "','" + dateOfPayment + "','" + comment + "')";
             } else {
                 sql = "insert into bills (cid,price,dateofissue,dayofpayment) values (" + cid + "," + price + ",'" + dateOfIssue + "','" + dateOfPayment + "')";
             }
             System.out.println(sql);
-            this.commitToDB(sql);
+            
         } else {
-            this.commitToDB("");
+            sql="";
         }
-
+        return sql;
     }
 
     /**
@@ -113,29 +138,32 @@ public class InsertBills {
     }
 
     /**
-     * This is the commit method. It has been separating in order to provide a dry run option for testing purposes
+     * This is the commit method. It has been separating in order to provide a
+     * dry run option for testing purposes
+     *
      * @param sql
-     * @param dryRun 
+     * @param dryRun
      */
     private void commitToDB(String sql) {
-        if(!dryRun){
-        InsertIntoTable in;
-        if (sql.length() > 0) {
-            in = new InsertIntoTable(sql);
+        if (!dryRun) {
+            InsertIntoTable in;
+            if (sql.length() > 0) {
+                in = new InsertIntoTable(sql);
+            } else {
+                in = new InsertIntoTable();
+                in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN BILL INSERTION"));
+            }
         } else {
-            in = new InsertIntoTable();
-            in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN BILL INSERTION"));
-        }
-        }else
-        {
             System.out.println("This is a dry run");
         }
     }
+
     /**
      * this method can be used to turn dry run on for testing purposes.
-     * @param dr 
+     *
+     * @param dr
      */
-    public void setDyRun(boolean dr){
-        dryRun=dr;
+    public void setDyRun(boolean dr) {
+        dryRun = dr;
     }
 }
