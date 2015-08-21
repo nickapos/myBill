@@ -60,13 +60,14 @@ public class InvertRecordWindow extends javax.swing.JFrame {
 
         jPanel1.setLayout(new java.awt.GridLayout(4, 2));
 
-        jLabel3.setText("Record type");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle"); // NOI18N
+        jLabel3.setText(bundle.getString("RECORD TYPE")); // NOI18N
         jPanel1.add(jLabel3);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Expenses", "Income" }));
         jPanel1.add(jComboBox1);
 
-        jLabel2.setText("Record id");
+        jLabel2.setText(bundle.getString("RECORD ID")); // NOI18N
         jPanel1.add(jLabel2);
 
         recordIdTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +78,7 @@ public class InvertRecordWindow extends javax.swing.JFrame {
         jPanel1.add(recordIdTextField);
         jPanel1.add(jLabel4);
 
-        jButton1.setText("Invert!");
+        jButton1.setText(bundle.getString("INVERT!")); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -85,11 +86,11 @@ public class InvertRecordWindow extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1);
 
-        jLabel1.setText("Status:");
+        jLabel1.setText(bundle.getString("STATUS:")); // NOI18N
         jPanel1.add(jLabel1);
 
         statusLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        statusLabel.setText("Ready");
+        statusLabel.setText(bundle.getString("READY")); // NOI18N
         jPanel1.add(statusLabel);
 
         getContentPane().add(jPanel1);
@@ -107,22 +108,22 @@ public class InvertRecordWindow extends javax.swing.JFrame {
 
         int recordToBeInvertedId = invr.convertID(recordToBeInverted);
         if (recordToBeInvertedId == -1) {
-            statusLabel.setText("Invalid record id");
+            statusLabel.setText(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("INVALID RECORD ID"));
         } else if (recordToBeInvertedId == -3) {
-            statusLabel.setText("Empty record ID");
+            statusLabel.setText(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("EMPTY RECORD ID"));
         } else if (recordToBeInvertedId >0) {
             int recordTypeToBeInverted = jComboBox1.getSelectedIndex();
             if (recordTypeToBeInverted == 0) {
                 //if we have incoming type expenses
                 invr.invertExpense(recordToBeInvertedId);
-                statusLabel.setText("Done!");
+                statusLabel.setText(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("DONE!"));
             } else if (recordTypeToBeInverted == 1) {
                 //if we have incoming type income
                 invr.invertIncome(recordToBeInvertedId);
-                statusLabel.setText("Done!");
+                statusLabel.setText(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("DONE!"));
             } 
         }else {
-                statusLabel.setText("Invalid record type selected");
+                statusLabel.setText(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("INVALID RECORD TYPE SELECTED"));
             }
     }//GEN-LAST:event_jButton1ActionPerformed
 
