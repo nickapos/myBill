@@ -25,12 +25,12 @@ import static org.junit.Assert.*;
  *
  * @author nickapos
  */
-public class CheckAmortization {
+public class CheckAmortizationTest {
     private static final double DELTA = 0.5;
     /**
      *
      */
-    public CheckAmortization() {
+    public CheckAmortizationTest() {
     }
 
     /**

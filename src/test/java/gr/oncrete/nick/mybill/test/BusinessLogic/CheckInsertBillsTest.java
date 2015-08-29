@@ -25,13 +25,13 @@ import static org.junit.Assert.*;
  *
  * @author nickapos
  */
-public class CheckInsertBills {
+public class CheckInsertBillsTest {
 
     int AFMSIZE=9;
     /**
      *
      */
-    public CheckInsertBills() {
+    public CheckInsertBillsTest() {
     }
 
     /**

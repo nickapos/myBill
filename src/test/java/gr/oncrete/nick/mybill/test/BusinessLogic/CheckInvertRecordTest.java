@@ -25,13 +25,13 @@ import static org.junit.Assert.*;
  *
  * @author nickapos
  */
-public class CheckInvertRecord {
+public class CheckInvertRecordTest {
 
   
     /**
      *
      */
-    public CheckInvertRecord() {
+    public CheckInvertRecordTest() {
     }
 
     /**
