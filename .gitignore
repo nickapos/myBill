@@ -5,4 +5,4 @@ dist/
 mybilldb/
 nbproject/
 .DS_Store
-/target/
+target/
