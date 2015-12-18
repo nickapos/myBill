@@ -29,7 +29,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
-import gr.oncrete.nick.myBill.BusinessLogic.*;
+import gr.oncrete.nick.mybill.BusinessLogic.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 /**
