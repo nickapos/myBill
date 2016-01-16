@@ -17,28 +17,30 @@
  */
 package gr.oncrete.nick.mybill.BusinessLogic;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-
 /**
  *
  * @author nickapos
  */
-public class ParseTSBCsv extends ParseCsv{
+public class ParseTSBCsv extends ParseCsv {
+    //tsb has 8 fields in its csv
+    static final int numOfFields = 8;
 
-    int numberOfFields = 8;
-    
     public ParseTSBCsv() {
         super();
+
     }
 
-    public ParseTSBCsv(String file, String delim, int fields) {
-        super(file, delim, fields);
+    public ParseTSBCsv(String file) {
+        super(file, numOfFields);
+
     }
 
-    
+    public ParseTSBCsv(String file, String delim) {
+        super(file, delim, numOfFields);
+    }
+
+    public int getNumOfFields()
+    {
+        return numOfFields;
+    }
 }

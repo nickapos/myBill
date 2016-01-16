@@ -39,6 +39,11 @@ public class ParseCsv {
 
     }
 
+    public ParseCsv(String file,int fields) {
+        this.setNumberOfFields(fields);
+        this.setFileName(file);
+    }
+
     public ParseCsv(String file, String delim, int fields) {
         this.setDelimiter(delim);
         this.setNumberOfFields(fields);
@@ -61,7 +66,8 @@ public class ParseCsv {
                 String[] lineArr = line.split(delimiter);
                 ArrayList<String> lineContent = new ArrayList<String>(Arrays.asList(lineArr));
                 if (lineContent.size() != numberOfFields) {
-                    System.out.println("Received a line with more fields than expected. I am going to ignore it.");
+                    System.out.println("Received a line with more fields than expected. I am going to ignore it. Expected number of fields:"
+                            +numberOfFields);
                     System.out.println("Line contents: " + lineContent.toString());
                 } else {
                     content.add(lineContent);
