@@ -142,7 +142,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             if (bankName.equals("TSB")) {
                 ParseTSBCsv tsb = new ParseTSBCsv(file.getAbsolutePath());
                 ArrayList contentList = tsb.getContent();
-                String[][] contentStrArr=this.convertArrayListTo2DStringArray(contentList, tsb.getNumOfFields());
+                Object[][] contentStrArr=this.convertArrayListTo2DStringArray(contentList, tsb.getNumOfFields());
             } else {
                 System.out.println("No parsing template found");
             }
@@ -187,12 +187,19 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
-    private String[][] convertArrayListTo2DStringArray(ArrayList content, int numOfFields) {
+    private Object[][] convertArrayListTo2DStringArray(ArrayList content, int numOfFields) {
         int length = content.size();
-        String[][] csvStringArr = new String[length][numOfFields + 1];
+        Object[][] csvStringArr = new String[length][numOfFields + 1];
         Iterator iterContent = content.iterator();
+        int lineCounter=0;
         while (iterContent.hasNext()) {
-            System.out.println(iterContent.next().toString());
+            ArrayList line =(ArrayList)iterContent.next();
+            System.out.println(line.toString());
+            for(int fieldCount=0;fieldCount<numOfFields;fieldCount++){
+                csvStringArr[lineCounter][fieldCount]=(String)line.get(fieldCount);
+            }
+            csvStringArr[lineCounter][numOfFields]=true;
+            lineCounter++;
         }
         return csvStringArr;
     }
