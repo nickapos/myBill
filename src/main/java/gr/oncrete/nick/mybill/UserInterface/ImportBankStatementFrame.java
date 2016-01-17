@@ -29,6 +29,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JFileChooser;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -134,7 +137,15 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ImportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportButtonActionPerformed
+        String bankName = (String) bankComboBox.getSelectedItem();
+        System.out.println("Selected Bank: " + bankName);
+        Object[][] data = getTableData(recordTable);
+        if (bankName.equals("TSB")) {
+            this.importTSBData(data);
 
+        } else {
+            System.out.println("No parsing template found");
+        }
     }//GEN-LAST:event_ImportButtonActionPerformed
 
     private void loadFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadFileButtonActionPerformed
@@ -205,7 +216,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
 
     private Object[][] convertArrayListTo2DStringArray(ArrayList content, int numOfFields) {
         int length = content.size();
-        Object[][] csvStringArr = new Object[length][numOfFields +1];
+        Object[][] csvStringArr = new Object[length][numOfFields + 1];
         Iterator iterContent = content.iterator();
         int lineCounter = 0;
         while (iterContent.hasNext()) {
@@ -214,11 +225,72 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             for (int fieldCount = 0; fieldCount < numOfFields; fieldCount++) {
                 csvStringArr[lineCounter][fieldCount] = (String) line.get(fieldCount);
             }
-            csvStringArr[lineCounter][numOfFields] =  true;
-            
+            csvStringArr[lineCounter][numOfFields] = true;
+
             lineCounter++;
         }
-        System.out.println("Total no of columns: "+numOfFields);
+        System.out.println("Total no of columns: " + numOfFields);
         return csvStringArr;
+    }
+
+    private Object[][] getTableData(JTable table) {
+        DefaultTableModel dtm = (DefaultTableModel) table.getModel();
+        int nRow = dtm.getRowCount(), nCol = dtm.getColumnCount();
+        Object[][] tableData = new Object[nRow][nCol];
+        for (int i = 0; i < nRow; i++) {
+            for (int j = 0; j < nCol; j++) {
+                tableData[i][j] = dtm.getValueAt(i, j);
+            }
+        }
+        return tableData;
+    }
+
+    /**
+     * This method will convert the incoming data from a TSB export to the appropriate format for the database
+     * @param data 
+     */
+    private void importTSBData(Object[][] data) {
+        int noOfLines = data.length;
+        for (int i = 0; i < noOfLines; i++) {
+            String unCorrectedDate = (String) data[i][0];
+            String descCompName = (String) data[i][4];
+            String debitAm = (String) data[i][5];
+            String creditAm = (String) data[i][6];
+            boolean editField = (boolean) data[i][8];
+            /*
+             for(int u=0;u<data[i].length;u++)
+             {
+             System.out.print(data[i][u].toString());
+             }*/
+            if (editField) {
+                if (debitAm.length() > 0) {
+                    System.out.println("This a withdrawal");
+                    System.out.println("I will import");
+                    System.out.println("Record data:" + this.correctDate(unCorrectedDate) + " afm:" + descCompName.hashCode() + " company:" + descCompName + " withdrawal:" + debitAm );
+                } else {
+                    System.out.println("This a deposit");
+                    System.out.println("I will import");
+                    System.out.println("Record data:" + this.correctDate(unCorrectedDate) + " afm:" + descCompName.hashCode() + " company:" + descCompName + " deposit:" + creditAm);
+                }
+
+            } else {
+                System.out.println("I will not import");
+                System.out.println("Record data:" + this.correctDate(unCorrectedDate) + " afm:" + descCompName.hashCode() + " company:" + descCompName + "-" + debitAm + "-" + creditAm);
+            }
+        }
+    }
+
+    /**
+     * Convert the incoming date to the date used by the database
+     *
+     * @param uncDate
+     * @return
+     */
+    private String correctDate(String uncDate) {
+        String[] splitDate = uncDate.split("/");
+        String year = splitDate[0];
+        String month = splitDate[1];
+        String day = splitDate[2];
+        return year + "-" + month + "-" + day;
     }
 }
