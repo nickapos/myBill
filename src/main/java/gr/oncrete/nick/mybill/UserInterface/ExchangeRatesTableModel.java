@@ -27,12 +27,19 @@ package gr.oncrete.nick.mybill.UserInterface;
  */
 class ExchangeRatesTableModel extends javax.swing.table.DefaultTableModel {
 
+    //designate one column to contain booleans
+    int booleanColumn=2;
     public ExchangeRatesTableModel(String[][] d, String[] cName) {
         super(d, cName);
     }
 
     public ExchangeRatesTableModel(Object[][] d, String[] cName) {
         super(d, cName);
+    }
+    
+    public ExchangeRatesTableModel(Object[][] d, String[] cName, int booleanColumn) {
+        super(d, cName);
+        booleanColumn=booleanColumn;
     }
     boolean[] canEdit = new boolean []
          {
@@ -41,7 +48,7 @@ class ExchangeRatesTableModel extends javax.swing.table.DefaultTableModel {
     
     @Override
     public Class getColumnClass(int c) {
-        if (c == 2) {
+        if (c == booleanColumn) {
             return java.lang.Boolean.class;
         } else {
             return java.lang.String.class;

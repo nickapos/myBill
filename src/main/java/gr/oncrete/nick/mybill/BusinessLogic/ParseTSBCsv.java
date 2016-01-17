@@ -45,7 +45,7 @@ public class ParseTSBCsv extends ParseCsv {
         return numOfFields;
     }
     
-    public String[] getHeader()
+    public String[] getColumnNames()
     {
         return header;
     }

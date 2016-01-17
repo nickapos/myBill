@@ -61,7 +61,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         ImportButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        recordTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle"); // NOI18N
@@ -103,7 +103,9 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.LINE_AXIS));
+
+        recordTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -111,10 +113,18 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Transaction Date", "Transaction Type", "Sort Code", "Account Number"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(recordTable);
 
         jPanel2.add(jScrollPane1);
 
@@ -142,7 +152,12 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             if (bankName.equals("TSB")) {
                 ParseTSBCsv tsb = new ParseTSBCsv(file.getAbsolutePath());
                 ArrayList contentList = tsb.getContent();
-                Object[][] contentStrArr=this.convertArrayListTo2DStringArray(contentList, tsb.getNumOfFields());
+                Object[][] contentStrArr = this.convertArrayListTo2DStringArray(contentList, tsb.getNumOfFields());
+                String[] columnNames = tsb.getColumnNames();
+                if (contentList.size() > 0) {
+                    recordTable.setModel(new MyTableModel(contentStrArr, columnNames));
+                    recordTable.setAutoCreateRowSorter(true);//add a primitive sort by column function
+                }
             } else {
                 System.out.println("No parsing template found");
             }
@@ -171,8 +186,8 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton loadFileButton;
+    private javax.swing.JTable recordTable;
     // End of variables declaration//GEN-END:variables
 
     private String[] getCategoriesCombo() {
@@ -189,16 +204,16 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
 
     private Object[][] convertArrayListTo2DStringArray(ArrayList content, int numOfFields) {
         int length = content.size();
-        Object[][] csvStringArr = new String[length][numOfFields + 1];
+        Object[][] csvStringArr = new String[length][numOfFields ];
         Iterator iterContent = content.iterator();
-        int lineCounter=0;
+        int lineCounter = 0;
         while (iterContent.hasNext()) {
-            ArrayList line =(ArrayList)iterContent.next();
+            ArrayList line = (ArrayList) iterContent.next();
             System.out.println(line.toString());
-            for(int fieldCount=0;fieldCount<numOfFields;fieldCount++){
-                csvStringArr[lineCounter][fieldCount]=(String)line.get(fieldCount);
+            for (int fieldCount = 0; fieldCount < numOfFields; fieldCount++) {
+                csvStringArr[lineCounter][fieldCount] = (String) line.get(fieldCount);
             }
-            csvStringArr[lineCounter][numOfFields]=true;
+           // csvStringArr[lineCounter][numOfFields] = true;
             lineCounter++;
         }
         return csvStringArr;
