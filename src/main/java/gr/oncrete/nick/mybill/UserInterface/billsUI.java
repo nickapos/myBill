@@ -163,6 +163,7 @@ public class billsUI extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         importMenu = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         exportMenu = new javax.swing.JMenu();
         exportDBMenuItem = new javax.swing.JMenuItem();
         exportCSVsMenuItem = new javax.swing.JMenuItem();
@@ -563,6 +564,14 @@ public class billsUI extends javax.swing.JFrame {
             }
         });
         importMenu.add(jMenuItem2);
+
+        jMenuItem1.setText(bundle.getString("billsUI.jMenuItem1.text")); // NOI18N
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        importMenu.add(jMenuItem1);
 
         jMenu1.add(importMenu);
 
@@ -1125,6 +1134,12 @@ public class billsUI extends javax.swing.JFrame {
         mngCountr.displayApp(); 
     }//GEN-LAST:event_manageCountriesMenuItemActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        ImportBankStatementFrame importStatement=new ImportBankStatementFrame();
+        importStatement.showImportStatemenFrame();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1213,6 +1228,7 @@ public class billsUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;

@@ -155,7 +155,8 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                 Object[][] contentStrArr = this.convertArrayListTo2DStringArray(contentList, tsb.getNumOfFields());
                 String[] columnNames = tsb.getColumnNames();
                 if (contentList.size() > 0) {
-                    recordTable.setModel(new MyTableModel(contentStrArr, columnNames));
+                    recordTable.setModel(new ImportBankStatementTableModel(contentStrArr, columnNames));
+                    //recordTable.setModel(new MyTableModel(contentStrArr, columnNames));
                     recordTable.setAutoCreateRowSorter(true);//add a primitive sort by column function
                 }
             } else {
@@ -204,18 +205,20 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
 
     private Object[][] convertArrayListTo2DStringArray(ArrayList content, int numOfFields) {
         int length = content.size();
-        Object[][] csvStringArr = new String[length][numOfFields ];
+        Object[][] csvStringArr = new Object[length][numOfFields +1];
         Iterator iterContent = content.iterator();
         int lineCounter = 0;
         while (iterContent.hasNext()) {
             ArrayList line = (ArrayList) iterContent.next();
-            System.out.println(line.toString());
+            //System.out.println(line.toString());
             for (int fieldCount = 0; fieldCount < numOfFields; fieldCount++) {
                 csvStringArr[lineCounter][fieldCount] = (String) line.get(fieldCount);
             }
-           // csvStringArr[lineCounter][numOfFields] = true;
+            csvStringArr[lineCounter][numOfFields] =  true;
+            
             lineCounter++;
         }
+        System.out.println("Total no of columns: "+numOfFields);
         return csvStringArr;
     }
 }

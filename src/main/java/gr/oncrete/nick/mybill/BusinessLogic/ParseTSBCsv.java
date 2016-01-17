@@ -24,7 +24,7 @@ package gr.oncrete.nick.mybill.BusinessLogic;
 public class ParseTSBCsv extends ParseCsv {
     //tsb has 8 fields in its csv
     static final int numOfFields = 8;
-    private String[] header= {"Transaction Date","Transaction Type","Sort Code","Account Number","Transaction Description","Debit Amount","Credit Amount","Balance"};
+    private String[] header= {"Transaction Date","Transaction Type","Sort Code","Account Number","Transaction Description","Debit Amount","Credit Amount","Balance","Import"};
 
     public ParseTSBCsv() {
         super();

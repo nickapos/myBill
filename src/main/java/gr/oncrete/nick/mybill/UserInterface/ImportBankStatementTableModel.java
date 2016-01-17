@@ -25,25 +25,24 @@ package gr.oncrete.nick.mybill.UserInterface;
  *
  *
  */
-class ExchangeRatesTableModel extends javax.swing.table.DefaultTableModel {
+class ImportBankStatementTableModel extends javax.swing.table.DefaultTableModel {
 
     //designate one column to contain booleans
-    static final int booleanColumn=2;
-    public ExchangeRatesTableModel(String[][] d, String[] cName) {
+    int booleanColumn = 8;
+
+    public ImportBankStatementTableModel(String[][] d, String[] cName) {
         super(d, cName);
     }
 
-    public ExchangeRatesTableModel(Object[][] d, String[] cName) {
+    public ImportBankStatementTableModel(Object[][] d, String[] cName) {
         super(d, cName);
     }
-    
-   
-    boolean[] canEdit = new boolean []
-         {
-            false, false, true
-         };
-    
-        
+
+    public ImportBankStatementTableModel(Object[][] d, String[] cName, int boolColumn) {
+        super(d, cName);
+        booleanColumn = boolColumn;
+    }
+
     @Override
     public Class getColumnClass(int c) {
         if (c == booleanColumn) {
@@ -51,6 +50,20 @@ class ExchangeRatesTableModel extends javax.swing.table.DefaultTableModel {
         } else {
             return java.lang.String.class;
         }
+    }
+
+    
+
+    private boolean[] getcanEditArr(int sizeOfArr, int editPos) {
+        boolean[] canEdit = new boolean[sizeOfArr];
+        for (int i = 0; i < sizeOfArr; i++) {
+            if (i == editPos && editPos < sizeOfArr && editPos >= 0) {
+                canEdit[i] = true;
+            } else {
+                canEdit[i] = false;
+            }
+        }
+        return canEdit;
     }
 
     /**
@@ -62,6 +75,7 @@ class ExchangeRatesTableModel extends javax.swing.table.DefaultTableModel {
      */
     @Override
     public boolean isCellEditable(int row, int column) {
-        return canEdit [column];
+        boolean[] canEdit=this.getcanEditArr(9, 8);
+        return canEdit[column];
     }
 }
