@@ -25,13 +25,14 @@ package gr.oncrete.nick.mybill.UserInterface;
 
 import gr.oncrete.nick.mybill.BusinessLogic.Categories;
 import gr.oncrete.nick.mybill.BusinessLogic.ParseTSBCsv;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.Category;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JFileChooser;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -59,7 +60,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         bankLabel = new javax.swing.JLabel();
         bankComboBox = new javax.swing.JComboBox();
         categoryLabel = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        importBankSCategoryComboBox = new javax.swing.JComboBox();
         loadFileButton = new javax.swing.JButton();
         ImportButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -85,8 +86,8 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         categoryLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(categoryLabel);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(this.getCategoriesCombo()));
-        jPanel1.add(jComboBox1);
+        importBankSCategoryComboBox.setModel(new javax.swing.DefaultComboBoxModel(this.getCategoriesCombo()));
+        jPanel1.add(importBankSCategoryComboBox);
 
         loadFileButton.setText(bundle.getString("ImportBankStatementFrame.loadFileButton.text")); // NOI18N
         loadFileButton.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +195,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox bankComboBox;
     private javax.swing.JLabel bankLabel;
     private javax.swing.JLabel categoryLabel;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox importBankSCategoryComboBox;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -254,28 +255,28 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         for (int i = 0; i < noOfLines; i++) {
             String unCorrectedDate = (String) data[i][0];
             String descCompName = (String) data[i][4];
+            String afm=Integer.toString(descCompName.hashCode()).substring(0, 9);
             String debitAm = (String) data[i][5];
             String creditAm = (String) data[i][6];
             boolean editField = (boolean) data[i][8];
-            /*
-             for(int u=0;u<data[i].length;u++)
-             {
-             System.out.print(data[i][u].toString());
-             }*/
+            //retrieve the category details
+            String categId=getCategID();
+            
             if (editField) {
+                String companyID=getCompID(afm);
                 if (debitAm.length() > 0) {
                     System.out.println("This a withdrawal");
                     System.out.println("I will import");
-                    System.out.println("Record data:" + this.correctDate(unCorrectedDate) + " afm:" + descCompName.hashCode() + " company:" + descCompName + " withdrawal:" + debitAm );
+                    System.out.println("Record data:" + this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " withdrawal:" + debitAm );
                 } else {
                     System.out.println("This a deposit");
                     System.out.println("I will import");
-                    System.out.println("Record data:" + this.correctDate(unCorrectedDate) + " afm:" + descCompName.hashCode() + " company:" + descCompName + " deposit:" + creditAm);
+                    System.out.println("Record data:" + this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + creditAm);
                 }
 
             } else {
                 System.out.println("I will not import");
-                System.out.println("Record data:" + this.correctDate(unCorrectedDate) + " afm:" + descCompName.hashCode() + " company:" + descCompName + "-" + debitAm + "-" + creditAm);
+                System.out.println("Record data:" + this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + "-" + debitAm + "-" + creditAm);
             }
         }
     }
@@ -292,5 +293,26 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         String month = splitDate[1];
         String day = splitDate[2];
         return year + "-" + month + "-" + day;
+    }
+    
+    private String getCategID(){
+        //retrieve the category details
+            String categName= (String)importBankSCategoryComboBox.getSelectedItem();
+            Category categ=new Category();
+            categ.selectCatByName(categName);
+            return categ.getCatID();
+    }
+    
+    private String getCompID(String afm){
+        //findout if the company exists
+                SelectCompanyDetails company= new SelectCompanyDetails();
+                company.SelectCompanyDetailsWithAfm(afm);
+                String companyId="";
+                if(company.resultsExist()){
+                    companyId=company.getID();
+                }else{
+                    
+                }
+                return companyId;
     }
 }
