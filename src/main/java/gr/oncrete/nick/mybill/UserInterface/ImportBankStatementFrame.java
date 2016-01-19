@@ -24,6 +24,9 @@
 package gr.oncrete.nick.mybill.UserInterface;
 
 import gr.oncrete.nick.mybill.BusinessLogic.Categories;
+import gr.oncrete.nick.mybill.BusinessLogic.InsertBills;
+import gr.oncrete.nick.mybill.BusinessLogic.InsertCompany;
+import gr.oncrete.nick.mybill.BusinessLogic.InsertIncome;
 import gr.oncrete.nick.mybill.BusinessLogic.ParseTSBCsv;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.Category;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
@@ -247,31 +250,37 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
     }
 
     /**
-     * This method will convert the incoming data from a TSB export to the appropriate format for the database
-     * @param data 
+     * This method will convert the incoming data from a TSB export to the
+     * appropriate format for the database
+     *
+     * @param data
      */
     private void importTSBData(Object[][] data) {
         int noOfLines = data.length;
         for (int i = 0; i < noOfLines; i++) {
             String unCorrectedDate = (String) data[i][0];
             String descCompName = (String) data[i][4];
-            String afm=Integer.toString(descCompName.hashCode()).substring(0, 9);
+            String afm = Integer.toString(descCompName.hashCode()).substring(0, 9);
             String debitAm = (String) data[i][5];
             String creditAm = (String) data[i][6];
-            boolean editField = (boolean) data[i][8];
+            boolean importField = (boolean) data[i][8];
             //retrieve the category details
-            String categId=getCategID();
-            
-            if (editField) {
-                String companyID=getCompID(afm);
+            String categId = getCategID();
+
+            if (importField) {
+                //get the category id for the import
+                String companyID = getCompID(descCompName,afm,categId);
                 if (debitAm.length() > 0) {
-                    System.out.println("This a withdrawal");
-                    System.out.println("I will import");
-                    System.out.println("Record data:" + this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " withdrawal:" + debitAm );
+                    //System.out.println("This a withdrawal");
+                    //System.out.println("I will import");
+                    //System.out.println("Record data:" +"Company"+companyID+" "+ this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " withdrawal:" + debitAm);
+                    InsertBills bill = new InsertBills(Integer.parseInt(companyID),debitAm,this.correctDate(unCorrectedDate),this.correctDate(unCorrectedDate),"Auto imported field");
+                    
                 } else {
-                    System.out.println("This a deposit");
-                    System.out.println("I will import");
-                    System.out.println("Record data:" + this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + creditAm);
+                    //System.out.println("This a deposit");
+                    //System.out.println("I will import");
+                    //System.out.println("Record data:" +"Company"+companyID+" "+ this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + creditAm);
+                    InsertIncome income = new InsertIncome(Integer.parseInt(companyID),creditAm,this.correctDate(unCorrectedDate),"Auto imported field");
                 }
 
             } else {
@@ -289,30 +298,36 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
      */
     private String correctDate(String uncDate) {
         String[] splitDate = uncDate.split("/");
-        String year = splitDate[0];
+        String day = splitDate[0];
         String month = splitDate[1];
-        String day = splitDate[2];
+        String year = splitDate[2];
+        //System.out.println("year:"+year+"month:"+month+"day:"+day);
         return year + "-" + month + "-" + day;
     }
-    
-    private String getCategID(){
+
+    private String getCategID() {
         //retrieve the category details
-            String categName= (String)importBankSCategoryComboBox.getSelectedItem();
-            Category categ=new Category();
-            categ.selectCatByName(categName);
-            return categ.getCatID();
+        String categName = (String) importBankSCategoryComboBox.getSelectedItem();
+        Category categ = new Category();
+        categ.selectCatByName(categName);
+        return categ.getCatID();
     }
-    
-    private String getCompID(String afm){
+
+    private String getCompID(String name,String afm,String catid) {
         //findout if the company exists
-                SelectCompanyDetails company= new SelectCompanyDetails();
-                company.SelectCompanyDetailsWithAfm(afm);
-                String companyId="";
-                if(company.resultsExist()){
-                    companyId=company.getID();
-                }else{
-                    
-                }
-                return companyId;
+        SelectCompanyDetails company = new SelectCompanyDetails();
+        company.SelectCompanyDetailsWithAfm(afm);
+        String companyId = "";
+        if (company.resultsExist()) {
+            companyId = company.getID();
+        } else {
+            //System.out.println("I am going to enter the following company details"+name+"-"+afm+"-"+catid);
+            InsertCompany in= new InsertCompany();
+            in.insertCompany(name, afm, catid);
+            SelectCompanyDetails newCompany = new SelectCompanyDetails();
+            newCompany.SelectCompanyDetailsWithAfm(afm);
+            companyId=newCompany.getID();
+        }
+        return companyId;
     }
 }
