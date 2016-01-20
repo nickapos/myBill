@@ -62,8 +62,8 @@ public class InsertBills {
      * @param dateOfPayment
      */
     public InsertBills(int cid, String price, String dateOfIssue, String dateOfPayment, String comment) {
-        this.parseinsertBillsArgumentsWithoutId("" + cid, price, dateOfIssue, dateOfPayment, comment);
-
+        String sql=this.parseinsertBillsArgumentsWithoutId("" + cid, price, dateOfIssue, dateOfPayment, comment);
+        this.commitToDB(sql);
     }
 
     /**
@@ -145,9 +145,11 @@ public class InsertBills {
      * @param dryRun
      */
     private void commitToDB(String sql) {
+        System.out.println("Iam inserting:"+sql);
         if (!dryRun) {
             InsertIntoTable in;
             if (sql.length() > 0) {
+                
                 in = new InsertIntoTable(sql);
             } else {
                 in = new InsertIntoTable();
