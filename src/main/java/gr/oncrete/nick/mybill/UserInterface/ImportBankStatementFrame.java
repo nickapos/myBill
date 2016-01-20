@@ -144,7 +144,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         String bankName = (String) bankComboBox.getSelectedItem();
         System.out.println("Selected Bank: " + bankName);
         Object[][] data = getTableData(recordTable);
-        if (bankName.equals("TSB")) {
+        if (bankName.equals("TSB")||bankName.equals("Bank of Scotland")) {
             this.importTSBData(data);
 
         } else {
@@ -164,7 +164,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             System.out.println("Opening: " + file.getAbsolutePath());
             String bankName = (String) bankComboBox.getSelectedItem();
             System.out.println("Selected Bank: " + bankName);
-            if (bankName.equals("TSB")) {
+            if (bankName.equals("TSB")||bankName.equals("Bank of Scotland")) {
                 ParseTSBCsv tsb = new ParseTSBCsv(file.getAbsolutePath());
                 ArrayList contentList = tsb.getContent();
                 Object[][] contentStrArr = this.convertArrayListTo2DStringArray(contentList, tsb.getNumOfFields());
