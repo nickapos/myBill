@@ -27,6 +27,7 @@ import gr.oncrete.nick.mybill.BusinessLogic.Categories;
 import gr.oncrete.nick.mybill.BusinessLogic.InsertBills;
 import gr.oncrete.nick.mybill.BusinessLogic.InsertCompany;
 import gr.oncrete.nick.mybill.BusinessLogic.InsertIncome;
+import gr.oncrete.nick.mybill.BusinessLogic.ParsePancretaBankCsv;
 import gr.oncrete.nick.mybill.BusinessLogic.ParseTSBCsv;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.Category;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
@@ -182,7 +183,10 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         if (bankName.equals("TSB") || bankName.equals("Bank of Scotland")) {
             this.importTSBData(data);
 
-        } else {
+        } else if(bankName.equals("Pancretan Bank") ){
+            this.importPancretabankData(data);
+        }
+        else {
             System.out.println("No parsing template found");
         }
     }//GEN-LAST:event_ImportButtonActionPerformed
@@ -209,7 +213,10 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                     //recordTable.setModel(new MyTableModel(contentStrArr, columnNames));
                     recordTable.setAutoCreateRowSorter(true);//add a primitive sort by column function
                 }
-            } else {
+            }else if(bankName.equals("Pancretan Bank")){
+                ParsePancretaBankCsv panc= new ParsePancretaBankCsv(file.getAbsolutePath());
+            }
+            else {
                 System.out.println("No parsing template found");
             }
         } else {
