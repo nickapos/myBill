@@ -183,7 +183,6 @@ public class billsUI extends javax.swing.JFrame {
         calculateAmortizationMenuItem = new javax.swing.JMenuItem();
         presentTransactionsPerCompanyMenuItem = new javax.swing.JMenuItem();
         invertRecordMenuItem = new javax.swing.JMenuItem();
-        manageCountriesMenuItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
@@ -717,14 +716,6 @@ public class billsUI extends javax.swing.JFrame {
         });
         jMenu3.add(invertRecordMenuItem);
 
-        manageCountriesMenuItem.setText(bundle.getString("billsUI.manageCountriesMenuItem.text")); // NOI18N
-        manageCountriesMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageCountriesMenuItemActionPerformed(evt);
-            }
-        });
-        jMenu3.add(manageCountriesMenuItem);
-
         jMenuBar1.add(jMenu3);
 
         jMenu2.setText(bundle.getString("billsUI.jMenu2.text")); // NOI18N
@@ -1130,12 +1121,6 @@ public class billsUI extends javax.swing.JFrame {
         invr.showInvertRecord(); 
     }//GEN-LAST:event_invertRecordMenuItemActionPerformed
 
-    private void manageCountriesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageCountriesMenuItemActionPerformed
-        // TODO add your handling code here:
-        ManageCountriesFrame mngCountr = new ManageCountriesFrame();
-        mngCountr.displayApp(); 
-    }//GEN-LAST:event_manageCountriesMenuItemActionPerformed
-
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
         ImportBankStatementFrame importStatement=new ImportBankStatementFrame();
@@ -1238,7 +1223,6 @@ public class billsUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem manageCategoriesMenuItem;
-    private javax.swing.JMenuItem manageCountriesMenuItem;
     private javax.swing.JMenu mergeOperationsJMenu;
     private javax.swing.JMenuItem presentTransactionsPerCompanyMenuItem;
     private javax.swing.JButton reportButton;
