@@ -64,6 +64,12 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         bankComboBox = new javax.swing.JComboBox();
         categoryLabel = new javax.swing.JLabel();
         importBankSCategoryComboBox = new javax.swing.JComboBox();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        foreignExchangeCheckBox = new javax.swing.JCheckBox();
+        jPanel4 = new javax.swing.JPanel();
+        ForeignExchangeTextField = new javax.swing.JTextField();
+        showRatesButton = new javax.swing.JButton();
         loadFileButton = new javax.swing.JButton();
         ImportButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -75,7 +81,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         setTitle(bundle.getString("ImportBankStatementFrame.title")); // NOI18N
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.Y_AXIS));
 
-        jPanel1.setLayout(new java.awt.GridLayout(3, 2));
+        jPanel1.setLayout(new java.awt.GridLayout(4, 2));
 
         bankLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         bankLabel.setText(bundle.getString("ImportBankStatementFrame.bankLabel.text")); // NOI18N
@@ -91,6 +97,24 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
 
         importBankSCategoryComboBox.setModel(new javax.swing.DefaultComboBoxModel(this.getCategoriesCombo()));
         jPanel1.add(importBankSCategoryComboBox);
+
+        jLabel1.setText(bundle.getString("ImportBankStatementFrame.jLabel1.text")); // NOI18N
+        jPanel3.add(jLabel1);
+
+        foreignExchangeCheckBox.setText(bundle.getString("ImportBankStatementFrame.foreignExchangeCheckBox.text")); // NOI18N
+        jPanel3.add(foreignExchangeCheckBox);
+
+        jPanel1.add(jPanel3);
+
+        jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.LINE_AXIS));
+
+        ForeignExchangeTextField.setText(bundle.getString("ImportBankStatementFrame.ForeignExchangeTextField.text")); // NOI18N
+        jPanel4.add(ForeignExchangeTextField);
+
+        showRatesButton.setText(bundle.getString("ImportBankStatementFrame.showRatesButton.text")); // NOI18N
+        jPanel4.add(showRatesButton);
+
+        jPanel1.add(jPanel4);
 
         loadFileButton.setText(bundle.getString("ImportBankStatementFrame.loadFileButton.text")); // NOI18N
         loadFileButton.addActionListener(new java.awt.event.ActionListener() {
@@ -194,16 +218,22 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ForeignExchangeTextField;
     private javax.swing.JButton ImportButton;
     private javax.swing.JComboBox bankComboBox;
     private javax.swing.JLabel bankLabel;
     private javax.swing.JLabel categoryLabel;
+    private javax.swing.JCheckBox foreignExchangeCheckBox;
     private javax.swing.JComboBox importBankSCategoryComboBox;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton loadFileButton;
     private javax.swing.JTable recordTable;
+    private javax.swing.JButton showRatesButton;
     // End of variables declaration//GEN-END:variables
 
     private String[] getCategoriesCombo() {
