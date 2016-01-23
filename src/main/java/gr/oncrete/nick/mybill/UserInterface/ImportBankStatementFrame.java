@@ -68,7 +68,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         foreignExchangeCheckBox = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
-        ForeignExchangeTextField = new javax.swing.JTextField();
+        foreignExchangeTextField = new javax.swing.JTextField();
         showRatesButton = new javax.swing.JButton();
         loadFileButton = new javax.swing.JButton();
         ImportButton = new javax.swing.JButton();
@@ -102,16 +102,27 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         jPanel3.add(jLabel1);
 
         foreignExchangeCheckBox.setText(bundle.getString("ImportBankStatementFrame.foreignExchangeCheckBox.text")); // NOI18N
+        foreignExchangeCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                foreignExchangeCheckBoxActionPerformed(evt);
+            }
+        });
         jPanel3.add(foreignExchangeCheckBox);
 
         jPanel1.add(jPanel3);
 
         jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.LINE_AXIS));
 
-        ForeignExchangeTextField.setText(bundle.getString("ImportBankStatementFrame.ForeignExchangeTextField.text")); // NOI18N
-        jPanel4.add(ForeignExchangeTextField);
+        foreignExchangeTextField.setEditable(false);
+        foreignExchangeTextField.setText(bundle.getString("ImportBankStatementFrame.foreignExchangeTextField.text")); // NOI18N
+        jPanel4.add(foreignExchangeTextField);
 
         showRatesButton.setText(bundle.getString("ImportBankStatementFrame.showRatesButton.text")); // NOI18N
+        showRatesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showRatesButtonActionPerformed(evt);
+            }
+        });
         jPanel4.add(showRatesButton);
 
         jPanel1.add(jPanel4);
@@ -168,7 +179,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         String bankName = (String) bankComboBox.getSelectedItem();
         System.out.println("Selected Bank: " + bankName);
         Object[][] data = getTableData(recordTable);
-        if (bankName.equals("TSB")||bankName.equals("Bank of Scotland")) {
+        if (bankName.equals("TSB") || bankName.equals("Bank of Scotland")) {
             this.importTSBData(data);
 
         } else {
@@ -188,7 +199,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             System.out.println("Opening: " + file.getAbsolutePath());
             String bankName = (String) bankComboBox.getSelectedItem();
             System.out.println("Selected Bank: " + bankName);
-            if (bankName.equals("TSB")||bankName.equals("Bank of Scotland")) {
+            if (bankName.equals("TSB") || bankName.equals("Bank of Scotland")) {
                 ParseTSBCsv tsb = new ParseTSBCsv(file.getAbsolutePath());
                 ArrayList contentList = tsb.getContent();
                 Object[][] contentStrArr = this.convertArrayListTo2DStringArray(contentList, tsb.getNumOfFields());
@@ -206,6 +217,24 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_loadFileButtonActionPerformed
 
+    private void foreignExchangeCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foreignExchangeCheckBoxActionPerformed
+        //if the checkbox is selected enable the foreun currency text field. other wise disable it
+        if (this.foreignExchangeCheckBox.isSelected()) {
+            this.foreignExchangeTextField.setEnabled(true);
+            this.foreignExchangeTextField.setEditable(true);
+        } else {
+            this.foreignExchangeTextField.setEnabled(false);
+            this.foreignExchangeTextField.setEditable(false);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_foreignExchangeCheckBoxActionPerformed
+
+    private void showRatesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showRatesButtonActionPerformed
+//Textratestextfield foreignCurrencyTextField
+        //foreignCurrencyCheckBox
+        ExchangeRatesFrame exrf = new ExchangeRatesFrame(foreignExchangeTextField, foreignExchangeTextField);
+        exrf.presentExchangeRateFrame();        // TODO add your handling code here:
+    }//GEN-LAST:event_showRatesButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -218,12 +247,12 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ForeignExchangeTextField;
     private javax.swing.JButton ImportButton;
     private javax.swing.JComboBox bankComboBox;
     private javax.swing.JLabel bankLabel;
     private javax.swing.JLabel categoryLabel;
     private javax.swing.JCheckBox foreignExchangeCheckBox;
+    private javax.swing.JTextField foreignExchangeTextField;
     private javax.swing.JComboBox importBankSCategoryComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -293,24 +322,25 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             String afm = Integer.toString(descCompName.hashCode()).substring(0, 9);
             String debitAm = (String) data[i][5];
             String creditAm = (String) data[i][6];
+
             boolean importField = (boolean) data[i][8];
             //retrieve the category details
             String categId = getCategID();
 
             if (importField) {
                 //get the category id for the import
-                String companyID = getCompID(descCompName,afm,categId);
+                String companyID = getCompID(descCompName, afm, categId);
                 if (debitAm.length() > 0) {
                     //System.out.println("This a withdrawal");
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " withdrawal:" + debitAm);
-                    InsertBills bill = new InsertBills(Integer.parseInt(companyID),debitAm,this.correctDate(unCorrectedDate),this.correctDate(unCorrectedDate),"Auto imported field");
-                    
+                    InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(debitAm), this.correctDate(unCorrectedDate), this.correctDate(unCorrectedDate), "Auto imported field");
+
                 } else {
                     //System.out.println("This a deposit");
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + creditAm);
-                    InsertIncome income = new InsertIncome(Integer.parseInt(companyID),creditAm,this.correctDate(unCorrectedDate),"Auto imported field");
+                    InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(creditAm), this.correctDate(unCorrectedDate), "Auto imported field");
                 }
 
             } else {
@@ -343,7 +373,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         return categ.getCatID();
     }
 
-    private String getCompID(String name,String afm,String catid) {
+    private String getCompID(String name, String afm, String catid) {
         //findout if the company exists
         SelectCompanyDetails company = new SelectCompanyDetails();
         company.SelectCompanyDetailsWithAfm(afm);
@@ -352,12 +382,24 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             companyId = company.getID();
         } else {
             //System.out.println("I am going to enter the following company details"+name+"-"+afm+"-"+catid);
-            InsertCompany in= new InsertCompany();
+            InsertCompany in = new InsertCompany();
             in.insertCompany(name, afm, catid);
             SelectCompanyDetails newCompany = new SelectCompanyDetails();
             newCompany.SelectCompanyDetailsWithAfm(afm);
-            companyId=newCompany.getID();
+            companyId = newCompany.getID();
         }
         return companyId;
+    }
+
+    private String applyExchangeRate(String amount) {
+        String convertedAmount = "";
+        //apply the exchange rate
+        if (foreignExchangeCheckBox.isEnabled() && foreignExchangeTextField.getText().length() > 0 && amount.length() > 0) {
+            double exchangeRate = Double.parseDouble(foreignExchangeTextField.getText());
+            convertedAmount = "" + Double.parseDouble(amount) * exchangeRate;
+        } else {
+            convertedAmount = amount;
+        }
+        return convertedAmount;
     }
 }

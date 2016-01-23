@@ -1062,8 +1062,10 @@ public class billsUI extends javax.swing.JFrame {
         //if the checkbox is selected enable the foreun currency text field. other wise disable it
         if (this.foreignCurrencyCheckBox.isSelected()) {
             this.foreignCurrencyTextField.setEnabled(true);
+            this.foreignCurrencyTextField.setEditable(true);
         } else {
             this.foreignCurrencyTextField.setEnabled(false);
+            this.foreignCurrencyTextField.setEditable(false);
         }
     }//GEN-LAST:event_foreignCurrencyCheckBoxActionPerformed
 
