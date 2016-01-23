@@ -87,7 +87,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         bankLabel.setText(bundle.getString("ImportBankStatementFrame.bankLabel.text")); // NOI18N
         jPanel1.add(bankLabel);
 
-        bankComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TSB", "Bank of Scotland" }));
+        bankComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TSB", "Bank of Scotland", "Pancretan Bank" }));
         jPanel1.add(bankComboBox);
 
         categoryLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -346,6 +346,53 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             } else {
                 System.out.println("I will not import");
                 System.out.println("Record data:" + this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + "-" + debitAm + "-" + creditAm);
+            }
+        }
+    }
+    
+    
+    /**
+     * This method will convert the incoming data from a TSB export to the
+     * appropriate format for the database
+     *
+     * @param data
+     */
+    private void importPancretabankData(Object[][] data) {
+        int noOfLines = data.length;
+        for (int i = 0; i < noOfLines; i++) {
+            String recordType=(String) data[i][0];
+            String unCorrectedDate = (String) data[i][1];
+            String descCompName = (String) data[i][4];
+            String afm = Integer.toString(descCompName.hashCode()).substring(0, 9);
+            String amountWithCur = (String) data[i][6];
+
+            boolean importField = (boolean) data[i][8];
+            //retrieve the category details
+            String categId = getCategID();
+            
+            //Stripping EUR out of the amount string
+            String[] amountCurArr=amountWithCur.split(" ");
+            String amount=amountCurArr[0];
+
+            if (importField) {
+                //get the category id for the import
+                String companyID = getCompID(descCompName, afm, categId);
+                if (recordType.equalsIgnoreCase("Withdrawal")) {
+                    //System.out.println("This a withdrawal");
+                    //System.out.println("I will import");
+                    //System.out.println("Record data:" +"Company"+companyID+" "+ this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " withdrawal:" + debitAm);
+                    InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.correctDate(unCorrectedDate), this.correctDate(unCorrectedDate), "Auto imported field");
+
+                } else if(recordType.equalsIgnoreCase("Deposit")) {
+                    //System.out.println("This a deposit");
+                    //System.out.println("I will import");
+                    //System.out.println("Record data:" +"Company"+companyID+" "+ this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + creditAm);
+                    InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.correctDate(unCorrectedDate), "Auto imported field");
+                }
+
+            } else {
+                System.out.println("I will not import");
+                System.out.println("Record data:" + this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + "-" + amount );
             }
         }
     }
