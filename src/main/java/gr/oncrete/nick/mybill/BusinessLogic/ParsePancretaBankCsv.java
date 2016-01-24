@@ -40,11 +40,13 @@ public class ParsePancretaBankCsv extends ParseCsv {
         super(file, delim, numberOfFields);
     }
 
+    @Override
     public int getNumOfFields()
     {
         return numOfFields;
     }
     
+    @Override
     public String[] getColumnNames()
     {
         return header;
