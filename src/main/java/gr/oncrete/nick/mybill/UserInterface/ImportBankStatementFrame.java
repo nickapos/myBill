@@ -214,7 +214,15 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                     recordTable.setAutoCreateRowSorter(true);//add a primitive sort by column function
                 }
             }else if(bankName.equals("Pancretan Bank")){
-                ParsePancretaBankCsv panc= new ParsePancretaBankCsv(file.getAbsolutePath());
+                ParsePancretaBankCsv panc= new ParsePancretaBankCsv(file.getAbsolutePath(),";",8);
+                ArrayList contentList = panc.getContent();
+                Object[][] contentStrArr = this.convertArrayListTo2DStringArray(contentList, panc.getNumOfFields());
+                String[] columnNames = panc.getColumnNames();
+                if (contentList.size() > 0) {
+                    recordTable.setModel(new ImportBankStatementTableModel(contentStrArr, columnNames));
+                    //recordTable.setModel(new MyTableModel(contentStrArr, columnNames));
+                    recordTable.setAutoCreateRowSorter(true);//add a primitive sort by column function
+                }
             }
             else {
                 System.out.println("No parsing template found");
@@ -291,7 +299,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         int lineCounter = 0;
         while (iterContent.hasNext()) {
             ArrayList line = (ArrayList) iterContent.next();
-            //System.out.println(line.toString());
+            System.out.println(line.toString());
             for (int fieldCount = 0; fieldCount < numOfFields; fieldCount++) {
                 csvStringArr[lineCounter][fieldCount] = (String) line.get(fieldCount);
             }
