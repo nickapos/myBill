@@ -145,7 +145,7 @@ public class InsertBills {
      * @param dryRun
      */
     private void commitToDB(String sql) {
-        System.out.println("Iam inserting:"+sql);
+        System.out.println("I am inserting: "+sql);
         if (!dryRun) {
             InsertIntoTable in;
             if (sql.length() > 0) {

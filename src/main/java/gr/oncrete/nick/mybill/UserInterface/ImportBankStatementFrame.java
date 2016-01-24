@@ -233,7 +233,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             recordTable.setAutoCreateRowSorter(true);//add a primitive sort by column function
         }
     }
-    
+
     private void foreignExchangeCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foreignExchangeCheckBoxActionPerformed
         //if the checkbox is selected enable the foreun currency text field. other wise disable it
         if (this.foreignExchangeCheckBox.isSelected()) {
@@ -336,13 +336,22 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         for (int i = 0; i < noOfLines; i++) {
             String unCorrectedDate = (String) data[i][0];
             String descCompName = (String) data[i][4];
-            String afm = Integer.toString(descCompName.hashCode()).substring(0, 9);
             String debitAm = (String) data[i][5];
             String creditAm = (String) data[i][6];
 
             boolean importField = (boolean) data[i][8];
             //retrieve the category details
             String categId = getCategID();
+
+            //System.out.println("descComp: "+descCompName+" and its hash code is: "+descCompName.hashCode());
+            //Making sure afm is less than 9 digits, while allowing for smaller numbers to be allowed without problem
+            String afmFull = Integer.toString(descCompName.hashCode());
+            String afm = "";
+            if (afmFull.length() > 9) {
+                afm = afmFull.substring(0, 9);
+            } else {
+                afm = afmFull;
+            }
 
             if (importField) {
                 //get the category id for the import
@@ -351,18 +360,18 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                     //System.out.println("This a withdrawal");
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " withdrawal:" + debitAm);
-                    InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(debitAm), this.correctDate(unCorrectedDate), this.correctDate(unCorrectedDate), "Auto imported field");
+                    InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(debitAm), this.tsbCorrectDate(unCorrectedDate), this.tsbCorrectDate(unCorrectedDate), "Auto imported field");
 
                 } else {
                     //System.out.println("This a deposit");
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + creditAm);
-                    InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(creditAm), this.correctDate(unCorrectedDate), "Auto imported field");
+                    InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(creditAm), this.tsbCorrectDate(unCorrectedDate), "Auto imported field");
                 }
 
             } else {
                 System.out.println("I will not import");
-                System.out.println("Record data:" + this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + "-" + debitAm + "-" + creditAm);
+                System.out.println("Record data:" + this.tsbCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + "-" + debitAm + "-" + creditAm);
             }
         }
     }
@@ -379,7 +388,6 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             String recordType = (String) data[i][0];
             String unCorrectedDate = (String) data[i][1];
             String descCompName = (String) data[i][4];
-            String afm = Integer.toString(descCompName.hashCode()).substring(0, 9);
             String amountWithCur = (String) data[i][6];
 
             boolean importField = (boolean) data[i][8];
@@ -390,41 +398,70 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             String[] amountCurArr = amountWithCur.split(" ");
             String amount = amountCurArr[0];
 
+            //If we have an empty comment, its probably an internal transfer.
+            if (descCompName.contentEquals("")) {
+                descCompName = "Pancretabank Internal";
+            }
+            //System.out.println("descComp: "+descCompName+" and its hash code is: "+descCompName.hashCode());
+            //Making sure afm is less than 9 digits, while allowing for smaller numbers to be allowed without problem
+            String afmFull = Integer.toString(descCompName.hashCode());
+            String afm = "";
+            if (afmFull.length() > 9) {
+                afm = afmFull.substring(0, 9);
+            } else {
+                afm = afmFull;
+            }
+
             if (importField) {
                 //get the category id for the import
                 String companyID = getCompID(descCompName, afm, categId);
                 if (recordType.equalsIgnoreCase("Withdrawal")) {
                     //System.out.println("This a withdrawal");
                     //System.out.println("I will import");
-                    //System.out.println("Record data:" +"Company"+companyID+" "+ this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " withdrawal:" + debitAm);
-                    InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.correctDate(unCorrectedDate), this.correctDate(unCorrectedDate), "Auto imported field");
+                    //System.out.println("Record data:" +"Company:"+companyID+" Corrected Date: "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company des:" + descCompName + " withdrawal:" + this.applyExchangeRate(amount));
+                    InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.pancretaCorrectDate(unCorrectedDate), this.pancretaCorrectDate(unCorrectedDate), "Auto imported field");
 
                 } else if (recordType.equalsIgnoreCase("Deposit")) {
                     //System.out.println("This a deposit");
                     //System.out.println("I will import");
-                    //System.out.println("Record data:" +"Company"+companyID+" "+ this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + creditAm);
-                    InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.correctDate(unCorrectedDate), "Auto imported field");
+                    //System.out.println("Record data:" +"Company"+companyID+" "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + amount);
+                    InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.pancretaCorrectDate(unCorrectedDate), "Auto imported field");
                 }
 
             } else {
                 System.out.println("I will not import");
-                System.out.println("Record data:" + this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + "-" + amount);
+                System.out.println("Record data:" + this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + "-" + amount);
             }
         }
     }
 
     /**
-     * Convert the incoming date to the date used by the database
+     * Convert the incoming date to the date used by the database for tsb data
      *
      * @param uncDate
      * @return
      */
-    private String correctDate(String uncDate) {
+    private String tsbCorrectDate(String uncDate) {
         String[] splitDate = uncDate.split("/");
         String day = splitDate[0];
         String month = splitDate[1];
         String year = splitDate[2];
         //System.out.println("year:"+year+"month:"+month+"day:"+day);
+        return year + "-" + month + "-" + day;
+    }
+
+    /**
+     * Convert the incoming date to the date used by the database for tsb data
+     *
+     * @param uncDate
+     * @return
+     */
+    private String pancretaCorrectDate(String uncDate) {
+        String[] splitDate = uncDate.split("/");
+        String day = splitDate[1];
+        String month = splitDate[0];
+        String year = splitDate[2];
+        //System.out.println("year: "+year+"month: "+month+"day: "+day);
         return year + "-" + month + "-" + day;
     }
 
