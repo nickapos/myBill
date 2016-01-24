@@ -74,6 +74,8 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         showRatesButton = new javax.swing.JButton();
         loadFileButton = new javax.swing.JButton();
         ImportButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        recordsImportedLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         recordTable = new javax.swing.JTable();
@@ -83,7 +85,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         setTitle(bundle.getString("ImportBankStatementFrame.title")); // NOI18N
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.Y_AXIS));
 
-        jPanel1.setLayout(new java.awt.GridLayout(4, 2));
+        jPanel1.setLayout(new java.awt.GridLayout(5, 2));
 
         bankLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         bankLabel.setText(bundle.getString("ImportBankStatementFrame.bankLabel.text")); // NOI18N
@@ -144,6 +146,13 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(ImportButton);
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText(bundle.getString("ImportBankStatementFrame.jLabel2.text")); // NOI18N
+        jPanel1.add(jLabel2);
+
+        recordsImportedLabel.setText(bundle.getString("ImportBankStatementFrame.recordsImportedLabel.text")); // NOI18N
+        jPanel1.add(recordsImportedLabel);
 
         getContentPane().add(jPanel1);
 
@@ -272,6 +281,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
     private javax.swing.JTextField foreignExchangeTextField;
     private javax.swing.JComboBox importBankSCategoryComboBox;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -279,6 +289,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton loadFileButton;
     private javax.swing.JTable recordTable;
+    private javax.swing.JLabel recordsImportedLabel;
     private javax.swing.JButton showRatesButton;
     // End of variables declaration//GEN-END:variables
 
@@ -332,6 +343,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
      * @param data
      */
     private void importTSBData(Object[][] data) {
+        int importedRecordNo=0;
         int noOfLines = data.length;
         for (int i = 0; i < noOfLines; i++) {
             String unCorrectedDate = (String) data[i][0];
@@ -368,6 +380,8 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + creditAm);
                     InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(creditAm), this.tsbCorrectDate(unCorrectedDate), "Auto imported field");
                 }
+                importedRecordNo++;
+                recordsImportedLabel.setText(""+importedRecordNo);
 
             } else {
                 System.out.println("I will not import");
@@ -383,6 +397,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
      * @param data
      */
     private void importPancretabankData(Object[][] data) {
+        int importedRecordNo=0;
         int noOfLines = data.length;
         for (int i = 0; i < noOfLines; i++) {
             String recordType = (String) data[i][0];
@@ -427,6 +442,8 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + amount);
                     InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.pancretaCorrectDate(unCorrectedDate), "Auto imported field");
                 }
+                importedRecordNo++;
+                recordsImportedLabel.setText(""+importedRecordNo);
 
             } else {
                 System.out.println("I will not import");
