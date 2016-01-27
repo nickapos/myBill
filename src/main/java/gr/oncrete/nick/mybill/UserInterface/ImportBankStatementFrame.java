@@ -343,29 +343,33 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
      * @param data
      */
     private void importTSBData(Object[][] data) {
-        int importedRecordNo=0;
+        int importedRecordNo = 0;
         int noOfLines = data.length;
         for (int i = 0; i < noOfLines; i++) {
             String unCorrectedDate = (String) data[i][0];
-            String descCompName = (String) data[i][4];
-            String debitAm = (String) data[i][5];
-            String creditAm = (String) data[i][6];
-
             boolean importField = (boolean) data[i][8];
-            //retrieve the category details
-            String categId = getCategID();
+            
+            //this if block will be activated if both the import field is checked and the first character of the date field is numeric. 
+            //if there is a header in here that means that this wont be numeric and the import will be skipped
+            if (importField&& Character.isDigit(unCorrectedDate.charAt(0))) {
+
+                
+                String descCompName = (String) data[i][4];
+                String debitAm = (String) data[i][5];
+                String creditAm = (String) data[i][6];
+                //retrieve the category details
+                String categId = getCategID();
 
             //System.out.println("descComp: "+descCompName+" and its hash code is: "+descCompName.hashCode());
-            //Making sure afm is less than 9 digits, while allowing for smaller numbers to be allowed without problem
-            String afmFull = Integer.toString(descCompName.hashCode());
-            String afm = "";
-            if (afmFull.length() > 9) {
-                afm = afmFull.substring(0, 9);
-            } else {
-                afm = afmFull;
-            }
+                //Making sure afm is less than 9 digits, while allowing for smaller numbers to be allowed without problem
+                String afmFull = Integer.toString(descCompName.hashCode());
+                String afm = "";
+                if (afmFull.length() > 9) {
+                    afm = afmFull.substring(0, 9);
+                } else {
+                    afm = afmFull;
+                }
 
-            if (importField) {
                 //get the category id for the import
                 String companyID = getCompID(descCompName, afm, categId);
                 if (debitAm.length() > 0) {
@@ -381,11 +385,11 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                     InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(creditAm), this.tsbCorrectDate(unCorrectedDate), "Auto imported field");
                 }
                 importedRecordNo++;
-                recordsImportedLabel.setText(""+importedRecordNo);
+                recordsImportedLabel.setText("" + importedRecordNo);
 
             } else {
                 System.out.println("I will not import");
-                System.out.println("Record data:" + this.tsbCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + "-" + debitAm + "-" + creditAm);
+                System.out.println("Record number: " +i);
             }
         }
     }
@@ -397,7 +401,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
      * @param data
      */
     private void importPancretabankData(Object[][] data) {
-        int importedRecordNo=0;
+        int importedRecordNo = 0;
         int noOfLines = data.length;
         for (int i = 0; i < noOfLines; i++) {
             String recordType = (String) data[i][0];
@@ -443,7 +447,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                     InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.pancretaCorrectDate(unCorrectedDate), "Auto imported field");
                 }
                 importedRecordNo++;
-                recordsImportedLabel.setText(""+importedRecordNo);
+                recordsImportedLabel.setText("" + importedRecordNo);
 
             } else {
                 System.out.println("I will not import");
