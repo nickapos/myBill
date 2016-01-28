@@ -74,6 +74,8 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         showRatesButton = new javax.swing.JButton();
         loadFileButton = new javax.swing.JButton();
         ImportButton = new javax.swing.JButton();
+        selectAllButton = new javax.swing.JButton();
+        unselectAllButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         recordsImportedLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -85,7 +87,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         setTitle(bundle.getString("ImportBankStatementFrame.title")); // NOI18N
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.Y_AXIS));
 
-        jPanel1.setLayout(new java.awt.GridLayout(5, 2));
+        jPanel1.setLayout(new java.awt.GridLayout(6, 2));
 
         bankLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         bankLabel.setText(bundle.getString("ImportBankStatementFrame.bankLabel.text")); // NOI18N
@@ -146,6 +148,24 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             }
         });
         jPanel1.add(ImportButton);
+
+        selectAllButton.setText(bundle.getString("ImportBankStatementFrame.selectAllButton.text")); // NOI18N
+        selectAllButton.setEnabled(false);
+        selectAllButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectAllButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(selectAllButton);
+
+        unselectAllButton.setText(bundle.getString("ImportBankStatementFrame.unselectAllButton.text")); // NOI18N
+        unselectAllButton.setEnabled(false);
+        unselectAllButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                unselectAllButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(unselectAllButton);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText(bundle.getString("ImportBankStatementFrame.jLabel2.text")); // NOI18N
@@ -216,10 +236,14 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                 ParseTSBCsv tsb = new ParseTSBCsv(file.getAbsolutePath());
                 ArrayList contentList = tsb.getContent();
                 this.displayStatementContent(contentList, tsb);
+                selectAllButton.setEnabled(true);
+                unselectAllButton.setEnabled(true);
             } else if (bankName.equals("Pancretan Bank")) {
                 ParsePancretaBankCsv panc = new ParsePancretaBankCsv(file.getAbsolutePath(), ";", 8);
                 ArrayList contentList = panc.getContent();
                 this.displayStatementContent(contentList, panc);
+                selectAllButton.setEnabled(true);
+                unselectAllButton.setEnabled(true);
             } else {
                 System.out.println("No parsing template found");
             }
@@ -261,6 +285,34 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         exrf.presentExchangeRateFrame();        // TODO add your handling code here:
     }//GEN-LAST:event_showRatesButtonActionPerformed
 
+    private void selectAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAllButtonActionPerformed
+        this.selectUnselectRecords(true);
+    }//GEN-LAST:event_selectAllButtonActionPerformed
+
+    private void unselectAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unselectAllButtonActionPerformed
+        this.selectUnselectRecords(false);
+    }//GEN-LAST:event_unselectAllButtonActionPerformed
+
+    private void selectUnselectRecords(boolean set){
+        String bankName = (String) bankComboBox.getSelectedItem();
+        System.out.println("Selected Bank: " + bankName);
+        Object[][] data = getTableData(recordTable);
+        int length=data.length;
+        int boolColumn=-1;
+        if (bankName.equals("TSB") || bankName.equals("Bank of Scotland")) {
+            boolColumn=8;
+        } else if (bankName.equals("Pancretan Bank")) {
+            boolColumn=8;
+        } else {
+            System.out.println("No parsing template found");
+        }
+        ImportBankStatementTableModel model = (ImportBankStatementTableModel) recordTable.getModel();
+        for(int i=0;i<length;i++)
+        {
+            model.setValueAt(set, i, boolColumn);
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -290,7 +342,9 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
     private javax.swing.JButton loadFileButton;
     private javax.swing.JTable recordTable;
     private javax.swing.JLabel recordsImportedLabel;
+    private javax.swing.JButton selectAllButton;
     private javax.swing.JButton showRatesButton;
+    private javax.swing.JButton unselectAllButton;
     // End of variables declaration//GEN-END:variables
 
     private String[] getCategoriesCombo() {
