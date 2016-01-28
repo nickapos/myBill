@@ -36,15 +36,17 @@ public class ParseTSBCsv extends ParseCsv {
 
     }
 
-    public ParseTSBCsv(String file, String delim) {
-        super(file, delim, numOfFields);
+    public ParseTSBCsv(String file, String delim,int numberOfFields) {
+        super(file, delim, numberOfFields);
     }
 
+    @Override
     public int getNumOfFields()
     {
         return numOfFields;
     }
     
+    @Override
     public String[] getColumnNames()
     {
         return header;
