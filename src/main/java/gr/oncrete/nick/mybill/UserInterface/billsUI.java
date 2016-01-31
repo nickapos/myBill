@@ -449,6 +449,11 @@ public class billsUI extends javax.swing.JFrame {
                 companyDetailsCNameTextFieldActionPerformed(evt);
             }
         });
+        companyDetailsCNameTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                companyDetailsCNameTextFieldKeyReleased(evt);
+            }
+        });
         InsertEditCompanyPanel.add(companyDetailsCNameTextField);
 
         companyRetrieveButton.setText(bundle.getString("billsUI.companyRetrieveButton.text")); // NOI18N
@@ -1103,7 +1108,7 @@ public class billsUI extends javax.swing.JFrame {
 
     private void showRatesFrameButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showRatesFrameButton1ActionPerformed
         ExchangeRatesFrame exrf = new ExchangeRatesFrame(foreignCurrencyTextField, foreignCurrencyTextField1);
-        exrf.presentExchangeRateFrame();       
+        exrf.presentExchangeRateFrame();
     }//GEN-LAST:event_showRatesFrameButton1ActionPerformed
 
     private void foreignCurrencyCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foreignCurrencyCheckBox1ActionPerformed
@@ -1118,14 +1123,28 @@ public class billsUI extends javax.swing.JFrame {
     private void invertRecordMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invertRecordMenuItemActionPerformed
 
         InvertRecordWindow invr = new InvertRecordWindow();
-        invr.showInvertRecord(); 
+        invr.showInvertRecord();
     }//GEN-LAST:event_invertRecordMenuItemActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        ImportBankStatementFrame importStatement=new ImportBankStatementFrame();
+        ImportBankStatementFrame importStatement = new ImportBankStatementFrame();
         importStatement.showImportStatemenFrame();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void companyDetailsCNameTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_companyDetailsCNameTextFieldKeyReleased
+        // TODO add your handling code here://System.out.println("descComp: "+descCompName+" and its hash code is: "+descCompName.hashCode());
+        //Making sure afm is less than 9 digits, while allowing for smaller numbers to be allowed without problem
+        String descCompName=companyDetailsCNameTextField.getText();
+        String afmFull = Integer.toString(descCompName.hashCode());
+        String afm = "";
+        if (afmFull.length() > 9) {
+            afm = afmFull.substring(0, 9);
+        } else {
+            afm = afmFull;
+        }
+        companyDetailsAfmTextField.setText(afm);
+    }//GEN-LAST:event_companyDetailsCNameTextFieldKeyReleased
 
     /**
      * @param args the command line arguments
