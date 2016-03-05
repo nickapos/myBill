@@ -89,14 +89,11 @@ public class ExportAllRecordsQIF extends javax.swing.JFrame {
     private void exportRecordsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportRecordsButtonActionPerformed
         DumpDatabaseinQIF qifDump = new DumpDatabaseinQIF();
 
-        ArrayList<String> allRecords=new ArrayList();
-        allRecords.add(qifDump.QIFHEADER);
         ArrayList billsQIFArrayList = qifDump.getBillsQIF();
         ArrayList incomeQIFArrayList = qifDump.getIncomesQIF();
-        
-        allRecords.addAll(billsQIFArrayList);
-        allRecords.addAll(incomeQIFArrayList);
-        this.writeFileNewThread("mybillData.qif", allRecords);
+
+        this.writeFileNewThread("mybillExpenseData.qif", billsQIFArrayList);
+        this.writeFileNewThread("mybillIncomeData.qif", incomeQIFArrayList);
 
 
     }//GEN-LAST:event_exportRecordsButtonActionPerformed

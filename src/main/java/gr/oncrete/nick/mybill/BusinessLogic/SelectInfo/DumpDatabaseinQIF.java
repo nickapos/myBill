@@ -32,7 +32,7 @@ import gr.oncrete.nick.mybill.RDBMS.SelectFromTable;
  */
 public class DumpDatabaseinQIF {
 
-    public final static String QIFHEADER = "!Type:Cash";
+    final static String QIFHEADER = "!Type:Cash";
 
     /**
      * Creates a new instance of DumpDatabase
@@ -74,6 +74,7 @@ public class DumpDatabaseinQIF {
      */
     private ArrayList readTable(String query, boolean expense) {
         ArrayList<String> qifRecords = new ArrayList();
+        qifRecords.add(QIFHEADER);
         SelectFromTable select = new SelectFromTable();
 
         ArrayList results = select.executeQuery(query);
