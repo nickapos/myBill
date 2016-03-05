@@ -91,15 +91,14 @@ public class DumpDatabaseinQIF {
                 } else {
                     amount = (String) results.get(i + 2);
                 }
-
                 String date = (String) results.get(i + 3);
                 String comment = (String) results.get(i + 4);
-                System.out.println("Category:" + category);
-                System.out.println("company:" + company);
-                System.out.println("amount:" + amount);
-                System.out.println("date:" + date);
-                System.out.println("comment:" + comment);
-                System.out.println("");
+                /* System.out.println("Category:" + category);
+                 System.out.println("company:" + company);
+                 System.out.println("amount:" + amount);
+                 System.out.println("date:" + date);
+                 System.out.println("comment:" + comment);
+                 System.out.println("");*/
                 String qifRow = convertRecordToQIF(category, company, amount, date, comment);
                 System.out.println(qifRow);
                 qifRecords.add(qifRow);
@@ -122,6 +121,18 @@ public class DumpDatabaseinQIF {
      * @return
      */
     public String convertRecordToQIF(String category, String company, String amount, String date, String comment) {
-        return "D" + date + "\n" + "T" + amount + "\n" + "P" + category + "-" + comment + "\n" + "^";
+        return "D" + this.qifDateConvert(date)+ "\n" + "T" + amount.replace("E0","") + "\n" + "P" + category + "-" + comment + "\n" + "^";
     }
+    
+    /**
+     * this method will convert a date from YYYY-MM-DD to MM/DD/YYYY
+     * @param date
+     * @return 
+     */
+    private String qifDateConvert(String date){
+        String[] dateparts=date.split("-");
+        //System.out.println("length "+dateparts.length+" 0: "+dateparts[0]);
+        return ""+dateparts[1]+"/"+dateparts[2]+"/"+dateparts[0];
+    }
+
 }
