@@ -167,8 +167,9 @@ public class billsUI extends javax.swing.JFrame {
         exportMenu = new javax.swing.JMenu();
         exportDBMenuItem = new javax.swing.JMenuItem();
         exportCSVsMenuItem = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        exportCVSYear = new javax.swing.JMenuItem();
+        exportCVSPeriod = new javax.swing.JMenuItem();
+        exportQIF = new javax.swing.JMenuItem();
         emptyDBMenyItem = new javax.swing.JMenu();
         emptyDBMenuItem = new javax.swing.JMenuItem();
         executeSqlMenuItem = new javax.swing.JMenuItem();
@@ -597,21 +598,29 @@ public class billsUI extends javax.swing.JFrame {
         });
         exportMenu.add(exportCSVsMenuItem);
 
-        jMenuItem3.setText(bundle.getString("billsUI.jMenuItem3.text")); // NOI18N
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        exportCVSYear.setText(bundle.getString("billsUI.exportCVSYear.text")); // NOI18N
+        exportCVSYear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                exportCVSYearActionPerformed(evt);
             }
         });
-        exportMenu.add(jMenuItem3);
+        exportMenu.add(exportCVSYear);
 
-        jMenuItem6.setText(bundle.getString("billsUI.jMenuItem6.text")); // NOI18N
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        exportCVSPeriod.setText(bundle.getString("billsUI.exportCVSPeriod.text")); // NOI18N
+        exportCVSPeriod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                exportCVSPeriodActionPerformed(evt);
             }
         });
-        exportMenu.add(jMenuItem6);
+        exportMenu.add(exportCVSPeriod);
+
+        exportQIF.setText(bundle.getString("billsUI.exportQIF.text")); // NOI18N
+        exportQIF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exportQIFActionPerformed(evt);
+            }
+        });
+        exportMenu.add(exportQIF);
 
         jMenu1.add(exportMenu);
 
@@ -991,10 +1000,10 @@ public class billsUI extends javax.swing.JFrame {
         v.validateAFM();
     }//GEN-LAST:event_validateVatMenuItemActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void exportCVSYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportCVSYearActionPerformed
         ExportCSVByYear exp = new ExportCSVByYear();
         exp.displayGUI();
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_exportCVSYearActionPerformed
 
     private void manageCategoriesMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageCategoriesMenuItemActionPerformed
         ManageCategoriesFrame m = new ManageCategoriesFrame(catComboBox);
@@ -1077,11 +1086,6 @@ public class billsUI extends javax.swing.JFrame {
         cv.showFrame();
     }//GEN-LAST:event_changeDBCurrencyMenuItemActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        ExportCSVByPeriod cvsp = new ExportCSVByPeriod();
-        cvsp.displayGUI();
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
     private void calculateAmortizationMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calculateAmortizationMenuItemActionPerformed
         CalculateAmortizationFrame calcAmor = new CalculateAmortizationFrame();
         calcAmor.calcAmortization();
@@ -1146,6 +1150,16 @@ public class billsUI extends javax.swing.JFrame {
         companyDetailsAfmTextField.setText(afm);
     }//GEN-LAST:event_companyDetailsCNameTextFieldKeyReleased
 
+    private void exportQIFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportQIFActionPerformed
+        ExportAllRecordsQIF exp = new ExportAllRecordsQIF();
+        exp.displayGUI();        
+    }//GEN-LAST:event_exportQIFActionPerformed
+
+    private void exportCVSPeriodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportCVSPeriodActionPerformed
+        ExportCSVByPeriod cvsp = new ExportCSVByPeriod();
+        cvsp.displayGUI();
+    }//GEN-LAST:event_exportCVSPeriodActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1183,8 +1197,11 @@ public class billsUI extends javax.swing.JFrame {
     private javax.swing.JMenu emptyDBMenyItem;
     private javax.swing.JMenuItem executeSqlMenuItem;
     private javax.swing.JMenuItem exportCSVsMenuItem;
+    private javax.swing.JMenuItem exportCVSPeriod;
+    private javax.swing.JMenuItem exportCVSYear;
     private javax.swing.JMenuItem exportDBMenuItem;
     private javax.swing.JMenu exportMenu;
+    private javax.swing.JMenuItem exportQIF;
     private javax.swing.JCheckBox foreignCurrencyCheckBox;
     private javax.swing.JCheckBox foreignCurrencyCheckBox1;
     private javax.swing.JPanel foreignCurrencySelPanel;
@@ -1237,8 +1254,6 @@ public class billsUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem manageCategoriesMenuItem;
