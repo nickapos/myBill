@@ -78,8 +78,8 @@ public class QIFTest {
         String date = "2015-12-18";
         String comment = "A comment";
         DumpDatabaseinQIF instance = new DumpDatabaseinQIF();        
-        String qifString = instance.convertRecordToQIF(category, comment, amount, date, comment);
-        String referenceQIFString = "D12/18/2015\nT1.43\nPGeneral Category-A comment\n^";
+        String qifString = instance.convertRecordToQIF(category, company, amount, date, comment);
+        String referenceQIFString = "D12/18/2015\nT1.43\nPMy Company\n^";
         assertTrue(referenceQIFString.contentEquals(qifString));
         
     }

@@ -122,7 +122,7 @@ public class DumpDatabaseinQIF {
      * @return
      */
     public String convertRecordToQIF(String category, String company, String amount, String date, String comment) {
-        return "D" + this.qifDateConvert(date)+ "\n" + "T" + amount.replace("E0","") + "\n" + "P" + category + "-" + comment + "\n" + "^";
+        return "D" + this.qifDateConvert(date)+ "\n" + "T" + amount.replace("E0","") + "\n" + "P" + company + "\n" + "^";
     }
     
     /**
