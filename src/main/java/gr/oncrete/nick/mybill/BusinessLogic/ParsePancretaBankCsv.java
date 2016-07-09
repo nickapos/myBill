@@ -27,12 +27,12 @@ public class ParsePancretaBankCsv extends ParseCsv {
     private String[] header= {"W / D","Date","ValueDate","Description","Comments","Cheque Number","Amount","BookBalance","Import"};
 
     public ParsePancretaBankCsv() {
-        super();
+        super(numOfFields);
 
     }
 
-    public ParsePancretaBankCsv(String file) {
-        super(numOfFields);
+    public ParsePancretaBankCsv(int fields) {
+        super(fields);
 
     }
 

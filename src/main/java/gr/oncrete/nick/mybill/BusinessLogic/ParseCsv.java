@@ -36,7 +36,7 @@ public class ParseCsv {
     protected int numberOfFields = 1;
     
     private String[] header= {};
-    private HashMap<String, Integer> monthNumMap = new HashMap<String, Integer>();
+    
 
     public ParseCsv() {
 
@@ -112,7 +112,8 @@ public class ParseCsv {
         return header;
     }
     
-    protected void initializeMonNumMap(){
+    protected HashMap<String, Integer> initializeMonNumMap(){
+        HashMap<String, Integer> monthNumMap = new HashMap<String, Integer>();
         monthNumMap.put("Jan", 1);
         monthNumMap.put("Feb", 2);
         monthNumMap.put("Mar", 3);
@@ -125,5 +126,6 @@ public class ParseCsv {
         monthNumMap.put("Oct", 10);
         monthNumMap.put("Nov", 11);
         monthNumMap.put("Dec", 12);
+        return monthNumMap;
     }
 }

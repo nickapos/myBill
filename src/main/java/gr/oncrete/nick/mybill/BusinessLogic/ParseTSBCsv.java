@@ -27,12 +27,12 @@ public class ParseTSBCsv extends ParseCsv {
     private String[] header= {"Transaction Date","Transaction Type","Sort Code","Account Number","Transaction Description","Debit Amount","Credit Amount","Balance","Import"};
 
     public ParseTSBCsv() {
-        super();
+        super(numOfFields);
 
     }
 
-    public ParseTSBCsv(String file) {
-        super( numOfFields);
+    public ParseTSBCsv(int fields) {
+        super( fields);
 
     }
 
