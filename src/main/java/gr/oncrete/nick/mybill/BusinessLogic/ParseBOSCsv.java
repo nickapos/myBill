@@ -17,26 +17,28 @@
  */
 package gr.oncrete.nick.mybill.BusinessLogic;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author nickapos
  */
-public class ParsePancretaBankCsv extends ParseCsv {
+public class ParseBOSCsv extends ParseCsv {
     //tsb has 8 fields in its csv
     static final int numOfFields = 8;
     private String[] header= {"W / D","Date","ValueDate","Description","Comments","Cheque Number","Amount","BookBalance","Import"};
 
-    public ParsePancretaBankCsv() {
+    public ParseBOSCsv() {
         super();
 
     }
 
-    public ParsePancretaBankCsv(String file) {
+    public ParseBOSCsv(String file) {
         super(numOfFields);
 
     }
 
-    public ParsePancretaBankCsv( String delim,int numberOfFields) {
+    public ParseBOSCsv( String delim,int numberOfFields) {
         super( delim, numberOfFields);
     }
 
@@ -51,4 +53,16 @@ public class ParsePancretaBankCsv extends ParseCsv {
     {
         return header;
     }
+    /**
+     * This method is a wrapper around parseData. It will convert the three letter
+     * month to its number and remove negative values from withdrawals
+     * @param file
+     * @return 
+     */
+    public ArrayList<ArrayList> filterMonthsAndNegValues(String file){
+        ArrayList content=this.parseData(file);
+        return content;
+        
+    }
+            
 }

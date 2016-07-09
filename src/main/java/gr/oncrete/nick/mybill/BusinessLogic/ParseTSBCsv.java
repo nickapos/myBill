@@ -32,12 +32,12 @@ public class ParseTSBCsv extends ParseCsv {
     }
 
     public ParseTSBCsv(String file) {
-        super(file, numOfFields);
+        super( numOfFields);
 
     }
 
     public ParseTSBCsv(String file, String delim,int numberOfFields) {
-        super(file, delim, numberOfFields);
+        super( delim, numberOfFields);
     }
 
     @Override

@@ -27,6 +27,7 @@ import gr.oncrete.nick.mybill.BusinessLogic.Categories;
 import gr.oncrete.nick.mybill.BusinessLogic.InsertBills;
 import gr.oncrete.nick.mybill.BusinessLogic.InsertCompany;
 import gr.oncrete.nick.mybill.BusinessLogic.InsertIncome;
+import gr.oncrete.nick.mybill.BusinessLogic.ParseBOSCsv;
 import gr.oncrete.nick.mybill.BusinessLogic.ParseCsv;
 import gr.oncrete.nick.mybill.BusinessLogic.ParsePancretaBankCsv;
 import gr.oncrete.nick.mybill.BusinessLogic.ParseTSBCsv;
@@ -232,15 +233,22 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             System.out.println("Opening: " + file.getAbsolutePath());
             String bankName = (String) bankComboBox.getSelectedItem();
             System.out.println("Selected Bank: " + bankName);
-            if (bankName.equals("TSB") || bankName.equals("Bank of Scotland")) {
-                ParseTSBCsv tsb = new ParseTSBCsv(file.getAbsolutePath());
-                ArrayList contentList = tsb.getContent();
+            if (bankName.equals("TSB")) {
+                ParseTSBCsv tsb = new ParseTSBCsv();
+                ArrayList contentList = tsb.parseData(file.getAbsolutePath());
                 this.displayStatementContent(contentList, tsb);
                 selectAllButton.setEnabled(true);
                 unselectAllButton.setEnabled(true);
-            } else if (bankName.equals("Pancretan Bank")) {
-                ParsePancretaBankCsv panc = new ParsePancretaBankCsv(file.getAbsolutePath(), ";", 8);
-                ArrayList contentList = panc.getContent();
+            } else if ( bankName.equals("Bank of Scotland")) {
+                ParseBOSCsv bos = new ParseBOSCsv();
+                ArrayList contentList = bos.filterMonthsAndNegValues(file.getAbsolutePath());
+                this.displayStatementContent(contentList, bos);
+                selectAllButton.setEnabled(true);
+                unselectAllButton.setEnabled(true);
+            } 
+            else if (bankName.equals("Pancretan Bank")) {
+                ParsePancretaBankCsv panc = new ParsePancretaBankCsv(";", 8);
+                ArrayList contentList = panc.parseData(file.getAbsolutePath());
                 this.displayStatementContent(contentList, panc);
                 selectAllButton.setEnabled(true);
                 unselectAllButton.setEnabled(true);

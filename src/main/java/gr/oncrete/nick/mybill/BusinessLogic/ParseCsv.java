@@ -23,6 +23,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 /**
  *
@@ -33,22 +34,21 @@ public class ParseCsv {
     protected String fileName = "";
     protected String delimiter = ",";
     protected int numberOfFields = 1;
-    ArrayList<ArrayList> content = new ArrayList();
+    
     private String[] header= {};
+    private HashMap<String, Integer> monthNumMap = new HashMap<String, Integer>();
 
     public ParseCsv() {
 
     }
 
-    public ParseCsv(String file, int fields) {
+    public ParseCsv( int fields) {
         this.setNumberOfFields(fields);
-        this.setFileName(file);
     }
 
-    public ParseCsv(String file, String delim, int fields) {
+    public ParseCsv( String delim, int fields) {
         this.setDelimiter(delim);
         this.setNumberOfFields(fields);
-        this.setFileName(file);
     }
 
     /**
@@ -56,7 +56,8 @@ public class ParseCsv {
      *
      * @param file
      */
-    public void setFileName(String file) {
+    public ArrayList<ArrayList> parseData(String file) {
+        ArrayList<ArrayList> content = new ArrayList();
         fileName = file;
         BufferedReader br = null;
         try {
@@ -74,6 +75,7 @@ public class ParseCsv {
                     content.add(lineContent);
                 }
             }
+            
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -88,7 +90,7 @@ public class ParseCsv {
                 }
             }
         }
-
+        return content;
     }
 
     public void setDelimiter(String delim) {
@@ -99,9 +101,7 @@ public class ParseCsv {
         numberOfFields = fields;
     }
 
-    public ArrayList<ArrayList> getContent() {
-        return content;
-    }
+   
 
     public int getNumOfFields() {
         return numberOfFields;
@@ -110,5 +110,20 @@ public class ParseCsv {
     public String[] getColumnNames()
     {
         return header;
+    }
+    
+    protected void initializeMonNumMap(){
+        monthNumMap.put("Jan", 1);
+        monthNumMap.put("Feb", 2);
+        monthNumMap.put("Mar", 3);
+        monthNumMap.put("Apr", 4);
+        monthNumMap.put("May", 5);
+        monthNumMap.put("Jun", 6);
+        monthNumMap.put("Jul", 7);
+        monthNumMap.put("Aug", 8);
+        monthNumMap.put("Sep", 9);
+        monthNumMap.put("Oct", 10);
+        monthNumMap.put("Nov", 11);
+        monthNumMap.put("Dec", 12);
     }
 }
