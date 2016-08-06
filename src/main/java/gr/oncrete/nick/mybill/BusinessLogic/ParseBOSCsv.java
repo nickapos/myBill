@@ -101,14 +101,19 @@ public class ParseBOSCsv extends ParseCsv {
      * @param dateUnc
      * @return
      */
-    private String convertDate(String dateUnc) {
+    public String convertDate(String dateUnc) {
         HashMap<String, Integer> map = this.initializeMonNumMap();
         String[] dateParts = dateUnc.split("/");
-        if (dateParts.length < 3) {
+        if (dateParts.length < 3 || this.isInteger(dateParts[1]) ) {
             return dateUnc;
         } else {
             return "" + dateParts[0] + "/" + map.get(dateParts[1]) + "/" + dateParts[2];
         }
 
+    }
+    public boolean isInteger(String intStr){
+        if(!intStr.isEmpty() &&intStr.matches("^-?\\d+$")) 
+            return true;
+        return false;
     }
 }
