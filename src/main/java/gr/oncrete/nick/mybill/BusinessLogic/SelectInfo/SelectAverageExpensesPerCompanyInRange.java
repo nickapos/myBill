@@ -17,13 +17,52 @@
  */
 package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
 
+import gr.oncrete.nick.mybill.RDBMS.SelectFromTable;
+import java.util.*;
+
 /**
- * This class will perform two functions. It will return the average expenses 
- * for a company over a period of time, it will also return the number of records
- * for that company over the same period of time.
- * It will accept the startPeriod and endPeriod as arguments
+ * This class will perform two functions. It will return the average expenses
+ * for a company over a period of time, it will also return the number of
+ * records for that company over the same period of time. It will accept the
+ * startPeriod and endPeriod as arguments
+ *
  * @author nickapos
  */
 public class SelectAverageExpensesPerCompanyInRange {
-    
+
+    private String companyname, numberOfRecords, totalAmount, avPrice, dateofpayment, cid;
+    private String sql1 = "select b.companyname,count(b.companyname) as numberOfRecords,sum(a.price) as"
+            + "total, avg(a.price) "
+            + "from bills a, companies b "
+            + "where a.cid=b.cid ";
+    private String sql2= "and a.dayofpayment >='";
+    private String sql3= "and a.dayofpayment <= '";
+    private String sql4= "group by b.companyname";
+    private SelectFromTable sel = new SelectFromTable();
+
+    public SelectAverageExpensesPerCompanyInRange(){
+        
+    }
+    public SelectAverageExpensesPerCompanyInRange(String startPeriod, String endPeriod){
+        String sql = sql1+sql2+startPeriod+"'"+sql3+endPeriod+"'"+sql4;
+        this.splitResults(sql);
+    }
+    private void splitResults(String sql) {
+        //System.out.println(sql);
+        ArrayList<String> a = sel.executeQuery(sql);
+        
+        if (a.size() > 0) {
+           /* bid = a.get(0);
+            cid = a.get(1);
+            price = a.get(2);
+            dateofissue = a.get(3);
+            dateofpayment = a.get(4);
+            comment = a.get(5);
+            //System.out.println(id+name+afm);*/
+        }
+    }
+    public String toString()
+    {
+        return "";
+    }
 }

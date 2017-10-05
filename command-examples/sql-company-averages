@@ -1,5 +1,5 @@
 select b.companyname,count(b.companyname) as numberOfRecords,sum(a.price) as
-total, avg(a.price)  
+Total, avg(a.price) as Average
 from bills a, companies b 
 where a.cid=b.cid and a.dayofpayment >='2012-01-01' and a.dayofpayment <= '2013-12-31'   
 group by b.companyname
