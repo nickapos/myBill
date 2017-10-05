@@ -30,39 +30,67 @@ import java.util.*;
  */
 public class SelectAverageExpensesPerCompanyInRange {
 
-    private String companyname, numberOfRecords, totalAmount, avPrice, dateofpayment, cid;
-    private String sql1 = "select b.companyname,count(b.companyname) as numberOfRecords,sum(a.price) as"
+    private String companyName, numberOfRecords, totalAmount, avPrice, dateofPayment, cid;
+    private String sql1 = "select a,cid,b.companyname,count(b.companyname) as numberOfRecords,sum(a.price) as"
             + "total, avg(a.price) "
             + "from bills a, companies b "
             + "where a.cid=b.cid ";
-    private String sql2= "and a.dayofpayment >='";
-    private String sql3= "and a.dayofpayment <= '";
-    private String sql4= "group by b.companyname";
+    private String sql2 = "and a.dayofpayment >='";
+    private String sql3 = "and a.dayofpayment <= '";
+    private String sql4 = "group by b.companyname";
     private SelectFromTable sel = new SelectFromTable();
 
-    public SelectAverageExpensesPerCompanyInRange(){
-        
+    public SelectAverageExpensesPerCompanyInRange() {
+
     }
-    public SelectAverageExpensesPerCompanyInRange(String startPeriod, String endPeriod){
-        String sql = sql1+sql2+startPeriod+"'"+sql3+endPeriod+"'"+sql4;
+
+    public SelectAverageExpensesPerCompanyInRange(String startPeriod, String endPeriod) {
+        String sql = sql1 + sql2 + startPeriod + "'" + sql3 + endPeriod + "'" + sql4;
         this.splitResults(sql);
     }
+
     private void splitResults(String sql) {
         //System.out.println(sql);
         ArrayList<String> a = sel.executeQuery(sql);
-        
+
         if (a.size() > 0) {
-           /* bid = a.get(0);
-            cid = a.get(1);
-            price = a.get(2);
-            dateofissue = a.get(3);
-            dateofpayment = a.get(4);
-            comment = a.get(5);
-            //System.out.println(id+name+afm);*/
+            cid = a.get(0);
+            companyName = a.get(1);
+            numberOfRecords = a.get(2);
+            totalAmount = a.get(3);
+            avPrice = a.get(4);
+            dateofPayment = a.get(5);
+            //System.out.println(id+name+afm);
         }
     }
-    public String toString()
-    {
-        return "";
+
+    public String getCid() {
+        return cid;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public String getNumberOfRecords() {
+        return numberOfRecords;
+    }
+
+    public String getTotalAmount() {
+        return totalAmount;
+    }
+
+    public String getAvPrice() {
+        return avPrice;
+    }
+
+    public String getDateofPayment() {
+        return dateofPayment;
+    }
+
+    public String toString() {
+        return "Cid"+this.getCid()+" CompanyName:"+this.getCompanyName()+ 
+                " TotalAmount:"+this.totalAmount+" AveragePrice:"+this.avPrice+
+                " DateOfPayment:"+this.dateofPayment;
     }
 }
