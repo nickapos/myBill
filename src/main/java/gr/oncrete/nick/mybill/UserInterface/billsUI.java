@@ -16,7 +16,7 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
+ /*
  * billsUI.java
  *
  * Created on 15 Ιουν 2010, 11:05:26 μμ
@@ -182,6 +182,8 @@ public class billsUI extends javax.swing.JFrame {
         jMenuItem10 = new javax.swing.JMenuItem();
         changeDBCurrencyMenuItem = new javax.swing.JMenuItem();
         calculateAmortizationMenuItem = new javax.swing.JMenuItem();
+        Analytics = new javax.swing.JMenu();
+        AnalyticsForPeriod = new javax.swing.JMenuItem();
         presentTransactionsPerCompanyMenuItem = new javax.swing.JMenuItem();
         invertRecordMenuItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -714,13 +716,25 @@ public class billsUI extends javax.swing.JFrame {
         });
         jMenu3.add(calculateAmortizationMenuItem);
 
-        presentTransactionsPerCompanyMenuItem.setText(bundle.getString("billsUI.presentTransactionsPerCompanyMenuItem.text")); // NOI18N
+        Analytics.setText("Analytics");
+
+        AnalyticsForPeriod.setText("Analytics For Period");
+        AnalyticsForPeriod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnalyticsForPeriodActionPerformed(evt);
+            }
+        });
+        Analytics.add(AnalyticsForPeriod);
+
+        presentTransactionsPerCompanyMenuItem.setText("Present Transactions Per Company");
         presentTransactionsPerCompanyMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 presentTransactionsPerCompanyMenuItemActionPerformed(evt);
             }
         });
-        jMenu3.add(presentTransactionsPerCompanyMenuItem);
+        Analytics.add(presentTransactionsPerCompanyMenuItem);
+
+        jMenu3.add(Analytics);
 
         invertRecordMenuItem.setText(bundle.getString("billsUI.invertRecordMenuItem.text")); // NOI18N
         invertRecordMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -1139,7 +1153,7 @@ public class billsUI extends javax.swing.JFrame {
     private void companyDetailsCNameTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_companyDetailsCNameTextFieldKeyReleased
         // TODO add your handling code here://System.out.println("descComp: "+descCompName+" and its hash code is: "+descCompName.hashCode());
         //Making sure afm is less than 9 digits, while allowing for smaller numbers to be allowed without problem
-        String descCompName=companyDetailsCNameTextField.getText();
+        String descCompName = companyDetailsCNameTextField.getText();
         String afmFull = Integer.toString(descCompName.hashCode());
         String afm = "";
         if (afmFull.length() > 9) {
@@ -1152,13 +1166,18 @@ public class billsUI extends javax.swing.JFrame {
 
     private void exportQIFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportQIFActionPerformed
         ExportAllRecordsQIF exp = new ExportAllRecordsQIF();
-        exp.displayGUI();        
+        exp.displayGUI();
     }//GEN-LAST:event_exportQIFActionPerformed
 
     private void exportCVSPeriodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportCVSPeriodActionPerformed
         ExportCSVByPeriod cvsp = new ExportCSVByPeriod();
         cvsp.displayGUI();
     }//GEN-LAST:event_exportCVSPeriodActionPerformed
+
+    private void AnalyticsForPeriodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnalyticsForPeriodActionPerformed
+        PresentTransactionsAnalyticsForPeriod tp = new PresentTransactionsAnalyticsForPeriod();
+        tp.displayApp();        // TODO add your handling code here:
+    }//GEN-LAST:event_AnalyticsForPeriodActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1171,6 +1190,8 @@ public class billsUI extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Analytics;
+    private javax.swing.JMenuItem AnalyticsForPeriod;
     private javax.swing.JPanel InsertEditBillPanel;
     private javax.swing.JPanel InsertEditCompanyPanel;
     private javax.swing.JPanel InsertEditIncome;
