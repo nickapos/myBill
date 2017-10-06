@@ -56,7 +56,6 @@ public class SelectAverageExpensesPerCompanyInRange {
         /*a.forEach((cid,companyName, numberOfRecords, totalAmount, avPrice, dateofPayment)->{
         analyticsRecordList.add(new AnalyticsRecord(companyName, numberOfRecords, totalAmount, avPrice, dateofPayment,cid));
     });*/
-            a.forEach(s -> System.out.println(s));
            List<List<String>> partitionedList= Lists.partition(a,6);
         
     }
@@ -70,7 +69,7 @@ public class SelectAverageExpensesPerCompanyInRange {
     private class AnalyticsRecord{
        public String companyName, numberOfRecords, totalAmount, avPrice, dateofPayment, cid;
 
-    public AnalyticsRecord(String companyName, String numberOfRecords, String totalAmount, String avPrice, String cid) {
+    public AnalyticsRecord(String cid,String companyName, String numberOfRecords, String totalAmount, String avPrice) {
         this.companyName = companyName;
         this.numberOfRecords = numberOfRecords;
         this.totalAmount = totalAmount;
