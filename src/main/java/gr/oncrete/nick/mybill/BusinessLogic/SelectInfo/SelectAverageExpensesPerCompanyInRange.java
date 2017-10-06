@@ -20,6 +20,7 @@ package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
 import gr.oncrete.nick.mybill.RDBMS.SelectFromTable;
 import java.util.*;
 import com.google.common.collect.Lists;
+import java.util.stream.Collectors;
 
 /**
  * This class will perform two functions. It will return the average expenses
@@ -31,7 +32,7 @@ import com.google.common.collect.Lists;
  */
 public class SelectAverageExpensesPerCompanyInRange {
 
-    private List<AnalyticsRecord> analyticsRecordList = new<AnalyticsRecord> ArrayList() ;
+    private List<AnalyticsRecord> analyticsRecordList = new <AnalyticsRecord> ArrayList();
     private String sql1 = "select a,cid,b.companyname,count(b.companyname) as numberOfRecords,sum(a.price) as"
             + "total, avg(a.price) "
             + "from bills a, companies b "
@@ -53,29 +54,29 @@ public class SelectAverageExpensesPerCompanyInRange {
     private void splitResults(String sql) {
         //System.out.println(sql);
         List<String> a = sel.executeQuery(sql);
-        /*a.forEach((cid,companyName, numberOfRecords, totalAmount, avPrice, dateofPayment)->{
-        analyticsRecordList.add(new AnalyticsRecord(companyName, numberOfRecords, totalAmount, avPrice, dateofPayment,cid));
-    });*/
-           List<List<String>> partitionedList= Lists.partition(a,6);
-        
+        List<List<String>> partitionedList = Lists.partition(a, 6);
+        analyticsRecordList = partitionedList.stream().map(n -> new AnalyticsRecord(n.get(0), n.get(1), n.get(2), n.get(3), n.get(4))).collect(Collectors.toList());
     }
-
-    
 
     public String toString() {
-        return "Cid";
+        return analyticsRecordList.stream().map(n -> n.toString()).collect(Collectors.joining("\n"));
     }
-    
-    private class AnalyticsRecord{
-       public String companyName, numberOfRecords, totalAmount, avPrice, dateofPayment, cid;
 
-    public AnalyticsRecord(String cid,String companyName, String numberOfRecords, String totalAmount, String avPrice) {
-        this.companyName = companyName;
-        this.numberOfRecords = numberOfRecords;
-        this.totalAmount = totalAmount;
-        this.avPrice = avPrice;
-        this.cid = cid;
+    public List getAnalyticsRecordList() {
+        return analyticsRecordList;
     }
+
+    private class AnalyticsRecord {
+
+        public String companyName, numberOfRecords, totalAmount, avPrice, dateofPayment, cid;
+
+        public AnalyticsRecord(String cid, String companyName, String numberOfRecords, String totalAmount, String avPrice) {
+            this.companyName = companyName;
+            this.numberOfRecords = numberOfRecords;
+            this.totalAmount = totalAmount;
+            this.avPrice = avPrice;
+            this.cid = cid;
+        }
 
         public String getCompanyName() {
             return companyName;
@@ -124,6 +125,10 @@ public class SelectAverageExpensesPerCompanyInRange {
         public void setCid(String cid) {
             this.cid = cid;
         }
-    
+
+        public String toString() {
+            return "Cid:" + this.getCid() + " CompanyName:" + this.getCompanyName() + " TotalAmount:" + this.getTotalAmount() + " NumOfRecords:" + this.getNumberOfRecords() + " AverageAmount:" + this.getAvPrice();
+        }
+
     }
 }
