@@ -70,18 +70,7 @@ public class SelectFromTable extends BasicTableOperation
     */
    public ArrayList executeQueryA (String query)
    {
-      ArrayList a = new ArrayList();
-      try
-      {
-        a= DatabaseConnection.queryReturnResultA (query);
-        
-      }
-      catch (SQLException sqle)
-      {
-         sqle.printStackTrace ();
-         a = new ArrayList();
-      }
-      return a;
+     return this.executeQuery(query);
    }
 
    /**
