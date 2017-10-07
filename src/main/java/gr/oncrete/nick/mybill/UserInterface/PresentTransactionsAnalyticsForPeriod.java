@@ -27,6 +27,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import javax.swing.JComboBox;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectAverageExpensesPerCompanyInRange;
 
 /**
  *
@@ -65,7 +66,7 @@ public class PresentTransactionsAnalyticsForPeriod extends javax.swing.JFrame {
         periodBeginingLabel = new javax.swing.JLabel();
         periodStartYear = new javax.swing.JComboBox();
         periodStartMonth = new javax.swing.JComboBox();
-        Day = new javax.swing.JComboBox();
+        periodStartDay = new javax.swing.JComboBox();
         periodEndingjLabel = new javax.swing.JLabel();
         periodEndYear = new javax.swing.JComboBox();
         periodEndMonth = new javax.swing.JComboBox();
@@ -102,13 +103,13 @@ public class PresentTransactionsAnalyticsForPeriod extends javax.swing.JFrame {
         });
         northPanel.add(periodStartMonth);
 
-        Day.setModel(new javax.swing.DefaultComboBoxModel(this.getDaysCombo()));
-        Day.addActionListener(new java.awt.event.ActionListener() {
+        periodStartDay.setModel(new javax.swing.DefaultComboBoxModel(this.getDaysCombo()));
+        periodStartDay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DayActionPerformed(evt);
+                periodStartDayActionPerformed(evt);
             }
         });
-        northPanel.add(Day);
+        northPanel.add(periodStartDay);
 
         periodEndingjLabel.setText("Period ending");
         northPanel.add(periodEndingjLabel);
@@ -159,17 +160,23 @@ public class PresentTransactionsAnalyticsForPeriod extends javax.swing.JFrame {
     }//GEN-LAST:event_periodStartYearActionPerformed
 
     private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goButtonActionPerformed
-        int a = periodStartYear.getSelectedIndex();
-        String companyName = (String) periodEndYear.getSelectedItem();
-        
-        String resultStr = "";
-        
+        String startYear = (String) periodStartYear.getSelectedItem();
+        String startMonth= (String) periodStartMonth.getSelectedItem();
+        String startDay=(String)periodStartDay.getSelectedItem();
+        String endYear = (String) periodEndYear.getSelectedItem();
+        String endMonth = (String)periodEndMonth.getSelectedItem();
+        String endDay= (String)periodEndDay.getSelectedItem();
+        String startPeriod=startYear+"-"+startMonth+"-"+startDay;
+        String endPeriod=endYear+"-"+endMonth+"-"+endDay;
+        SelectAverageExpensesPerCompanyInRange analytics = new SelectAverageExpensesPerCompanyInRange(startPeriod.replace(" ", ""),endPeriod.replace(" ", ""));
+        String resultStr = analytics.toString();
+        System.out.println("Result String:"+resultStr);
         resultTextArea.setText(resultStr);
     }//GEN-LAST:event_goButtonActionPerformed
 
-    private void DayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DayActionPerformed
+    private void periodStartDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodStartDayActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DayActionPerformed
+    }//GEN-LAST:event_periodStartDayActionPerformed
 
     private void periodStartMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodStartMonthActionPerformed
         // TODO add your handling code here:
@@ -200,7 +207,6 @@ public class PresentTransactionsAnalyticsForPeriod extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox Day;
     private javax.swing.JPanel centerPanel;
     private javax.swing.JButton goButton;
     private javax.swing.JScrollPane jScrollPane1;
@@ -210,6 +216,7 @@ public class PresentTransactionsAnalyticsForPeriod extends javax.swing.JFrame {
     private javax.swing.JComboBox periodEndMonth;
     private javax.swing.JComboBox periodEndYear;
     private javax.swing.JLabel periodEndingjLabel;
+    private javax.swing.JComboBox periodStartDay;
     private javax.swing.JComboBox periodStartMonth;
     private javax.swing.JComboBox periodStartYear;
     private javax.swing.JTextArea resultTextArea;

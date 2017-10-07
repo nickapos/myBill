@@ -20,6 +20,7 @@ package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
 import gr.oncrete.nick.mybill.RDBMS.SelectFromTable;
 import java.util.*;
 import com.google.common.collect.Lists;
+import java.text.DecimalFormat;
 import java.util.stream.Collectors;
 
 /**
@@ -33,13 +34,13 @@ import java.util.stream.Collectors;
 public class SelectAverageExpensesPerCompanyInRange {
 
     private List<AnalyticsRecord> analyticsRecordList = new <AnalyticsRecord> ArrayList();
-    private String sql1 = "select a,cid,b.companyname,count(b.companyname) as numberOfRecords,sum(a.price) as"
-            + "total, avg(a.price) "
+    private String sql1 = "select b.cid,b.companyname,count(b.companyname) as numberOfRecords,sum(a.price) as "
+            + "total, avg(a.price) as average "
             + "from bills a, companies b "
             + "where a.cid=b.cid ";
-    private String sql2 = "and a.dayofpayment >='";
-    private String sql3 = "and a.dayofpayment <= '";
-    private String sql4 = "group by b.companyname";
+    private String sql2 = " and a.dayofpayment>='";
+    private String sql3 = " and a.dayofpayment<= '";
+    private String sql4 = " group by b.companyname,b.cid order by numberOfRecords desc";
     private SelectFromTable sel = new SelectFromTable();
 
     public SelectAverageExpensesPerCompanyInRange() {
@@ -54,12 +55,14 @@ public class SelectAverageExpensesPerCompanyInRange {
     private void splitResults(String sql) {
         //System.out.println(sql);
         List<String> a = sel.executeQuery(sql);
-        List<List<String>> partitionedList = Lists.partition(a, 6);
+        List<List<String>> partitionedList = Lists.partition(a, 5);
         analyticsRecordList = partitionedList.stream().map(n -> new AnalyticsRecord(n.get(0), n.get(1), n.get(2), n.get(3), n.get(4))).collect(Collectors.toList());
     }
 
     public String toString() {
-        return analyticsRecordList.stream().map(n -> n.toString()).collect(Collectors.joining("\n"));
+        String results = analyticsRecordList.stream().map(n -> n.toString()).collect(Collectors.joining("\n"));
+        System.out.println(results);
+        return results;
     }
 
     public List getAnalyticsRecordList() {
@@ -95,7 +98,7 @@ public class SelectAverageExpensesPerCompanyInRange {
         }
 
         public String getTotalAmount() {
-            return totalAmount;
+            return new DecimalFormat("####.##").format(Double.valueOf(totalAmount));
         }
 
         public void setTotalAmount(String totalAmount) {
@@ -103,7 +106,7 @@ public class SelectAverageExpensesPerCompanyInRange {
         }
 
         public String getAvPrice() {
-            return avPrice;
+            return new DecimalFormat("####.##").format(Double.valueOf(avPrice));
         }
 
         public void setAvPrice(String avPrice) {
@@ -127,7 +130,7 @@ public class SelectAverageExpensesPerCompanyInRange {
         }
 
         public String toString() {
-            return "Cid:" + this.getCid() + " CompanyName:" + this.getCompanyName() + " TotalAmount:" + this.getTotalAmount() + " NumOfRecords:" + this.getNumberOfRecords() + " AverageAmount:" + this.getAvPrice();
+            return " Num Of Records:" + this.getNumberOfRecords()+ " Total Amount:" + this.getTotalAmount() + " Average Amount:" + this.getAvPrice()+" Company Name:" + this.getCompanyName();
         }
 
     }
