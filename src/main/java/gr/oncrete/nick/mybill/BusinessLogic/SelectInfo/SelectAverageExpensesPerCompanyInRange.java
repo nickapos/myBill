@@ -61,8 +61,14 @@ public class SelectAverageExpensesPerCompanyInRange {
 
     public String toString() {
         String results = analyticsRecordList.stream().map(n -> n.toString()).collect(Collectors.joining("\n"));
-        System.out.println(results);
+        //System.out.println(results);
         return results;
+    }
+    
+    public List<String> getCidList() {
+        List<String> cidList = analyticsRecordList.stream().map(n -> n.getCid()).collect(Collectors.toList());
+        //System.out.println(cidList.toString());
+        return cidList;
     }
 
     public List getAnalyticsRecordList() {

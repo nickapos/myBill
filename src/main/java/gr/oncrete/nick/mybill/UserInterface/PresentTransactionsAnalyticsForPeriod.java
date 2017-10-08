@@ -170,7 +170,7 @@ public class PresentTransactionsAnalyticsForPeriod extends javax.swing.JFrame {
         String endPeriod=endYear+"-"+endMonth+"-"+endDay;
         SelectAverageExpensesPerCompanyInRange analytics = new SelectAverageExpensesPerCompanyInRange(startPeriod.replace(" ", ""),endPeriod.replace(" ", ""));
         String resultStr = analytics.toString();
-        System.out.println("Result String:"+resultStr);
+        //System.out.println("Result String:"+resultStr);
         resultTextArea.setText(resultStr);
     }//GEN-LAST:event_goButtonActionPerformed
 
