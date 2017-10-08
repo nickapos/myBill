@@ -40,7 +40,10 @@ public class SelectAverageExpensesPerCompanyInRange {
             + "where a.cid=b.cid ";
     private String sql2 = " and a.dayofpayment>='";
     private String sql3 = " and a.dayofpayment<= '";
-    private String sql4 = " group by b.companyname,b.cid order by numberOfRecords desc";
+    private String sql4 = " group by b.companyname,b.cid";
+    private String orderByNumOfRecords = " order by numberOfRecords desc";
+    private String orderByAmount = " order by total desc";
+    private String orderByAverage = " order by average desc";
     private SelectFromTable sel = new SelectFromTable();
 
     public SelectAverageExpensesPerCompanyInRange() {
@@ -49,6 +52,21 @@ public class SelectAverageExpensesPerCompanyInRange {
 
     public SelectAverageExpensesPerCompanyInRange(String startPeriod, String endPeriod) {
         String sql = sql1 + sql2 + startPeriod + "'" + sql3 + endPeriod + "'" + sql4;
+        this.splitResults(sql);
+    }
+
+    public SelectAverageExpensesPerCompanyInRange(String startPeriod, String endPeriod, String orderBy) {
+        String sql = "";
+        if (orderBy.equals("NumOfRecords")) {
+            sql = sql1 + sql2 + startPeriod + "'" + sql3 + endPeriod + "'" + sql4 + orderByNumOfRecords;
+        } else if (orderBy.equals("Amount")) {
+            sql = sql1 + sql2 + startPeriod + "'" + sql3 + endPeriod + "'" + sql4 + orderByAmount;
+        } else if(orderBy.equals("Average")){
+            sql = sql1 + sql2 + startPeriod + "'" + sql3 + endPeriod + "'" + sql4 + orderByAverage;
+        }
+        else {
+            sql = sql1 + sql2 + startPeriod + "'" + sql3 + endPeriod + "'" + sql4 + orderByAmount;
+        }
         this.splitResults(sql);
     }
 
@@ -64,7 +82,7 @@ public class SelectAverageExpensesPerCompanyInRange {
         //System.out.println(results);
         return results;
     }
-    
+
     public List<String> getCidList() {
         List<String> cidList = analyticsRecordList.stream().map(n -> n.getCid()).collect(Collectors.toList());
         //System.out.println(cidList.toString());
@@ -136,7 +154,7 @@ public class SelectAverageExpensesPerCompanyInRange {
         }
 
         public String toString() {
-            return " Num Of Records:" + this.getNumberOfRecords()+ " Total Amount:" + this.getTotalAmount() + " Average Amount:" + this.getAvPrice()+" Company Name:" + this.getCompanyName();
+            return " Num Of Records: " + this.getNumberOfRecords() + " Total Amount: " + this.getTotalAmount() + " Average Amount: " + this.getAvPrice() + " Company Name: " + this.getCompanyName();
         }
 
     }
