@@ -30,18 +30,17 @@ import java.util.stream.IntStream;
  * @author nickapos
  */
 public class FindRecurringPayments {
-
+    
+    
     public FindRecurringPayments() {
-
-    }
-
-    private void createPeriodOfTwelveMonthsBack() {
         LocalDateTime now = LocalDateTime.now();
-        int currentMonth= now.getMonth().getValue();
+        int currentMonth = now.getMonth().getValue();
         int currentYear = now.getYear();
-        SelectAverageExpensesPerCompanyInRange getMetrics;
-        List<Integer> months = IntStream.rangeClosed(1, currentMonth).boxed().collect(Collectors.toList());
-        months.forEach(it-> System.out.println(it));
-        
+        int remainingMonthsFromPrevYear = 12 - currentMonth;
+        String periodStart = String.format("%s-%s-01", currentYear - 1, remainingMonthsFromPrevYear);
+        String periodStop = String.format("%s-%s-31", currentYear, currentMonth);
+        SelectAverageExpensesPerCompanyInRange getMetrics = new SelectAverageExpensesPerCompanyInRange(periodStart, periodStop, "NumOfRecords");
+
     }
+
 }
