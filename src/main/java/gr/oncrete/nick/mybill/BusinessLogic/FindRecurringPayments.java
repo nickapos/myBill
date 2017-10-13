@@ -16,12 +16,11 @@
  */
 package gr.oncrete.nick.mybill.BusinessLogic;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectAverageExpensesPerCompanyInRange;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectAverageExpensesPerCompanyInRange.AnalyticsRecord;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 /**
  * This class will compare the transactions of each month and find what are the
@@ -30,8 +29,8 @@ import java.util.stream.IntStream;
  * @author nickapos
  */
 public class FindRecurringPayments {
-    
-    
+    SelectAverageExpensesPerCompanyInRange getMetrics;
+    ;
     public FindRecurringPayments() {
         LocalDateTime now = LocalDateTime.now();
         int currentMonth = now.getMonth().getValue();
@@ -39,8 +38,23 @@ public class FindRecurringPayments {
         int remainingMonthsFromPrevYear = 12 - currentMonth;
         String periodStart = String.format("%s-%s-01", currentYear - 1, remainingMonthsFromPrevYear);
         String periodStop = String.format("%s-%s-31", currentYear, currentMonth);
-        SelectAverageExpensesPerCompanyInRange getMetrics = new SelectAverageExpensesPerCompanyInRange(periodStart, periodStop, "NumOfRecords");
-
+        getMetrics = new SelectAverageExpensesPerCompanyInRange(periodStart, periodStop, "NumOfRecords");
+    }
+    
+    public List<AnalyticsRecord> selectRecordsOnFrequency (int freq){
+        List<AnalyticsRecord> a=getMetrics.getAnalyticsRecordList();
+        List<AnalyticsRecord> mostFrequent =a.stream().filter(record -> Integer.parseInt(record.getNumberOfRecords()) > freq ).collect(Collectors.toList());
+        return mostFrequent;
+    }
+    
+    public double returnMostFrequentAverage(List<AnalyticsRecord> freqRecords){
+        return freqRecords.stream().mapToDouble(n->n.getAvPriceDouble()).average().getAsDouble();
+    }
+    
+    public String toString(List<AnalyticsRecord> freqRecords){
+        String results = freqRecords.stream().map(n -> n.toString()).collect(Collectors.joining("\n"));
+        //System.out.println(results);
+        return results;
     }
 
 }
