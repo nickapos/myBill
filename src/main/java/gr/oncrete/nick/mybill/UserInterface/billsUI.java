@@ -184,6 +184,7 @@ public class billsUI extends javax.swing.JFrame {
         calculateAmortizationMenuItem = new javax.swing.JMenuItem();
         Analytics = new javax.swing.JMenu();
         AnalyticsForPeriod = new javax.swing.JMenuItem();
+        RecurringPaymentsForLastYearMenuItem = new javax.swing.JMenuItem();
         presentTransactionsPerCompanyMenuItem = new javax.swing.JMenuItem();
         invertRecordMenuItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -726,6 +727,14 @@ public class billsUI extends javax.swing.JFrame {
         });
         Analytics.add(AnalyticsForPeriod);
 
+        RecurringPaymentsForLastYearMenuItem.setText(bundle.getString("billsUI.RecurringPaymentsForLastYearMenuItem.text")); // NOI18N
+        RecurringPaymentsForLastYearMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RecurringPaymentsForLastYearMenuItemActionPerformed(evt);
+            }
+        });
+        Analytics.add(RecurringPaymentsForLastYearMenuItem);
+
         presentTransactionsPerCompanyMenuItem.setText("Present Transactions Per Company");
         presentTransactionsPerCompanyMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1176,8 +1185,13 @@ public class billsUI extends javax.swing.JFrame {
 
     private void AnalyticsForPeriodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnalyticsForPeriodActionPerformed
         PresentTransactionsAnalyticsForPeriod tp = new PresentTransactionsAnalyticsForPeriod();
-        tp.displayApp();        // TODO add your handling code here:
+        tp.displayApp();        
     }//GEN-LAST:event_AnalyticsForPeriodActionPerformed
+
+    private void RecurringPaymentsForLastYearMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecurringPaymentsForLastYearMenuItemActionPerformed
+        PresentRecurringPayments tp = new PresentRecurringPayments();
+        tp.displayApp(); 
+    }//GEN-LAST:event_RecurringPaymentsForLastYearMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1195,6 +1209,7 @@ public class billsUI extends javax.swing.JFrame {
     private javax.swing.JPanel InsertEditBillPanel;
     private javax.swing.JPanel InsertEditCompanyPanel;
     private javax.swing.JPanel InsertEditIncome;
+    private javax.swing.JMenuItem RecurringPaymentsForLastYearMenuItem;
     private javax.swing.JPanel ReportsPanel;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JTextField billAmountTextField;

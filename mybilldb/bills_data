@@ -1,1 +1,0 @@
-insert into bills (cid,price,dateofissue,dayofpayment) values (1,215,'2010-05-14','2010-05-28') 

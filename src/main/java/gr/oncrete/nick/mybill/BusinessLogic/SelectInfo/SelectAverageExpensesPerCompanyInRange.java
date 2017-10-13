@@ -93,7 +93,7 @@ public class SelectAverageExpensesPerCompanyInRange {
         return analyticsRecordList;
     }
 
-    private class AnalyticsRecord {
+    public class AnalyticsRecord {
 
         public String companyName, numberOfRecords, totalAmount, avPrice, dateofPayment, cid;
 
@@ -130,7 +130,11 @@ public class SelectAverageExpensesPerCompanyInRange {
         }
 
         public String getAvPrice() {
-            return new DecimalFormat("####.##").format(Double.valueOf(avPrice));
+            return new DecimalFormat("####.##").format(this.getAvPriceDouble());
+        }
+        
+        public double getAvPriceDouble() {
+            return Double.valueOf(avPrice);
         }
 
         public void setAvPrice(String avPrice) {
@@ -154,7 +158,7 @@ public class SelectAverageExpensesPerCompanyInRange {
         }
 
         public String toString() {
-            return " Num Of Records: " + this.getNumberOfRecords() + " Total Amount: " + this.getTotalAmount() + " Average Amount: " + this.getAvPrice() + " Company Name: " + this.getCompanyName();
+            return String.format(" Num Of Records: %s Total Amount: %s  Average Amount: %s  Company Name: %s" , this.getNumberOfRecords() , this.getTotalAmount(), this.getAvPrice(), this.getCompanyName());
         }
 
     }
