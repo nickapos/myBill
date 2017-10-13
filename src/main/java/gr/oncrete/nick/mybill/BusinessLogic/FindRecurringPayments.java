@@ -29,8 +29,9 @@ import java.util.stream.Collectors;
  * @author nickapos
  */
 public class FindRecurringPayments {
+
     SelectAverageExpensesPerCompanyInRange getMetrics;
-    ;
+    List<AnalyticsRecord> freqRecords;
     public FindRecurringPayments() {
         LocalDateTime now = LocalDateTime.now();
         int currentMonth = now.getMonth().getValue();
@@ -39,19 +40,22 @@ public class FindRecurringPayments {
         String periodStart = String.format("%s-%s-01", currentYear - 1, remainingMonthsFromPrevYear);
         String periodStop = String.format("%s-%s-31", currentYear, currentMonth);
         getMetrics = new SelectAverageExpensesPerCompanyInRange(periodStart, periodStop, "NumOfRecords");
+        freqRecords=selectRecordsOnFrequency(6);
     }
-    
-    public List<AnalyticsRecord> selectRecordsOnFrequency (int freq){
-        List<AnalyticsRecord> a=getMetrics.getAnalyticsRecordList();
-        List<AnalyticsRecord> mostFrequent =a.stream().filter(record -> Integer.parseInt(record.getNumberOfRecords()) > freq ).collect(Collectors.toList());
-        return mostFrequent;
+
+    private List<AnalyticsRecord> selectRecordsOnFrequency(int freq) {
+        List<AnalyticsRecord> a = getMetrics.getAnalyticsRecordList();
+        List<AnalyticsRecord> mostFrequent = a.stream().filter(record -> Integer.parseInt(record.getNumberOfRecords()) > freq).collect(Collectors.toList());        return mostFrequent;
     }
-    
-    public double returnMostFrequentAverage(List<AnalyticsRecord> freqRecords){
-        return freqRecords.stream().mapToDouble(n->n.getAvPriceDouble()).average().getAsDouble();
+
+    public double returnMostFrequentAverage() {
+        return freqRecords.stream().mapToDouble(n -> n.getAvPriceDouble()).average().getAsDouble();
     }
-    
-    public String toString(List<AnalyticsRecord> freqRecords){
+    public int getNumberOfRecurringPayments() {
+        return freqRecords.size();
+    }
+
+    public String toString() {
         String results = freqRecords.stream().map(n -> n.toString()).collect(Collectors.joining("\n"));
         //System.out.println(results);
         return results;

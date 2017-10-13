@@ -158,7 +158,7 @@ public class SelectAverageExpensesPerCompanyInRange {
         }
 
         public String toString() {
-            return " Num Of Records: " + this.getNumberOfRecords() + " Total Amount: " + this.getTotalAmount() + " Average Amount: " + this.getAvPrice() + " Company Name: " + this.getCompanyName();
+            return String.format(" Num Of Records: %s Total Amount: %s  Average Amount: %s  Company Name: %s" , this.getNumberOfRecords() , this.getTotalAmount(), this.getAvPrice(), this.getCompanyName());
         }
 
     }
