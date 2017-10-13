@@ -64,26 +64,61 @@ public class PresentRecurringPayments extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        northPanel = new javax.swing.JPanel();
-        periodBeginingLabel = new javax.swing.JLabel();
-        centerPanel = new javax.swing.JPanel();
+        cetnerPanel1 = new javax.swing.JPanel();
+        periodBeginingLabel4 = new javax.swing.JLabel();
+        recordFreqComboBox = new javax.swing.JComboBox();
+        periodEndingjLabel1 = new javax.swing.JLabel();
+        numberOfPaymentsLabel = new javax.swing.JLabel();
+        periodBeginingLabel5 = new javax.swing.JLabel();
+        averageAmountLabel = new javax.swing.JLabel();
+        periodBeginingLabel7 = new javax.swing.JLabel();
+        totalLabel = new javax.swing.JLabel();
+        southPanel = new javax.swing.JPanel();
         goButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        resultTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle"); // NOI18N
-        setTitle(bundle.getString("PresentRecurringPayments.title")); // NOI18N
+        setTitle(bundle.getString("PresentRecurringPayments.title_1")); // NOI18N
         setName("Manage Categories"); // NOI18N
 
-        northPanel.setLayout(new java.awt.GridLayout(1, 2));
+        cetnerPanel1.setLayout(new java.awt.GridLayout(4, 2));
 
-        periodBeginingLabel.setText(bundle.getString("PresentRecurringPayments.periodBeginingLabel.text")); // NOI18N
-        northPanel.add(periodBeginingLabel);
+        periodBeginingLabel4.setText(bundle.getString("PresentRecurringPayments.periodBeginingLabel4.text")); // NOI18N
+        cetnerPanel1.add(periodBeginingLabel4);
 
-        getContentPane().add(northPanel, java.awt.BorderLayout.NORTH);
+        recordFreqComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "6", "7", "8", "9", "10", "11", "12" }));
+        recordFreqComboBox.setSelectedItem(IntStream.rangeClosed(2005, 2100));
+        recordFreqComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recordFreqComboBoxActionPerformed(evt);
+            }
+        });
+        cetnerPanel1.add(recordFreqComboBox);
 
-        centerPanel.setLayout(new java.awt.BorderLayout());
+        periodEndingjLabel1.setText(bundle.getString("PresentRecurringPayments.periodEndingjLabel1.text")); // NOI18N
+        cetnerPanel1.add(periodEndingjLabel1);
+
+        numberOfPaymentsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numberOfPaymentsLabel.setText(bundle.getString("PresentRecurringPayments.numberOfPaymentsLabel.text")); // NOI18N
+        cetnerPanel1.add(numberOfPaymentsLabel);
+
+        periodBeginingLabel5.setText(bundle.getString("PresentRecurringPayments.periodBeginingLabel5.text")); // NOI18N
+        cetnerPanel1.add(periodBeginingLabel5);
+
+        averageAmountLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        averageAmountLabel.setText(bundle.getString("PresentRecurringPayments.averageAmountLabel.text")); // NOI18N
+        cetnerPanel1.add(averageAmountLabel);
+
+        periodBeginingLabel7.setText(bundle.getString("PresentRecurringPayments.periodBeginingLabel7.text")); // NOI18N
+        cetnerPanel1.add(periodBeginingLabel7);
+
+        totalLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        totalLabel.setText(bundle.getString("PresentRecurringPayments.totalLabel.text")); // NOI18N
+        cetnerPanel1.add(totalLabel);
+
+        getContentPane().add(cetnerPanel1, java.awt.BorderLayout.CENTER);
+
+        southPanel.setLayout(new java.awt.BorderLayout());
 
         goButton.setText(bundle.getString("PresentRecurringPayments.goButton.text")); // NOI18N
         goButton.addActionListener(new java.awt.event.ActionListener() {
@@ -91,26 +126,29 @@ public class PresentRecurringPayments extends javax.swing.JFrame {
                 goButtonActionPerformed(evt);
             }
         });
-        centerPanel.add(goButton, java.awt.BorderLayout.NORTH);
+        southPanel.add(goButton, java.awt.BorderLayout.NORTH);
 
-        resultTextArea.setColumns(20);
-        resultTextArea.setRows(5);
-        jScrollPane1.setViewportView(resultTextArea);
-
-        centerPanel.add(jScrollPane1, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(centerPanel, java.awt.BorderLayout.CENTER);
+        getContentPane().add(southPanel, java.awt.BorderLayout.SOUTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goButtonActionPerformed
+        int freq = Integer.parseInt((String) recordFreqComboBox.getSelectedItem());
+        FindRecurringPayments recPayments = new FindRecurringPayments(freq);
+        numberOfPaymentsLabel.setText(String.format("%d", recPayments.getNumberOfRecurringPayments()));
+        averageAmountLabel.setText(String.format("%6.2f", recPayments.returnMostFrequentTransactionsAverage()));
+        totalLabel.setText(String.format("%6.2f", recPayments.returnMostFrequentTransactionsSum()));
 
-        FindRecurringPayments recPayments = new FindRecurringPayments();
-        System.out.println(recPayments.toString());
-        String resultStr = String.format("Number of payments per month %d, average amount %d",recPayments.getNumberOfRecurringPayments(),recPayments.returnMostFrequentAverage());
-        resultTextArea.setText(recPayments.toString());
     }//GEN-LAST:event_goButtonActionPerformed
+
+    private void recordFreqComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordFreqComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recordFreqComboBoxActionPerformed
+    private String getNumOfRowsLine(List a, String results) {
+        return results + "\n\n" + java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("NUMBER OF ROWS ") + " " + a.size();
+
+    }
 
     /**
      * @param args the command line arguments
@@ -124,12 +162,17 @@ public class PresentRecurringPayments extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel centerPanel;
+    private javax.swing.JLabel averageAmountLabel;
+    private javax.swing.JPanel cetnerPanel1;
     private javax.swing.JButton goButton;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel northPanel;
-    private javax.swing.JLabel periodBeginingLabel;
-    private javax.swing.JTextArea resultTextArea;
+    private javax.swing.JLabel numberOfPaymentsLabel;
+    private javax.swing.JLabel periodBeginingLabel4;
+    private javax.swing.JLabel periodBeginingLabel5;
+    private javax.swing.JLabel periodBeginingLabel7;
+    private javax.swing.JLabel periodEndingjLabel1;
+    private javax.swing.JComboBox recordFreqComboBox;
+    private javax.swing.JPanel southPanel;
+    private javax.swing.JLabel totalLabel;
     // End of variables declaration//GEN-END:variables
 
     /**

@@ -32,7 +32,7 @@ public class FindRecurringPayments {
 
     SelectAverageExpensesPerCompanyInRange getMetrics;
     List<AnalyticsRecord> freqRecords;
-    public FindRecurringPayments() {
+    public FindRecurringPayments(int recordFrequency) {
         LocalDateTime now = LocalDateTime.now();
         int currentMonth = now.getMonth().getValue();
         int currentYear = now.getYear();
@@ -40,7 +40,7 @@ public class FindRecurringPayments {
         String periodStart = String.format("%s-%s-01", currentYear - 1, remainingMonthsFromPrevYear);
         String periodStop = String.format("%s-%s-31", currentYear, currentMonth);
         getMetrics = new SelectAverageExpensesPerCompanyInRange(periodStart, periodStop, "NumOfRecords");
-        freqRecords=selectRecordsOnFrequency(6);
+        freqRecords=selectRecordsOnFrequency(recordFrequency);
     }
 
     private List<AnalyticsRecord> selectRecordsOnFrequency(int freq) {
@@ -48,8 +48,12 @@ public class FindRecurringPayments {
         List<AnalyticsRecord> mostFrequent = a.stream().filter(record -> Integer.parseInt(record.getNumberOfRecords()) > freq).collect(Collectors.toList());        return mostFrequent;
     }
 
-    public double returnMostFrequentAverage() {
+    public double returnMostFrequentTransactionsAverage() {
         return freqRecords.stream().mapToDouble(n -> n.getAvPriceDouble()).average().getAsDouble();
+    }
+    
+    public double returnMostFrequentTransactionsSum() {
+        return freqRecords.stream().mapToDouble(n -> n.getAvPriceDouble()).sum();
     }
     public int getNumberOfRecurringPayments() {
         return freqRecords.size();
