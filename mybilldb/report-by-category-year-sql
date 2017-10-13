@@ -1,1 +1,0 @@
-select sum(c.price),a.categoryname from categories a, companies b, bills c where a.catid=b.catid and b.cid=c.cid and c.dayofpayment>='2010-01-01' group by a.categoryname
