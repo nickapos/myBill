@@ -17,6 +17,7 @@
  */
 package gr.oncrete.nick.mybill.BusinessLogic;
 
+import com.opencsv.CSVReader;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -24,6 +25,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+
 
 /**
  *
@@ -34,19 +36,18 @@ public class ParseCsv {
     protected String fileName = "";
     protected String delimiter = ",";
     protected int numberOfFields = 1;
-    
-    private String[] header= {};
-    
+
+    private String[] header = {};
 
     public ParseCsv() {
 
     }
 
-    public ParseCsv( int fields) {
+    public ParseCsv(int fields) {
         this.setNumberOfFields(fields);
     }
 
-    public ParseCsv( String delim, int fields) {
+    public ParseCsv(String delim, int fields) {
         this.setDelimiter(delim);
         this.setNumberOfFields(fields);
     }
@@ -55,38 +56,27 @@ public class ParseCsv {
      * This method will parse the given file into an arrayList of string lists.
      *
      * @param file
+     * @return 
      */
     public ArrayList<ArrayList> parseData(String file) {
         ArrayList<ArrayList> content = new ArrayList();
         fileName = file;
         BufferedReader br = null;
         try {
-            String line;
-            br = new BufferedReader(new FileReader(fileName));
-            while ((line = br.readLine()) != null) {
-
-                String[] lineArr = line.split(delimiter);
-                ArrayList<String> lineContent = new ArrayList<String>(Arrays.asList(lineArr));
-                if (lineContent.size() != numberOfFields) {
-                    System.out.println("Received a line with more fields than expected. I am going to ignore it. Expected number of fields:"
-                            + numberOfFields);
-                    System.out.println("Line contents: " + lineContent.toString());
-                } else {
-                    content.add(lineContent);
-                }
+            CSVReader reader = new CSVReader(new FileReader(fileName));
+            String[] nextLine;
+            while ((nextLine = reader.readNext()) != null) {
+                // nextLine[] is an array of values from the line
+                content.add(new ArrayList( Arrays.asList(nextLine)));
             }
-            
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
         } finally {
             if (br != null) {
                 try {
                     br.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
                 }
             }
         }
@@ -101,19 +91,17 @@ public class ParseCsv {
         numberOfFields = fields;
     }
 
-   
-
     public int getNumOfFields() {
         return numberOfFields;
     }
-    
-    public String[] getColumnNames()
-    {
+
+    public String[] getColumnNames() {
         return header;
     }
-    
-    protected HashMap<String, Integer> initializeMonNumMap(){
-        HashMap<String, Integer> monthNumMap = new HashMap<String, Integer>();
+
+    protected HashMap<String, Integer> initializeMonNumMap() {
+        HashMap<String, Integer> monthNumMap;
+        monthNumMap = new HashMap();
         monthNumMap.put("Jan", 1);
         monthNumMap.put("Feb", 2);
         monthNumMap.put("Mar", 3);
