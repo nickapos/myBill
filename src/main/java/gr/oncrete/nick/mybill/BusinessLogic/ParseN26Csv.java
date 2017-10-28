@@ -23,7 +23,7 @@ package gr.oncrete.nick.mybill.BusinessLogic;
  */
 public class ParseN26Csv extends ParseCsv {
     //tsb has 8 fields in its csv
-    static final int numOfFields = 11;
+    static final int numOfFields = 10;
     private String[] header= {"Date","Payee","Account number","Transaction type","Payment reference","Category","Amount (EUR)","Amount (Foreign Currency)","Type Foreign Currency","Exchange Rate","Import"};
 
     public ParseN26Csv() {
