@@ -36,10 +36,6 @@ public class ParseTSBCsv extends ParseCsv {
 
     }
 
-    public ParseTSBCsv(String file, String delim,int numberOfFields) {
-        super( delim, numberOfFields);
-    }
-
     @Override
     public int getNumOfFields()
     {

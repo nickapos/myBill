@@ -34,7 +34,6 @@ import java.util.HashMap;
 public class ParseCsv {
 
     protected String fileName = "";
-    protected String delimiter = ",";
     protected int numberOfFields = 1;
 
     private String[] header = {};
@@ -44,11 +43,6 @@ public class ParseCsv {
     }
 
     public ParseCsv(int fields) {
-        this.setNumberOfFields(fields);
-    }
-
-    public ParseCsv(String delim, int fields) {
-        this.setDelimiter(delim);
         this.setNumberOfFields(fields);
     }
 
@@ -81,10 +75,6 @@ public class ParseCsv {
             }
         }
         return content;
-    }
-
-    public void setDelimiter(String delim) {
-        delimiter = delim;
     }
 
     public void setNumberOfFields(int fields) {

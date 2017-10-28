@@ -24,7 +24,7 @@ package gr.oncrete.nick.mybill.BusinessLogic;
 public class ParseFidorUKCsv extends ParseCsv {
     //tsb has 8 fields in its csv
     static final int numOfFields = 4;
-    private String[] header= {"Date","Description1","Description2","Import"};
+    private String[] header= {"Date","Description1","Description2","Value","Import"};
 
     public ParseFidorUKCsv() {
         super(numOfFields);
@@ -37,7 +37,7 @@ public class ParseFidorUKCsv extends ParseCsv {
     }
 
     public ParseFidorUKCsv(String file, String delim,int numberOfFields) {
-        super( delim, numberOfFields);
+        super(numberOfFields);
     }
 
     @Override

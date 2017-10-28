@@ -42,10 +42,6 @@ public class ParseBOSCsv extends ParseCsv {
 
     }
 
-    public ParseBOSCsv(String delim, int numberOfFields) {
-        super(delim, numberOfFields);
-    }
-
     @Override
     public int getNumOfFields() {
         return numOfFields;

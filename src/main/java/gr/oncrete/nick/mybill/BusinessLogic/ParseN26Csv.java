@@ -36,10 +36,6 @@ public class ParseN26Csv extends ParseCsv {
 
     }
 
-    public ParseN26Csv(String file, String delim,int numberOfFields) {
-        super( delim, numberOfFields);
-    }
-
     @Override
     public int getNumOfFields()
     {
