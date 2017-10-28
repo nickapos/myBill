@@ -29,6 +29,7 @@ import gr.oncrete.nick.mybill.BusinessLogic.InsertCompany;
 import gr.oncrete.nick.mybill.BusinessLogic.InsertIncome;
 import gr.oncrete.nick.mybill.BusinessLogic.ParseBOSCsv;
 import gr.oncrete.nick.mybill.BusinessLogic.ParseCsv;
+import gr.oncrete.nick.mybill.BusinessLogic.ParseN26Csv;
 import gr.oncrete.nick.mybill.BusinessLogic.ParsePancretaBankCsv;
 import gr.oncrete.nick.mybill.BusinessLogic.ParseTSBCsv;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.Category;
@@ -94,7 +95,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         bankLabel.setText(bundle.getString("ImportBankStatementFrame.bankLabel.text")); // NOI18N
         jPanel1.add(bankLabel);
 
-        bankComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TSB", "Bank of Scotland", "Pancretan Bank" }));
+        bankComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TSB", "Bank of Scotland", "Pancretan Bank", "N26" }));
         jPanel1.add(bankComboBox);
 
         categoryLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -252,7 +253,14 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                 this.displayStatementContent(contentList, panc);
                 selectAllButton.setEnabled(true);
                 unselectAllButton.setEnabled(true);
-            } else {
+            }else if (bankName.equals("N26")){
+                ParseN26Csv n26 = new ParseN26Csv();
+                ArrayList contentList = n26.parseData(file.getAbsolutePath());
+                this.displayStatementContent(contentList, n26);
+                selectAllButton.setEnabled(true);
+                unselectAllButton.setEnabled(true);
+            }
+            else {
                 System.out.println("No parsing template found");
             }
         } else {
@@ -269,7 +277,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         Object[][] contentStrArr = this.convertArrayListTo2DStringArray(contentList, parser.getNumOfFields());
         String[] columnNames = parser.getColumnNames();
         if (contentList.size() > 0) {
-            recordTable.setModel(new ImportBankStatementTableModel(contentStrArr, columnNames));
+            recordTable.setModel(new ImportBankStatementTableModel(contentStrArr, columnNames,parser.getNumOfFields()+1));
             //recordTable.setModel(new MyTableModel(contentStrArr, columnNames));
             recordTable.setAutoCreateRowSorter(true);//add a primitive sort by column function
         }
