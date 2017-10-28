@@ -277,7 +277,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         Object[][] contentStrArr = this.convertArrayListTo2DStringArray(contentList, parser.getNumOfFields());
         String[] columnNames = parser.getColumnNames();
         if (contentList.size() > 0) {
-            recordTable.setModel(new ImportBankStatementTableModel(contentStrArr, columnNames,parser.getNumOfFields()+1));
+            recordTable.setModel(new ImportBankStatementTableModel(contentStrArr, columnNames,parser.getNumOfFields()));
             //recordTable.setModel(new MyTableModel(contentStrArr, columnNames));
             recordTable.setAutoCreateRowSorter(true);//add a primitive sort by column function
         }
