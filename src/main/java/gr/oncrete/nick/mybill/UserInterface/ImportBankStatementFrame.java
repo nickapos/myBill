@@ -29,6 +29,8 @@ import gr.oncrete.nick.mybill.BusinessLogic.InsertCompany;
 import gr.oncrete.nick.mybill.BusinessLogic.InsertIncome;
 import gr.oncrete.nick.mybill.BusinessLogic.ParseBOSCsv;
 import gr.oncrete.nick.mybill.BusinessLogic.ParseCsv;
+import gr.oncrete.nick.mybill.BusinessLogic.ParseFIidorDECsv;
+import gr.oncrete.nick.mybill.BusinessLogic.ParseFidorUKCsv;
 import gr.oncrete.nick.mybill.BusinessLogic.ParseN26Csv;
 import gr.oncrete.nick.mybill.BusinessLogic.ParsePancretaBankCsv;
 import gr.oncrete.nick.mybill.BusinessLogic.ParseTSBCsv;
@@ -95,7 +97,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         bankLabel.setText(bundle.getString("ImportBankStatementFrame.bankLabel.text")); // NOI18N
         jPanel1.add(bankLabel);
 
-        bankComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TSB", "Bank of Scotland", "Pancretan Bank", "N26" }));
+        bankComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TSB", "Bank of Scotland", "Pancretan Bank", "N26", "Fidor UK", "Fidor DE" }));
         jPanel1.add(bankComboBox);
 
         categoryLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -257,6 +259,20 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                 ParseN26Csv n26 = new ParseN26Csv();
                 ArrayList contentList = n26.parseData(file.getAbsolutePath());
                 this.displayStatementContent(contentList, n26);
+                selectAllButton.setEnabled(true);
+                unselectAllButton.setEnabled(true);
+            }
+            else if (bankName.equals("Fidor DE")){
+                ParseFIidorDECsv fidorDE = new ParseFIidorDECsv();
+                ArrayList contentList = fidorDE.parseData(file.getAbsolutePath());
+                this.displayStatementContent(contentList, fidorDE);
+                selectAllButton.setEnabled(true);
+                unselectAllButton.setEnabled(true);
+            }
+            else if (bankName.equals("Fidor UK")){
+                ParseFidorUKCsv fidorUK = new ParseFidorUKCsv();
+                ArrayList contentList = fidorUK.parseData(file.getAbsolutePath());
+                this.displayStatementContent(contentList, fidorUK);
                 selectAllButton.setEnabled(true);
                 unselectAllButton.setEnabled(true);
             }
