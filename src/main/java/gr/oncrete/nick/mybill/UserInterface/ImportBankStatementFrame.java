@@ -291,6 +291,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
      */
     private void displayStatementContent(ArrayList contentList, ParseCsv parser) {
         Object[][] contentStrArr = this.convertArrayListTo2DStringArray(contentList, parser.getNumOfFields());
+        System.out.println("The last columnt is:"+parser.getNumOfFields());
         String[] columnNames = parser.getColumnNames();
         if (contentList.size() > 0) {
             recordTable.setModel(new ImportBankStatementTableModel(contentStrArr, columnNames, parser.getNumOfFields()));
