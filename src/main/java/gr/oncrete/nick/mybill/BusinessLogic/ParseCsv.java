@@ -50,6 +50,7 @@ public class ParseCsv {
      * This method will parse the given file into an arrayList of string lists.
      *
      * @param file
+     * @param delim
      * @return 
      */
     public ArrayList<ArrayList> parseData(String file, char delim) {
