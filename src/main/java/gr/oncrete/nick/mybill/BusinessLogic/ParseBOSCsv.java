@@ -60,7 +60,7 @@ public class ParseBOSCsv extends ParseCsv {
      * @return
      */
     public ArrayList<ArrayList> filterMonthsAndNegValues(String file) {
-        ArrayList content = this.parseData(file);
+        ArrayList content = this.parseData(file,',');
         ArrayList<ArrayList> correctedContent = new ArrayList();
         Iterator it = content.iterator();
         while (it.hasNext()) {

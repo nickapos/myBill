@@ -238,7 +238,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             System.out.println("Selected Bank: " + bankName);
             if (bankName.equals("TSB")) {
                 ParseTSBCsv tsb = new ParseTSBCsv();
-                ArrayList contentList = tsb.parseData(file.getAbsolutePath());
+                ArrayList contentList = tsb.parseData(file.getAbsolutePath(),',');
                 this.displayStatementContent(contentList, tsb);
                 selectAllButton.setEnabled(true);
                 unselectAllButton.setEnabled(true);
@@ -250,28 +250,28 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                 unselectAllButton.setEnabled(true);
             } 
             else if (bankName.equals("Pancretan Bank")) {
-                ParsePancretaBankCsv panc = new ParsePancretaBankCsv(";", 8);
-                ArrayList contentList = panc.parseData(file.getAbsolutePath());
+                ParsePancretaBankCsv panc = new ParsePancretaBankCsv(8);
+                ArrayList contentList = panc.parseData(file.getAbsolutePath(),';');
                 this.displayStatementContent(contentList, panc);
                 selectAllButton.setEnabled(true);
                 unselectAllButton.setEnabled(true);
             }else if (bankName.equals("N26")){
                 ParseN26Csv n26 = new ParseN26Csv();
-                ArrayList contentList = n26.parseData(file.getAbsolutePath());
+                ArrayList contentList = n26.parseData(file.getAbsolutePath(),',');
                 this.displayStatementContent(contentList, n26);
                 selectAllButton.setEnabled(true);
                 unselectAllButton.setEnabled(true);
             }
             else if (bankName.equals("Fidor DE")){
                 ParseFIidorDECsv fidorDE = new ParseFIidorDECsv();
-                ArrayList contentList = fidorDE.parseData(file.getAbsolutePath());
+                ArrayList contentList = fidorDE.parseData(file.getAbsolutePath(),';');
                 this.displayStatementContent(contentList, fidorDE);
                 selectAllButton.setEnabled(true);
                 unselectAllButton.setEnabled(true);
             }
             else if (bankName.equals("Fidor UK")){
                 ParseFidorUKCsv fidorUK = new ParseFidorUKCsv();
-                ArrayList contentList = fidorUK.parseData(file.getAbsolutePath());
+                ArrayList contentList = fidorUK.parseData(file.getAbsolutePath(),';');
                 this.displayStatementContent(contentList, fidorUK);
                 selectAllButton.setEnabled(true);
                 unselectAllButton.setEnabled(true);

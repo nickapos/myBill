@@ -52,12 +52,12 @@ public class ParseCsv {
      * @param file
      * @return 
      */
-    public ArrayList<ArrayList> parseData(String file) {
+    public ArrayList<ArrayList> parseData(String file, char delim) {
         ArrayList<ArrayList> content = new ArrayList();
         fileName = file;
         BufferedReader br = null;
         try {
-            CSVReader reader = new CSVReader(new FileReader(fileName));
+            CSVReader reader = new CSVReader(new FileReader(fileName),delim);
             String[] nextLine;
             while ((nextLine = reader.readNext()) != null) {
                 // nextLine[] is an array of values from the line

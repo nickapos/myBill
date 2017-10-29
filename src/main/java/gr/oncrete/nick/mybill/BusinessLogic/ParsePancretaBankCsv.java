@@ -36,10 +36,6 @@ public class ParsePancretaBankCsv extends ParseCsv {
 
     }
 
-    public ParsePancretaBankCsv( String delim,int numberOfFields) {
-        super(numberOfFields);
-    }
-
     @Override
     public int getNumOfFields()
     {
