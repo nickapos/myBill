@@ -1,3 +1,9 @@
+[![Build Status](https://travis-ci.org/nickapos/myBill.svg?branch=master)](https://travis-ci.org/nickapos/myBill)]
+
+
+myBill
+------
+
 myBill is a money flow tracking utility, it can also be used to keep track of
 the receipts issued by the various shops and the utility companies (telephone,
 power etc) and present them later in useful reports. It features import and
