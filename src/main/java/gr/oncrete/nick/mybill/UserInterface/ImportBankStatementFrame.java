@@ -549,23 +549,18 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
     private void importN26Data(Object[][] data) {
         int importedRecordNo = 0;
         int noOfLines = data.length;
-        for (int i = 0; i < noOfLines; i++) {
-            String recordType = (String) data[i][0];
-            String unCorrectedDate = (String) data[i][1];
-            String descCompName = (String) data[i][4];
-            String amountWithCur = (String) data[i][6];
+        for (int i = 1; i < noOfLines; i++) {
+            String date = (String) data[i][0];
+            String descCompName = (String) data[i][1];
+            String amount = (String) data[i][6];
             
-            boolean importField = (boolean) data[i][8];
+            boolean importField = (boolean) data[i][10];
             //retrieve the category details
             String categId = getCategID();
 
-            //Stripping EUR out of the amount string
-            String[] amountCurArr = amountWithCur.split(" ");
-            String amount = amountCurArr[0];
-
             //If we have an empty comment, its probably an internal transfer.
             if (descCompName.contentEquals("")) {
-                descCompName = "Pancretabank Internal";
+                descCompName = "N26";
             }
             //System.out.println("descComp: "+descCompName+" and its hash code is: "+descCompName.hashCode());
             //Making sure afm is less than 9 digits, while allowing for smaller numbers to be allowed without problem
@@ -580,24 +575,26 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             if (importField) {
                 //get the category id for the import
                 String companyID = getCompID(descCompName, afm, categId);
-                if (recordType.equalsIgnoreCase("Withdrawal")) {
+                double amountD = Double.parseDouble(amount);
+                if (amountD < 0) {
                     //System.out.println("This a withdrawal");
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company:"+companyID+" Corrected Date: "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company des:" + descCompName + " withdrawal:" + this.applyExchangeRate(amount));
-                    InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.pancretaCorrectDate(unCorrectedDate), this.pancretaCorrectDate(unCorrectedDate), "Auto imported field");
+                    amount =String.format("%.2f", -amountD);
+                    InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(amount), date, date, "Auto imported field");
                     
-                } else if (recordType.equalsIgnoreCase("Deposit")) {
+                } else if (amountD > 0) {
                     //System.out.println("This a deposit");
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + amount);
-                    InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.pancretaCorrectDate(unCorrectedDate), "Auto imported field");
+                    InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(amount), date, "Auto imported field");
                 }
                 importedRecordNo++;
                 recordsImportedLabel.setText("" + importedRecordNo);
                 
             } else {
                 System.out.println("I will not import");
-                System.out.println("Record data:" + this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + "-" + amount);
+                System.out.println("Record data:" + date + " afm:" + afm + " company:" + descCompName + "-" + amount);
             }
         }
     }
