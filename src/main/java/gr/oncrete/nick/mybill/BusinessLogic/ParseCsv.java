@@ -34,7 +34,6 @@ import java.util.HashMap;
 public class ParseCsv {
 
     protected String fileName = "";
-    protected String delimiter = ",";
     protected int numberOfFields = 1;
 
     private String[] header = {};
@@ -47,23 +46,19 @@ public class ParseCsv {
         this.setNumberOfFields(fields);
     }
 
-    public ParseCsv(String delim, int fields) {
-        this.setDelimiter(delim);
-        this.setNumberOfFields(fields);
-    }
-
     /**
      * This method will parse the given file into an arrayList of string lists.
      *
      * @param file
+     * @param delim
      * @return 
      */
-    public ArrayList<ArrayList> parseData(String file) {
+    public ArrayList<ArrayList> parseData(String file, char delim) {
         ArrayList<ArrayList> content = new ArrayList();
         fileName = file;
         BufferedReader br = null;
         try {
-            CSVReader reader = new CSVReader(new FileReader(fileName));
+            CSVReader reader = new CSVReader(new FileReader(fileName),delim);
             String[] nextLine;
             while ((nextLine = reader.readNext()) != null) {
                 // nextLine[] is an array of values from the line
@@ -81,10 +76,6 @@ public class ParseCsv {
             }
         }
         return content;
-    }
-
-    public void setDelimiter(String delim) {
-        delimiter = delim;
     }
 
     public void setNumberOfFields(int fields) {
