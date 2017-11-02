@@ -221,9 +221,10 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             this.importPancretabankData(data);
         } else if (bankName.equals("N26")) {
             this.importN26Data(data);
-        } else if (bankName.equals("TSB") || bankName.equals("Bank of Scotland")) {
+        } else if (bankName.equals("Fidor UK") || bankName.equals("Fidor DE")) {
             this.importFidorData(data);
-        } else {
+        } 
+        else {
             System.out.println("No parsing template found");
         }
     }//GEN-LAST:event_ImportButtonActionPerformed
@@ -638,11 +639,13 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                 //get the category id for the import
                 String companyID = getCompID(desc1, afm, categId);
                 double amountD = Double.parseDouble(amount);
-                String corrDate=unCorrectedDate.replaceAll(".", "/");
+                String corrDateStripChar=unCorrectedDate.replaceAll("\\.", "/");
+                String corrDate= this.tsbCorrectDate(corrDateStripChar);
                 if (amountD<0) {
                     //System.out.println("This a withdrawal");
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company:"+companyID+" Corrected Date: "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company des:" + descCompName + " withdrawal:" + this.applyExchangeRate(amount));
+                    amount =String.format("%.2f", -amountD);
                     InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(amount), corrDate, corrDate, desc2+" Auto imported field");
                     
                 } else if (amountD>0) {
