@@ -650,6 +650,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                     df.setDecimalFormatSymbols(symbols);
                     try {
                         amountD = df.parse(amount).doubleValue();
+                        System.out.println("Fidor DE amount"+amountD);
                     } catch (ParseException e) {
                         System.out.println(e);
                     }
@@ -670,6 +671,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                     //System.out.println("This a deposit");
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + amount);
+                    amount = String.format("%.2f", amountD);
                     InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(amount), corrDate, desc2 + " Auto imported field");
                 }
                 importedRecordNo++;
