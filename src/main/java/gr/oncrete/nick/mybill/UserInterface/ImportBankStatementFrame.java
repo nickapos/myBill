@@ -524,13 +524,13 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             if (importField) {
                 //get the category id for the import
                 String companyID = getCompID(descCompName, afm, categId);
-                if (recordType.equalsIgnoreCase("Withdrawal")) {
-                    //System.out.println("This a withdrawal");
-                    //System.out.println("I will import");
-                    //System.out.println("Record data:" +"Company:"+companyID+" Corrected Date: "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company des:" + descCompName + " withdrawal:" + this.applyExchangeRate(amount));
+                if (recordType.equalsIgnoreCase("Withdrawal") || recordType.equalsIgnoreCase("Ανάληψη")) {
+                    System.out.println("This a withdrawal");
+                    System.out.println("I will import");
+                    System.out.println("Record data:" +"Company:"+companyID+" Corrected Date: "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company des:" + descCompName + " withdrawal:" + this.applyExchangeRate(amount));
                     InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.pancretaCorrectDate(unCorrectedDate), this.pancretaCorrectDate(unCorrectedDate), "Auto imported field");
 
-                } else if (recordType.equalsIgnoreCase("Deposit")) {
+                } else if (recordType.equalsIgnoreCase("Deposit")|| recordType.equalsIgnoreCase("Κατάθεση")) {
                     //System.out.println("This a deposit");
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + amount);
