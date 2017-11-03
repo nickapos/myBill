@@ -520,17 +520,21 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             } else {
                 afm = afmFull;
             }
+            if(recordType.equalsIgnoreCase("Κατάθεση") || recordType.equalsIgnoreCase("Ανάληψη")){
+                double amountD=this.parseEUAmount(amount);
+                amount=String.valueOf(amountD); 
+            }
 
             if (importField) {
                 //get the category id for the import
                 String companyID = getCompID(descCompName, afm, categId);
                 if (recordType.equalsIgnoreCase("Withdrawal") || recordType.equalsIgnoreCase("Ανάληψη")) {
-                    System.out.println("This a withdrawal");
-                    System.out.println("I will import");
-                    System.out.println("Record data:" +"Company:"+companyID+" Corrected Date: "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company des:" + descCompName + " withdrawal:" + this.applyExchangeRate(amount));
+                    //System.out.println("This a withdrawal");
+                    //System.out.println("I will import");
+                    //System.out.println("Record data:" + "Company:" + companyID + " Corrected Date: " + this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company des:" + descCompName + " withdrawal:" + this.applyExchangeRate(amount));
                     InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.pancretaCorrectDate(unCorrectedDate), this.pancretaCorrectDate(unCorrectedDate), "Auto imported field");
 
-                } else if (recordType.equalsIgnoreCase("Deposit")|| recordType.equalsIgnoreCase("Κατάθεση")) {
+                } else if (recordType.equalsIgnoreCase("Deposit") || recordType.equalsIgnoreCase("Κατάθεση")) {
                     //System.out.println("This a deposit");
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + amount);
@@ -643,18 +647,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                 String companyID = getCompID(desc1, afm, categId);
                 double amountD = 0;
                 if (bankName.equals("Fidor DE")) {
-                    DecimalFormat df = new DecimalFormat();
-                    DecimalFormatSymbols symbols = new DecimalFormatSymbols();
-                    symbols.setDecimalSeparator(',');
-                    symbols.setGroupingSeparator('.');
-                    df.setDecimalFormatSymbols(symbols);
-                    try {
-                        amountD = df.parse(amount).doubleValue();
-                        System.out.println("Fidor DE amount"+amountD);
-                    } catch (ParseException e) {
-                        System.out.println(e);
-                    }
-
+                    amountD=this.parseEUAmount(amount);
                 } else {
                     amountD = Double.parseDouble(amount);
                 }
@@ -750,5 +743,21 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             convertedAmount = amount;
         }
         return convertedAmount;
+    }
+
+    private double  parseEUAmount(String amount) {
+        DecimalFormat df = new DecimalFormat();
+        double amountD = -1000;
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+        symbols.setDecimalSeparator(',');
+        symbols.setGroupingSeparator('.');
+        df.setDecimalFormatSymbols(symbols);
+        try {
+            amountD = df.parse(amount).doubleValue();
+            //System.out.println("Double amount parsed"+amountD);
+        } catch (ParseException e) {
+            System.out.println(e);
+        }
+        return amountD;
     }
 }
