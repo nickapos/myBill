@@ -17,7 +17,6 @@
 package gr.oncrete.nick.mybill.BusinessLogic.FileHandlers;
 
 import javax.swing.SwingWorker;
-import java.util.ArrayList;
 
 /**
  *This class is intentend to be used when we want a write or read file activity

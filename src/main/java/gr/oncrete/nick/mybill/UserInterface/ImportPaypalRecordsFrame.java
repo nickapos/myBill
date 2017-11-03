@@ -23,8 +23,6 @@
  */
 package gr.oncrete.nick.mybill.UserInterface;
 
-import gr.oncrete.nick.mybill.BusinessLogic.Amortization;
-
 /**
  *
  * @author nickapos

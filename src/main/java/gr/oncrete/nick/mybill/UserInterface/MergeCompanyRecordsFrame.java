@@ -24,11 +24,11 @@
 package gr.oncrete.nick.mybill.UserInterface;
 
 import gr.oncrete.nick.mybill.BusinessLogic.Companies;
-import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
-import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectAllBillsDetailsForSpecificCompany;
 import gr.oncrete.nick.mybill.BusinessLogic.NewThreadMergeCompanyRecords;
-import javax.swing.JComboBox;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectAllBillsDetailsForSpecificCompany;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
 import java.util.List;
+import javax.swing.JComboBox;
 
 /**
  *

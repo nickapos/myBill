@@ -23,11 +23,11 @@
  */
 package gr.oncrete.nick.mybill.UserInterface;
 
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectAverageExpensesPerCompanyInRange;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import javax.swing.JComboBox;
-import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectAverageExpensesPerCompanyInRange;
 
 /**
  *

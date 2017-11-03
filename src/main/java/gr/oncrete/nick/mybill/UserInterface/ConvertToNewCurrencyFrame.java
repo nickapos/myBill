@@ -24,8 +24,6 @@
 package gr.oncrete.nick.mybill.UserInterface;
 
 import gr.oncrete.nick.mybill.BusinessLogic.NewThreadMassiveChangeCurrency;
-import javax.swing.SwingUtilities;
-import javax.swing.JLabel;
 /**
  *
  * @author nickapos

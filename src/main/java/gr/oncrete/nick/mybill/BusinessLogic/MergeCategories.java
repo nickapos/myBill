@@ -18,8 +18,8 @@ package gr.oncrete.nick.mybill.BusinessLogic;
 
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
 import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateCompanyRecord;
-import java.util.List;
 import java.util.Iterator;
+import java.util.List;
 import javax.swing.JLabel;
 
 /**

@@ -22,8 +22,8 @@
  */
 package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
 
-import java.util.ArrayList;
 import gr.oncrete.nick.mybill.RDBMS.SelectFromTable;
+import java.util.ArrayList;
 
 /**
  * This class implements the dump database operation.

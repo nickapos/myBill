@@ -16,9 +16,9 @@
  */
 package gr.oncrete.nick.mybill.BusinessLogic.ImportDB;
 
+import gr.oncrete.nick.mybill.BusinessLogic.InsertIncome;
 import java.util.ArrayList;
 import java.util.Iterator;
-import gr.oncrete.nick.mybill.BusinessLogic.InsertIncome;
 
 /**
  *

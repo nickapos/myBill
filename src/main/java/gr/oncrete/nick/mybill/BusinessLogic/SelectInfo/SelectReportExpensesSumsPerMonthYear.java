@@ -21,10 +21,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
 
-import java.text.DecimalFormat;
-import java.text.DateFormatSymbols;
 import gr.oncrete.nick.mybill.BusinessLogic.PlotDataObject;
-import gr.oncrete.nick.mybill.UserInterface.PlotWindow;
+import java.text.DateFormatSymbols;
+import java.text.DecimalFormat;
 
 /**
  *

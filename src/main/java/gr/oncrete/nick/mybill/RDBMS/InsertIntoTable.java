@@ -22,8 +22,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package gr.oncrete.nick.mybill.RDBMS;
 
-import java.sql.SQLException;
 import gr.oncrete.nick.mybill.UserInterface.PopupMessageFrame;
+import java.sql.SQLException;
 
 /**
  *

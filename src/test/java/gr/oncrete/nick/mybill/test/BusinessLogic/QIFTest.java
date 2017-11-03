@@ -16,10 +16,9 @@
  */
 package gr.oncrete.nick.mybill.test.BusinessLogic;
 
-import gr.oncrete.nick.mybill.BusinessLogic.CheckAFM;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.DumpDatabaseinQIF;
-import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  *

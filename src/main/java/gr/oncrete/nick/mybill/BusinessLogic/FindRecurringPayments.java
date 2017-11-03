@@ -16,9 +16,9 @@
  */
 package gr.oncrete.nick.mybill.BusinessLogic;
 
-import java.time.LocalDateTime;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectAverageExpensesPerCompanyInRange;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectAverageExpensesPerCompanyInRange.AnalyticsRecord;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -22,6 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package gr.oncrete.nick.mybill.RDBMS;
 
+import gr.oncrete.nick.mybill.BusinessLogic.Config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -30,8 +31,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
-import gr.oncrete.nick.mybill.BusinessLogic.Config;
 
 /**
  *

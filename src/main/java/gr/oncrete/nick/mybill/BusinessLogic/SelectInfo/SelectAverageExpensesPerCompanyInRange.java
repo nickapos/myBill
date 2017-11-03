@@ -17,10 +17,10 @@
  */
 package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
 
-import gr.oncrete.nick.mybill.RDBMS.SelectFromTable;
-import java.util.*;
 import com.google.common.collect.Lists;
+import gr.oncrete.nick.mybill.RDBMS.SelectFromTable;
 import java.text.DecimalFormat;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**

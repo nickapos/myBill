@@ -23,9 +23,9 @@
  */
 package gr.oncrete.nick.mybill.UserInterface;
 
-import gr.oncrete.nick.mybill.BusinessLogic.InsertCategory;
-import gr.oncrete.nick.mybill.BusinessLogic.DeleteCategory;
 import gr.oncrete.nick.mybill.BusinessLogic.Categories;
+import gr.oncrete.nick.mybill.BusinessLogic.DeleteCategory;
+import gr.oncrete.nick.mybill.BusinessLogic.InsertCategory;
 import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateCategoryRecord;
 import javax.swing.JComboBox;
 

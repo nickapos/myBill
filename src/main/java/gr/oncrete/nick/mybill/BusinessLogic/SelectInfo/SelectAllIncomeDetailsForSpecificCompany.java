@@ -22,7 +22,6 @@
 
 package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
 import java.util.*;
-import java.text.DecimalFormat;
 /**
  *
  * @author nickapos

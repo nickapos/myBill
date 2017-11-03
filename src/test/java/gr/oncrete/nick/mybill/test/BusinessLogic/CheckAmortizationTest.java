@@ -18,8 +18,8 @@
 package gr.oncrete.nick.mybill.test.BusinessLogic;
 
 import gr.oncrete.nick.mybill.BusinessLogic.Amortization;
-import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  *

@@ -17,14 +17,14 @@
 package gr.oncrete.nick.mybill.BusinessLogic;
 
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectAllBillsIDS;
-import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectBillDetails;
-import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateBillRecord;
-import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
-import java.util.List;
-import java.util.Iterator;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectAllIncomeDetails;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectBillDetails;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectIncomeDetails;
+import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateBillRecord;
 import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateIncomeRecord;
+import java.util.Iterator;
+import java.util.List;
 import javax.swing.JLabel;
 
 /**

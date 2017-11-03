@@ -31,7 +31,6 @@ package gr.oncrete.nick.mybill.BusinessLogic;
  *
  */
 import java.io.*;
-import java.text.*;
 import java.util.*;
 
 /**

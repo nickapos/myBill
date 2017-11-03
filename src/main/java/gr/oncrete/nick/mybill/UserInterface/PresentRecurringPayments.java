@@ -25,7 +25,6 @@ package gr.oncrete.nick.mybill.UserInterface;
 
 import gr.oncrete.nick.mybill.BusinessLogic.FindRecurringPayments;
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import javax.swing.JComboBox;
 

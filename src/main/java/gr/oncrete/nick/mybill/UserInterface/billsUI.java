@@ -23,26 +23,19 @@
  */
 package gr.oncrete.nick.mybill.UserInterface;
 
-import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.DumpDatabase;
+import gr.oncrete.nick.mybill.BusinessLogic.*;
 import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.MyFileWriter;
 import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.NewThreadFileWriter;
-import gr.oncrete.nick.mybill.BusinessLogic.PlotDataObject;
-import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.Category;
-import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectBillDetails;
-import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectIncomeDetails;
-import gr.oncrete.nick.mybill.BusinessLogic.Today;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.*;
 import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateBillRecord;
 import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateCompanyRecord;
 import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateIncomeRecord;
-import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.*;
-import gr.oncrete.nick.mybill.BusinessLogic.*;
-import javax.swing.*;
-import java.util.*;
 import jahuwaldt.plot.*;
 import java.awt.*;
-import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.*;
+import javax.swing.*;
 
 /**
  *
