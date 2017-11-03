@@ -33,7 +33,7 @@ import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
 public class InsertIncome {
 
     InsertIntoTable in;
-
+    String sql;
     /**
      * Constructor insert bill without an id
      *
@@ -59,7 +59,7 @@ public class InsertIncome {
             in = new InsertIntoTable();
             in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN INCOME INSERTION"));
         }
-
+        sql=sql;
     }
     
      /**
@@ -84,7 +84,7 @@ public class InsertIncome {
             in = new InsertIntoTable();
             in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN INCOME INSERTION"));
         }
-
+        sql=sql;
     }
     
     
@@ -114,6 +114,10 @@ public class InsertIncome {
             in = new InsertIntoTable();
             in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN INCOME INSERTION"));
         }
-
+        sql=sql;
+    }
+    
+    public String toString(){
+        return sql;
     }
 }

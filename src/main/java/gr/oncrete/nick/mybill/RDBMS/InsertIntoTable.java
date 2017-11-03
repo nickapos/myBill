@@ -32,7 +32,7 @@ import java.sql.SQLException;
 public class InsertIntoTable extends BasicTableOperation {
 
     boolean succesfullCompletion=false;
-
+    String sql="";
     /**
      * a constructor used only in cases when we want to present the error message.
      * for example when of the arguments of the insert command is missing
@@ -61,6 +61,7 @@ public class InsertIntoTable extends BasicTableOperation {
             //sqle.printStackTrace();
         }
          //DatabaseConnection.shutdown ();
+         sql=query;     
     }
 
     /**
@@ -83,10 +84,16 @@ public class InsertIntoTable extends BasicTableOperation {
 
     /**this method will present a specific message with a warning that something has gone awry with the
      * insertion of data
+     * @param message
      */
     public void warningPopUp(String message)
     {
         PopupMessageFrame mes = new PopupMessageFrame();
             mes.setWarning(message);
+    }
+    
+    @Override
+    public String toString(){
+        return sql;
     }
 }

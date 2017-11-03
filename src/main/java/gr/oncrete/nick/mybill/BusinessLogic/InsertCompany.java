@@ -31,7 +31,7 @@ import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
  * This class is used to insert new company entries into the database
  */
 public class InsertCompany {
-
+    String sql;
     InsertIntoTable in;
     int AFMSIZE=9;
 
@@ -61,7 +61,7 @@ public class InsertCompany {
             in = new InsertIntoTable();
             in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN COMPANY INSERTION"));
         }
-
+        sql=sql;
     }
 
     /**
@@ -85,7 +85,7 @@ public class InsertCompany {
             in = new InsertIntoTable();
             in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN COMPANY INSERTION"));
         }
-
+        sql=sql;
     }
 
     /**
@@ -108,7 +108,7 @@ public class InsertCompany {
             in = new InsertIntoTable();
             in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN COMPANY INSERTION"));
         }
-
+        sql=sql;
     }
 
     /**
@@ -130,5 +130,9 @@ public class InsertCompany {
             truncAfm=afm.substring(0, AFMSIZE);
         }
         return truncAfm;
+    }
+    
+    public String toString(){
+        return sql;
     }
 }

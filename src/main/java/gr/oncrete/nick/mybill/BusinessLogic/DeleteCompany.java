@@ -15,7 +15,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -29,6 +29,8 @@ import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
  */
 public class DeleteCompany {
 
+    InsertIntoTable in;
+
     /**
      *
      * @param id
@@ -37,7 +39,7 @@ public class DeleteCompany {
         String sql = "delete from companies where cid=" + id;
         System.out.println(sql);
         if (id.length() > 0) {
-            InsertIntoTable in = new InsertIntoTable(sql);
+            in = new InsertIntoTable(sql);
         }
     }
 }

@@ -31,7 +31,7 @@ import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
  * This class is used to insert new bill entries into the database
  */
 public class InsertBills {
-
+    String sql="";
     boolean dryRun = false;
 
     /**
@@ -64,6 +64,7 @@ public class InsertBills {
     public InsertBills(int cid, String price, String dateOfIssue, String dateOfPayment, String comment) {
         String sql=this.parseinsertBillsArgumentsWithoutId("" + cid, price, dateOfIssue, dateOfPayment, comment);
         this.commitToDB(sql);
+        sql=sql;
     }
 
     /**
@@ -82,7 +83,7 @@ public class InsertBills {
             String sql=this.parseinsertBillsArgumentsWithoutId(cid, price, dateOfIssue, dateOfPayment, comment);
             this.commitToDB(sql);
         }
-
+        sql=sql;
     }
 
     /**
@@ -134,7 +135,7 @@ public class InsertBills {
         } else {
             this.commitToDB("");
         }
-
+        sql=sql;
     }
 
     /**
@@ -167,5 +168,9 @@ public class InsertBills {
      */
     public void setDyRun(boolean dr) {
         dryRun = dr;
+    }
+    
+    public String toString(){
+        return sql;
     }
 }

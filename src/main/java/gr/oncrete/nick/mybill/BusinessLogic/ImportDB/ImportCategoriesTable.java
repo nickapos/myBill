@@ -50,6 +50,7 @@ public class ImportCategoriesTable extends ImportFile {
                 if (splitLine[0].length() > 0 && splitLine[1].length() > 0) {
                     System.out.println("Importing line " + line);
                     InsertCategory ins = new InsertCategory(splitLine[0], splitLine[1]);
+                    ins.toString();
                     this.increaseRowsAffectedByOne();
                 }
 

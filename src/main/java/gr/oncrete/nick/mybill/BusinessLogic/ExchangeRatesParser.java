@@ -123,15 +123,7 @@ public class ExchangeRatesParser {
         return rateMap.size();
     }
 
-    /**
-     *
-     * @return the map that contains the exchange rates
-     */
-    private HashMap getRatesMap() {
-        return rateMap;
-    }
-
-    /**
+     /**
      * with the inversion flag we can choose to invert or not the exchange rate
      * 0 for normal 1 for inversion
      *

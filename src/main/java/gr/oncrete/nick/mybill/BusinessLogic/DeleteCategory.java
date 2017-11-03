@@ -43,9 +43,10 @@ public class DeleteCategory {
      */
     public void DeleteCategoryWithID(String id) {
         String sql = "delete from categories where catid=" + id;
-        System.out.println(sql);
+        
         if (id.length() > 0) {
-            InsertIntoTable in = new InsertIntoTable(sql);
+         InsertIntoTable in = new InsertIntoTable(sql);
+         System.out.println(in.toString());
         }
     }
 
@@ -54,10 +55,10 @@ public class DeleteCategory {
      * @param catName
      */
     public void DeleteCategoryWithName(String catName) {
-        String sql = "delete from categories where categoryName='" + catName+"'";
-        System.out.println(sql);
+        String sql = "delete from categories where categoryName='" + catName+"'";        
         if (catName.length() > 0) {
             InsertIntoTable in = new InsertIntoTable(sql);
+            System.out.println(in.toString());
         }
     }
 

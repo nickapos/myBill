@@ -30,7 +30,7 @@ import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
  * This class is used to insert new company entries into the database
  */
 public class InsertCategory {
-
+    String sql;
     /**
      * Constructor insert category without an id
      *
@@ -42,7 +42,7 @@ public class InsertCategory {
         {
             String sql = "insert into categories (categoryname) values ('"+cName+"')";
             InsertIntoTable in = new InsertIntoTable(sql);
-            System.out.println(sql);
+            sql=in.toString();
         }
 
     }
@@ -60,9 +60,13 @@ public class InsertCategory {
         {
             String sql = "insert into categories (catid, categoryname) values ("+id+",'"+cName+"')";
             InsertIntoTable in = new InsertIntoTable(sql);
-            System.out.println(sql);
+            sql=in.toString();
         }
 
+    }
+    
+    public String toString(){
+        return sql;
     }
 
 }
