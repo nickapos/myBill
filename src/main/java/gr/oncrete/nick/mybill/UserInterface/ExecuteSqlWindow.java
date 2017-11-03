@@ -23,7 +23,10 @@
  */
 
 package gr.oncrete.nick.mybill.UserInterface;
+import gr.oncrete.nick.mybill.BusinessLogic.ShutdownDB;
 import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,6 +34,7 @@ import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
  */
 public class ExecuteSqlWindow extends javax.swing.JFrame {
 
+    private final static Logger LOGGER = Logger.getLogger(ExecuteSqlWindow.class.getName());
     /** Creates new form AboutWindow */
     public ExecuteSqlWindow() {
         initComponents();
@@ -80,6 +84,7 @@ public class ExecuteSqlWindow extends javax.swing.JFrame {
         System.out.println(sqlcommand);
         if (sqlcommand.length() > 0) {
             InsertIntoTable in = new InsertIntoTable(sqlcommand);
+            LOGGER.log(Level.INFO,in.toString());
             sqlTextArea.setText("");
         }
 

@@ -35,11 +35,6 @@ public class ParseFidorUKCsv extends ParseCsv {
         super( fields);
 
     }
-
-    public ParseFidorUKCsv(String file, String delim,int numberOfFields) {
-        super(numberOfFields);
-    }
-
     @Override
     public int getNumOfFields()
     {

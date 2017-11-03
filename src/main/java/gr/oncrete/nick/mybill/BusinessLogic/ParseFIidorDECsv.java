@@ -36,10 +36,6 @@ public class ParseFIidorDECsv extends ParseCsv {
 
     }
 
-    public ParseFIidorDECsv(String file, String delim,int numberOfFields) {
-        super(numberOfFields);
-    }
-
     @Override
     public int getNumOfFields()
     {

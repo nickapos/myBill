@@ -105,7 +105,7 @@ public class SelectProfitPerMonthYear {
         DateFormatSymbols dfs = new DateFormatSymbols();
         String[] months = dfs.getMonths();
         double[] profperCent={0,0,0,0,0,0,0,0,0,0,0,0};//array to hold the profit values unformatted
-        double totalSum = 0, totalPercentage = 0;
+        double totalSum = 0;
         for (int i = 0; i < profitColumns.length - 2; i++) {
             String incS = paddedIncomeColumns[i][0].trim();
             String expS = paddedexpensesColumns[i][0].trim();

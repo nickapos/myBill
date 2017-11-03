@@ -33,7 +33,7 @@ public class SelectAllIDS {
 
     SelectFromTable sel = new SelectFromTable();
     List idList;
-
+    String sql;
     /**
      *
      */
@@ -48,6 +48,7 @@ public class SelectAllIDS {
      */
     public void runQuery(String sql1) {
         idList = sel.executeQuery(sql1);
+        sql=sql1;
     }
 
 
@@ -83,5 +84,9 @@ public class SelectAllIDS {
         } else {
             return true;
         }
+    }
+    
+    public String toString(){
+        return sql;
     }
 }

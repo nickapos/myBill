@@ -34,7 +34,7 @@ public class MainTest {
     public static void main(String[] args) {
         
         //EmptyTables e= new EmptyTables();
-       LoadConstantTables o = new LoadConstantTables();
+       //LoadConstantTables o = new LoadConstantTables();
        
     }
 

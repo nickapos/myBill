@@ -28,7 +28,7 @@ import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
  * @author nickapos
  */
 public class UpdateRecord {
-
+    String sql;
     /**
      *
      */
@@ -42,5 +42,11 @@ public class UpdateRecord {
     public void runQuery(String sql1) {
 
         InsertIntoTable in = new InsertIntoTable(sql1);
+        sql=in.toString();
+    }
+    
+    @Override
+    public String toString(){
+        return sql;
     }
 }

@@ -69,7 +69,7 @@ public class MergeCategories {
                 String[] id = (String[]) it.next();
                 cdt.SelectCompanyDetailsWithID(id[0]);
                 UpdateCompanyRecord upcr = new UpdateCompanyRecord(cdt.getID(),cdt.getName(),cdt.getAfm(),newCategoryID);
-
+                System.out.println(upcr.toString());
                 counter++;
                 double percentage =100*counter/idListTobeMerged.size();
                 expensesProgressText = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("MergeCategories.progressLabel.text") + counter+" "+percentage +"%";

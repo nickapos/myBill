@@ -33,6 +33,6 @@ public class MainTest {
      */
     public static void main(String[] args) {
         CompareExpensesPerCategoryForTwoYears c = new CompareExpensesPerCategoryForTwoYears("2006","2007");
-        
+        System.out.println(c.toString());
     }
 }
