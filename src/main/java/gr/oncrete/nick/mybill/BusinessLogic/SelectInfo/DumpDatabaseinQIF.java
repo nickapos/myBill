@@ -88,7 +88,7 @@ public class DumpDatabaseinQIF {
                 String company = (String) results.get(i + 1);
                 String amount;
                 if (expense) {
-                    amount = "-" + (String) results.get(i + 2);
+                    amount = "-" + results.get(i + 2);
                 } else {
                     amount = (String) results.get(i + 2);
                 }

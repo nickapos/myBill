@@ -100,7 +100,7 @@ public class Categories {
         Iterator<String> e = set.iterator();
         while (e.hasNext()) {
             String r = e.next();
-            String pair= r+"-"+(String)companiesMap.get(r);
+            String pair= r+"-"+companiesMap.get(r);
             cNamesArrayList.add(pair);
         }
         Collections.sort(cNamesArrayList);

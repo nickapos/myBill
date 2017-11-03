@@ -405,7 +405,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             ArrayList line = (ArrayList) iterContent.next();
             System.out.println(line.toString());
             for (int fieldCount = 0; fieldCount < numOfFields; fieldCount++) {
-                csvStringArr[lineCounter][fieldCount] = (String) line.get(fieldCount);
+                csvStringArr[lineCounter][fieldCount] = line.get(fieldCount);
             }
             csvStringArr[lineCounter][numOfFields] = true;
 

@@ -156,7 +156,7 @@ public class ExchangeRatesParser {
             if (inversion == 0) {
                 pr = pr + "\n" + rateSymbol + "," + rateValue;
             } else if (inversion == 1) {
-                String flippedRateValue = "" + (new DecimalFormat("###,###.###").format((double) (1 / Double.parseDouble(rateValue))));
+                String flippedRateValue = "" + (new DecimalFormat("###,###.###").format((1 / Double.parseDouble(rateValue))));
                 pr = pr + "\n" + rateSymbol + "," + flippedRateValue;
 
             }
@@ -187,7 +187,7 @@ public class ExchangeRatesParser {
                 resultAr[counter][1] = rateValue;
             } else if (inversion == 1) {
                 resultAr[counter][0] = rateSymbol;
-                resultAr[counter][1] = "" + (new DecimalFormat("###,###.###").format((double) (1 / Double.parseDouble(rateValue))));
+                resultAr[counter][1] = "" + (new DecimalFormat("###,###.###").format((1 / Double.parseDouble(rateValue))));
             }
             counter++;
 

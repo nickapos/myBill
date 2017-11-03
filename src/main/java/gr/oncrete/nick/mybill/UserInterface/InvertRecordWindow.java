@@ -104,7 +104,7 @@ public class InvertRecordWindow extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         InvertRecord invr = new InvertRecord();
-        String recordToBeInverted = (String) recordIdTextField.getText();
+        String recordToBeInverted = recordIdTextField.getText();
 
         int recordToBeInvertedId = invr.convertID(recordToBeInverted);
         if (recordToBeInvertedId == -1) {

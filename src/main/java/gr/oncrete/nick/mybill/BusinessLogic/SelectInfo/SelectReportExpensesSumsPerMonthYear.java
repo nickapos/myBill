@@ -78,7 +78,7 @@ public class SelectReportExpensesSumsPerMonthYear extends SelectAllIDS {
             fullSum += Float.valueOf(priceS.trim()).floatValue();
             int monthNum = Integer.valueOf((String) this.getIds().get(i + 1)) - 1;
             plotData.addXaxisElementD((monthNum + 1));
-            plotData.addYaxisElementD((double) (Float.valueOf(priceS.trim()).floatValue()));
+            plotData.addYaxisElementD((Float.valueOf(priceS.trim()).floatValue()));
             String[] row = {"" + (new DecimalFormat("#,###.##").format((double) (Float.valueOf(priceS.trim()).floatValue()))), "0", months[monthNum]};
             array[o] = row;
             
@@ -132,7 +132,7 @@ public class SelectReportExpensesSumsPerMonthYear extends SelectAllIDS {
             fullSum += Float.valueOf(priceS.trim()).floatValue();
             int monthNum = Integer.valueOf((String) this.getIds().get(i + 1)) - 1;
             plotData.addXaxisElementD((monthNum + 1));
-            plotData.addYaxisElementD((double) (Float.valueOf(priceS.trim()).floatValue()));
+            plotData.addYaxisElementD((Float.valueOf(priceS.trim()).floatValue()));
             String[] row = {priceS, "0", ""+monthNum};
             array[o] = row;
 
