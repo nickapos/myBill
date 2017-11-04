@@ -64,7 +64,6 @@ public class FindRecurringPayments {
 
     public String toString() {
         String results = freqRecords.stream().map(n -> n.toString()).collect(Collectors.joining("\n"));
-        //System.out.println(results);
         return results;
     }
 

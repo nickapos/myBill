@@ -22,6 +22,8 @@
 package gr.oncrete.nick.mybill.BusinessLogic;
 
 import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -30,16 +32,16 @@ import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
 public class DeleteCompany {
 
     InsertIntoTable in;
-
+private final static Logger LOGGER = Logger.getLogger(DeleteCompany.class.getName());
     /**
      *
      * @param id
      */
     public DeleteCompany(String id) {
         String sql = "delete from companies where cid=" + id;
-        System.out.println(sql);
         if (id.length() > 0) {
             in = new InsertIntoTable(sql);
+            LOGGER.log(Level.INFO, in.toString());
         }
     }
 }

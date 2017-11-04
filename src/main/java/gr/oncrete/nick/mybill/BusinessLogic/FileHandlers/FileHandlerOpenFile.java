@@ -22,7 +22,10 @@
  */
 package gr.oncrete.nick.mybill.BusinessLogic.FileHandlers;
 
+import gr.oncrete.nick.mybill.BusinessLogic.ShutdownDB;
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,7 +34,7 @@ import java.io.*;
 public class FileHandlerOpenFile {
 
     FileReader file;
-
+private final static Logger LOGGER = Logger.getLogger(FileHandlerOpenFile.class.getName());
     /**
      * Creates a new instance of FileHandler
      *
@@ -42,7 +45,7 @@ public class FileHandlerOpenFile {
             file = new FileReader(name);
         }
         catch (FileNotFoundException fnf) {
-            System.out.println("File Not Found");
+            LOGGER.log(Level.SEVERE, "File Not Found");
             System.exit(1);
         }
     }
@@ -55,7 +58,7 @@ public class FileHandlerOpenFile {
             file.close();
         }
         catch (IOException ioe) {
-            System.out.println("Tried to close the file but failed");
+            LOGGER.log(Level.SEVERE, "Tried to close the file but failed");
             System.exit(1);
         }
     }

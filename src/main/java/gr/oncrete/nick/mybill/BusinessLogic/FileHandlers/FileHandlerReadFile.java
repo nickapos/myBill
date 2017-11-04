@@ -22,8 +22,11 @@
  */
 package gr.oncrete.nick.mybill.BusinessLogic.FileHandlers;
 
+import gr.oncrete.nick.mybill.BusinessLogic.ShutdownDB;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -33,7 +36,7 @@ public class FileHandlerReadFile {
 
     FileHandlerOpenFile openFile;
     ArrayList fileContents;
-
+private final static Logger LOGGER = Logger.getLogger(FileHandlerReadFile.class.getName());
     /**
      * Creates a new instance of FileHandlerReadFile
      *
@@ -44,7 +47,7 @@ public class FileHandlerReadFile {
             openFile = new FileHandlerOpenFile(fileName);
             fileContents = new ArrayList(3);
         } else {
-            System.out.println("Invalid file name");
+            LOGGER.log(Level.SEVERE, "Invalid file name");
             System.exit(1);
         }
     }
@@ -66,7 +69,7 @@ public class FileHandlerReadFile {
             openFile.closeFile();
         }
         catch (IOException ioe) {
-            System.out.println("An error occured during the reading of the file\n");
+            LOGGER.log(Level.SEVERE, "An error occured during the reading of the file\n");
             System.exit(1);
         }
     }

@@ -22,13 +22,15 @@
 package gr.oncrete.nick.mybill.BusinessLogic;
 
 import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author nickapos
  */
 public class DeleteCategory {
-
+private final static Logger LOGGER = Logger.getLogger(DeleteCategory.class.getName());
     /**
      *
      */
@@ -45,7 +47,7 @@ public class DeleteCategory {
 
         if (id.length() > 0) {
             InsertIntoTable in = new InsertIntoTable(sql);
-            System.out.println(in.toString());
+            LOGGER.log(Level.INFO, in.toString());
         }
     }
 
@@ -57,7 +59,7 @@ public class DeleteCategory {
         String sql = "delete from categories where categoryName='" + catName + "'";
         if (catName.length() > 0) {
             InsertIntoTable in = new InsertIntoTable(sql);
-            System.out.println(in.toString());
+            LOGGER.log(Level.INFO, in.toString());
         }
     }
 

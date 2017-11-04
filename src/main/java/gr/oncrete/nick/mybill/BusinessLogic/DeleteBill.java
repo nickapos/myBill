@@ -32,7 +32,7 @@ import java.util.logging.Logger;
 public class DeleteBill {
 
     InsertIntoTable in;
-    private final static Logger LOGGER = Logger.getLogger(ShutdownDB.class.getName());
+    private final static Logger LOGGER = Logger.getLogger(DeleteBill.class.getName());
 
     /**
      *

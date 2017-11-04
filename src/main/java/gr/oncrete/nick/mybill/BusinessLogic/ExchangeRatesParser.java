@@ -28,6 +28,8 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -40,7 +42,7 @@ import org.w3c.dom.NodeList;
  * @author nickapos
  */
 public class ExchangeRatesParser {
-
+private final static Logger LOGGER = Logger.getLogger(ExchangeRatesParser.class.getName());
     HashMap rateMap = new HashMap();
     URL exchangeRatesUrl;
     InputStream stream;
@@ -97,7 +99,6 @@ public class ExchangeRatesParser {
                     Element fstElmnt = (Element) fstNode;
                     //reat the attributes currency and rate from each member of the Cube node list
                     if (!fstElmnt.getAttribute("currency").isEmpty() && !fstElmnt.getAttribute("rate").isEmpty()) {
-                        // System.out.println(fstElmnt.getAttribute("currency") + "," + fstElmnt.getAttribute("rate"));
                         rateMap.put(fstElmnt.getAttribute("currency"), fstElmnt.getAttribute("rate"));
                     }
                 }
@@ -218,7 +219,7 @@ public class ExchangeRatesParser {
             ois.close();
         }
         catch (FileNotFoundException fnf) {
-            System.out.println("Rates cache file not found, will create one.");
+            LOGGER.log(Level.WARNING, "Rates cache file not found, will create one.");
         }
         catch (ClassNotFoundException clnf) {
             clnf.printStackTrace();
