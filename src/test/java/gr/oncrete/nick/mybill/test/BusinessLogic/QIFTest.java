@@ -70,17 +70,17 @@ public class QIFTest {
     @Test
     public void testCheckQIF() {
         System.out.println("check reference qif");
-        
+
         String category = "General Category";
         String company = "My Company";
         String amount = "1.43";
         String date = "2015-12-18";
         String comment = "A comment";
-        DumpDatabaseinQIF instance = new DumpDatabaseinQIF();        
+        DumpDatabaseinQIF instance = new DumpDatabaseinQIF();
         String qifString = instance.convertRecordToQIF(category, company, amount, date, comment);
         String referenceQIFString = "D12/18/2015\nT1.43\nPMy Company\n^";
         assertTrue(referenceQIFString.contentEquals(qifString));
-        
+
     }
-    
+
 }

@@ -15,7 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
+ /*
  * AboutWindow.java
  * This class will create a window with a text area and depending on the need
  * will present in the text are a message, be it an about or a readme.
@@ -97,40 +97,38 @@ public class ImportAllRecords extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
     private void validateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateButtonActionPerformed
-        int rowsAffected=0;
+        int rowsAffected = 0;
         SelectAllCompaniesIDS s = new SelectAllCompaniesIDS();
         SelectAllBillsIDS s1 = new SelectAllBillsIDS();
         if (s.isEmpty() && s1.isEmpty()) {
             ImportCategoriesTable impCat = new ImportCategoriesTable();
             impCat.importFileToDB();
-            rowsAffected+=impCat.getRowsAffected();
-                      
+            rowsAffected += impCat.getRowsAffected();
+
             ImportCompaniesTable impComp = new ImportCompaniesTable();
             impComp.importFileToDB();
-            rowsAffected+=impComp.getRowsAffected();
-   
+            rowsAffected += impComp.getRowsAffected();
+
             ImportBillsTable impBill = new ImportBillsTable();
             impBill.importFileToDB();
-            rowsAffected+=impBill.getRowsAffected();
-      
+            rowsAffected += impBill.getRowsAffected();
+
             ImportIncomeTable impIncome = new ImportIncomeTable();
             impIncome.importFileToDB();
-            rowsAffected+=impIncome.getRowsAffected();
-                    
+            rowsAffected += impIncome.getRowsAffected();
+
             //update the rows affected of the ui
             this.updateRowsAffectedCount(rowsAffected);
             if (mainUI != null) {
                 mainUI.refreshCompaniesCombo();
                 mainUI.refreshCatIDCombo();
             }
-            
+
         } else {
             PopupMessageFrame mes = new PopupMessageFrame();
             mes.setNotification(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("THE-DATABASE-IS-NOT-EMPTY.Ι-WILL-DO-NOTHING"));
         }
-
 
     }//GEN-LAST:event_validateButtonActionPerformed
 

@@ -15,7 +15,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -26,12 +26,12 @@ import java.util.*;
 
 /**
  *
- * @author nickapos
- * this class will be used to retrieve all the details available for a company
+ * @author nickapos this class will be used to retrieve all the details
+ * available for a company
  */
 public class SelectCompanyDetails {
 
-    private String name, afm, id,catid;
+    private String name, afm, id, catid;
     private boolean exists = false;
     private String sql1 = "select cid,companyname,afm,catid from companies where";
     private SelectFromTable sel = new SelectFromTable();
@@ -72,13 +72,13 @@ public class SelectCompanyDetails {
     private void splitResults(String sql) {
         //System.out.println(sql);
         ArrayList<String> a = sel.executeQuery(sql);
-        
+
         if (a.size() > 0) {
             exists = true;
             id = a.get(0);
             name = a.get(1);
             afm = a.get(2);
-            catid=a.get(3);
+            catid = a.get(3);
             //System.out.println(id+name+afm);
         }
     }
@@ -114,12 +114,12 @@ public class SelectCompanyDetails {
     public String getCatID() {
         return catid;
     }
+
     /**
      *
      * @return
      */
-    public boolean resultsExist()
-    {
+    public boolean resultsExist() {
         return exists;
     }
 
@@ -127,8 +127,7 @@ public class SelectCompanyDetails {
      *
      * @return the full details of the company in a string
      */
-    public String companyToString()
-    {
-        return "id: "+this.getID()+" catid: "+this.getCatID()+" afm: "+this.getAfm()+" name: "+this.getName();
+    public String companyToString() {
+        return "id: " + this.getID() + " catid: " + this.getCatID() + " afm: " + this.getAfm() + " name: " + this.getName();
     }
 }

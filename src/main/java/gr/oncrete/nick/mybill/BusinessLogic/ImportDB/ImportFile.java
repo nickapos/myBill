@@ -47,19 +47,19 @@ public class ImportFile {
 
     /**
      * this method will return the rows affected from an import operation
-     * @return 
+     *
+     * @return
      */
     public int getRowsAffected() {
         return rowsAffected;
     }
-    
+
     /**
      * this method will increase the rows affected by one
      */
-    public void increaseRowsAffectedByOne(){
+    public void increaseRowsAffectedByOne() {
         rowsAffected++;
     }
-    
 
     /**
      *

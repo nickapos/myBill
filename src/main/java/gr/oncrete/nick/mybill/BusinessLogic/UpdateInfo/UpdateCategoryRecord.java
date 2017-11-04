@@ -15,32 +15,30 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 package gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo;
 
-
-
 /**
  *
  * @author nickapos
  */
-public class UpdateCategoryRecord extends UpdateRecord{
+public class UpdateCategoryRecord extends UpdateRecord {
+
     String sql = "update categories set categoryname='";
-    
+
     /**
      *
      * @param oldName
      * @param name
      */
-    public UpdateCategoryRecord(String oldName,String name) {
+    public UpdateCategoryRecord(String oldName, String name) {
         //String sql1=sql+name+"' where catid="+id;
-        String sql1=sql+name+"' where categoryname='"+oldName+"'";
+        String sql1 = sql + name + "' where categoryname='" + oldName + "'";
         //System.out.println(sql1);
         super.runQuery(sql1);
     }
 
-    
 }

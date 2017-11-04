@@ -15,7 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
+ /*
  * AboutWindow.java
  * This class will create a window with a text area and depending on the need
  * will present in the text are a message, be it an about or a readme.
@@ -35,8 +35,8 @@ import java.util.*;
 public class ExportAllRecords extends javax.swing.JFrame {
 
     //the counter that will hold the number of affected rows
-    int counter=0;
-  
+    int counter = 0;
+
     /**
      * Creates new form AboutWindow
      */
@@ -84,12 +84,9 @@ public class ExportAllRecords extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-
     private void exportRecordsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportRecordsButtonActionPerformed
 
-        
-     DumpDatabase d = new DumpDatabase();
+        DumpDatabase d = new DumpDatabase();
         //dump companies csv first
         ArrayList a = d.getCompaniesCsv();
         //this.writeFile("companiesCsv.csv", a);
@@ -109,7 +106,6 @@ public class ExportAllRecords extends javax.swing.JFrame {
         a = d.getIncomeCsv();
         //this.writeFile("incomeCsv.csv", a);
         this.writeFileNewThread("incomeCsv.csv", a);
-    
 
     }//GEN-LAST:event_exportRecordsButtonActionPerformed
 
@@ -138,7 +134,7 @@ public class ExportAllRecords extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
-     /**
+    /**
      * this method can be used to write a file in a new separate thread
      *
      * @param filename
@@ -147,7 +143,7 @@ public class ExportAllRecords extends javax.swing.JFrame {
     private void writeFileNewThread(String filename, ArrayList a) {
         String content = "";
         Iterator i = a.iterator();
-        
+
         while (i.hasNext()) {
             String nextLine = (String) i.next();
             if (nextLine.length() > 0) {
@@ -160,15 +156,15 @@ public class ExportAllRecords extends javax.swing.JFrame {
         m.execute();
 
     }
-      
+
     /**
-     * this method will update the rows affected label with 
-     * the number of rows exported
-     * @param rows 
+     * this method will update the rows affected label with the number of rows
+     * exported
+     *
+     * @param rows
      */
-    private void updateRowsAffectedCount(int rows)
-    {
-        String defaultLabel=java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString(" ROWS EXPORTED: ");
-        rowsAffectedLabel.setText(defaultLabel+rows);
+    private void updateRowsAffectedCount(int rows) {
+        String defaultLabel = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString(" ROWS EXPORTED: ");
+        rowsAffectedLabel.setText(defaultLabel + rows);
     }
 }

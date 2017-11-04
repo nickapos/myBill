@@ -54,7 +54,9 @@ import javax.swing.table.DefaultTableModel;
  * @author nickapos
  */
 public class ImportBankStatementFrame extends javax.swing.JFrame {
-private final static Logger LOGGER = Logger.getLogger(ImportBankStatementFrame.class.getName());
+
+    private final static Logger LOGGER = Logger.getLogger(ImportBankStatementFrame.class.getName());
+
     /**
      * Creates new form AboutWindow
      */
@@ -314,14 +316,14 @@ private final static Logger LOGGER = Logger.getLogger(ImportBankStatementFrame.c
         } else {
             this.foreignExchangeTextField.setEnabled(false);
             this.foreignExchangeTextField.setEditable(false);
-        }        
+        }
     }//GEN-LAST:event_foreignExchangeCheckBoxActionPerformed
 
     private void showRatesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showRatesButtonActionPerformed
 //Textratestextfield foreignCurrencyTextField
         //foreignCurrencyCheckBox
         ExchangeRatesFrame exrf = new ExchangeRatesFrame(foreignExchangeTextField, foreignExchangeTextField);
-        exrf.presentExchangeRateFrame();        
+        exrf.presentExchangeRateFrame();
     }//GEN-LAST:event_showRatesButtonActionPerformed
 
     private void selectAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAllButtonActionPerformed
@@ -468,14 +470,14 @@ private final static Logger LOGGER = Logger.getLogger(ImportBankStatementFrame.c
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " withdrawal:" + debitAm);
                     InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(debitAm), this.tsbCorrectDate(unCorrectedDate), this.tsbCorrectDate(unCorrectedDate), "Auto imported field");
-                    LOGGER.log(Level.INFO,bill.toString());
+                    LOGGER.log(Level.INFO, bill.toString());
 
                 } else {
                     //System.out.println("This a deposit");
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + creditAm);
                     InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(creditAm), this.tsbCorrectDate(unCorrectedDate), "Auto imported field");
-                    LOGGER.log(Level.INFO,income.toString());
+                    LOGGER.log(Level.INFO, income.toString());
                 }
                 importedRecordNo++;
                 recordsImportedLabel.setText("" + importedRecordNo);
@@ -523,9 +525,9 @@ private final static Logger LOGGER = Logger.getLogger(ImportBankStatementFrame.c
             } else {
                 afm = afmFull;
             }
-            if(recordType.equalsIgnoreCase("Κατάθεση") || recordType.equalsIgnoreCase("Ανάληψη")){
-                double amountD=this.parseEUAmount(amount);
-                amount=String.valueOf(amountD); 
+            if (recordType.equalsIgnoreCase("Κατάθεση") || recordType.equalsIgnoreCase("Ανάληψη")) {
+                double amountD = this.parseEUAmount(amount);
+                amount = String.valueOf(amountD);
             }
 
             if (importField) {
@@ -536,14 +538,14 @@ private final static Logger LOGGER = Logger.getLogger(ImportBankStatementFrame.c
                     //System.out.println("I will import");
                     //System.out.println("Record data:" + "Company:" + companyID + " Corrected Date: " + this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company des:" + descCompName + " withdrawal:" + this.applyExchangeRate(amount));
                     InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.pancretaCorrectDate(unCorrectedDate), this.pancretaCorrectDate(unCorrectedDate), "Auto imported field");
-                    LOGGER.log(Level.INFO,bill.toString());
+                    LOGGER.log(Level.INFO, bill.toString());
 
                 } else if (recordType.equalsIgnoreCase("Deposit") || recordType.equalsIgnoreCase("Κατάθεση")) {
                     //System.out.println("This a deposit");
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + amount);
                     InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.pancretaCorrectDate(unCorrectedDate), "Auto imported field");
-                    LOGGER.log(Level.INFO,income.toString());
+                    LOGGER.log(Level.INFO, income.toString());
                 }
                 importedRecordNo++;
                 recordsImportedLabel.setText("" + importedRecordNo);
@@ -597,14 +599,14 @@ private final static Logger LOGGER = Logger.getLogger(ImportBankStatementFrame.c
                     //System.out.println("Record data:" +"Company:"+companyID+" Corrected Date: "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company des:" + descCompName + " withdrawal:" + this.applyExchangeRate(amount));
                     amount = String.format("%.2f", -amountD);
                     InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(amount), date, date, "Auto imported field");
-                    LOGGER.log(Level.INFO,bill.toString());
+                    LOGGER.log(Level.INFO, bill.toString());
 
                 } else if (amountD > 0) {
                     //System.out.println("This a deposit");
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + amount);
                     InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(amount), date, "Auto imported field");
-                    LOGGER.log(Level.INFO,income.toString());
+                    LOGGER.log(Level.INFO, income.toString());
                 }
                 importedRecordNo++;
                 recordsImportedLabel.setText("" + importedRecordNo);
@@ -654,7 +656,7 @@ private final static Logger LOGGER = Logger.getLogger(ImportBankStatementFrame.c
                 String companyID = getCompID(desc1, afm, categId);
                 double amountD = 0;
                 if (bankName.equals("Fidor DE")) {
-                    amountD=this.parseEUAmount(amount);
+                    amountD = this.parseEUAmount(amount);
                 } else {
                     amountD = Double.parseDouble(amount);
                 }
@@ -666,7 +668,7 @@ private final static Logger LOGGER = Logger.getLogger(ImportBankStatementFrame.c
                     //System.out.println("Record data:" +"Company:"+companyID+" Corrected Date: "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company des:" + descCompName + " withdrawal:" + this.applyExchangeRate(amount));
                     amount = String.format("%.2f", -amountD);
                     InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(amount), corrDate, corrDate, desc2 + " Auto imported field");
-                    LOGGER.log(Level.INFO,bill.toString());
+                    LOGGER.log(Level.INFO, bill.toString());
 
                 } else if (amountD > 0) {
                     //System.out.println("This a deposit");
@@ -674,15 +676,15 @@ private final static Logger LOGGER = Logger.getLogger(ImportBankStatementFrame.c
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + amount);
                     amount = String.format("%.2f", amountD);
                     InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(amount), corrDate, desc2 + " Auto imported field");
-                    LOGGER.log(Level.INFO,income.toString());
+                    LOGGER.log(Level.INFO, income.toString());
                 }
                 importedRecordNo++;
                 recordsImportedLabel.setText("" + importedRecordNo);
 
             } else {
                 System.out.println();
-                LOGGER.log(Level.SEVERE,"I will not import");
-                LOGGER.log(Level.SEVERE,"Record data:" + this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + desc1 + "-" + amount);                
+                LOGGER.log(Level.SEVERE, "I will not import");
+                LOGGER.log(Level.SEVERE, "Record data:" + this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + desc1 + "-" + amount);
             }
         }
     }
@@ -755,7 +757,7 @@ private final static Logger LOGGER = Logger.getLogger(ImportBankStatementFrame.c
         return convertedAmount;
     }
 
-    private double  parseEUAmount(String amount) {
+    private double parseEUAmount(String amount) {
         DecimalFormat df = new DecimalFormat();
         double amountD = -1000;
         DecimalFormatSymbols symbols = new DecimalFormatSymbols();
@@ -765,7 +767,8 @@ private final static Logger LOGGER = Logger.getLogger(ImportBankStatementFrame.c
         try {
             amountD = df.parse(amount).doubleValue();
             //System.out.println("Double amount parsed"+amountD);
-        } catch (ParseException e) {
+        }
+        catch (ParseException e) {
             System.out.println(e);
         }
         return amountD;

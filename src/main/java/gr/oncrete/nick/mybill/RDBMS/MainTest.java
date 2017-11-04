@@ -32,10 +32,9 @@ public class MainTest {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
         //EmptyTables e= new EmptyTables();
-       //LoadConstantTables o = new LoadConstantTables();
-       
+        //LoadConstantTables o = new LoadConstantTables();
     }
 
 }

@@ -15,31 +15,31 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
-
 
 /**
  *
  * @author nickapos
  */
 public class SelectReportIncomeSumsPerYear extends SelectReportTotalIncomeSums {
+
     String sql;
+
     /**
      *
      * @param year
      */
-    public SelectReportIncomeSumsPerYear(String year)
-    { String sql0="select sum(amount),companyname from income, companies where income.cid=companies.cid  and dateofpayment>='";
-      String sql2="-01-01' and dateofpayment <='";
-      String sql3="-12-31'  group by companies.companyname order by sum(amount)";
-      sql=sql0+year+sql2+year+sql3;
-      //System.out.println(sql);
-      super.runQuery(sql);
+    public SelectReportIncomeSumsPerYear(String year) {
+        String sql0 = "select sum(amount),companyname from income, companies where income.cid=companies.cid  and dateofpayment>='";
+        String sql2 = "-01-01' and dateofpayment <='";
+        String sql3 = "-12-31'  group by companies.companyname order by sum(amount)";
+        sql = sql0 + year + sql2 + year + sql3;
+        //System.out.println(sql);
+        super.runQuery(sql);
     }
 
 }

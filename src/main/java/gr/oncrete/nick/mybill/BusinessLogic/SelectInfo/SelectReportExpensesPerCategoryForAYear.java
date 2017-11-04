@@ -15,7 +15,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -32,7 +32,9 @@ public class SelectReportExpensesPerCategoryForAYear extends SelectAllIDS {
     String sql1 = "select sum(c.price),a.categoryname from categories a, companies b, bills c where a.catid=b.catid and b.cid=c.cid and c.dayofpayment>='";
     String sql2 = " group by a.categoryname order by a.categoryname;";
 
-     public SelectReportExpensesPerCategoryForAYear() {}
+    public SelectReportExpensesPerCategoryForAYear() {
+    }
+
     /**
      *
      * @param year
@@ -46,7 +48,8 @@ public class SelectReportExpensesPerCategoryForAYear extends SelectAllIDS {
     }
 
     /**
-     * This method returns the properly formated data from the query in order to fit in the jtable
+     * This method returns the properly formated data from the query in order to
+     * fit in the jtable
      *
      *
      * @return
@@ -70,7 +73,6 @@ public class SelectReportExpensesPerCategoryForAYear extends SelectAllIDS {
             percentage += (Float.valueOf(priceS.trim()).floatValue() / fullSum) * 100;
             array[o][1] = "" + (new DecimalFormat("###,###.##").format((double) (Float.valueOf(priceS.trim()).floatValue() / fullSum) * 100)) + "%";
         }
-
 
         String[] header = {"Full Sum", "---", "number of Records"};
         array[idListSizeNumByThree] = header;

@@ -15,7 +15,7 @@
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * DumpDatabase.java
  *
  * Created on 21 Ιούλιος 2005, 9:39 πμ
@@ -122,18 +122,19 @@ public class DumpDatabaseinQIF {
      * @return
      */
     public String convertRecordToQIF(String category, String company, String amount, String date, String comment) {
-        return "D" + this.qifDateConvert(date)+ "\n" + "T" + amount.replace("E0","") + "\n" + "P" + company + "\n" + "^";
+        return "D" + this.qifDateConvert(date) + "\n" + "T" + amount.replace("E0", "") + "\n" + "P" + company + "\n" + "^";
     }
-    
+
     /**
      * this method will convert a date from YYYY-MM-DD to MM/DD/YYYY
+     *
      * @param date
-     * @return 
+     * @return
      */
-    private String qifDateConvert(String date){
-        String[] dateparts=date.split("-");
+    private String qifDateConvert(String date) {
+        String[] dateparts = date.split("-");
         //System.out.println("length "+dateparts.length+" 0: "+dateparts[0]);
-        return ""+dateparts[1]+"/"+dateparts[2]+"/"+dateparts[0];
+        return "" + dateparts[1] + "/" + dateparts[2] + "/" + dateparts[0];
     }
 
 }

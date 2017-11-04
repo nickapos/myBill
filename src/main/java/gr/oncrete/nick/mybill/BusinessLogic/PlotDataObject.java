@@ -14,33 +14,36 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package gr.oncrete.nick.mybill.BusinessLogic;
+
 import java.util.ArrayList;
 
-
 /**
- *This class is intendet to hold the data of a report for its graphical representation
+ * This class is intendet to hold the data of a report for its graphical
+ * representation
+ *
  * @author nickapos 26 Ιουλ 2010
  */
 public class PlotDataObject {
-    private ArrayList xAxis,yAxis;
-    private String xAxisTitle,yAxisTitle,plotTitle;
-    private int maxY,maxX;
+
+    private ArrayList xAxis, yAxis;
+    private String xAxisTitle, yAxisTitle, plotTitle;
+    private int maxY, maxX;
+
     /**
      *
      * @param xTitle
      * @param yTitle
      * @param pTitle
      */
-    public PlotDataObject(String xTitle, String yTitle, String pTitle){
+    public PlotDataObject(String xTitle, String yTitle, String pTitle) {
         xAxis = new ArrayList(0);
         yAxis = new ArrayList(0);
-        xAxisTitle=xTitle;
-        yAxisTitle=yTitle;
-        plotTitle=pTitle;
-        maxY=0;
-        maxX=0;
+        xAxisTitle = xTitle;
+        yAxisTitle = yTitle;
+        plotTitle = pTitle;
+        maxY = 0;
+        maxX = 0;
     }
 
     /**
@@ -49,9 +52,8 @@ public class PlotDataObject {
      *
      * @param a
      */
-    public void setMaxY(int a)
-    {
-        maxY=a;
+    public void setMaxY(int a) {
+        maxY = a;
     }
 
     /**
@@ -60,10 +62,8 @@ public class PlotDataObject {
      *
      * @param a
      */
-
-    public void setMaxX(int a)
-    {
-        maxX=a;
+    public void setMaxX(int a) {
+        maxX = a;
     }
 
     /*
@@ -74,25 +74,24 @@ public class PlotDataObject {
      *
      * @return
      */
-    public int getMaxY()
-    {
+    public int getMaxY() {
         return maxY;
     }
+
     /**
      * * return the maximum value of X axis
      *
      * @return
      */
-    public int getMaxX()
-    {
+    public int getMaxX() {
         return maxX;
     }
+
     /**
      *
      * @return
      */
-    public String getXtitle()
-    {
+    public String getXtitle() {
         return xAxisTitle;
     }
 
@@ -100,8 +99,7 @@ public class PlotDataObject {
      *
      * @return
      */
-    public String getYtitle()
-    {
+    public String getYtitle() {
         return yAxisTitle;
     }
 
@@ -109,8 +107,7 @@ public class PlotDataObject {
      *
      * @return
      */
-    public String getPlottitle()
-    {
+    public String getPlottitle() {
         return plotTitle;
     }
 
@@ -120,12 +117,10 @@ public class PlotDataObject {
      *
      * @return
      */
-    public double[] getXdataD()
-    {
-        double[] a=new double [xAxis.size()];
-        for(int i=0;i<a.length;i++)
-        {
-            a[i]=(Double)xAxis.get(i);
+    public double[] getXdataD() {
+        double[] a = new double[xAxis.size()];
+        for (int i = 0; i < a.length; i++) {
+            a[i] = (Double) xAxis.get(i);
         }
         return a;
 
@@ -137,12 +132,10 @@ public class PlotDataObject {
      *
      * @return
      */
-    public String[] getXdataS()
-    {
-        String[] a=new String [xAxis.size()];
-        for(int i=0;i<a.length;i++)
-        {
-            a[i]=(String)xAxis.get(i);
+    public String[] getXdataS() {
+        String[] a = new String[xAxis.size()];
+        for (int i = 0; i < a.length; i++) {
+            a[i] = (String) xAxis.get(i);
         }
         return a;
 
@@ -154,63 +147,63 @@ public class PlotDataObject {
      *
      * @return
      */
-     public double[] getYdata()
-    {
-        double[] a=new double [yAxis.size()];
-        for(int i=0;i<a.length;i++)
-        {
-            a[i]=(Double)yAxis.get(i);
+    public double[] getYdata() {
+        double[] a = new double[yAxis.size()];
+        for (int i = 0; i < a.length; i++) {
+            a[i] = (Double) yAxis.get(i);
         }
         return a;
 
     }
+
     /**
      * Add plot data in pairs
      *
      * @param x
      * @param y
      */
-    public void addElementPairs(String x, String y)
-    {
+    public void addElementPairs(String x, String y) {
         this.addXaxisElement(x);
         this.addYaxisElement(y);
     }
+
     /**
      *
      * Add elements to Xaxis
+     *
      * @param el
      */
-    public void addXaxisElement(String el)
-    {
+    public void addXaxisElement(String el) {
         xAxis.add(Double.valueOf(el));
     }
+
     /**
      *
      * Add elements to Xaxis x is double
+     *
      * @param el
      */
-    public void addXaxisElementD(double el)
-    {
+    public void addXaxisElementD(double el) {
         xAxis.add(el);
     }
-    
+
     /**
-     * 
+     *
      * * Add elements to Yaxis
+     *
      * @param el
      */
-    public void addYaxisElement(String el)
-    {
+    public void addYaxisElement(String el) {
         yAxis.add(Double.valueOf(el));
     }
 
     /**
      *
      * * Add elements to Yaxis
+     *
      * @param el
      */
-    public void addYaxisElementD(double el)
-    {
+    public void addYaxisElementD(double el) {
         yAxis.add(el);
     }
 

@@ -43,7 +43,7 @@ public class ShutdownDB {
     public ShutdownDB() {
         String sql = "shutdown compact";
         InsertIntoTable in = new InsertIntoTable(sql);
-        LOGGER.log(Level.INFO,in.toString());
+        LOGGER.log(Level.INFO, in.toString());
 
     }
 

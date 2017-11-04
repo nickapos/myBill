@@ -23,8 +23,9 @@ import java.util.List;
 import javax.swing.JLabel;
 
 /**
- *This class wil be used to all the records of the database of a specific company
- * to another
+ * This class wil be used to all the records of the database of a specific
+ * company to another
+ *
  * @author nickapos 6 Σεπ 2010
  */
 public class MergeCompaniesRecords {
@@ -36,8 +37,8 @@ public class MergeCompaniesRecords {
     /**
      *
      * @param listTobeMerged the id's list to be merget into the new category
-     * @param newCompanyID the id of  the new company
-     * @param a label for the progress of the work the id of  the new category
+     * @param newCompanyID the id of the new company
+     * @param a label for the progress of the work the id of the new category
      */
     public MergeCompaniesRecords(List listTobeMerged, String companyID, JLabel lbl) {
         idListTobeMerged = listTobeMerged;
@@ -57,7 +58,7 @@ public class MergeCompaniesRecords {
     public void mergeCompanyRecords() {
 
         if (newCompanyID.length() > 0) {
-            
+
             //change id of category from the old to the new one
             Iterator it = idListTobeMerged.iterator();
 
@@ -69,16 +70,13 @@ public class MergeCompaniesRecords {
                 String[] id = (String[]) it.next();
                 bdt.SelectBillDetailsWithID(id[0]);
                 UpdateBillRecord upbdt = new UpdateBillRecord();
-                upbdt.updateBillRecordWithCid(bdt.getBID(), newCompanyID, bdt.getPrice(), bdt.getDateOfIssue(), bdt.getDateOfPayment(),bdt.getComment());
+                upbdt.updateBillRecordWithCid(bdt.getBID(), newCompanyID, bdt.getPrice(), bdt.getDateOfIssue(), bdt.getDateOfPayment(), bdt.getComment());
 
                 counter++;
-                double percentage =100*counter/idListTobeMerged.size();
-                mergeProgressText = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("MergeCompanyRecordsFrame.progressLabel.text") + counter+" "+percentage +"%";
+                double percentage = 100 * counter / idListTobeMerged.size();
+                mergeProgressText = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("MergeCompanyRecordsFrame.progressLabel.text") + counter + " " + percentage + "%";
                 l.setText(mergeProgressText);
             }
-
-
-
 
         }
 

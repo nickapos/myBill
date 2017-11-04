@@ -15,20 +15,20 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 package gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo;
 
-
-
 /**
  *
  * @author nickapos
  */
-public class UpdateCompanyRecord extends UpdateRecord{
+public class UpdateCompanyRecord extends UpdateRecord {
+
     String sql = "update companies set companyname='";
+
     //update companies set companyname='test2', afm='blabla' where cid=2
     /**
      *
@@ -37,11 +37,10 @@ public class UpdateCompanyRecord extends UpdateRecord{
      * @param afm
      * @param catid
      */
-    public UpdateCompanyRecord(String id,String name, String afm, String catid) {
-        String sql1=sql+name+"', afm='"+afm+"', catid="+catid+" where cid="+id;
+    public UpdateCompanyRecord(String id, String name, String afm, String catid) {
+        String sql1 = sql + name + "', afm='" + afm + "', catid=" + catid + " where cid=" + id;
         //System.out.println(sql1);
         super.runQuery(sql1);
     }
 
-    
 }

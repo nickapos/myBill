@@ -54,11 +54,11 @@ public class ImportIncomeTable extends ImportFile {
                         InsertIncome ins = new InsertIncome(splitLine[0], splitLine[1], splitLine[2], splitLine[3], splitLine[4]);
                         System.out.println(ins.toString());
                         this.increaseRowsAffectedByOne();
-                    } catch (java.lang.ArrayIndexOutOfBoundsException e) {
+                    }
+                    catch (java.lang.ArrayIndexOutOfBoundsException e) {
                         InsertIncome ins = new InsertIncome(splitLine[0], splitLine[1], splitLine[2], splitLine[3], " ");
                         System.out.println(ins.toString());
                     }
-
 
                 }
 

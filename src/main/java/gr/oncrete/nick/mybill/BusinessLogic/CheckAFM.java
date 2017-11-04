@@ -16,15 +16,19 @@
  */
 package gr.oncrete.nick.mybill.BusinessLogic;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author nickapos 6 Σεπ 2010
  */
 public class CheckAFM {
 
+    private final static Logger LOGGER = Logger.getLogger(CheckAFM.class.getName());
     boolean isvalid = false;
     int afmSize = 9;
-    String afm="";
+    String afm = "";
 
     /**
      * Just an empty constructor
@@ -32,7 +36,6 @@ public class CheckAFM {
      */
     public CheckAFM() {
     }
-
 
     /**
      * constructor with the incoming afm as an string
@@ -42,7 +45,7 @@ public class CheckAFM {
     public CheckAFM(String afmS) {
         if (!afmS.equals("000000000")) {
             if (afmS.length() > afmSize) {
-                System.out.println("Too Long");
+                LOGGER.log(Level.WARNING, "Too Long");
             } else if (afmS.length() == afmSize) {
                 this.checkAFM(afmS);
             } else if (afmS.length() < afmSize) {
@@ -54,6 +57,7 @@ public class CheckAFM {
 
     /**
      * pad the afm if it has less than 9 digits
+     *
      * @param st
      * @return
      */
@@ -72,6 +76,7 @@ public class CheckAFM {
     /**
      *
      * check the incoming afm if it is valid
+     *
      * @param a
      */
     protected void checkAFM(String a) {
@@ -85,27 +90,27 @@ public class CheckAFM {
         int modulo = sum % 11;//find the mofulo
         if (modulo == 10 && a.charAt(afmSize - 1) == '0') {//if modulo is 10 and last digit 0 then we are cool
             isvalid = true;
-            afm=a;
+            afm = a;
         } else if (modulo == Character.getNumericValue((a.charAt(afmSize - 1)))) {//else if last digit is something and modulo the same something we are cool too
             isvalid = true;
-            afm=a;
+            afm = a;
         }
     }
 
-
     /**
      * return the if the afm is valid to the world
+     *
      * @return
      */
     public boolean returnResult() {
         return isvalid;
     }
+
     /**
      *
      * @return
      */
-    public String getAfm()
-    {
+    public String getAfm() {
         return afm;
     }
 }

@@ -61,10 +61,9 @@ public class SelectAverageExpensesPerCompanyInRange {
             sql = sql1 + sql2 + startPeriod + "'" + sql3 + endPeriod + "'" + sql4 + orderByNumOfRecords;
         } else if (orderBy.equals("Amount")) {
             sql = sql1 + sql2 + startPeriod + "'" + sql3 + endPeriod + "'" + sql4 + orderByAmount;
-        } else if(orderBy.equals("Average")){
+        } else if (orderBy.equals("Average")) {
             sql = sql1 + sql2 + startPeriod + "'" + sql3 + endPeriod + "'" + sql4 + orderByAverage;
-        }
-        else {
+        } else {
             sql = sql1 + sql2 + startPeriod + "'" + sql3 + endPeriod + "'" + sql4 + orderByAmount;
         }
         this.splitResults(sql);
@@ -132,7 +131,7 @@ public class SelectAverageExpensesPerCompanyInRange {
         public String getAvPrice() {
             return new DecimalFormat("####.##").format(this.getAvPriceDouble());
         }
-        
+
         public double getAvPriceDouble() {
             return Double.valueOf(avPrice);
         }
@@ -158,7 +157,7 @@ public class SelectAverageExpensesPerCompanyInRange {
         }
 
         public String toString() {
-            return String.format(" Num Of Records: %s Total Amount: %s  Average Amount: %s  Company Name: %s" , this.getNumberOfRecords() , this.getTotalAmount(), this.getAvPrice(), this.getCompanyName());
+            return String.format(" Num Of Records: %s Total Amount: %s  Average Amount: %s  Company Name: %s", this.getNumberOfRecords(), this.getTotalAmount(), this.getAvPrice(), this.getCompanyName());
         }
 
     }

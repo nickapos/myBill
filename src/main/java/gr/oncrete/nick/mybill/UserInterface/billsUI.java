@@ -44,6 +44,7 @@ import javax.swing.*;
  * @author nickapos
  */
 public class billsUI extends javax.swing.JFrame {
+
     private final static Logger LOGGER = Logger.getLogger(ShutdownDB.class.getName());
     //just the plot panel
     PlotPanel plPanel;
@@ -861,7 +862,7 @@ public class billsUI extends javax.swing.JFrame {
         PopupMessageFrame mes = new PopupMessageFrame();
         mes.setNotification(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("THE-DATABASE-ENGINE-AND-THE-APPLICATION-WILL-SHUTDOWN"));
         ShutdownDB s = new ShutdownDB();
-        LOGGER.log(Level.INFO,s.toString());
+        LOGGER.log(Level.INFO, s.toString());
         System.exit(0);
 }//GEN-LAST:event_shutdownMenuItemActionPerformed
 
@@ -930,7 +931,6 @@ public class billsUI extends javax.swing.JFrame {
             reportParametersComboBox.setModel(new javax.swing.DefaultComboBoxModel(years));
             reportParametersFinalComboBox.setModel(new javax.swing.DefaultComboBoxModel(years));
         }
-
 
     }//GEN-LAST:event_reportComboBoxActionPerformed
 
@@ -1021,11 +1021,11 @@ public class billsUI extends javax.swing.JFrame {
             }
             JFileChooser fc = new JFileChooser(System.getProperty("user.home"));
             int option = fc.showSaveDialog(null);
-            if (option == JFileChooser.APPROVE_OPTION && fc.getSelectedFile() != null ) {
-                    String curDir = fc.getCurrentDirectory().getAbsolutePath();
-                    String theFileToSave = fc.getName(fc.getSelectedFile());
-                    //this.writeFile(curDir + System.getProperty("file.separator") + theFileToSave, outStr);
-                    this.writeFileNewThread(curDir + System.getProperty("file.separator") + theFileToSave, outStr);
+            if (option == JFileChooser.APPROVE_OPTION && fc.getSelectedFile() != null) {
+                String curDir = fc.getCurrentDirectory().getAbsolutePath();
+                String theFileToSave = fc.getName(fc.getSelectedFile());
+                //this.writeFile(curDir + System.getProperty("file.separator") + theFileToSave, outStr);
+                this.writeFileNewThread(curDir + System.getProperty("file.separator") + theFileToSave, outStr);
             }
         }
         // System.out.println(outStr);
@@ -1102,7 +1102,7 @@ public class billsUI extends javax.swing.JFrame {
             this.foreignCurrencyTextField1.setEnabled(true);
         } else {
             this.foreignCurrencyTextField1.setEnabled(false);
-        }       
+        }
     }//GEN-LAST:event_foreignCurrencyCheckBox1ActionPerformed
 
     private void invertRecordMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invertRecordMenuItemActionPerformed
@@ -1141,12 +1141,12 @@ public class billsUI extends javax.swing.JFrame {
 
     private void AnalyticsForPeriodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnalyticsForPeriodActionPerformed
         PresentTransactionsAnalyticsForPeriod tp = new PresentTransactionsAnalyticsForPeriod();
-        tp.displayApp();        
+        tp.displayApp();
     }//GEN-LAST:event_AnalyticsForPeriodActionPerformed
 
     private void RecurringPaymentsForLastYearMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecurringPaymentsForLastYearMenuItemActionPerformed
         PresentRecurringPayments tp = new PresentRecurringPayments();
-        tp.displayApp(); 
+        tp.displayApp();
     }//GEN-LAST:event_RecurringPaymentsForLastYearMenuItemActionPerformed
 
     /**
@@ -1843,7 +1843,7 @@ public class billsUI extends javax.swing.JFrame {
         {
             if (dop.length() > 0 && dofi.length() > 0 && billAmt.length() > 0 && company.length() > 0) {
                 InsertBills ins = new InsertBills(company, billAmt, dofi, dop, comment);
-                LOGGER.log(Level.INFO,ins.toString());
+                LOGGER.log(Level.INFO, ins.toString());
                 this.clearBillTextFields();
             }
 
@@ -1854,7 +1854,7 @@ public class billsUI extends javax.swing.JFrame {
 
             if (bid.length() > 0 && dop.length() > 0 && dofi.length() > 0 && billAmt.length() > 0 && company.length() > 0) {
                 UpdateBillRecord u = new UpdateBillRecord(bid, company, billAmt, dofi, dop, comment);
-                LOGGER.log(Level.INFO,u.toString());
+                LOGGER.log(Level.INFO, u.toString());
                 this.clearBillTextFields();
             }
 
@@ -1863,7 +1863,7 @@ public class billsUI extends javax.swing.JFrame {
             String bid = billIdTextField.getText();
             if (bid.length() > 0) {
                 DeleteBill del = new DeleteBill(bid);
-                LOGGER.log(Level.INFO,del.toString());
+                LOGGER.log(Level.INFO, del.toString());
                 this.clearBillTextFields();
             }
 
@@ -1890,7 +1890,7 @@ public class billsUI extends javax.swing.JFrame {
         {
             if (dop.length() > 0 && amt.length() > 0 && company.length() > 0) {
                 InsertIncome ins = new InsertIncome(company, amt, dop, comment);
-                LOGGER.log(Level.INFO,ins.toString());
+                LOGGER.log(Level.INFO, ins.toString());
                 this.clearIncomeTextFields();
             }
         } else if (a == 1)//if selected value is edit
@@ -1898,7 +1898,7 @@ public class billsUI extends javax.swing.JFrame {
             String inid = incomeIDTextField.getText();
             if (inid.length() > 0 && dop.length() > 0 && amt.length() > 0 && company.length() > 0) {
                 UpdateIncomeRecord u = new UpdateIncomeRecord(inid, company, amt, dop, comment);
-                LOGGER.log(Level.INFO,u.toString());
+                LOGGER.log(Level.INFO, u.toString());
                 this.clearIncomeTextFields();
             }
         } else if (a == 2)//if selected value is delete
@@ -1906,7 +1906,7 @@ public class billsUI extends javax.swing.JFrame {
             String inid = incomeIDTextField.getText();
             if (inid.length() > 0) {
                 DeleteIncome del = new DeleteIncome(inid);
-                LOGGER.log(Level.INFO,del.toString());
+                LOGGER.log(Level.INFO, del.toString());
                 this.clearIncomeTextFields();
             }
 
@@ -1947,7 +1947,7 @@ public class billsUI extends javax.swing.JFrame {
             categ.selectCatByName(catName);
             if (cid.length() > 0 && cAfm.length() > 0 && cName.length() > 0 && categ.getCatID().length() > 0) {
                 UpdateCompanyRecord u = new UpdateCompanyRecord(cid, cName, cAfm, categ.getCatID());
-                LOGGER.log(Level.INFO,u.toString());
+                LOGGER.log(Level.INFO, u.toString());
                 this.clearCompanyTextFields();
             }
 
@@ -1955,7 +1955,7 @@ public class billsUI extends javax.swing.JFrame {
         {
             String id = this.companyDetailsIDTextField.getText();
             DeleteCompany d = new DeleteCompany(id);
-            LOGGER.log(Level.INFO,d.toString());
+            LOGGER.log(Level.INFO, d.toString());
             this.clearCompanyTextFields();
         }
 

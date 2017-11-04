@@ -22,9 +22,10 @@ package gr.oncrete.nick.mybill.BusinessLogic;
  * @author nickapos
  */
 public class ParseFidorUKCsv extends ParseCsv {
+
     //tsb has 8 fields in its csv
     static final int numOfFields = 4;
-    private String[] header= {"Date","Description1","Description2","Value","Import"};
+    private String[] header = {"Date", "Description1", "Description2", "Value", "Import"};
 
     public ParseFidorUKCsv() {
         super(numOfFields);
@@ -32,18 +33,17 @@ public class ParseFidorUKCsv extends ParseCsv {
     }
 
     public ParseFidorUKCsv(int fields) {
-        super( fields);
+        super(fields);
 
     }
+
     @Override
-    public int getNumOfFields()
-    {
+    public int getNumOfFields() {
         return numOfFields;
     }
-    
+
     @Override
-    public String[] getColumnNames()
-    {
+    public String[] getColumnNames() {
         return header;
     }
 }

@@ -28,7 +28,8 @@ package gr.oncrete.nick.mybill.UserInterface;
 class ExchangeRatesTableModel extends javax.swing.table.DefaultTableModel {
 
     //designate one column to contain booleans
-    static final int booleanColumn=2;
+    static final int booleanColumn = 2;
+
     public ExchangeRatesTableModel(String[][] d, String[] cName) {
         super(d, cName);
     }
@@ -36,14 +37,11 @@ class ExchangeRatesTableModel extends javax.swing.table.DefaultTableModel {
     public ExchangeRatesTableModel(Object[][] d, String[] cName) {
         super(d, cName);
     }
-    
-   
-    boolean[] canEdit = new boolean []
-         {
-            false, false, true
-         };
-    
-        
+
+    boolean[] canEdit = new boolean[]{
+        false, false, true
+    };
+
     @Override
     public Class getColumnClass(int c) {
         if (c == booleanColumn) {
@@ -62,6 +60,6 @@ class ExchangeRatesTableModel extends javax.swing.table.DefaultTableModel {
      */
     @Override
     public boolean isCellEditable(int row, int column) {
-        return canEdit [column];
+        return canEdit[column];
     }
 }

@@ -15,13 +15,14 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
+
 import java.util.*;
+
 /**
  *
  * @author nickapos
@@ -31,7 +32,8 @@ public class SelectAllBillsDetails extends SelectAllIDS {
     /**
      *
      */
-    protected List rows=new LinkedList();;
+    protected List rows = new LinkedList();
+    ;
     /**
      *
      */
@@ -45,9 +47,9 @@ public class SelectAllBillsDetails extends SelectAllIDS {
 
     /**
      *
-     * This method will read the bill info from the database and return the whole
-     * set in a properly formatted arraylist in order to be displayed in the report
-     * jtable of the program
+     * This method will read the bill info from the database and return the
+     * whole set in a properly formatted arraylist in order to be displayed in
+     * the report jtable of the program
      */
     protected void readDBReport() {
 
@@ -55,7 +57,7 @@ public class SelectAllBillsDetails extends SelectAllIDS {
         LinkedList results = (LinkedList) this.getIds();
         if (results.isEmpty()) {
             System.out.println("result set is empty. Dump database operation aborted");
-            results= new LinkedList<String>();
+            results = new LinkedList<String>();
             //System.exit(1);
 
         } else {
@@ -67,7 +69,7 @@ public class SelectAllBillsDetails extends SelectAllIDS {
                 rows.add(row);
                 //System.out.println(row);
             }*/
-            rows=results;
+            rows = results;
         }
     }
 

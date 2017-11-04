@@ -213,7 +213,7 @@ public class PresentTransactionsAnalyticsForPeriod extends javax.swing.JFrame {
         numOfRecordsRadioButton.setSelected(false);
         amountRadioButton.setSelected(false);
     }//GEN-LAST:event_averageRadioButtonActionPerformed
-   
+
     /**
      * @param args the command line arguments
      */

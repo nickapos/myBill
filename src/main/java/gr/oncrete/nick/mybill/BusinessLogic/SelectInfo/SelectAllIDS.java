@@ -15,7 +15,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -25,7 +25,8 @@ import gr.oncrete.nick.mybill.RDBMS.SelectFromTable;
 import java.util.*;
 
 /**
- * A father class that will return a list with all the ids contained in our database either company ids of bill ids
+ * A father class that will return a list with all the ids contained in our
+ * database either company ids of bill ids
  *
  * @author nickapos
  */
@@ -34,6 +35,7 @@ public class SelectAllIDS {
     SelectFromTable sel = new SelectFromTable();
     List idList;
     String sql;
+
     /**
      *
      */
@@ -42,24 +44,25 @@ public class SelectAllIDS {
 
     /**
      *
-     * Returns an ArrayList containing the IDs of the companies or the bills or null
+     * Returns an ArrayList containing the IDs of the companies or the bills or
+     * null
      *
      * @param sql1
      */
     public void runQuery(String sql1) {
         idList = sel.executeQuery(sql1);
-        sql=sql1;
+        sql = sql1;
     }
-
 
     /**
      *
-     * Returns an LinkedList containing the IDs of the companies or the bills or null
+     * Returns an LinkedList containing the IDs of the companies or the bills or
+     * null
      *
      * @param sql1
      */
     public void runQueryL(String sql1) {
-        idList= sel.executeQueryL(sql1);
+        idList = sel.executeQueryL(sql1);
     }
 
     /**
@@ -68,7 +71,7 @@ public class SelectAllIDS {
      */
     public List getIds() {
         if (this.isEmpty()) {
-             return new LinkedList<String>();
+            return new LinkedList<String>();
         } else {
             return idList;
         }
@@ -85,8 +88,8 @@ public class SelectAllIDS {
             return true;
         }
     }
-    
-    public String toString(){
+
+    public String toString() {
         return sql;
     }
 }

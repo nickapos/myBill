@@ -53,7 +53,8 @@ public class ImportBillsTable extends ImportFile {
                         ins.toString();
                         this.increaseRowsAffectedByOne();
 
-                    } catch (java.lang.ArrayIndexOutOfBoundsException e) {
+                    }
+                    catch (java.lang.ArrayIndexOutOfBoundsException e) {
                         InsertBills ins = new InsertBills(splitLine[0], splitLine[1], splitLine[2], splitLine[3], splitLine[4], " ");
                         ins.toString();
                     }

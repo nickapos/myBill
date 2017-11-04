@@ -15,7 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
+ /*
  * AboutWindow.java
  * This class will create a window with a text area and depending on the need
  * will present in the text are a message, be it an about or a readme.
@@ -83,7 +83,6 @@ public class ExportAllRecordsQIF extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
     private void exportRecordsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportRecordsButtonActionPerformed
         DumpDatabaseinQIF qifDump = new DumpDatabaseinQIF();
 
@@ -92,7 +91,6 @@ public class ExportAllRecordsQIF extends javax.swing.JFrame {
 
         this.writeFileNewThread("mybillExpenseData.qif", billsQIFArrayList);
         this.writeFileNewThread("mybillIncomeData.qif", incomeQIFArrayList);
-
 
     }//GEN-LAST:event_exportRecordsButtonActionPerformed
 
@@ -120,7 +118,6 @@ public class ExportAllRecordsQIF extends javax.swing.JFrame {
     public void displayGUI() {
         this.setVisible(true);
     }
-
 
     /**
      * this method can be used to write a file in a new separate thread

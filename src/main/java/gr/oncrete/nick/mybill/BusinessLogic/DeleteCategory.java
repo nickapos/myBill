@@ -15,7 +15,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -29,24 +29,23 @@ import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
  */
 public class DeleteCategory {
 
-
     /**
      *
      */
-    public DeleteCategory()
-    {
+    public DeleteCategory() {
 
     }
+
     /**
      *
      * @param id
      */
     public void DeleteCategoryWithID(String id) {
         String sql = "delete from categories where catid=" + id;
-        
+
         if (id.length() > 0) {
-         InsertIntoTable in = new InsertIntoTable(sql);
-         System.out.println(in.toString());
+            InsertIntoTable in = new InsertIntoTable(sql);
+            System.out.println(in.toString());
         }
     }
 
@@ -55,12 +54,11 @@ public class DeleteCategory {
      * @param catName
      */
     public void DeleteCategoryWithName(String catName) {
-        String sql = "delete from categories where categoryName='" + catName+"'";        
+        String sql = "delete from categories where categoryName='" + catName + "'";
         if (catName.length() > 0) {
             InsertIntoTable in = new InsertIntoTable(sql);
             System.out.println(in.toString());
         }
     }
-
 
 }

@@ -15,7 +15,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * this class will retrieve the expenses per category from the database for two given years, and compare them
  * 
  */
@@ -36,9 +36,11 @@ public class CompareExpensesPerCategoryForTwoYears extends SelectReportExpensesP
     Hashtable<String, String> firstYearIDPrice = new Hashtable(), firstYearIDName = new Hashtable(), secondYearIDPrice = new Hashtable(), secondYearIDName = new Hashtable();
 
     /**
-     *ths constructor will accept the startyear and the end year. it will select the data from the database
-     * and accept the result in two lists. the lists will be processed later in order to produce two comparable
-     * hash tables for each year
+     * ths constructor will accept the startyear and the end year. it will
+     * select the data from the database and accept the result in two lists. the
+     * lists will be processed later in order to produce two comparable hash
+     * tables for each year
+     *
      * @param startYear,endYear
      */
     public CompareExpensesPerCategoryForTwoYears(String startYear, String endYear) {
@@ -57,8 +59,10 @@ public class CompareExpensesPerCategoryForTwoYears extends SelectReportExpensesP
     }
 
     /**
-     * this method will parse the incoming datalist and returl two hash tables. one containing ids and category names
-     * and the second containing ids and prices.
+     * this method will parse the incoming datalist and returl two hash tables.
+     * one containing ids and category names and the second containing ids and
+     * prices.
+     *
      * @param incomingData
      * @param idname
      * @param idprice
@@ -82,7 +86,8 @@ public class CompareExpensesPerCategoryForTwoYears extends SelectReportExpensesP
     }
 
     /**
-     * This method returns the properly formated data from the query in order to fit in the jtable
+     * This method returns the properly formated data from the query in order to
+     * fit in the jtable
      *
      *
      * @return
@@ -98,7 +103,6 @@ public class CompareExpensesPerCategoryForTwoYears extends SelectReportExpensesP
             TreeSet wholeIdSet = new TreeSet();
             wholeIdSet.addAll(firstYearIDs);
             wholeIdSet.addAll(secondYearIDs);
-
 
             String[][] array = new String[wholeIdSet.size()][4];
 
@@ -121,15 +125,13 @@ public class CompareExpensesPerCategoryForTwoYears extends SelectReportExpensesP
                     catName = secondYearIDName.get(id);
                     secondYearValue = Double.parseDouble(secondYearIDPrice.get(id));
                 }
-                if (firstYearValue != 0&&secondYearValue!=0&& firstYearValue>=secondYearValue) {
-                    String[] row = {catName, "" + (new DecimalFormat("###,###.##").format(firstYearValue)), (new DecimalFormat("##,###.##").format(secondYearValue)), (new DecimalFormat("#,###.##").format(100*(firstYearValue - secondYearValue) / firstYearValue))+"%"};
+                if (firstYearValue != 0 && secondYearValue != 0 && firstYearValue >= secondYearValue) {
+                    String[] row = {catName, "" + (new DecimalFormat("###,###.##").format(firstYearValue)), (new DecimalFormat("##,###.##").format(secondYearValue)), (new DecimalFormat("#,###.##").format(100 * (firstYearValue - secondYearValue) / firstYearValue)) + "%"};
                     array[i] = row;
-                } else if(firstYearValue != 0&&secondYearValue!=0&& firstYearValue<=secondYearValue)
-                {
-                    String[] row = {catName, "" + (new DecimalFormat("###,###.##").format(firstYearValue)), (new DecimalFormat("##,###.##").format(secondYearValue)), "-"+(new DecimalFormat("#,###.##").format(100*(secondYearValue-firstYearValue) / secondYearValue))+"%"};
+                } else if (firstYearValue != 0 && secondYearValue != 0 && firstYearValue <= secondYearValue) {
+                    String[] row = {catName, "" + (new DecimalFormat("###,###.##").format(firstYearValue)), (new DecimalFormat("##,###.##").format(secondYearValue)), "-" + (new DecimalFormat("#,###.##").format(100 * (secondYearValue - firstYearValue) / secondYearValue)) + "%"};
                     array[i] = row;
-                }
-                else {
+                } else {
                     String[] row = {catName, "" + (new DecimalFormat("###,###.##").format(firstYearValue)), (new DecimalFormat("##,###.##").format(secondYearValue)), "-"};
                     array[i] = row;
                 }

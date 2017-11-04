@@ -64,10 +64,10 @@ class MyTableModel extends javax.swing.table.AbstractTableModel {
         this.data = dataArr;
     }
 
-/*    public Class getColumnClass(int c) {
+    /*    public Class getColumnClass(int c) {
         return getValueAt(0, c).getClass();
     }
-*/
+     */
     /**
      * by overriding this method we can set the table cells editable or not
      *

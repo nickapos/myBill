@@ -15,11 +15,10 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
 
 /**
@@ -27,13 +26,13 @@ package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
  * @author nickapos
  */
 public class SelectAllBillsIDS extends SelectAllIDS {
+
     String sql1 = "select bid from bills";
-    
+
     /**
      *
      */
-    public SelectAllBillsIDS()
-    {   
+    public SelectAllBillsIDS() {
         super.runQuery(sql1);
     }
 }

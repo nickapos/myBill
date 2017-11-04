@@ -28,8 +28,9 @@ import java.util.List;
 import javax.swing.JLabel;
 
 /**
- *This class wil be used to change the currency of all the records of the database
- * from one to another
+ * This class wil be used to change the currency of all the records of the
+ * database from one to another
+ *
  * @author nickapos 6 Σεπ 2010
  */
 public class MassiveChangeCurrency {
@@ -41,8 +42,8 @@ public class MassiveChangeCurrency {
      *
      * @param rateS
      */
-    public MassiveChangeCurrency(String rateS,JLabel lbl) {
-        l=lbl;
+    public MassiveChangeCurrency(String rateS, JLabel lbl) {
+        l = lbl;
         this.setRateStr(rateS);
     }
 
@@ -54,6 +55,7 @@ public class MassiveChangeCurrency {
 
     /**
      * set rate string
+     *
      * @param rateS
      */
     public void setRateStr(String rateS) {
@@ -81,8 +83,8 @@ public class MassiveChangeCurrency {
             List idList = allids.getIds();
             Iterator it = idList.iterator();
 
-            int counter=0;
-            String expensesProgressText="";
+            int counter = 0;
+            String expensesProgressText = "";
             while (it.hasNext()) {
                 SelectBillDetails bdt = new SelectBillDetails();
                 bdt.SelectBillDetailsWithID((String) it.next());
@@ -93,18 +95,17 @@ public class MassiveChangeCurrency {
                 //calculate the new price
                 String newPrice = "" + Double.parseDouble(billPrice) * rate;
                 //System.out.println("Changing expenses " + billPrice + " with " + newPrice);
-                UpdateBillRecord uptdBill = new UpdateBillRecord(bdt.getBID(), cdt.getName(), newPrice, bdt.getDateOfIssue(), bdt.getDateOfPayment(),bdt.getComment());
+                UpdateBillRecord uptdBill = new UpdateBillRecord(bdt.getBID(), cdt.getName(), newPrice, bdt.getDateOfIssue(), bdt.getDateOfPayment(), bdt.getComment());
                 System.out.println(uptdBill.toString());
                 counter++;
-                expensesProgressText=java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("NUMBER OF EXPENSES RECORDS CONVERTED : ")+counter;
+                expensesProgressText = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("NUMBER OF EXPENSES RECORDS CONVERTED : ") + counter;
                 l.setText(expensesProgressText);
             }
-
 
             //change the income
             SelectAllIncomeDetails incRecors = new SelectAllIncomeDetails();
             List inciDList = incRecors.getAllRows();
-            counter=0;
+            counter = 0;
             while (counter <= inciDList.size()) {
                 String[] record = (String[]) inciDList.get(counter);
                 counter++;
@@ -114,10 +115,10 @@ public class MassiveChangeCurrency {
                 String newPrice = "" + Double.parseDouble(incPriceStr) * rate;
                 int companyID = Integer.parseInt(indet.getCID());
                 //System.out.println("Changing income " + incPriceStr + " with " + newPrice);
-                UpdateIncomeRecord upinr = new UpdateIncomeRecord(indet.getInID(), companyID, newPrice, indet.getDateOfPayment(),indet.getComment());
+                UpdateIncomeRecord upinr = new UpdateIncomeRecord(indet.getInID(), companyID, newPrice, indet.getDateOfPayment(), indet.getComment());
                 System.out.println(upinr.toString());
-                String incomeProgressText=java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString(" INCOME RECORDS CONVERTED : ")+counter;
-               l.setText(expensesProgressText+incomeProgressText);
+                String incomeProgressText = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString(" INCOME RECORDS CONVERTED : ") + counter;
+                l.setText(expensesProgressText + incomeProgressText);
             }
 
         }

@@ -15,7 +15,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -55,21 +55,20 @@ public class SelectReportExpensesSumsPerMonthYear extends SelectAllIDS {
     }
 
     /**
-     * This method returns the properly formated data from the query in order to fit in the jtable
+     * This method returns the properly formated data from the query in order to
+     * fit in the jtable
      *
      *
      * @return
      */
     public String[][] getColumns() {
 
-
-
         DateFormatSymbols dfs = new DateFormatSymbols();
         String[] months = dfs.getMonths();
         //fill the result jtable without the percentage
         int idListSizeNumByTwo = this.getIds().size() / 2;
         String[][] array = new String[idListSizeNumByTwo + 2][3];
-        
+
         float fullSum = 0;
         float totalPercentage = 0;
         for (int i = 0, o = 0; i < this.getIds().size(); i += 2, o++) {
@@ -80,7 +79,6 @@ public class SelectReportExpensesSumsPerMonthYear extends SelectAllIDS {
             plotData.addYaxisElementD((Float.valueOf(priceS.trim()).floatValue()));
             String[] row = {"" + (new DecimalFormat("#,###.##").format((double) (Float.valueOf(priceS.trim()).floatValue()))), "0", months[monthNum]};
             array[o] = row;
-            
 
         }
         //fill the percentage of the jtable
@@ -91,7 +89,6 @@ public class SelectReportExpensesSumsPerMonthYear extends SelectAllIDS {
             //plotData.addYaxisElement( ""+percentage);//if we want to present persentage and not actual values
             array[o][1] = "" + (new DecimalFormat("#,###.##").format(percentage)) + "%";
         }
-
 
         String[] header = {"Full Sum", "---", "number of Records"};
         String[] value = {"" + new DecimalFormat("###,###.##").format(fullSum), "" + new DecimalFormat("#,###.##").format(totalPercentage) + "%", "" + (array.length - 2)};
@@ -109,14 +106,13 @@ public class SelectReportExpensesSumsPerMonthYear extends SelectAllIDS {
     }
 
     /**
-     * This method returns the properly formated data from the query in order to fit in the jtable
-     * with a difference that the column list is filled in with the month number and not the month name
+     * This method returns the properly formated data from the query in order to
+     * fit in the jtable with a difference that the column list is filled in
+     * with the month number and not the month name
      *
      * @return
      */
     public String[][] getColumnsWithMonthsAsNumbers() {
-
-
 
         DateFormatSymbols dfs = new DateFormatSymbols();
         String[] months = dfs.getMonths();
@@ -132,7 +128,7 @@ public class SelectReportExpensesSumsPerMonthYear extends SelectAllIDS {
             int monthNum = Integer.valueOf((String) this.getIds().get(i + 1)) - 1;
             plotData.addXaxisElementD((monthNum + 1));
             plotData.addYaxisElementD((Float.valueOf(priceS.trim()).floatValue()));
-            String[] row = {priceS, "0", ""+monthNum};
+            String[] row = {priceS, "0", "" + monthNum};
             array[o] = row;
 
         }
@@ -144,7 +140,6 @@ public class SelectReportExpensesSumsPerMonthYear extends SelectAllIDS {
             //plotData.addYaxisElement( ""+percentage);//if we want to present persentage and not actual values
             array[o][1] = "" + (new DecimalFormat("#,###.##").format(percentage)) + "%";
         }
-
 
         String[] header = {"Full Sum", "---", "number of Records"};
         String[] value = {"" + new DecimalFormat("###,###.##").format(fullSum), "" + new DecimalFormat("#,###.##").format(totalPercentage) + "%", "" + (array.length - 2)};

@@ -15,13 +15,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
+ /*
  * AboutWindow.java
  * This class will create a window with a text area and depending on the need
  * will present in the text are a message, be it an about or a readme.
  * Created on 11 Αυγ 2010, 9:51:33 μμ
  */
 package gr.oncrete.nick.mybill.UserInterface;
+
 import gr.oncrete.nick.mybill.RDBMS.DatabaseConnection;
 import gr.oncrete.nick.mybill.RDBMS.EmptyTables;
 import java.util.logging.Level;
@@ -34,7 +35,8 @@ import java.util.logging.Logger;
 public class EmptyDatabaseWindow extends javax.swing.JFrame {
 
     billsUI mainui;
-private final static Logger LOGGER = Logger.getLogger(EmptyDatabaseWindow.class.getName());
+    private final static Logger LOGGER = Logger.getLogger(EmptyDatabaseWindow.class.getName());
+
     /**
      * Creates new form AboutWindow
      */
@@ -96,7 +98,7 @@ private final static Logger LOGGER = Logger.getLogger(EmptyDatabaseWindow.class.
         PopupMessageFrame mes = new PopupMessageFrame();
         mes.setNotification(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ALL-THE DATABASE-CONTENT-IS-GOING-TO-BE-DELETED"));
         EmptyTables e = new EmptyTables();
-        LOGGER.log(Level.INFO,e.toString());
+        LOGGER.log(Level.INFO, e.toString());
         if (mainui != null) {
             mainui.refreshCompaniesCombo();
             mainui.refreshCatIDCombo();

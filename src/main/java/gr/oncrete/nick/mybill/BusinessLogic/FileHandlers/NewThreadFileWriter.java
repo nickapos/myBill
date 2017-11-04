@@ -19,8 +19,9 @@ package gr.oncrete.nick.mybill.BusinessLogic.FileHandlers;
 import javax.swing.SwingWorker;
 
 /**
- *This class is intentend to be used when we want a write or read file activity
+ * This class is intentend to be used when we want a write or read file activity
  * to be preformed in a new thread.
+ *
  * @author nickapos 23 Νοε 2010
  */
 public class NewThreadFileWriter extends SwingWorker<String, String> {
@@ -37,12 +38,13 @@ public class NewThreadFileWriter extends SwingWorker<String, String> {
         fileName = fname;
         content = cont;
     }
+
     /**
-     * when we want to write a file
-     * in a separate thread
+     * when we want to write a file in a separate thread
+     *
      * @return
      */
-@Override
+    @Override
     public String doInBackground() {
         MyFileWriter m = new MyFileWriter();
         m.createFile(fileName);

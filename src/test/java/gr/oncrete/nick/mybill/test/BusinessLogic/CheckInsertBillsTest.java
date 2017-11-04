@@ -14,7 +14,6 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package gr.oncrete.nick.mybill.test.BusinessLogic;
 
 import gr.oncrete.nick.mybill.BusinessLogic.InsertBills;
@@ -27,7 +26,8 @@ import org.junit.Test;
  */
 public class CheckInsertBillsTest {
 
-    int AFMSIZE=9;
+    int AFMSIZE = 9;
+
     /**
      *
      */
@@ -66,9 +66,6 @@ public class CheckInsertBillsTest {
     public void tearDown() throws Exception {
     }
 
-    
-   
-
     /**
      * test insert bill without comment
      */
@@ -76,13 +73,12 @@ public class CheckInsertBillsTest {
     public void testInsertSqlWithNoComment() {
         System.out.println("test insert bill without comment");
         String a = "insert into bills (cid,price,dateofissue,dayofpayment) values (464,225,'2015-08-19','2015-08-19')";
-        InsertBills instance = new InsertBills();   
-        String returnStr=instance.parseinsertBillsArgumentsWithoutId("464","225" ,"2015-08-19", "2015-08-19","");
+        InsertBills instance = new InsertBills();
+        String returnStr = instance.parseinsertBillsArgumentsWithoutId("464", "225", "2015-08-19", "2015-08-19", "");
         assertTrue(returnStr.equals(a));
-           
+
     }
 
-    
     /**
      * test insert bill with comment
      */
@@ -90,23 +86,25 @@ public class CheckInsertBillsTest {
     public void testInsertSqlWithComment() {
         System.out.println("test insert bill with comment");
         String a = "insert into bills (cid,price,dateofissue,dayofpayment,comment) values (465,12,'2015-08-19','2015-08-19','ee')";
-        InsertBills instance = new InsertBills();   
-        String returnStr=instance.parseinsertBillsArgumentsWithoutId("465","12" ,"2015-08-19", "2015-08-19","ee");
+        InsertBills instance = new InsertBills();
+        String returnStr = instance.parseinsertBillsArgumentsWithoutId("465", "12", "2015-08-19", "2015-08-19", "ee");
         assertTrue(returnStr.equals(a));
-           
+
     }
-   /**
+
+    /**
      * test insert bill no cid argument
      */
     @Test
     public void testInsertSqlWithZeroArgs1() {
         System.out.println("test insert bill no cid argument");
         String a = "";
-        InsertBills instance = new InsertBills();   
-        String returnStr=instance.parseinsertBillsArgumentsWithoutId("","12" ,"2015-08-19", "2015-08-19","ee");
+        InsertBills instance = new InsertBills();
+        String returnStr = instance.parseinsertBillsArgumentsWithoutId("", "12", "2015-08-19", "2015-08-19", "ee");
         assertTrue(returnStr.equals(a));
-           
+
     }
+
     /**
      * test insert bill with no price argument
      */
@@ -114,24 +112,25 @@ public class CheckInsertBillsTest {
     public void testInsertSqlWithZeroArgs2() {
         System.out.println("test insert bill with no price argument");
         String a = "";
-        InsertBills instance = new InsertBills();   
-        String returnStr=instance.parseinsertBillsArgumentsWithoutId("465","" ,"2015-08-19", "2015-08-19","ee");
+        InsertBills instance = new InsertBills();
+        String returnStr = instance.parseinsertBillsArgumentsWithoutId("465", "", "2015-08-19", "2015-08-19", "ee");
         assertTrue(returnStr.equals(a));
-           
+
     }
-   /**
+
+    /**
      * test insert bill with no date of issue argument
      */
     @Test
     public void testInsertSqlWithZeroArgs3() {
         System.out.println("test insert bill with no date of issue argument");
         String a = "";
-        InsertBills instance = new InsertBills();   
-        String returnStr=instance.parseinsertBillsArgumentsWithoutId("465","12" ,"", "2015-08-19","ee");
+        InsertBills instance = new InsertBills();
+        String returnStr = instance.parseinsertBillsArgumentsWithoutId("465", "12", "", "2015-08-19", "ee");
         assertTrue(returnStr.equals(a));
-           
+
     }
-    
+
     /**
      * test insert bill with no date of payment argument
      */
@@ -139,10 +138,10 @@ public class CheckInsertBillsTest {
     public void testInsertSqlWithZeroArgs5() {
         System.out.println("test insert bill with no date of payment argument");
         String a = "";
-        InsertBills instance = new InsertBills();   
-        String returnStr=instance.parseinsertBillsArgumentsWithoutId("465","12" ,"2015-08-19", "","ee");
+        InsertBills instance = new InsertBills();
+        String returnStr = instance.parseinsertBillsArgumentsWithoutId("465", "12", "2015-08-19", "", "ee");
         assertTrue(returnStr.equals(a));
-           
+
     }
 
 }

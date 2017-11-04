@@ -15,85 +15,82 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * SelectFromTable.java
  *
  * Created on 12 Ιούλιος 2005, 11:27 πμ
  */
-
 package gr.oncrete.nick.mybill.RDBMS;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedList;
+
 /**
  *
  * @author nickapos
  */
-public class SelectFromTable extends BasicTableOperation
-{
-   
-   /** Creates a new instance of InsertIntoTable */
-   public SelectFromTable ()
-   {
-      super.initiateDBConnection();
-   }
-   
-   /**
-    *
-    *Executes the query and returns the result in 
-    *an arraylist, one result per line (result of a query split in many lines)
-    * @param query
-    * @return
-    */
-   public ArrayList executeQuery (String query)
-   {
-      ArrayList a = new ArrayList();
-      try
-      {
-        a= DatabaseConnection.queryReturnResult (query);
-        
-      }
-      catch (SQLException sqle)
-      {
-         sqle.printStackTrace ();
-         a = new ArrayList();
-      }
-      return a;
-   }
+public class SelectFromTable extends BasicTableOperation {
 
-   /**
-    *
-    *Executes the query and returns the result in 
-    *an arraylist,the results formed as a full result array per line
-    * @param query 
-    * @return
-    */
-   public ArrayList executeQueryA (String query)
-   {
-     return this.executeQuery(query);
-   }
+    /**
+     * Creates a new instance of InsertIntoTable
+     */
+    public SelectFromTable() {
+        super.initiateDBConnection();
+    }
 
-   /**
-    *
-    *Executes the query and returns the result in
-    *an linkedlist, the results formed as a full result array per line
-    * @param query 
-    * @return
-    */
-   public LinkedList executeQueryL (String query)
-   {
-      LinkedList l = new LinkedList();
-      try
-      {
-        l= DatabaseConnection.queryReturnResultL (query);
+    /**
+     *
+     * Executes the query and returns the result in an arraylist, one result per
+     * line (result of a query split in many lines)
+     *
+     * @param query
+     * @return
+     */
+    public ArrayList executeQuery(String query) {
+        ArrayList a = new ArrayList();
+        try {
+            a = DatabaseConnection.queryReturnResult(query);
 
-      }
-      catch (SQLException sqle)
-      {
-         sqle.printStackTrace ();
-         l = new LinkedList();
-      }
-      return l;
-   }
-   
+        }
+        catch (SQLException sqle) {
+            sqle.printStackTrace();
+            a = new ArrayList();
+        }
+        return a;
+    }
+
+    /**
+     *
+     * Executes the query and returns the result in an arraylist,the results
+     * formed as a full result array per line
+     *
+     * @param query
+     * @return
+     */
+    public ArrayList executeQueryA(String query) {
+        return this.executeQuery(query);
+    }
+
+    /**
+     *
+     * Executes the query and returns the result in an linkedlist, the results
+     * formed as a full result array per line
+     *
+     * @param query
+     * @return
+     */
+    public LinkedList executeQueryL(String query) {
+        LinkedList l = new LinkedList();
+        try {
+            l = DatabaseConnection.queryReturnResultL(query);
+
+        }
+        catch (SQLException sqle) {
+            sqle.printStackTrace();
+            l = new LinkedList();
+        }
+        return l;
+    }
+
 }

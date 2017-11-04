@@ -15,15 +15,13 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 package gr.oncrete.nick.mybill.BusinessLogic;
 
-
 import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.MyFileWriter;
-
 
 /**
  *
@@ -36,23 +34,18 @@ public class MainTest {
      */
     public static void main(String[] args) {
         CheckAFM c;
-        MyFileWriter fileH= new MyFileWriter();
+        MyFileWriter fileH = new MyFileWriter();
         fileH.createFile("afms.txt");
-        int startInt=1500;
-        for(int i=0;i<50000;i++)
-        {
-        c= new CheckAFM(""+startInt);
-        if(c.returnResult())
-        {
-        System.out.println(c.getAfm());
-        fileH.writeToFile(c.getAfm());
-        }
-        startInt++;
+        int startInt = 1500;
+        for (int i = 0; i < 50000; i++) {
+            c = new CheckAFM("" + startInt);
+            if (c.returnResult()) {
+                System.out.println(c.getAfm());
+                fileH.writeToFile(c.getAfm());
+            }
+            startInt++;
         }
         fileH.closeFile();
-
-        
-
 
     }
 }

@@ -20,8 +20,9 @@ import java.util.ArrayList;
 import javax.swing.SwingWorker;
 
 /**
- *This class is intentend to be used when we want a write or read file activity
+ * This class is intentend to be used when we want a write or read file activity
  * to be preformed in a new thread.
+ *
  * @author nickapos 23 Νοε 2010
  */
 public class NewThreadFileReader extends SwingWorker<String, String> {
@@ -37,8 +38,8 @@ public class NewThreadFileReader extends SwingWorker<String, String> {
     }
 
     /**
-     * when we want to read a file in a separate
-     * thread
+     * when we want to read a file in a separate thread
+     *
      * @return
      */
     @Override

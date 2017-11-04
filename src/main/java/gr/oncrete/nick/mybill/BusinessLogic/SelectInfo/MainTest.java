@@ -15,11 +15,10 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
 
 /**
@@ -32,7 +31,7 @@ public class MainTest {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        CompareExpensesPerCategoryForTwoYears c = new CompareExpensesPerCategoryForTwoYears("2006","2007");
+        CompareExpensesPerCategoryForTwoYears c = new CompareExpensesPerCategoryForTwoYears("2006", "2007");
         System.out.println(c.toString());
     }
 }

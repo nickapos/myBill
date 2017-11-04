@@ -15,7 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
+ /*
  * AboutWindow.java
  * This class will create a window with a text area and depending on the need
  * will present in the text are a message, be it an about or a readme.
@@ -34,7 +34,6 @@ import java.util.*;
  */
 public class ExportCSVByYear extends javax.swing.JFrame {
 
-  
     /**
      * Creates new form AboutWindow
      */
@@ -104,8 +103,7 @@ public class ExportCSVByYear extends javax.swing.JFrame {
 
     private void validateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateButtonActionPerformed
 
-        
-        String selYear= (String) yearsComboBox.getSelectedItem();
+        String selYear = (String) yearsComboBox.getSelectedItem();
         //System.out.println("Selected year "+ selYear);
         DumpDatabase dump = new DumpDatabase();
         ArrayList a = dump.getEforiaCsv("" + selYear);
@@ -139,7 +137,7 @@ public class ExportCSVByYear extends javax.swing.JFrame {
     public void displayGUI() {
         this.setVisible(true);
     }
-    
+
     /**
      * this method can be used to write a file in a new separate thread
      *
@@ -149,7 +147,7 @@ public class ExportCSVByYear extends javax.swing.JFrame {
     private void writeFileNewThread(String filename, ArrayList a) {
         String content = "";
         Iterator i = a.iterator();
-        int counter=0;
+        int counter = 0;
         while (i.hasNext()) {
             String nextLine = (String) i.next();
             if (nextLine.length() > 0) {
@@ -162,15 +160,15 @@ public class ExportCSVByYear extends javax.swing.JFrame {
         m.execute();
 
     }
-      
+
     /**
-     * this method will update the rows affected label with 
-     * the number of rows exported
-     * @param rows 
+     * this method will update the rows affected label with the number of rows
+     * exported
+     *
+     * @param rows
      */
-    private void updateRowsAffectedCount(int rows)
-    {
-        String defaultLabel=java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString(" ROWS EXPORTED: ");
-        rowsAffectedLabel.setText(defaultLabel+rows);
+    private void updateRowsAffectedCount(int rows) {
+        String defaultLabel = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString(" ROWS EXPORTED: ");
+        rowsAffectedLabel.setText(defaultLabel + rows);
     }
 }

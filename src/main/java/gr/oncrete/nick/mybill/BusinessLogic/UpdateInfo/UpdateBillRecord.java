@@ -15,7 +15,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -33,13 +33,16 @@ public class UpdateBillRecord extends UpdateRecord {
     //update bills set cid=7, price=456, dateofissue='2010-04-25', dayofpayment='2010-12-05' where bid=7
 
     /**
-     * empty constructor used when we want to use the alternative factory method instead of the normal constructor
+     * empty constructor used when we want to use the alternative factory method
+     * instead of the normal constructor
      */
     public UpdateBillRecord() {
     }
 
     /**
-     * when we do not have the company id and we have the company name we use this
+     * when we do not have the company id and we have the company name we use
+     * this
+     *
      * @param bid
      * @param cName
      * @param price

@@ -44,7 +44,6 @@ public class ExchangeRatesParser {
     HashMap rateMap = new HashMap();
     URL exchangeRatesUrl;
     InputStream stream;
-    
 
     /**
      * If you want to parse from the internet call the prepareStreamFromNet
@@ -66,7 +65,8 @@ public class ExchangeRatesParser {
             this.parseXML(stream);
             this.saveExchangeRatesToDisk();
 
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -102,7 +102,8 @@ public class ExchangeRatesParser {
                     }
                 }
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -123,7 +124,7 @@ public class ExchangeRatesParser {
         return rateMap.size();
     }
 
-     /**
+    /**
      * with the inversion flag we can choose to invert or not the exchange rate
      * 0 for normal 1 for inversion
      *
@@ -196,7 +197,8 @@ public class ExchangeRatesParser {
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
                 oos.writeObject(rateMap);
                 oos.close();
-            } catch (IOException ex) {
+            }
+            catch (IOException ex) {
                 ex.printStackTrace();
             }
 
@@ -214,11 +216,14 @@ public class ExchangeRatesParser {
             ObjectInputStream ois = new ObjectInputStream(fis);
             rateMap = (HashMap) ois.readObject();
             ois.close();
-        } catch (FileNotFoundException fnf) {
+        }
+        catch (FileNotFoundException fnf) {
             System.out.println("Rates cache file not found, will create one.");
-        } catch (ClassNotFoundException clnf) {
+        }
+        catch (ClassNotFoundException clnf) {
             clnf.printStackTrace();
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             ex.printStackTrace();
         }
     }

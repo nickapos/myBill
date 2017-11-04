@@ -135,7 +135,7 @@ public class PresentRecurringPayments extends javax.swing.JFrame {
         totalLabel.setText(String.format("%6.2f", recPayments.returnMostFrequentTransactionsSum()));
 
     }//GEN-LAST:event_goButtonActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
