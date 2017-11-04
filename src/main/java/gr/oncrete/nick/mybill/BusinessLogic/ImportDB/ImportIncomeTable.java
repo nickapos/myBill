@@ -17,7 +17,6 @@
 package gr.oncrete.nick.mybill.BusinessLogic.ImportDB;
 
 import gr.oncrete.nick.mybill.BusinessLogic.InsertIncome;
-import gr.oncrete.nick.mybill.BusinessLogic.ShutdownDB;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.logging.Level;
@@ -28,7 +27,9 @@ import java.util.logging.Logger;
  * @author nickapos
  */
 public class ImportIncomeTable extends ImportFile {
-private final static Logger LOGGER = Logger.getLogger(ImportIncomeTable.class.getName());
+
+    private final static Logger LOGGER = Logger.getLogger(ImportIncomeTable.class.getName());
+
     /**
      *
      */

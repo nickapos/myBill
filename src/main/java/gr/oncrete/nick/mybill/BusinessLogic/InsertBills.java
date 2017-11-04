@@ -23,6 +23,8 @@ package gr.oncrete.nick.mybill.BusinessLogic;
 
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
 import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,6 +36,7 @@ public class InsertBills {
 
     String sql = "";
     boolean dryRun = false;
+    private final static Logger LOGGER = Logger.getLogger(InsertBills.class.getName());
 
     /**
      * empty constructor that can be used for decoupling class creation from
@@ -107,7 +110,7 @@ public class InsertBills {
             } else {
                 sql = "insert into bills (cid,price,dateofissue,dayofpayment) values (" + cid + "," + price + ",'" + dateOfIssue + "','" + dateOfPayment + "')";
             }
-            System.out.println(sql);
+            LOGGER.log(Level.INFO, sql);
 
         } else {
             sql = "";
@@ -149,7 +152,7 @@ public class InsertBills {
      * @param dryRun
      */
     private void commitToDB(String sql) {
-        System.out.println("I am inserting: " + sql);
+        LOGGER.log(Level.INFO, String.format("I am inserting: %s", sql));
         if (!dryRun) {
             InsertIntoTable in;
             if (sql.length() > 0) {
@@ -160,7 +163,7 @@ public class InsertBills {
                 in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN BILL INSERTION"));
             }
         } else {
-            System.out.println("This is a dry run");
+            LOGGER.log(Level.INFO, "This is a dry run");
         }
     }
 

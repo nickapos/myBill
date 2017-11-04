@@ -17,7 +17,6 @@
 package gr.oncrete.nick.mybill.BusinessLogic.ImportDB;
 
 import gr.oncrete.nick.mybill.BusinessLogic.InsertCompany;
-import gr.oncrete.nick.mybill.BusinessLogic.ShutdownDB;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.logging.Level;
@@ -28,7 +27,9 @@ import java.util.logging.Logger;
  * @author nickapos
  */
 public class ImportCompaniesTable extends ImportFile {
-private final static Logger LOGGER = Logger.getLogger(ImportCompaniesTable.class.getName());
+
+    private final static Logger LOGGER = Logger.getLogger(ImportCompaniesTable.class.getName());
+
     /**
      *
      */
@@ -51,13 +52,13 @@ private final static Logger LOGGER = Logger.getLogger(ImportCompaniesTable.class
             if (line != null) {
                 String[] splitLine = line.split(";");
                 if (splitLine.length == 3 && splitLine[0].length() > 0 && splitLine[1].length() > 0 && splitLine[2].length() > 0) {
-                    LOGGER.log(Level.INFO, String.format("Importing line %s",line));
+                    LOGGER.log(Level.INFO, String.format("Importing line %s", line));
                     InsertCompany ins = new InsertCompany(splitLine[0], splitLine[1], splitLine[2]);
                     LOGGER.log(Level.INFO, ins.toString());
                     this.increaseRowsAffectedByOne();
 
                 } else if (splitLine.length == 4 && splitLine[0].length() > 0 && splitLine[1].length() > 0 && splitLine[2].length() > 0 && splitLine[3].length() > 0) {
-                    LOGGER.log(Level.INFO, String.format("Importing line %s",line));
+                    LOGGER.log(Level.INFO, String.format("Importing line %s", line));
                     InsertCompany ins = new InsertCompany(splitLine[0], splitLine[1], splitLine[2], splitLine[3]);
                     LOGGER.log(Level.INFO, ins.toString());
                     this.increaseRowsAffectedByOne();

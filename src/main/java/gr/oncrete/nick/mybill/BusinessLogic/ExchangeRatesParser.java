@@ -42,7 +42,8 @@ import org.w3c.dom.NodeList;
  * @author nickapos
  */
 public class ExchangeRatesParser {
-private final static Logger LOGGER = Logger.getLogger(ExchangeRatesParser.class.getName());
+
+    private final static Logger LOGGER = Logger.getLogger(ExchangeRatesParser.class.getName());
     HashMap rateMap = new HashMap();
     URL exchangeRatesUrl;
     InputStream stream;

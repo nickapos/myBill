@@ -47,7 +47,6 @@ public class CompareExpensesPerCategoryForTwoYears extends SelectReportExpensesP
         if (startYear.length() > 0) {
             String sqlS = sql1 + startYear + "-01-01' and c.dayofpayment<='" + startYear + "-12-31' " + sql2;
             super.runQuery(sqlS);
-            //System.out.println(sqlS);
             firstYearResults = this.getIds();
             this.parseResults(firstYearResults, firstYearIDName, firstYearIDPrice);
             String sqlE = sql1 + endYear + "-01-01' and c.dayofpayment<='" + endYear + "-12-31' " + sql2;

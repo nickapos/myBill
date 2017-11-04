@@ -17,7 +17,6 @@
 package gr.oncrete.nick.mybill.BusinessLogic.ImportDB;
 
 import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.FileHandlerReadFile;
-import gr.oncrete.nick.mybill.BusinessLogic.ShutdownDB;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.logging.Level;
@@ -32,7 +31,8 @@ public class ImportFile {
     private String fileName;//the file name to be imported
     private FileHandlerReadFile reader;
     private int rowsAffected = 0;
-private final static Logger LOGGER = Logger.getLogger(ImportFile.class.getName());
+    private final static Logger LOGGER = Logger.getLogger(ImportFile.class.getName());
+
     /**
      *
      */

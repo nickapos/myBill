@@ -20,6 +20,8 @@ package gr.oncrete.nick.mybill.BusinessLogic;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,6 +29,7 @@ import java.util.Iterator;
  */
 public class ParseBOSCsv extends ParseCsv {
 
+    private final static Logger LOGGER = Logger.getLogger(ParseBOSCsv.class.getName());
     //tsb has 8 fields in its csv
     static final int numOfFields = 8;
     private String[] header = {"Transaction Date", "Transaction Type", "Sort Code", "Account Number", "Transaction Description", "Debit Amount", "Credit Amount", "Balance", "Import"};
@@ -65,9 +68,8 @@ public class ParseBOSCsv extends ParseCsv {
         while (it.hasNext()) {
             Object recordO = it.next();
             ArrayList record = (ArrayList) recordO;
-            //System.out.println(record.toString());
+            LOGGER.log(Level.INFO, record.toString());
             String dateUnc = (String) record.get(0);
-            System.out.println(dateUnc);
             //correct date and replace the value in the array list   
             String withdrUnc = (String) record.get(5);
             String depUnc = (String) record.get(6);

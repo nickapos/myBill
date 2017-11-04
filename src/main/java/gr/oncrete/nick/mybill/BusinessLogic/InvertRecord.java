@@ -5,12 +5,16 @@ package gr.oncrete.nick.mybill.BusinessLogic;
 
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectBillDetails;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectIncomeDetails;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author nickapos
  */
 public class InvertRecord {
+
+    private final static Logger LOGGER = Logger.getLogger(InvertRecord.class.getName());
 
     /**
      * This method will invert an income record by creating the reverse expense
@@ -24,7 +28,7 @@ public class InvertRecord {
 
         //insert the inverted new Bill
         InsertBills newBill = new InsertBills(Integer.parseInt(incDet.getCID()), incDet.getAmount(), incDet.getDateOfPayment(), incDet.getDateOfPayment(), incDet.getComment());
-        System.out.println(newBill.toString());
+        LOGGER.log(Level.INFO, newBill.toString());
     }
 
     /**

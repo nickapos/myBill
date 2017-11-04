@@ -20,6 +20,8 @@ import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
 import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateCompanyRecord;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 
 /**
@@ -30,6 +32,7 @@ import javax.swing.JLabel;
  */
 public class MergeCategories {
 
+    private final static Logger LOGGER = Logger.getLogger(MergeCategories.class.getName());
     private List idListTobeMerged;
     private String newCategoryID;
     private JLabel l;
@@ -70,7 +73,7 @@ public class MergeCategories {
                 String[] id = (String[]) it.next();
                 cdt.SelectCompanyDetailsWithID(id[0]);
                 UpdateCompanyRecord upcr = new UpdateCompanyRecord(cdt.getID(), cdt.getName(), cdt.getAfm(), newCategoryID);
-                System.out.println(upcr.toString());
+                LOGGER.log(Level.INFO, upcr.toString());
                 counter++;
                 double percentage = 100 * counter / idListTobeMerged.size();
                 expensesProgressText = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("MergeCategories.progressLabel.text") + counter + " " + percentage + "%";

@@ -23,7 +23,6 @@
  */
 package gr.oncrete.nick.mybill.UserInterface;
 
-import gr.oncrete.nick.mybill.BusinessLogic.ShutdownDB;
 import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
 import java.util.logging.Level;
 import java.util.logging.Logger;

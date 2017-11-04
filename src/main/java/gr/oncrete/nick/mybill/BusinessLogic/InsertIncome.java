@@ -23,6 +23,8 @@ package gr.oncrete.nick.mybill.BusinessLogic;
 
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
 import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,6 +36,7 @@ public class InsertIncome {
 
     InsertIntoTable in;
     String sql;
+    private final static Logger LOGGER = Logger.getLogger(InsertIncome.class.getName());
 
     /**
      * Constructor insert bill without an id
@@ -55,7 +58,6 @@ public class InsertIncome {
             }
 
             in = new InsertIntoTable(sql);
-            //System.out.println(sql);
         } else {
             in = new InsertIntoTable();
             in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN INCOME INSERTION"));
@@ -80,7 +82,7 @@ public class InsertIncome {
             }
 
             in = new InsertIntoTable(sql);
-            System.out.println(sql);
+            LOGGER.log(Level.INFO, sql);
         } else {
             in = new InsertIntoTable();
             in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN INCOME INSERTION"));
@@ -108,7 +110,6 @@ public class InsertIncome {
             }
 
             in = new InsertIntoTable(sql);
-            //System.out.println(sql);
         } else {
             in = new InsertIntoTable();
             in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN INCOME INSERTION"));

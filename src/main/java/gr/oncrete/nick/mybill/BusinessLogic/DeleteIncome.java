@@ -32,7 +32,8 @@ import java.util.logging.Logger;
 public class DeleteIncome {
 
     InsertIntoTable in;
-private final static Logger LOGGER = Logger.getLogger(DeleteIncome.class.getName());
+    private final static Logger LOGGER = Logger.getLogger(DeleteIncome.class.getName());
+
     /**
      *
      * @param id

@@ -23,6 +23,8 @@ package gr.oncrete.nick.mybill.BusinessLogic;
 
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
 import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -32,6 +34,7 @@ import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
  */
 public class InsertCompany {
 
+    private final static Logger LOGGER = Logger.getLogger(InsertCompany.class.getName());
     String sql;
     InsertIntoTable in;
     int AFMSIZE = 9;
@@ -54,10 +57,9 @@ public class InsertCompany {
             String sql = "insert into companies (companyname,afm,catid) values ('" + cName + "','" + this.truncateAfmString(afm, AFMSIZE) + "'," + catID + ")";
             in = new InsertIntoTable(sql);
             if (!in.hasCompletedSucesfully()) {
-                System.out.println("insertion has not completed sucesfully conficting company details are: ");
+                LOGGER.log(Level.INFO, "insertion has not completed sucesfully conficting company details are: ");
                 this.printConflictingCompany(afm);
             }
-            //System.out.println(sql);
         } else {
             in = new InsertIntoTable();
             in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN COMPANY INSERTION"));
@@ -78,10 +80,9 @@ public class InsertCompany {
             String sql = "insert into companies (cid, companyname,afm) values (" + id + ",'" + this.truncateAfmString(afm, AFMSIZE) + "','" + afm + "')";
             in = new InsertIntoTable(sql);
             if (!in.hasCompletedSucesfully()) {
-                System.out.println("insertion has not completed sucesfully conficting company details are: ");
+                LOGGER.log(Level.INFO, "insertion has not completed sucesfully conficting company details are: ");
                 this.printConflictingCompany(afm);
             }
-            //System.out.println(sql);
         } else {
             in = new InsertIntoTable();
             in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN COMPANY INSERTION"));
@@ -101,10 +102,9 @@ public class InsertCompany {
             String sql = "insert into companies (cid, companyname,afm,catid) values (" + id + ",'" + cName + "','" + this.truncateAfmString(afm, AFMSIZE) + "'," + catid + ")";
             in = new InsertIntoTable(sql);
             if (!in.hasCompletedSucesfully()) {
-                System.out.println("insertion has not completed sucesfully conficting company details are: ");
+                LOGGER.log(Level.INFO, "insertion has not completed sucesfully conficting company details are: ");
                 this.printConflictingCompany(afm);
             }
-            //System.out.println(sql);
         } else {
             in = new InsertIntoTable();
             in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN COMPANY INSERTION"));
@@ -122,7 +122,7 @@ public class InsertCompany {
     private void printConflictingCompany(String afm) {
         SelectCompanyDetails conflictingCompany = new SelectCompanyDetails();
         conflictingCompany.SelectCompanyDetailsWithAfm(afm);
-        System.out.println(conflictingCompany.companyToString());
+        LOGGER.log(Level.INFO, conflictingCompany.companyToString());
     }
 
     /**

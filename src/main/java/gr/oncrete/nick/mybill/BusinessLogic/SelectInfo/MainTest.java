@@ -21,17 +21,22 @@
  */
 package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author nickapos
  */
 public class MainTest {
 
+    private final static Logger LOGGER = Logger.getLogger(MainTest.class.getName());
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         CompareExpensesPerCategoryForTwoYears c = new CompareExpensesPerCategoryForTwoYears("2006", "2007");
-        System.out.println(c.toString());
+        LOGGER.log(Level.INFO, c.toString());
     }
 }

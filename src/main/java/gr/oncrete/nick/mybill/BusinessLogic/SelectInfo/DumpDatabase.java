@@ -24,6 +24,8 @@ package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
 
 import gr.oncrete.nick.mybill.RDBMS.SelectFromTable;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * This class implements the dump database operation.
@@ -32,6 +34,7 @@ import java.util.ArrayList;
  */
 public class DumpDatabase {
 
+    private final static Logger LOGGER = Logger.getLogger(DumpDatabase.class.getName());
     ArrayList<String> companies, bills, eforia, income, categories;
     String queryC = "SELECT cid,companyname,afm FROM companies where catid is null";
     String queryB = "SELECT * FROM bills";
@@ -124,7 +127,7 @@ public class DumpDatabase {
         ArrayList results1 = select.executeQuery("SELECT * FROM companies where catid is not null");
         companies = new ArrayList();
         if (results.isEmpty() && results1.isEmpty()) {
-            System.out.println("companies result is empty. Dump database operation aborted");
+            LOGGER.log(Level.SEVERE, "companies result is empty. Dump database operation aborted");
             System.exit(1);
         } else {
 
@@ -132,14 +135,12 @@ public class DumpDatabase {
                 for (int i = 0; i < results.size(); i += 3) {
                     String row = "" + results.get(i) + ";" + results.get(i + 1) + ";" + results.get(i + 2) + ";" + "" + ";";
                     companies.add(row);
-                    // System.out.println(row);
                 }
             }
             if (!results1.isEmpty()) {
                 for (int i = 0; i < results1.size(); i += 4) {
                     String row = "" + results1.get(i) + ";" + results1.get(i + 1) + ";" + results1.get(i + 2) + ";" + results1.get(i + 3) + ";";
                     companies.add(row);
-                    // System.out.println(row);
                 }
             }
 
@@ -152,13 +153,12 @@ public class DumpDatabase {
         ArrayList results1 = select.executeQuery("SELECT * FROM categories");
         categories = new ArrayList();
         if (results1.isEmpty()) {
-            System.out.println("categories result is empty. Dump database operation aborted");
+            LOGGER.log(Level.SEVERE, "categories result is empty. Dump database operation aborted");
             System.exit(1);
         } else if (!results1.isEmpty()) {
             for (int i = 0; i < results1.size(); i += 2) {
                 String row = "" + results1.get(i) + ";" + results1.get(i + 1) + ";";
                 categories.add(row);
-                // System.out.println(row);
             }
         }
     }
@@ -175,14 +175,13 @@ public class DumpDatabase {
 
         ArrayList results = select.executeQuery(queryB);
         if (results.isEmpty()) {
-            System.out.println("bills result is empty. Dump database operation aborted");
+            LOGGER.log(Level.SEVERE, "bills result is empty. Dump database operation aborted");
             System.exit(1);
         } else {
             bills = new ArrayList();
             for (int i = 0; i < results.size(); i += 6) {
 
                 String row = "" + results.get(i) + ";" + results.get(i + 1) + ";" + results.get(i + 2) + ";" + results.get(i + 3) + ";" + results.get(i + 4) + ";" + results.get(i + 5) + ";";
-                //System.out.println(row);
                 bills.add(row);
 
             }
@@ -220,11 +219,11 @@ public class DumpDatabase {
             results = select.executeQuery(queryE);
         } else {
             String queryWithYear = queryE + " where a.dayofpayment>='" + startDate + "' and a.dayofpayment<='" + endDate + "'";
-            System.out.println(queryWithYear);
+            LOGGER.log(Level.INFO, queryWithYear);
             results = select.executeQuery(queryWithYear);
         }
         if (results.isEmpty()) {
-            System.out.println("result set is empty. Dump database operation aborted");
+            LOGGER.log(Level.SEVERE, "result set is empty. Dump database operation aborted");
             System.exit(1);
         } else {
             eforia = new ArrayList();
@@ -238,7 +237,6 @@ public class DumpDatabase {
                 String replaceComma = withoutE.replaceAll("\\.", ",");
                 String row = "" + results.get(i + 1) + ";" + results.get(i + 2) + ";" + replaceComma + ";" + results.get(i + 5) + ";" + results.get(i + 6);
                 eforia.add(row);
-                //System.out.println(row);
             }
         }
     }
@@ -254,7 +252,7 @@ public class DumpDatabase {
         ArrayList results = select.executeQuery(queryD);
 
         if (results.isEmpty()) {
-            System.out.println("income result is empty. Dump database operation aborted");
+            LOGGER.log(Level.SEVERE, "income result is empty. Dump database operation aborted");
             System.exit(1);
         } else {
 
@@ -262,7 +260,6 @@ public class DumpDatabase {
             for (int i = 0; i < results.size(); i += 5) {
                 String row = "" + results.get(i) + ";" + results.get(i + 1) + ";" + results.get(i + 2) + ";" + results.get(i + 3) + ";" + results.get(i + 4) + ";";
                 income.add(row);
-                //System.out.println(row);
             }
 
         }

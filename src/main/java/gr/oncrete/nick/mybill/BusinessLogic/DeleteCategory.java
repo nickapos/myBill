@@ -30,7 +30,9 @@ import java.util.logging.Logger;
  * @author nickapos
  */
 public class DeleteCategory {
-private final static Logger LOGGER = Logger.getLogger(DeleteCategory.class.getName());
+
+    private final static Logger LOGGER = Logger.getLogger(DeleteCategory.class.getName());
+
     /**
      *
      */

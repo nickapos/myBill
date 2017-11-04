@@ -22,12 +22,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package gr.oncrete.nick.mybill.BusinessLogic;
 
 import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.MyFileWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author nickapos
  */
 public class MainTest {
+
+    private final static Logger LOGGER = Logger.getLogger(MainTest.class.getName());
 
     /**
      * @param args the command line arguments
@@ -40,7 +44,7 @@ public class MainTest {
         for (int i = 0; i < 50000; i++) {
             c = new CheckAFM("" + startInt);
             if (c.returnResult()) {
-                System.out.println(c.getAfm());
+                LOGGER.log(Level.INFO, c.getAfm());
                 fileH.writeToFile(c.getAfm());
             }
             startInt++;

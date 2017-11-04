@@ -22,7 +22,6 @@
  */
 package gr.oncrete.nick.mybill.BusinessLogic.FileHandlers;
 
-import gr.oncrete.nick.mybill.BusinessLogic.ShutdownDB;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,7 +33,8 @@ import java.util.logging.Logger;
 public class FileHandlerOpenFile {
 
     FileReader file;
-private final static Logger LOGGER = Logger.getLogger(FileHandlerOpenFile.class.getName());
+    private final static Logger LOGGER = Logger.getLogger(FileHandlerOpenFile.class.getName());
+
     /**
      * Creates a new instance of FileHandler
      *

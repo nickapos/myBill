@@ -25,6 +25,8 @@ import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateBillRecord;
 import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateIncomeRecord;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 
 /**
@@ -35,6 +37,7 @@ import javax.swing.JLabel;
  */
 public class MassiveChangeCurrency {
 
+    private final static Logger LOGGER = Logger.getLogger(MassiveChangeCurrency.class.getName());
     private String rateStr;
     private JLabel l;
 
@@ -94,9 +97,8 @@ public class MassiveChangeCurrency {
                 cdt.SelectCompanyDetailsWithID(bdt.getCID());
                 //calculate the new price
                 String newPrice = "" + Double.parseDouble(billPrice) * rate;
-                //System.out.println("Changing expenses " + billPrice + " with " + newPrice);
                 UpdateBillRecord uptdBill = new UpdateBillRecord(bdt.getBID(), cdt.getName(), newPrice, bdt.getDateOfIssue(), bdt.getDateOfPayment(), bdt.getComment());
-                System.out.println(uptdBill.toString());
+                LOGGER.log(Level.INFO, uptdBill.toString());
                 counter++;
                 expensesProgressText = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("NUMBER OF EXPENSES RECORDS CONVERTED : ") + counter;
                 l.setText(expensesProgressText);
@@ -114,9 +116,8 @@ public class MassiveChangeCurrency {
                 String incPriceStr = indet.getAmount();
                 String newPrice = "" + Double.parseDouble(incPriceStr) * rate;
                 int companyID = Integer.parseInt(indet.getCID());
-                //System.out.println("Changing income " + incPriceStr + " with " + newPrice);
                 UpdateIncomeRecord upinr = new UpdateIncomeRecord(indet.getInID(), companyID, newPrice, indet.getDateOfPayment(), indet.getComment());
-                System.out.println(upinr.toString());
+                LOGGER.log(Level.INFO, upinr.toString());
                 String incomeProgressText = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString(" INCOME RECORDS CONVERTED : ") + counter;
                 l.setText(expensesProgressText + incomeProgressText);
             }

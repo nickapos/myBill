@@ -23,7 +23,6 @@
  */
 package gr.oncrete.nick.mybill.UserInterface;
 
-import gr.oncrete.nick.mybill.RDBMS.DatabaseConnection;
 import gr.oncrete.nick.mybill.RDBMS.EmptyTables;
 import java.util.logging.Level;
 import java.util.logging.Logger;
