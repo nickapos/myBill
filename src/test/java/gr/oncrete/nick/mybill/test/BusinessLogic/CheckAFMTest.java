@@ -14,9 +14,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package gr.oncrete.nick.mybill.test.BusinessLogic;
-
 
 import gr.oncrete.nick.mybill.BusinessLogic.CheckAFM;
 import static org.junit.Assert.*;
@@ -66,9 +64,6 @@ public class CheckAFMTest {
     public void tearDown() throws Exception {
     }
 
-    
-   
-
     /**
      * test 000000000 afm
      */
@@ -76,9 +71,9 @@ public class CheckAFMTest {
     public void testCheckAFMZeros() {
         System.out.println("check zeros");
         String a = "000000000";
-        CheckAFM instance = new CheckAFM(a);       
+        CheckAFM instance = new CheckAFM(a);
         assertFalse(instance.returnResult());
-           
+
     }
 
     /**
@@ -93,7 +88,7 @@ public class CheckAFMTest {
 
     }
 
-     /**
+    /**
      * test a true afm
      */
     @Test
@@ -104,6 +99,5 @@ public class CheckAFMTest {
         assertTrue(instance.returnResult());
 
     }
-   
 
 }

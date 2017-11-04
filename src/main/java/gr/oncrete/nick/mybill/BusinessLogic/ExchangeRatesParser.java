@@ -28,6 +28,8 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -41,10 +43,10 @@ import org.w3c.dom.NodeList;
  */
 public class ExchangeRatesParser {
 
+    private final static Logger LOGGER = Logger.getLogger(ExchangeRatesParser.class.getName());
     HashMap rateMap = new HashMap();
     URL exchangeRatesUrl;
     InputStream stream;
-    
 
     /**
      * If you want to parse from the internet call the prepareStreamFromNet
@@ -66,7 +68,8 @@ public class ExchangeRatesParser {
             this.parseXML(stream);
             this.saveExchangeRatesToDisk();
 
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -97,12 +100,12 @@ public class ExchangeRatesParser {
                     Element fstElmnt = (Element) fstNode;
                     //reat the attributes currency and rate from each member of the Cube node list
                     if (!fstElmnt.getAttribute("currency").isEmpty() && !fstElmnt.getAttribute("rate").isEmpty()) {
-                        // System.out.println(fstElmnt.getAttribute("currency") + "," + fstElmnt.getAttribute("rate"));
                         rateMap.put(fstElmnt.getAttribute("currency"), fstElmnt.getAttribute("rate"));
                     }
                 }
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -123,7 +126,7 @@ public class ExchangeRatesParser {
         return rateMap.size();
     }
 
-     /**
+    /**
      * with the inversion flag we can choose to invert or not the exchange rate
      * 0 for normal 1 for inversion
      *
@@ -196,7 +199,8 @@ public class ExchangeRatesParser {
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
                 oos.writeObject(rateMap);
                 oos.close();
-            } catch (IOException ex) {
+            }
+            catch (IOException ex) {
                 ex.printStackTrace();
             }
 
@@ -214,11 +218,14 @@ public class ExchangeRatesParser {
             ObjectInputStream ois = new ObjectInputStream(fis);
             rateMap = (HashMap) ois.readObject();
             ois.close();
-        } catch (FileNotFoundException fnf) {
-            System.out.println("Rates cache file not found, will create one.");
-        } catch (ClassNotFoundException clnf) {
+        }
+        catch (FileNotFoundException fnf) {
+            LOGGER.log(Level.WARNING, "Rates cache file not found, will create one.");
+        }
+        catch (ClassNotFoundException clnf) {
             clnf.printStackTrace();
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             ex.printStackTrace();
         }
     }

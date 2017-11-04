@@ -19,12 +19,16 @@ package gr.oncrete.nick.mybill.BusinessLogic.ImportDB;
 import gr.oncrete.nick.mybill.BusinessLogic.InsertBills;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author nickapos
  */
 public class ImportBillsTable extends ImportFile {
+
+    private final static Logger LOGGER = Logger.getLogger(ImportBillsTable.class.getName());
 
     /**
      *
@@ -46,14 +50,15 @@ public class ImportBillsTable extends ImportFile {
             if (line != null) {
                 String[] splitLine = line.split(";");
                 if (splitLine[0].length() > 0 && splitLine[1].length() > 0 && splitLine[2].length() > 0 && splitLine[3].length() > 0 && splitLine[4].length() > 0) {
-                    System.out.println("Importing bills line " + line);
+                    LOGGER.log(Level.INFO, String.format("Importing bills line %s", line));
                     //see if splitLine[5] exists. if not catch the exception and replace the splitline[5] with a space character
                     try {
                         InsertBills ins = new InsertBills(splitLine[0], splitLine[1], splitLine[2], splitLine[3], splitLine[4], splitLine[5]);
                         ins.toString();
                         this.increaseRowsAffectedByOne();
 
-                    } catch (java.lang.ArrayIndexOutOfBoundsException e) {
+                    }
+                    catch (java.lang.ArrayIndexOutOfBoundsException e) {
                         InsertBills ins = new InsertBills(splitLine[0], splitLine[1], splitLine[2], splitLine[3], splitLine[4], " ");
                         ins.toString();
                     }

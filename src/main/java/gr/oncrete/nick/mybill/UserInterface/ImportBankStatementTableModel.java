@@ -30,22 +30,21 @@ class ImportBankStatementTableModel extends javax.swing.table.DefaultTableModel 
     //designate one column to contain booleans
     int booleanColumn = 8;
     int arraySize;
-    
 
     public ImportBankStatementTableModel(String[][] d, String[] cName) {
         super(d, cName);
-        arraySize=cName.length;
+        arraySize = cName.length;
     }
 
     public ImportBankStatementTableModel(Object[][] d, String[] cName) {
         super(d, cName);
-        arraySize=cName.length;
+        arraySize = cName.length;
     }
 
     public ImportBankStatementTableModel(Object[][] d, String[] cName, int boolColumn) {
         super(d, cName);
         booleanColumn = boolColumn;
-        arraySize=cName.length;
+        arraySize = cName.length;
     }
 
     @Override
@@ -56,8 +55,6 @@ class ImportBankStatementTableModel extends javax.swing.table.DefaultTableModel 
             return java.lang.String.class;
         }
     }
-
-    
 
     private boolean[] getcanEditArr(int sizeOfArr, int editPos) {
         boolean[] canEdit = new boolean[sizeOfArr];
@@ -80,7 +77,7 @@ class ImportBankStatementTableModel extends javax.swing.table.DefaultTableModel 
      */
     @Override
     public boolean isCellEditable(int row, int column) {
-        boolean[] canEdit=this.getcanEditArr(arraySize, arraySize-1);
+        boolean[] canEdit = this.getcanEditArr(arraySize, arraySize - 1);
         return canEdit[column];
     }
 }

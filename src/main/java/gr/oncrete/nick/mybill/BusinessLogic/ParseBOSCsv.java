@@ -20,6 +20,8 @@ package gr.oncrete.nick.mybill.BusinessLogic;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,8 +29,8 @@ import java.util.Iterator;
  */
 public class ParseBOSCsv extends ParseCsv {
 
+    private final static Logger LOGGER = Logger.getLogger(ParseBOSCsv.class.getName());
     //tsb has 8 fields in its csv
-
     static final int numOfFields = 8;
     private String[] header = {"Transaction Date", "Transaction Type", "Sort Code", "Account Number", "Transaction Description", "Debit Amount", "Credit Amount", "Balance", "Import"};
 
@@ -60,15 +62,14 @@ public class ParseBOSCsv extends ParseCsv {
      * @return
      */
     public ArrayList<ArrayList> filterMonthsAndNegValues(String file) {
-        ArrayList content = this.parseData(file,',');
+        ArrayList content = this.parseData(file, ',');
         ArrayList<ArrayList> correctedContent = new ArrayList();
         Iterator it = content.iterator();
         while (it.hasNext()) {
             Object recordO = it.next();
             ArrayList record = (ArrayList) recordO;
-            //System.out.println(record.toString());
+            LOGGER.log(Level.INFO, record.toString());
             String dateUnc = (String) record.get(0);
-            System.out.println(dateUnc);
             //correct date and replace the value in the array list   
             String withdrUnc = (String) record.get(5);
             String depUnc = (String) record.get(6);
@@ -82,7 +83,7 @@ public class ParseBOSCsv extends ParseCsv {
             newRow.add(withdrUnc.replace("-", ""));
             newRow.add(depUnc.replace("-", ""));
             newRow.add((String) record.get(7));
-            
+
             correctedContent.add(newRow);
 
         }
@@ -100,16 +101,18 @@ public class ParseBOSCsv extends ParseCsv {
     public String convertDate(String dateUnc) {
         HashMap<String, Integer> map = this.initializeMonNumMap();
         String[] dateParts = dateUnc.split("/");
-        if (dateParts.length < 3 || this.isInteger(dateParts[1]) ) {
+        if (dateParts.length < 3 || this.isInteger(dateParts[1])) {
             return dateUnc;
         } else {
             return "" + dateParts[0] + "/" + map.get(dateParts[1]) + "/" + dateParts[2];
         }
 
     }
-    public boolean isInteger(String intStr){
-        if(!intStr.isEmpty() &&intStr.matches("^-?\\d+$")) 
+
+    public boolean isInteger(String intStr) {
+        if (!intStr.isEmpty() && intStr.matches("^-?\\d+$")) {
             return true;
+        }
         return false;
     }
 }

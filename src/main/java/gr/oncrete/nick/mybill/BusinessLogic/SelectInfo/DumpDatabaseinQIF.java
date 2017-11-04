@@ -15,7 +15,7 @@
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * DumpDatabase.java
  *
  * Created on 21 Ιούλιος 2005, 9:39 πμ
@@ -24,6 +24,8 @@ package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
 
 import gr.oncrete.nick.mybill.RDBMS.SelectFromTable;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * This class implements the dump database operation.
@@ -33,6 +35,7 @@ import java.util.ArrayList;
 public class DumpDatabaseinQIF {
 
     final static String QIFHEADER = "!Type:Cash";
+    private final static Logger LOGGER = Logger.getLogger(DumpDatabaseinQIF.class.getName());
 
     /**
      * Creates a new instance of DumpDatabase
@@ -79,7 +82,7 @@ public class DumpDatabaseinQIF {
 
         ArrayList results = select.executeQuery(query);
         if (results.isEmpty()) {
-            System.out.println("result set is empty. Dump database operation aborted");
+            LOGGER.log(Level.SEVERE, "result set is empty. Dump database operation aborted");
             System.exit(1);
         } else {
 
@@ -94,17 +97,9 @@ public class DumpDatabaseinQIF {
                 }
                 String date = (String) results.get(i + 3);
                 String comment = (String) results.get(i + 4);
-                /* System.out.println("Category:" + category);
-                 System.out.println("company:" + company);
-                 System.out.println("amount:" + amount);
-                 System.out.println("date:" + date);
-                 System.out.println("comment:" + comment);
-                 System.out.println("");*/
                 String qifRow = convertRecordToQIF(category, company, amount, date, comment);
-                System.out.println(qifRow);
+                LOGGER.log(Level.INFO, qifRow);
                 qifRecords.add(qifRow);
-                //System.out.println(results.get(i+1));
-
             }
         }
         return qifRecords;
@@ -122,18 +117,18 @@ public class DumpDatabaseinQIF {
      * @return
      */
     public String convertRecordToQIF(String category, String company, String amount, String date, String comment) {
-        return "D" + this.qifDateConvert(date)+ "\n" + "T" + amount.replace("E0","") + "\n" + "P" + company + "\n" + "^";
+        return "D" + this.qifDateConvert(date) + "\n" + "T" + amount.replace("E0", "") + "\n" + "P" + company + "\n" + "^";
     }
-    
+
     /**
      * this method will convert a date from YYYY-MM-DD to MM/DD/YYYY
+     *
      * @param date
-     * @return 
+     * @return
      */
-    private String qifDateConvert(String date){
-        String[] dateparts=date.split("-");
-        //System.out.println("length "+dateparts.length+" 0: "+dateparts[0]);
-        return ""+dateparts[1]+"/"+dateparts[2]+"/"+dateparts[0];
+    private String qifDateConvert(String date) {
+        String[] dateparts = date.split("-");
+        return "" + dateparts[1] + "/" + dateparts[2] + "/" + dateparts[0];
     }
 
 }

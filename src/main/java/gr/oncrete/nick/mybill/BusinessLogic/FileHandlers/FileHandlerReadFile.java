@@ -15,74 +15,72 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * FileHandlerReadFile.java
  *
  * Created on 6 Ιούλιος 2005, 8:36 πμ
  */
-
 package gr.oncrete.nick.mybill.BusinessLogic.FileHandlers;
+
 import java.io.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author nickapos
  */
-public class FileHandlerReadFile
-{
-   FileHandlerOpenFile openFile;
-   ArrayList fileContents;
-   /** Creates a new instance of FileHandlerReadFile
-    * @param fileName
-    */
-   public FileHandlerReadFile (String fileName)
-   {
-      if(fileName.length ()>0)
-      {
-         openFile = new FileHandlerOpenFile (fileName);
-         fileContents = new ArrayList (3);
-      }
-      else
-      {
-         System.out.println ("Invalid file name");
-         System.exit (1);
-      }
-   }
-   
-   /**
-    *
-    *
-    *
-    */
-   public void readFile ()
-   {
-      FileReader fr= openFile.getOpenFileReader ();
-      BufferedReader bfr = new BufferedReader (fr);
-      try
-      {
-         String line="";
-         while(line!=null)
-         {
-            line=bfr.readLine ();
-            fileContents.add (line);
-         }
-         openFile.closeFile ();
-      }
-      catch(IOException ioe)
-      {
-         System.out.println ("An error occured during the reading of the file\n");
-         System.exit (1);
-      }
-   }
-   
-   /**
-    * returns the contents of the file read
-    *
-    *
-    * @return
-    */
-   public ArrayList returnContents ()
-   {
-      return fileContents;
-   }
+public class FileHandlerReadFile {
+
+    FileHandlerOpenFile openFile;
+    ArrayList fileContents;
+    private final static Logger LOGGER = Logger.getLogger(FileHandlerReadFile.class.getName());
+
+    /**
+     * Creates a new instance of FileHandlerReadFile
+     *
+     * @param fileName
+     */
+    public FileHandlerReadFile(String fileName) {
+        if (fileName.length() > 0) {
+            openFile = new FileHandlerOpenFile(fileName);
+            fileContents = new ArrayList(3);
+        } else {
+            LOGGER.log(Level.SEVERE, "Invalid file name");
+            System.exit(1);
+        }
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    public void readFile() {
+        FileReader fr = openFile.getOpenFileReader();
+        BufferedReader bfr = new BufferedReader(fr);
+        try {
+            String line = "";
+            while (line != null) {
+                line = bfr.readLine();
+                fileContents.add(line);
+            }
+            openFile.closeFile();
+        }
+        catch (IOException ioe) {
+            LOGGER.log(Level.SEVERE, "An error occured during the reading of the file\n");
+            System.exit(1);
+        }
+    }
+
+    /**
+     * returns the contents of the file read
+     *
+     *
+     * @return
+     */
+    public ArrayList returnContents() {
+        return fileContents;
+    }
 }

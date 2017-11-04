@@ -15,7 +15,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * DumpDatabase.java
  *
  * Created on 21 Ιούλιος 2005, 9:39 πμ
@@ -24,30 +24,34 @@ package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
 
 import gr.oncrete.nick.mybill.RDBMS.SelectFromTable;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
- *This class implements the dump database
- *operation.
+ * This class implements the dump database operation.
  *
  * @author nickapos
  */
 public class DumpDatabase {
 
+    private final static Logger LOGGER = Logger.getLogger(DumpDatabase.class.getName());
     ArrayList<String> companies, bills, eforia, income, categories;
     String queryC = "SELECT cid,companyname,afm FROM companies where catid is null";
     String queryB = "SELECT * FROM bills";
     String queryD = "SELECT * FROM income";
-    
 
-    /** Creates a new instance of DumpDatabase */
+    /**
+     * Creates a new instance of DumpDatabase
+     */
     public DumpDatabase() {
         //this.readCompaniesTable();
         //this.readDBEforia();
     }
 
     /**
-     * This method will call the apropriate method in order to form the
-     * right query to export the the companies table
+     * This method will call the apropriate method in order to form the right
+     * query to export the the companies table
+     *
      * @return
      */
     public ArrayList getCompaniesCsv() {
@@ -65,8 +69,9 @@ public class DumpDatabase {
     }
 
     /**
-     * This method will call the apropriate method in order to form the
-     * right query to export the the income table
+     * This method will call the apropriate method in order to form the right
+     * query to export the the income table
+     *
      * @return
      */
     public ArrayList getIncomeCsv() {
@@ -75,8 +80,9 @@ public class DumpDatabase {
     }
 
     /**
-     * This method will call the apropriate method in order to form the
-     * right query to export the the bills table
+     * This method will call the apropriate method in order to form the right
+     * query to export the the bills table
+     *
      * @return
      */
     public ArrayList getBillsCsv() {
@@ -85,9 +91,10 @@ public class DumpDatabase {
     }
 
     /**
-     * This method will call the apropriate method in order to form the
-     * right query to export the whole database as required by the eforia
-     * @param year 
+     * This method will call the apropriate method in order to form the right
+     * query to export the whole database as required by the eforia
+     *
+     * @param year
      * @return
      */
     public ArrayList getEforiaCsv(String year) {
@@ -96,8 +103,10 @@ public class DumpDatabase {
     }
 
     /**
-     * This method will call the apropriate method in order to form the
-     * right query to export the whole database as required by the eforia for the selected period of time
+     * This method will call the apropriate method in order to form the right
+     * query to export the whole database as required by the eforia for the
+     * selected period of time
+     *
      * @param year
      * @return
      */
@@ -108,8 +117,7 @@ public class DumpDatabase {
 
     /**
      *
-     * This method will dump the companies table
-     * as a csv in an arrayList
+     * This method will dump the companies table as a csv in an arrayList
      *
      */
     private void readCompaniesTable() {
@@ -119,7 +127,7 @@ public class DumpDatabase {
         ArrayList results1 = select.executeQuery("SELECT * FROM companies where catid is not null");
         companies = new ArrayList();
         if (results.isEmpty() && results1.isEmpty()) {
-            System.out.println("companies result is empty. Dump database operation aborted");
+            LOGGER.log(Level.SEVERE, "companies result is empty. Dump database operation aborted");
             System.exit(1);
         } else {
 
@@ -127,14 +135,12 @@ public class DumpDatabase {
                 for (int i = 0; i < results.size(); i += 3) {
                     String row = "" + results.get(i) + ";" + results.get(i + 1) + ";" + results.get(i + 2) + ";" + "" + ";";
                     companies.add(row);
-                    // System.out.println(row);
                 }
             }
             if (!results1.isEmpty()) {
                 for (int i = 0; i < results1.size(); i += 4) {
                     String row = "" + results1.get(i) + ";" + results1.get(i + 1) + ";" + results1.get(i + 2) + ";" + results1.get(i + 3) + ";";
                     companies.add(row);
-                    // System.out.println(row);
                 }
             }
 
@@ -144,30 +150,23 @@ public class DumpDatabase {
     private void readCategoriesTable() {
         SelectFromTable select = new SelectFromTable();
 
-
         ArrayList results1 = select.executeQuery("SELECT * FROM categories");
         categories = new ArrayList();
         if (results1.isEmpty()) {
-            System.out.println("categories result is empty. Dump database operation aborted");
+            LOGGER.log(Level.SEVERE, "categories result is empty. Dump database operation aborted");
             System.exit(1);
-        } else {
-
-            if (!results1.isEmpty()) {
-                for (int i = 0; i < results1.size(); i += 2) {
-                    String row = "" + results1.get(i) + ";" + results1.get(i + 1) + ";";
-                    categories.add(row);
-                    // System.out.println(row);
-                }
+        } else if (!results1.isEmpty()) {
+            for (int i = 0; i < results1.size(); i += 2) {
+                String row = "" + results1.get(i) + ";" + results1.get(i + 1) + ";";
+                categories.add(row);
             }
-
         }
     }
 
     /**
      *
      *
-     * This method will dump the bills table
-     * as a csv in an arrayList
+     * This method will dump the bills table as a csv in an arrayList
      *
      *
      */
@@ -176,14 +175,13 @@ public class DumpDatabase {
 
         ArrayList results = select.executeQuery(queryB);
         if (results.isEmpty()) {
-            System.out.println("bills result is empty. Dump database operation aborted");
+            LOGGER.log(Level.SEVERE, "bills result is empty. Dump database operation aborted");
             System.exit(1);
         } else {
             bills = new ArrayList();
             for (int i = 0; i < results.size(); i += 6) {
 
-                String row = "" + results.get(i) + ";" + results.get(i + 1) + ";" + results.get(i + 2) + ";" + results.get(i + 3) + ";"+results.get(i + 4) + ";"+results.get(i + 5) + ";";
-                //System.out.println(row);
+                String row = "" + results.get(i) + ";" + results.get(i + 1) + ";" + results.get(i + 2) + ";" + results.get(i + 3) + ";" + results.get(i + 4) + ";" + results.get(i + 5) + ";";
                 bills.add(row);
 
             }
@@ -192,8 +190,8 @@ public class DumpDatabase {
 
     /**
      *
-     * this method will dump therecords of the db for one specific year
-     * in one csv arraylist properly formated for the eforia
+     * this method will dump therecords of the db for one specific year in one
+     * csv arraylist properly formated for the eforia
      */
     private void readDBEforia(String year) {
         if (year.length() != 0) {
@@ -210,8 +208,8 @@ public class DumpDatabase {
 
     /**
      *
-     * this method will dump therecords of the db for one specific period
-     * in one csv arraylist properly formated for the eforia
+     * this method will dump therecords of the db for one specific period in one
+     * csv arraylist properly formated for the eforia
      */
     private void readDBForAPeriod(String startDate, String endDate) {
         String queryE = "SELECT a.bid,b.companyname,b.afm,a.price,a.dateofissue,a.dayofpayment,a.comment FROM bills a left join companies b on a.cid=b.cid";
@@ -221,11 +219,11 @@ public class DumpDatabase {
             results = select.executeQuery(queryE);
         } else {
             String queryWithYear = queryE + " where a.dayofpayment>='" + startDate + "' and a.dayofpayment<='" + endDate + "'";
-            System.out.println(queryWithYear);
+            LOGGER.log(Level.INFO, queryWithYear);
             results = select.executeQuery(queryWithYear);
         }
         if (results.isEmpty()) {
-            System.out.println("result set is empty. Dump database operation aborted");
+            LOGGER.log(Level.SEVERE, "result set is empty. Dump database operation aborted");
             System.exit(1);
         } else {
             eforia = new ArrayList();
@@ -237,17 +235,15 @@ public class DumpDatabase {
                 //strin E from the amount  and replace . with ,
                 String withoutE = results.get(i + 3).toString().replaceAll("E", "");
                 String replaceComma = withoutE.replaceAll("\\.", ",");
-                String row = "" + results.get(i + 1) + ";" + results.get(i + 2) + ";" + replaceComma+";"+results.get(i+5)+";"+results.get(i+6);
+                String row = "" + results.get(i + 1) + ";" + results.get(i + 2) + ";" + replaceComma + ";" + results.get(i + 5) + ";" + results.get(i + 6);
                 eforia.add(row);
-                //System.out.println(row);
             }
         }
     }
 
     /**
      *
-     * This method will dump the income table
-     * as a csv in an arrayList
+     * This method will dump the income table as a csv in an arrayList
      *
      */
     private void readIncomeTable() {
@@ -256,7 +252,7 @@ public class DumpDatabase {
         ArrayList results = select.executeQuery(queryD);
 
         if (results.isEmpty()) {
-            System.out.println("income result is empty. Dump database operation aborted");
+            LOGGER.log(Level.SEVERE, "income result is empty. Dump database operation aborted");
             System.exit(1);
         } else {
 
@@ -264,7 +260,6 @@ public class DumpDatabase {
             for (int i = 0; i < results.size(); i += 5) {
                 String row = "" + results.get(i) + ";" + results.get(i + 1) + ";" + results.get(i + 2) + ";" + results.get(i + 3) + ";" + results.get(i + 4) + ";";
                 income.add(row);
-                //System.out.println(row);
             }
 
         }

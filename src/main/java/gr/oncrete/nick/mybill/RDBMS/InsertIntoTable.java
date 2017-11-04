@@ -15,7 +15,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * InsertIntoTable.java
  *
  * Created on 12 Ιούλιος 2005, 11:27 πμ
@@ -24,6 +24,8 @@ package gr.oncrete.nick.mybill.RDBMS;
 
 import gr.oncrete.nick.mybill.UserInterface.PopupMessageFrame;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,17 +33,22 @@ import java.sql.SQLException;
  */
 public class InsertIntoTable extends BasicTableOperation {
 
-    boolean succesfullCompletion=false;
-    String sql="";
+    private final static Logger LOGGER = Logger.getLogger(BasicTableOperation.class.getName());
+    boolean succesfullCompletion = false;
+    String sql = "";
+
     /**
-     * a constructor used only in cases when we want to present the error message.
-     * for example when of the arguments of the insert command is missing
+     * a constructor used only in cases when we want to present the error
+     * message. for example when of the arguments of the insert command is
+     * missing
      */
-    public InsertIntoTable()
-    {
-        
+    public InsertIntoTable() {
+
     }
-    /** Creates a new instance of InsertIntoTable
+
+    /**
+     * Creates a new instance of InsertIntoTable
+     *
      * @param query
      */
     public InsertIntoTable(String query) {
@@ -52,48 +59,49 @@ public class InsertIntoTable extends BasicTableOperation {
             DatabaseConnection.commitTransaction();
             //PopupMessageFrame mes = new PopupMessageFrame();
             //mes.setNotification("Insertion Successfull!");
-            succesfullCompletion=true;
-        } catch (SQLException sqle) {
+            succesfullCompletion = true;
+        }
+        catch (SQLException sqle) {
             this.warningPopUp();
-            System.out.println("Rolling Back");
+            LOGGER.log(Level.INFO, "Rolling Back");
             DatabaseConnection.rollbackTransaction();
-            System.out.println("Exception encountered. Insertion Cancelled");
+            LOGGER.log(Level.INFO, "Exception encountered. Insertion Cancelled");
             //sqle.printStackTrace();
         }
-         //DatabaseConnection.shutdown ();
-         sql=query;     
+        //DatabaseConnection.shutdown ();
+        sql = query;
     }
 
     /**
      *
      * @return true if the insertion has completed sucesfully false if not
      */
-    public boolean hasCompletedSucesfully()
-    {
+    public boolean hasCompletedSucesfully() {
         return succesfullCompletion;
     }
 
-    /**this method will present a generic message with a warning that something has gone awry with the
-     * insertion of data
+    /**
+     * this method will present a generic message with a warning that something
+     * has gone awry with the insertion of data
      */
-    public void warningPopUp()
-    {
+    public void warningPopUp() {
         PopupMessageFrame mes = new PopupMessageFrame();
-            mes.setWarning(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("SOMETHING-WENT-WRONG-PLEASE-TRY-AGAIN!"));
+        mes.setWarning(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("SOMETHING-WENT-WRONG-PLEASE-TRY-AGAIN!"));
     }
 
-    /**this method will present a specific message with a warning that something has gone awry with the
-     * insertion of data
+    /**
+     * this method will present a specific message with a warning that something
+     * has gone awry with the insertion of data
+     *
      * @param message
      */
-    public void warningPopUp(String message)
-    {
+    public void warningPopUp(String message) {
         PopupMessageFrame mes = new PopupMessageFrame();
-            mes.setWarning(message);
+        mes.setWarning(message);
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return sql;
     }
 }

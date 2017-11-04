@@ -14,7 +14,6 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package gr.oncrete.nick.mybill.test.BusinessLogic;
 
 import gr.oncrete.nick.mybill.BusinessLogic.InsertCompany;
@@ -27,7 +26,8 @@ import org.junit.Test;
  */
 public class CheckInsertCompanyTest {
 
-    int AFMSIZE=9;
+    int AFMSIZE = 9;
+
     /**
      *
      */
@@ -66,9 +66,6 @@ public class CheckInsertCompanyTest {
     public void tearDown() throws Exception {
     }
 
-    
-   
-
     /**
      * test 123456789 afm length
      */
@@ -76,9 +73,9 @@ public class CheckInsertCompanyTest {
     public void testCheckAFMZeros() {
         System.out.println("check zeros");
         String a = "123456789";
-        InsertCompany instance = new InsertCompany();       
-        assertTrue(instance.truncateAfmString(a, AFMSIZE).length()==9);
-           
+        InsertCompany instance = new InsertCompany();
+        assertTrue(instance.truncateAfmString(a, AFMSIZE).length() == 9);
+
     }
 
     /**
@@ -88,22 +85,21 @@ public class CheckInsertCompanyTest {
     public void testCheckAFM123() {
         System.out.println("check random number");
         String a = "12345678910";
-        InsertCompany instance = new InsertCompany();       
-        assertTrue(instance.truncateAfmString(a, AFMSIZE).length()==9);
+        InsertCompany instance = new InsertCompany();
+        assertTrue(instance.truncateAfmString(a, AFMSIZE).length() == 9);
 
     }
 
-     /**
+    /**
      * test 12345 afm length
      */
     @Test
     public void testCheckAFMTrue() {
         System.out.println("check real afm");
         String a = "12345";
-       InsertCompany instance = new InsertCompany();       
-        assertTrue(instance.truncateAfmString(a, AFMSIZE).length()==5);
+        InsertCompany instance = new InsertCompany();
+        assertTrue(instance.truncateAfmString(a, AFMSIZE).length() == 5);
 
     }
-   
 
 }

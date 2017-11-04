@@ -15,100 +15,93 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * TransactionOperations.java
  *
  * Created on 12 Ιούλιος 2005, 11:27 πμ
  */
-
 package gr.oncrete.nick.mybill.RDBMS;
+
 import gr.oncrete.nick.mybill.UserInterface.PopupMessageFrame;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 /**
  *
  * @author nickapos
  *
  *
- *This class is used when we want to execute a block of SQL
- *commands as a transaction block. We execute the commands using
- *the query and update methods and then the transactional methods
- *to commit or rollback.
+ * This class is used when we want to execute a block of SQL commands as a
+ * transaction block. We execute the commands using the query and update methods
+ * and then the transactional methods to commit or rollback.
  */
-public class TransactionSQLOperations extends BasicTableOperation
-{
-   
-   /** Creates a new instance of TransactionOperations */
-   public TransactionSQLOperations ()
-   {
-       super.initiateDBConnection();
-      this.setAutoCommitOff ();//begin a transactional block.
-   }
+public class TransactionSQLOperations extends BasicTableOperation {
 
-   /**
-    * this method is used for queries (insert,update,delete etc) that do not return results
-    *
-    * @param update
-    */
-   public void executeUpdate (String update)
-   {
-      try
-      {
-         DatabaseConnection.update (update);
-      }
-      catch (SQLException sqle)
-      {
-         this.rollbackTransaction ();
-         PopupMessageFrame mes = new PopupMessageFrame();
-         String warning = "Empty during update. Possible conflict with existing values.";
-         mes.setWarning (warning);
-         sqle.printStackTrace ();
-         System.exit(1);//since we had a conflict exit
-      }
-   }
+    /**
+     * Creates a new instance of TransactionOperations
+     */
+    public TransactionSQLOperations() {
+        super.initiateDBConnection();
+        this.setAutoCommitOff();//begin a transactional block.
+    }
 
-   /**
-    * this method is used for queries that return results (selects)
-    * @param query
-    * @return
-    */
-   public ArrayList executeQuery(String query)
-   {
-      ArrayList list = null;
-      try
-      {
-         list = DatabaseConnection.queryReturnResult (query);
-      }
-      catch (SQLException sqle)
-      {
-         this.rollbackTransaction ();
-         sqle.printStackTrace ();
-      }
-      return list;
-   }
-   
-   /**
-    *
-    */
-   public void setAutoCommitOff()
-   {
-      DatabaseConnection.setAutoCommitOff ();
-   }
-   
-   /**
-    *
-    */
-   public void commitTransaction()
-   {
-      DatabaseConnection.commitTransaction ();
-   }
-   
-   /**
-    *
-    */
-   public void rollbackTransaction()
-   {
-      DatabaseConnection.rollbackTransaction ();
-   }
-   
+    /**
+     * this method is used for queries (insert,update,delete etc) that do not
+     * return results
+     *
+     * @param update
+     */
+    public void executeUpdate(String update) {
+        try {
+            DatabaseConnection.update(update);
+        }
+        catch (SQLException sqle) {
+            this.rollbackTransaction();
+            PopupMessageFrame mes = new PopupMessageFrame();
+            String warning = "Empty during update. Possible conflict with existing values.";
+            mes.setWarning(warning);
+            sqle.printStackTrace();
+            System.exit(1);//since we had a conflict exit
+        }
+    }
+
+    /**
+     * this method is used for queries that return results (selects)
+     *
+     * @param query
+     * @return
+     */
+    public ArrayList executeQuery(String query) {
+        ArrayList list = null;
+        try {
+            list = DatabaseConnection.queryReturnResult(query);
+        }
+        catch (SQLException sqle) {
+            this.rollbackTransaction();
+            sqle.printStackTrace();
+        }
+        return list;
+    }
+
+    /**
+     *
+     */
+    public void setAutoCommitOff() {
+        DatabaseConnection.setAutoCommitOff();
+    }
+
+    /**
+     *
+     */
+    public void commitTransaction() {
+        DatabaseConnection.commitTransaction();
+    }
+
+    /**
+     *
+     */
+    public void rollbackTransaction() {
+        DatabaseConnection.rollbackTransaction();
+    }
+
 }

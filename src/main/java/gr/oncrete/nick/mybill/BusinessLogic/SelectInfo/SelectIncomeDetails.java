@@ -15,7 +15,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -26,12 +26,12 @@ import java.util.*;
 
 /**
  *
- * @author nickapos
- * this class will be used to retrieve all the details available for an income record
+ * @author nickapos this class will be used to retrieve all the details
+ * available for an income record
  */
 public class SelectIncomeDetails {
 
-    private String inid, amount,dateofpayment, cid,comment;
+    private String inid, amount, dateofpayment, cid, comment;
     private boolean exists = false;
     private String sql1 = "select inid,cid,amount,dateofpayment,comment from income where";
     private SelectFromTable sel = new SelectFromTable();
@@ -63,9 +63,8 @@ public class SelectIncomeDetails {
     }
 
     private void splitResults(String sql) {
-        //System.out.println(sql);
         ArrayList<String> a = sel.executeQuery(sql);
-        
+
         if (a.size() > 0) {
             exists = true;
             inid = a.get(0);
@@ -73,7 +72,6 @@ public class SelectIncomeDetails {
             amount = a.get(2);
             dateofpayment = a.get(3);
             comment = a.get(4);
-            //System.out.println(id+name+afm);
         }
     }
 
@@ -100,7 +98,7 @@ public class SelectIncomeDetails {
     public String getAmount() {
         return amount;
     }
-    
+
     /**
      *
      * @return

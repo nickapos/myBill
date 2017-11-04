@@ -23,8 +23,9 @@ import java.text.DecimalFormat;
 /**
  *
  * This class will use one SelectReportIncomeSumsPerMonthYear oject and one
- * SelectReportexpensesSumsPerMonthYear. subract row by row for each month income-expenses
- * and prepare the data for both textual and graphic representation
+ * SelectReportexpensesSumsPerMonthYear. subract row by row for each month
+ * income-expenses and prepare the data for both textual and graphic
+ * representation
  *
  * @author nickapos 5 Αυγ 2010
  */
@@ -58,9 +59,9 @@ public class SelectProfitPerMonthYear {
 
     /**
      *
-     * this method will pad the incomeColumns and the expensesColumns so that they
-     * will get to 12 size (the number of months) with 0 in the months with no
-     * data
+     * this method will pad the incomeColumns and the expensesColumns so that
+     * they will get to 12 size (the number of months) with 0 in the months with
+     * no data
      */
     public void padArrays() {
         profitColumns = new String[14][3];
@@ -98,14 +99,15 @@ public class SelectProfitPerMonthYear {
     }
 
     /**
-     * do the appropriate data manipulation in order to fill the profit data array
+     * do the appropriate data manipulation in order to fill the profit data
+     * array
      *
      */
     private void fillProfitColumns() {
         DateFormatSymbols dfs = new DateFormatSymbols();
         String[] months = dfs.getMonths();
-        double[] profperCent={0,0,0,0,0,0,0,0,0,0,0,0};//array to hold the profit values unformatted
-        double totalSum = 0, totalPercentage = 0;
+        double[] profperCent = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};//array to hold the profit values unformatted
+        double totalSum = 0;
         for (int i = 0; i < profitColumns.length - 2; i++) {
             String incS = paddedIncomeColumns[i][0].trim();
             String expS = paddedexpensesColumns[i][0].trim();
@@ -117,7 +119,7 @@ public class SelectProfitPerMonthYear {
             } else {
                 profit = inc - exp;
             }
-            profperCent[i]=profit;
+            profperCent[i] = profit;
             totalSum = totalSum + profit;
             profitColumns[i][0] = "" + (new DecimalFormat("#,###.##").format(profit));//the profit
             //profitColumns[i][0] = "" + profit;//the profit

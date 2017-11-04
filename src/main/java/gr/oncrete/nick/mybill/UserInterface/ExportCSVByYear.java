@@ -15,7 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
+ /*
  * AboutWindow.java
  * This class will create a window with a text area and depending on the need
  * will present in the text are a message, be it an about or a readme.
@@ -23,10 +23,11 @@
  */
 package gr.oncrete.nick.mybill.UserInterface;
 
-import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.MyFileWriter;
 import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.NewThreadFileWriter;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.DumpDatabase;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,7 +35,8 @@ import java.util.*;
  */
 public class ExportCSVByYear extends javax.swing.JFrame {
 
-  
+    private final static Logger LOGGER = Logger.getLogger(ExportCSVByYear.class.getName());
+
     /**
      * Creates new form AboutWindow
      */
@@ -104,9 +106,7 @@ public class ExportCSVByYear extends javax.swing.JFrame {
 
     private void validateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateButtonActionPerformed
 
-        
-        String selYear= (String) yearsComboBox.getSelectedItem();
-        //System.out.println("Selected year "+ selYear);
+        String selYear = (String) yearsComboBox.getSelectedItem();
         DumpDatabase dump = new DumpDatabase();
         ArrayList a = dump.getEforiaCsv("" + selYear);
         //this.writeFile("eforia-"+df1.format(d1)+".csv", a);
@@ -141,26 +141,6 @@ public class ExportCSVByYear extends javax.swing.JFrame {
     }
 
     /**
-     * method used to export the database into csv's
-     *
-     * @param filename
-     * @param a
-     */
-    private void writeFile(String filename, ArrayList a) {
-        MyFileWriter m = new MyFileWriter();
-        m.createFile(filename);
-        Iterator i = a.iterator();
-        while (i.hasNext()) {
-            String nextLine = (String) i.next();
-            if (nextLine.length() > 0) {
-                System.out.println(nextLine);
-                m.writeToFile(nextLine);
-            }
-        }
-        m.closeFile();
-    }
-
-    /**
      * this method can be used to write a file in a new separate thread
      *
      * @param filename
@@ -169,12 +149,13 @@ public class ExportCSVByYear extends javax.swing.JFrame {
     private void writeFileNewThread(String filename, ArrayList a) {
         String content = "";
         Iterator i = a.iterator();
-        int counter=0;
+        int counter = 0;
         while (i.hasNext()) {
             String nextLine = (String) i.next();
             if (nextLine.length() > 0) {
-                content = content + nextLine + "\n";
+                content += nextLine + "\n";
                 System.out.println(nextLine);
+                LOGGER.log(Level.INFO, nextLine);
                 this.updateRowsAffectedCount(++counter);
             }
         }
@@ -182,15 +163,15 @@ public class ExportCSVByYear extends javax.swing.JFrame {
         m.execute();
 
     }
-      
+
     /**
-     * this method will update the rows affected label with 
-     * the number of rows exported
-     * @param rows 
+     * this method will update the rows affected label with the number of rows
+     * exported
+     *
+     * @param rows
      */
-    private void updateRowsAffectedCount(int rows)
-    {
-        String defaultLabel=java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString(" ROWS EXPORTED: ");
-        rowsAffectedLabel.setText(defaultLabel+rows);
+    private void updateRowsAffectedCount(int rows) {
+        String defaultLabel = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString(" ROWS EXPORTED: ");
+        rowsAffectedLabel.setText(defaultLabel + rows);
     }
 }

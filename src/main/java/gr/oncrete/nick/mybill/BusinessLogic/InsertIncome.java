@@ -15,7 +15,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -23,6 +23,8 @@ package gr.oncrete.nick.mybill.BusinessLogic;
 
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
 import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,6 +36,8 @@ public class InsertIncome {
 
     InsertIntoTable in;
     String sql;
+    private final static Logger LOGGER = Logger.getLogger(InsertIncome.class.getName());
+
     /**
      * Constructor insert bill without an id
      *
@@ -54,15 +58,14 @@ public class InsertIncome {
             }
 
             in = new InsertIntoTable(sql);
-            //System.out.println(sql);
         } else {
             in = new InsertIntoTable();
             in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN INCOME INSERTION"));
         }
-        sql=sql;
+        sql = sql;
     }
-    
-     /**
+
+    /**
      * Constructor insert bill without an id and with company id
      *
      * @param cid
@@ -79,20 +82,18 @@ public class InsertIncome {
             }
 
             in = new InsertIntoTable(sql);
-            System.out.println(sql);
+            LOGGER.log(Level.INFO, sql);
         } else {
             in = new InsertIntoTable();
             in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN INCOME INSERTION"));
         }
-        sql=sql;
+        sql = sql;
     }
-    
-    
 
     /**
      * /**
-     * Constructor insert income with a specific id
-     * used in restoring the database from csv file format
+     * Constructor insert income with a specific id used in restoring the
+     * database from csv file format
      *
      * @param inid
      * @param cid
@@ -109,15 +110,14 @@ public class InsertIncome {
             }
 
             in = new InsertIntoTable(sql);
-            //System.out.println(sql);
         } else {
             in = new InsertIntoTable();
             in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN INCOME INSERTION"));
         }
-        sql=sql;
+        sql = sql;
     }
-    
-    public String toString(){
+
+    public String toString() {
         return sql;
     }
 }

@@ -15,7 +15,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -32,7 +32,6 @@ import java.io.OutputStreamWriter;
  * @author nickapos
  */
 public class MyFileWriter {
-
 
     BufferedWriter bufferedWriter;
 
@@ -51,13 +50,15 @@ public class MyFileWriter {
         try {
 
             //Construct the BufferedWriter object
-            bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName),"UTF8"));
+            bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), "UTF8"));
 
-        } catch (FileNotFoundException ex) {
+        }
+        catch (FileNotFoundException ex) {
             ex.printStackTrace();
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             ex.printStackTrace();
-        } 
+        }
     }
 
     /**
@@ -70,11 +71,13 @@ public class MyFileWriter {
         try {
             bufferedWriter.write(line);
             bufferedWriter.newLine();
-        } catch (FileNotFoundException ex) {
+        }
+        catch (FileNotFoundException ex) {
             ex.printStackTrace();
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             ex.printStackTrace();
-        } 
+        }
     }
 
     //this method when called will flush everything and close the file
@@ -87,7 +90,8 @@ public class MyFileWriter {
                 bufferedWriter.flush();
                 bufferedWriter.close();
             }
-        } catch (IOException ex) {
+        }
+        catch (IOException ex) {
             ex.printStackTrace();
         }
     }

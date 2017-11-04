@@ -15,16 +15,13 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
 
-
-
 import gr.oncrete.nick.mybill.BusinessLogic.PlotDataObject;
-
 
 /**
  *
@@ -47,7 +44,6 @@ public class SelectReportIncomeSumsPerMonthYear extends SelectReportExpensesSums
         String sqlb = "-01-01' and dateofpayment <= '";
         String sqlc = "-12-31'  group by month(dateofpayment) order by month(dateofpayment)";
         sql = sqla + year + sqlb + year + sqlc;
-        //System.out.println(sql);
         super.runQuery(sql);
     }
 }

@@ -15,7 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
+ /*
  * AboutWindow.java
  * This class will create a window with a text area and depending on the need
  * will present in the text are a message, be it an about or a readme.
@@ -26,6 +26,8 @@ package gr.oncrete.nick.mybill.UserInterface;
 import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.NewThreadFileWriter;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.DumpDatabaseinQIF;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -33,6 +35,7 @@ import java.util.*;
  */
 public class ExportAllRecordsQIF extends javax.swing.JFrame {
 
+    private final static Logger LOGGER = Logger.getLogger(ExportAllRecordsQIF.class.getName());
     //the counter that will hold the number of affected rows
     int counter = 0;
 
@@ -83,7 +86,6 @@ public class ExportAllRecordsQIF extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
     private void exportRecordsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportRecordsButtonActionPerformed
         DumpDatabaseinQIF qifDump = new DumpDatabaseinQIF();
 
@@ -92,7 +94,6 @@ public class ExportAllRecordsQIF extends javax.swing.JFrame {
 
         this.writeFileNewThread("mybillExpenseData.qif", billsQIFArrayList);
         this.writeFileNewThread("mybillIncomeData.qif", incomeQIFArrayList);
-
 
     }//GEN-LAST:event_exportRecordsButtonActionPerformed
 
@@ -121,7 +122,6 @@ public class ExportAllRecordsQIF extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
-
     /**
      * this method can be used to write a file in a new separate thread
      *
@@ -135,8 +135,8 @@ public class ExportAllRecordsQIF extends javax.swing.JFrame {
         while (i.hasNext()) {
             String nextLine = (String) i.next();
             if (nextLine.length() > 0) {
-                content = content + nextLine + "\n";
-                System.out.println(nextLine);
+                content += nextLine + "\n";
+                LOGGER.log(Level.INFO, nextLine);
                 this.updateRowsAffectedCount(++counter);
             }
         }

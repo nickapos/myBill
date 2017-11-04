@@ -15,14 +15,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 package gr.oncrete.nick.mybill.UserInterface;
 
-import gr.oncrete.nick.mybill.BusinessLogic.Config;
 import java.awt.EventQueue;
+
 /**
  *
  * @author nickapos
@@ -36,7 +36,7 @@ public class myBill {
         EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                Config cfg = new Config();
+                //Config cfg = new Config();
                 billsUI a = new billsUI();
                 a.setVisible(true);
             }

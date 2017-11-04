@@ -15,7 +15,7 @@
  You should have received a copy of the GNU General Public License
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -23,6 +23,8 @@ package gr.oncrete.nick.mybill.BusinessLogic;
 
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
 import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,11 +33,14 @@ import gr.oncrete.nick.mybill.RDBMS.InsertIntoTable;
  * This class is used to insert new bill entries into the database
  */
 public class InsertBills {
-    String sql="";
+
+    String sql = "";
     boolean dryRun = false;
+    private final static Logger LOGGER = Logger.getLogger(InsertBills.class.getName());
 
     /**
-     * empty constructor that can be used for decoupling class creation from entry insertion
+     * empty constructor that can be used for decoupling class creation from
+     * entry insertion
      */
     public InsertBills() {
     }
@@ -62,13 +67,14 @@ public class InsertBills {
      * @param dateOfPayment
      */
     public InsertBills(int cid, String price, String dateOfIssue, String dateOfPayment, String comment) {
-        String sql=this.parseinsertBillsArgumentsWithoutId("" + cid, price, dateOfIssue, dateOfPayment, comment);
+        String sql = this.parseinsertBillsArgumentsWithoutId("" + cid, price, dateOfIssue, dateOfPayment, comment);
         this.commitToDB(sql);
-        sql=sql;
+        sql = sql;
     }
 
     /**
-     * Wrapper of parse arguments without id, the only thing this method does is to get the cid from the cname
+     * Wrapper of parse arguments without id, the only thing this method does is
+     * to get the cid from the cname
      *
      * @param cName
      * @param price
@@ -80,10 +86,10 @@ public class InsertBills {
             SelectCompanyDetails a = new SelectCompanyDetails();
             a.SelectCompanyDetailsWithName(cName);
             String cid = a.getID();
-            String sql=this.parseinsertBillsArgumentsWithoutId(cid, price, dateOfIssue, dateOfPayment, comment);
+            String sql = this.parseinsertBillsArgumentsWithoutId(cid, price, dateOfIssue, dateOfPayment, comment);
             this.commitToDB(sql);
         }
-        sql=sql;
+        sql = sql;
     }
 
     /**
@@ -104,10 +110,10 @@ public class InsertBills {
             } else {
                 sql = "insert into bills (cid,price,dateofissue,dayofpayment) values (" + cid + "," + price + ",'" + dateOfIssue + "','" + dateOfPayment + "')";
             }
-            System.out.println(sql);
-            
+            LOGGER.log(Level.INFO, sql);
+
         } else {
-            sql="";
+            sql = "";
         }
         return sql;
     }
@@ -135,7 +141,7 @@ public class InsertBills {
         } else {
             this.commitToDB("");
         }
-        sql=sql;
+        sql = sql;
     }
 
     /**
@@ -146,18 +152,18 @@ public class InsertBills {
      * @param dryRun
      */
     private void commitToDB(String sql) {
-        System.out.println("I am inserting: "+sql);
+        LOGGER.log(Level.INFO, String.format("I am inserting: %s", sql));
         if (!dryRun) {
             InsertIntoTable in;
             if (sql.length() > 0) {
-                
+
                 in = new InsertIntoTable(sql);
             } else {
                 in = new InsertIntoTable();
                 in.warningPopUp(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ERROR IN BILL INSERTION"));
             }
         } else {
-            System.out.println("This is a dry run");
+            LOGGER.log(Level.INFO, "This is a dry run");
         }
     }
 
@@ -169,8 +175,8 @@ public class InsertBills {
     public void setDyRun(boolean dr) {
         dryRun = dr;
     }
-    
-    public String toString(){
+
+    public String toString() {
         return sql;
     }
 }

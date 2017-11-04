@@ -19,6 +19,8 @@ package gr.oncrete.nick.mybill.BusinessLogic.ImportDB;
 import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.FileHandlerReadFile;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -29,6 +31,7 @@ public class ImportFile {
     private String fileName;//the file name to be imported
     private FileHandlerReadFile reader;
     private int rowsAffected = 0;
+    private final static Logger LOGGER = Logger.getLogger(ImportFile.class.getName());
 
     /**
      *
@@ -47,19 +50,19 @@ public class ImportFile {
 
     /**
      * this method will return the rows affected from an import operation
-     * @return 
+     *
+     * @return
      */
     public int getRowsAffected() {
         return rowsAffected;
     }
-    
+
     /**
      * this method will increase the rows affected by one
      */
-    public void increaseRowsAffectedByOne(){
+    public void increaseRowsAffectedByOne() {
         rowsAffected++;
     }
-    
 
     /**
      *
@@ -90,7 +93,7 @@ public class ImportFile {
 
         Iterator b = a.iterator();
         while (b.hasNext() && b.next() != null) {
-            System.out.println(b.next());
+            LOGGER.log(Level.INFO, b.next().toString());
         }
     }
 

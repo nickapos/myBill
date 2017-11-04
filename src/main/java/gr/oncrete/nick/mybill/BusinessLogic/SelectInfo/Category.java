@@ -15,7 +15,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -26,29 +26,28 @@ import java.util.*;
 
 /**
  * This class will represent a category as it exists in db
+ *
  * @author nickapos
  */
 public class Category {
 
     private String categoryName, categoryID;
-    
 
     /**
      *
      */
     public Category() {
-        
+
     }
 
     /**
      *
      * @param ID
      */
-    public void selectCatById(String ID)
-    {
-        if(ID.length()>0){
-        String sql ="select catid, categoryName from categories where catid="+ID;
-        this.categories(sql);
+    public void selectCatById(String ID) {
+        if (ID.length() > 0) {
+            String sql = "select catid, categoryName from categories where catid=" + ID;
+            this.categories(sql);
         }
     }
 
@@ -56,14 +55,12 @@ public class Category {
      *
      * @param catName
      */
-    public void selectCatByName(String catName)
-    {
-        if(catName.length()>0){
-        String sql ="select catid, categoryName from categories where categoryname='"+catName+"'";
-        this.categories(sql);
+    public void selectCatByName(String catName) {
+        if (catName.length() > 0) {
+            String sql = "select catid, categoryName from categories where categoryname='" + catName + "'";
+            this.categories(sql);
         }
     }
-
 
     /**
      * Fill the categories variables
@@ -72,16 +69,15 @@ public class Category {
     private void categories(String sql) {
         SelectFromTable sel = new SelectFromTable();
         ArrayList a = sel.executeQuery(sql);
-        categoryID=(String)a.get(0);
-        categoryName=(String)a.get(1);
+        categoryID = (String) a.get(0);
+        categoryName = (String) a.get(1);
     }
 
     /**
      *
      * @return
      */
-    public String getCatName()
-    {
+    public String getCatName() {
         return categoryName;
     }
 
@@ -89,9 +85,8 @@ public class Category {
      *
      * @return
      */
-    public String getCatID()
-    {
+    public String getCatID() {
         return categoryID;
     }
-    
+
 }

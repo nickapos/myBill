@@ -19,12 +19,16 @@ package gr.oncrete.nick.mybill.BusinessLogic.ImportDB;
 import gr.oncrete.nick.mybill.BusinessLogic.InsertCategory;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author nickapos
  */
 public class ImportCategoriesTable extends ImportFile {
+
+    private final static Logger LOGGER = Logger.getLogger(ImportCategoriesTable.class.getName());
 
     /**
      *
@@ -48,7 +52,7 @@ public class ImportCategoriesTable extends ImportFile {
             if (line != null) {
                 String[] splitLine = line.split(";");
                 if (splitLine[0].length() > 0 && splitLine[1].length() > 0) {
-                    System.out.println("Importing line " + line);
+                    LOGGER.log(Level.INFO, String.format("Importing line %s", line));
                     InsertCategory ins = new InsertCategory(splitLine[0], splitLine[1]);
                     ins.toString();
                     this.increaseRowsAffectedByOne();

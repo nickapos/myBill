@@ -15,14 +15,17 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
+ /*
  * AboutWindow.java
  * This class will create a window with a text area and depending on the need
  * will present in the text are a message, be it an about or a readme.
  * Created on 11 Αυγ 2010, 9:51:33 μμ
  */
 package gr.oncrete.nick.mybill.UserInterface;
+
 import gr.oncrete.nick.mybill.RDBMS.EmptyTables;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,6 +34,7 @@ import gr.oncrete.nick.mybill.RDBMS.EmptyTables;
 public class EmptyDatabaseWindow extends javax.swing.JFrame {
 
     billsUI mainui;
+    private final static Logger LOGGER = Logger.getLogger(EmptyDatabaseWindow.class.getName());
 
     /**
      * Creates new form AboutWindow
@@ -93,6 +97,7 @@ public class EmptyDatabaseWindow extends javax.swing.JFrame {
         PopupMessageFrame mes = new PopupMessageFrame();
         mes.setNotification(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("ALL-THE DATABASE-CONTENT-IS-GOING-TO-BE-DELETED"));
         EmptyTables e = new EmptyTables();
+        LOGGER.log(Level.INFO, e.toString());
         if (mainui != null) {
             mainui.refreshCompaniesCombo();
             mainui.refreshCatIDCombo();
@@ -102,7 +107,6 @@ public class EmptyDatabaseWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_yesButtonActionPerformed
 
     private void noButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noButtonActionPerformed
-        // TODO add your handling code here:
         setVisible(false); //you can't see me!
         dispose(); //Destroy the JFrame object
     }//GEN-LAST:event_noButtonActionPerformed

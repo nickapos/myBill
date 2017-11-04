@@ -15,26 +15,31 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
+
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author nickapos
  */
 public class SelectAllCompaniesPerCategory extends SelectAllBillsDetails {
+
+    private final static Logger LOGGER = Logger.getLogger(SelectAllCompaniesPerCategory.class.getName());
     String sql1 = "select a.cid from companies a left join categories b on a.catid=b.catid";
-    String sql="";
+    String sql = "";
+
     /**
      *
      */
-    public SelectAllCompaniesPerCategory(String id)
-    {
-        sql=sql1+" where a.catid="+id;
+    public SelectAllCompaniesPerCategory(String id) {
+        sql = sql1 + " where a.catid=" + id;
         this.readDBReport();
     }
 
@@ -42,20 +47,12 @@ public class SelectAllCompaniesPerCategory extends SelectAllBillsDetails {
         super.runQueryL(this.sql);
         LinkedList results = (LinkedList) this.getIds();
         if (results.isEmpty()) {
-            System.out.println("result set is empty. Dump database operation aborted");
-            results= new LinkedList<String>();
+            LOGGER.log(Level.INFO, "result set is empty. Dump database operation not proceeding");
+            results = new LinkedList<String>();
             //System.exit(1);
 
         } else {
-
-           /* for (int i = 0; i < results.size(); i += 4) {
-                //with ids
-                String [] row = { (String)results.get(i),(String) results.get(i + 1),(String) results.get(i + 2),(String) results.get(i + 3) };
-
-                rows.add(row);
-                //System.out.println(row);
-            }*/
-            rows=results;
+            rows = results;
         }
     }
 }

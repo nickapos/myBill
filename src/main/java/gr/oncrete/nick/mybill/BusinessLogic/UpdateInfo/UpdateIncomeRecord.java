@@ -15,7 +15,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -49,7 +49,6 @@ public class UpdateIncomeRecord extends UpdateRecord {
             } else {
                 sql1 = sql + i.getID() + "', amount=" + amount + ", dateofpayment='" + dateofpayment + "' where inid=" + inid;
             }
-            //System.out.println(sql1);
             super.runQuery(sql1);
         }
     }
@@ -69,8 +68,6 @@ public class UpdateIncomeRecord extends UpdateRecord {
             } else {
                 sql1 = sql + companyID + "', amount=" + amount + ", dateofpayment='" + dateofpayment + "' where inid=" + inid;
             }
-
-            //System.out.println(sql1);
             super.runQuery(sql1);
         }
     }

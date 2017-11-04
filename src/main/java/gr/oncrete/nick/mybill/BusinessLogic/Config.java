@@ -19,19 +19,21 @@ package gr.oncrete.nick.mybill.BusinessLogic;
 
 /**
  *
- * @author  nickapos
+ * @author nickapos
  *
- *Class that creates or reads the configuration file
+ * Class that creates or reads the configuration file
  *
- *The database directory is where the HSSQL RDBMS data files live. 
- *The initial data directory is where the initial sql scripts used
- *to create and populate most of the tables live
+ * The database directory is where the HSSQL RDBMS data files live. The initial
+ * data directory is where the initial sql scripts used to create and populate
+ * most of the tables live
  *
- *The database name is the name of the database used by the application.
+ * The database name is the name of the database used by the application.
  *
  */
 import java.io.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -39,6 +41,7 @@ import java.util.*;
  */
 public class Config {
 
+    private final static Logger LOGGER = Logger.getLogger(Config.class.getName());
     String fileName = "mybillconfigfile";//configuration file name
     String home;//string to keep the home directory of the user
     String fileSep = System.getProperty("file.separator");
@@ -58,7 +61,9 @@ public class Config {
     String browseDirDesc = "BrowseDir";
     String browseDir = System.getProperty("user.home");
 
-    /** Creates a new instance of Config */
+    /**
+     * Creates a new instance of Config
+     */
     public Config() {
 
         if (cf.exists()) {
@@ -70,16 +75,14 @@ public class Config {
 
     /**
      *
-     *This method is used to load the file
-     *from the disc if the file exists.
+     * This method is used to load the file from the disc if the file exists.
      *
      */
     private void loadFile() {
         try {
             // a little snippet of code to find if there is an old config file,update the new one with the new values and delete the old
             File oldConfig = new File("appProperties");
-            if (oldConfig.exists())
-            {
+            if (oldConfig.exists()) {
                 this.loadDefaultConfig();
                 this.saveFile();
                 oldConfig.delete();
@@ -88,36 +91,38 @@ public class Config {
             FileInputStream fStr = new FileInputStream(cf);
             prop.load(fStr);
             fStr.close();
-        } catch (FileNotFoundException fnfe) {
-            System.out.println("File Not Found");
+        }
+        catch (FileNotFoundException fnfe) {
+            LOGGER.log(Level.SEVERE, "File Not Found");
             fnfe.printStackTrace();
             System.exit(1);
-        } catch (IOException ioe) {
-            System.out.println("Input Output exception");
+        }
+        catch (IOException ioe) {
+            LOGGER.log(Level.SEVERE, "Input Output exception");
             ioe.printStackTrace();
             System.exit(1);
         }
     }
 
     /**
-     *this file is used to
-     *save the properties file to the disc.
+     * this file is used to save the properties file to the disc.
      *
-     *It is used in the constructor to create
-     *a default file and afterwards to change that
-     *file through the gui tool.
+     * It is used in the constructor to create a default file and afterwards to
+     * change that file through the gui tool.
      */
     public void saveFile() {
         try {
             FileOutputStream outFile = new FileOutputStream(cf);
             prop.store(outFile, "mybill config file");
             outFile.close();
-        } catch (FileNotFoundException fnfe) {
-            System.out.println("File Not Found");
+        }
+        catch (FileNotFoundException fnfe) {
+            LOGGER.log(Level.SEVERE, "File Not Found");
             fnfe.printStackTrace();
             System.exit(1);
-        } catch (IOException ioe) {
-            System.out.println("Input Output exception");
+        }
+        catch (IOException ioe) {
+            LOGGER.log(Level.SEVERE, "Input Output exception");
             ioe.printStackTrace();
             System.exit(1);
         }
@@ -125,8 +130,7 @@ public class Config {
 
     /**
      *
-     *With this method the user can change
-     *the data directory name
+     * With this method the user can change the data directory name
      *
      * @param dataDir
      */
@@ -135,8 +139,7 @@ public class Config {
     }
 
     /**
-     *With this method the user can change the
-     *initial data directory name
+     * With this method the user can change the initial data directory name
      *
      * @param inDataDir
      */
@@ -145,8 +148,8 @@ public class Config {
     }
 
     /**
-     *With this method the user can
-     *change the initial database name
+     * With this method the user can change the initial database name
+     *
      * @param dbName
      */
     public void setDatabaseName(String dbName) {
@@ -154,9 +157,9 @@ public class Config {
     }
 
     /**
-     *With this method the user can
-     *change the browse direcrory, where usually the user
-     *saves or imports files.
+     * With this method the user can change the browse direcrory, where usually
+     * the user saves or imports files.
+     *
      * @param bDir
      */
     public void setBrowseDir(String bDir) {
@@ -164,8 +167,8 @@ public class Config {
     }
 
     /**
-     *This method returns the file separator
-     *of the operatin system.
+     * This method returns the file separator of the operatin system.
+     *
      * @return
      */
     public String getFileSeparator() {
@@ -174,7 +177,7 @@ public class Config {
 
     /**
      *
-     *This method returns the name of the data directory
+     * This method returns the name of the data directory
      *
      * @return
      */
@@ -184,7 +187,7 @@ public class Config {
 
     /**
      *
-     *This method returns the name of the initial data set directory
+     * This method returns the name of the initial data set directory
      *
      * @return
      */
@@ -194,7 +197,7 @@ public class Config {
 
     /**
      *
-     *This method returns the name of the database
+     * This method returns the name of the database
      *
      * @return
      */
@@ -203,7 +206,7 @@ public class Config {
     }
 
     /**
-     *This method returns the browse dir
+     * This method returns the browse dir
      *
      *
      * @return
@@ -238,6 +241,7 @@ public class Config {
 
     /**
      * set the jdbc driver
+     *
      * @param ddriver
      */
     public void setDBDriver(String ddriver) {
@@ -245,8 +249,9 @@ public class Config {
     }
 
     /**
-     * set the db name in a networked environment
-     * or the dbfilename in a embeded environment
+     * set the db name in a networked environment or the dbfilename in a embeded
+     * environment
+     *
      * @param dname
      */
     public void setDBName(String dname) {
@@ -255,6 +260,7 @@ public class Config {
 
     /**
      * get the jdbc driver
+     *
      * @return
      */
     public String getDBDriver() {
@@ -263,8 +269,9 @@ public class Config {
 
     /**
      *
-     * set the db name in a networked environment
-     * or the dbfilename in a embeded environment
+     * set the db name in a networked environment or the dbfilename in a embeded
+     * environment
+     *
      * @return
      */
     public String getDBName() {
@@ -296,8 +303,8 @@ public class Config {
     }
 
     /**
-     * this method will be used if no configuration file is found
-     * or if the configuration file is old with less necessary fields
+     * this method will be used if no configuration file is found or if the
+     * configuration file is old with less necessary fields
      *
      */
     private void loadDefaultConfig() {

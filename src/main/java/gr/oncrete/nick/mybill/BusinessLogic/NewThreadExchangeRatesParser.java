@@ -18,50 +18,48 @@ package gr.oncrete.nick.mybill.BusinessLogic;
 
 import javax.swing.SwingWorker;
 
-
 /**
- *This class is intentend to be used when we want a write or read file activity
+ * This class is intentend to be used when we want a write or read file activity
  * to be preformed in a new thread.
+ *
  * @author nickapos 23 Νοε 2010
  */
 public class NewThreadExchangeRatesParser extends SwingWorker<String, String> {
 
-    ExchangeRatesParser parserNet,parserFile,parser;
-      
+    ExchangeRatesParser parserNet, parserFile, parser;
+
     public NewThreadExchangeRatesParser() {
         parserFile = new ExchangeRatesParser();
         this.initParser();
-        
-    }
-    
-    /**
-     * This is a helper method that will 
-     * be used from both constructors in order to avoid code repetition
-     */
-    private void initParser()
-    {
-        parserFile.prepareRatesFromDisk();
-        parser=parserFile;
+
     }
 
     /**
-     * this method executes tha parser in a separate
-     * thread
-     * it is called by the constructor. no need to call it from the caller class
+     * This is a helper method that will be used from both constructors in order
+     * to avoid code repetition
+     */
+    private void initParser() {
+        parserFile.prepareRatesFromDisk();
+        parser = parserFile;
+    }
+
+    /**
+     * this method executes tha parser in a separate thread it is called by the
+     * constructor. no need to call it from the caller class
+     *
      * @return
      */
     @Override
     public String doInBackground() {
         parserNet = new ExchangeRatesParser();
         parserNet.prepareRatesFromNet();
-        parser=parserNet;
+        parser = parserNet;
         return "done";
     }
 
     /**
-     *with the inversion flag we can choose to invert or not the exchange rate
-     * 0 for normal
-     * 1 for inversion
+     * with the inversion flag we can choose to invert or not the exchange rate
+     * 0 for normal 1 for inversion
      *
      * @return a string that will contain the exchange rate values
      *
@@ -71,9 +69,8 @@ public class NewThreadExchangeRatesParser extends SwingWorker<String, String> {
     }
 
     /**
-     *with the inversion flag we can choose to invert or not the exchange rate
-     * 0 for normal
-     * 1 for inversion
+     * with the inversion flag we can choose to invert or not the exchange rate
+     * 0 for normal 1 for inversion
      *
      * @return a string array that will contain the exchange rate values
      */

@@ -20,15 +20,19 @@ import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
 import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateCompanyRecord;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 
 /**
- *This class will be used to change the all the records of the database the belong to
- * a specific category to another
+ * This class will be used to change the all the records of the database the
+ * belong to a specific category to another
+ *
  * @author nickapos 6 Σεπ 2010
  */
 public class MergeCategories {
 
+    private final static Logger LOGGER = Logger.getLogger(MergeCategories.class.getName());
     private List idListTobeMerged;
     private String newCategoryID;
     private JLabel l;
@@ -36,8 +40,8 @@ public class MergeCategories {
     /**
      *
      * @param listTobeMerged the id's list to be merget into the new category
-     * @param newCategoryID the id of  the new category
-     * @param a label for the progress of the work the id of  the new category
+     * @param newCategoryID the id of the new category
+     * @param a label for the progress of the work the id of the new category
      */
     public MergeCategories(List listTobeMerged, String categoryID, JLabel lbl) {
         idListTobeMerged = listTobeMerged;
@@ -57,7 +61,7 @@ public class MergeCategories {
     public void mergeCategories() {
 
         if (newCategoryID.length() > 0) {
-            
+
             //change id of category from the old to the new one
             Iterator it = idListTobeMerged.iterator();
 
@@ -68,16 +72,13 @@ public class MergeCategories {
                 SelectCompanyDetails cdt = new SelectCompanyDetails();
                 String[] id = (String[]) it.next();
                 cdt.SelectCompanyDetailsWithID(id[0]);
-                UpdateCompanyRecord upcr = new UpdateCompanyRecord(cdt.getID(),cdt.getName(),cdt.getAfm(),newCategoryID);
-
+                UpdateCompanyRecord upcr = new UpdateCompanyRecord(cdt.getID(), cdt.getName(), cdt.getAfm(), newCategoryID);
+                LOGGER.log(Level.INFO, upcr.toString());
                 counter++;
-                double percentage =100*counter/idListTobeMerged.size();
-                expensesProgressText = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("MergeCategories.progressLabel.text") + counter+" "+percentage +"%";
+                double percentage = 100 * counter / idListTobeMerged.size();
+                expensesProgressText = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("MergeCategories.progressLabel.text") + counter + " " + percentage + "%";
                 l.setText(expensesProgressText);
             }
-
-
-
 
         }
 

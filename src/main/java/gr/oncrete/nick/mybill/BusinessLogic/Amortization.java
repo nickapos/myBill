@@ -17,22 +17,23 @@
 package gr.oncrete.nick.mybill.BusinessLogic;
 
 import java.text.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
- *This class will calculate the amortization when given the payout period, the interest rate and the initial amount
+ * This class will calculate the amortization when given the payout period, the
+ * interest rate and the initial amount
  *
- * pa=amount
- * c=amortization
- * ν=totalPaymentPeriod (in months)
- * r=rate for one year
- * rm=rate per month
- * am=amortizationPeriod the number of months between two amortization installments
+ * pa=amount c=amortization ν=totalPaymentPeriod (in months) r=rate for one year
+ * rm=rate per month am=amortizationPeriod the number of months between two
+ * amortization installments
  *
  * @author nickapos
  */
 public class Amortization {
 
-    private double lamount, lrate, lnumberOfMonths, lpaymentFrequency = 1,installment=-1;
+    private double lamount, lrate, lnumberOfMonths, lpaymentFrequency = 1, installment = -1;
+    private final static Logger LOGGER = Logger.getLogger(Amortization.class.getName());
 
     /**
      *
@@ -40,15 +41,12 @@ public class Amortization {
      *
      * @param amount
      * @param totalPaymentPeriod in months
-     * @param rate percent (e.g 10% without the percent sign)
-     * paymentFrequency how many times do you pay per year.
+     * @param rate percent (e.g 10% without the percent sign) paymentFrequency
+     * how many times do you pay per year.
      *
-     * If you pay monthly then you pay 12
-     * if you pay bimonthly then you pay 6
-     * if you pay 3monthly then you pay 4
-     * if you pay 4monthly then you pay 3
-     * if you pay 6monthly then you pay 2
-     * if you pay yearly then you pay 1
+     * If you pay monthly then you pay 12 if you pay bimonthly then you pay 6 if
+     * you pay 3monthly then you pay 4 if you pay 4monthly then you pay 3 if you
+     * pay 6monthly then you pay 2 if you pay yearly then you pay 1
      */
     public Amortization(double amount, double totalPaymentPeriod, double rate, int paymentFrequency) {
         lamount = amount;
@@ -62,12 +60,11 @@ public class Amortization {
         double arithmosPeriodwn = lnumberOfMonths * lpaymentFrequency / 12;
         double epitokioPeriodou = lrate / (arithmosPeriodwn / (lnumberOfMonths / 12));
 
-
-        System.out.println("epitokio periodoy" + epitokioPeriodou);
-        System.out.println("arithmos periodwn" + arithmosPeriodwn);
+        LOGGER.log(Level.INFO, String.format("epitokio periodoy %s", epitokioPeriodou));
+        LOGGER.log(Level.INFO, String.format("arithmos periodwn %s", arithmosPeriodwn));
         double result = lamount / this.calcSyntelesti(epitokioPeriodou, arithmosPeriodwn);
         //save the result in the installment instance variable
-        installment=result;
+        installment = result;
         //double result=pa*(r/(12/am))/(1-1/Math.pow((1+r/(12/am)),n));
         DecimalFormat df = new DecimalFormat("#############.##");
         //System.out.println("result " + df.format(result));

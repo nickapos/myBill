@@ -15,26 +15,28 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package gr.oncrete.nick.mybill.BusinessLogic;
+
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.SwingWorker;
+
 /**
- *This class wil be used to change the currency of all the records of the database
- * from one to another
+ * This class wil be used to change the currency of all the records of the
+ * database from one to another
+ *
  * @author nickapos 6 Σεπ 2010
  */
-public class NewThreadMergeCategories extends SwingWorker<String,String>{
+public class NewThreadMergeCategories extends SwingWorker<String, String> {
 
     MergeCategories mc;
-    
 
     /**
      *
      * @param rateStr
      */
-    public NewThreadMergeCategories(List listTobeMerged,String categoryID,JLabel lbl) {
-        mc = new MergeCategories(listTobeMerged,categoryID,lbl);
-        
+    public NewThreadMergeCategories(List listTobeMerged, String categoryID, JLabel lbl) {
+        mc = new MergeCategories(listTobeMerged, categoryID, lbl);
+
     }
 
     @Override

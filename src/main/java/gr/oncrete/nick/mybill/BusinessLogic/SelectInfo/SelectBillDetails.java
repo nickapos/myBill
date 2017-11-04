@@ -15,7 +15,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -26,12 +26,12 @@ import java.util.*;
 
 /**
  *
- * @author nickapos
- * this class will be used to retrieve all the details available for a bill
+ * @author nickapos this class will be used to retrieve all the details
+ * available for a bill
  */
 public class SelectBillDetails {
 
-    private String bid, price, dateofissue, dateofpayment, cid,comment;
+    private String bid, price, dateofissue, dateofpayment, cid, comment;
     private boolean exists = false;
     private String sql1 = "select bid,cid,price,dateofissue,dayofpayment,comment from bills where";
     private SelectFromTable sel = new SelectFromTable();
@@ -63,9 +63,8 @@ public class SelectBillDetails {
     }
 
     private void splitResults(String sql) {
-        //System.out.println(sql);
         ArrayList<String> a = sel.executeQuery(sql);
-        
+
         if (a.size() > 0) {
             exists = true;
             bid = a.get(0);
@@ -74,7 +73,6 @@ public class SelectBillDetails {
             dateofissue = a.get(3);
             dateofpayment = a.get(4);
             comment = a.get(5);
-            //System.out.println(id+name+afm);
         }
     }
 
@@ -101,6 +99,7 @@ public class SelectBillDetails {
     public String getPrice() {
         return price;
     }
+
     /**
      *
      * @return
@@ -108,6 +107,7 @@ public class SelectBillDetails {
     public String getDateOfIssue() {
         return dateofissue;
     }
+
     /**
      *
      * @return
@@ -127,9 +127,8 @@ public class SelectBillDetails {
     public boolean resultsExist() {
         return exists;
     }
-    
-    public String toString()
-    {
-        return "Bid:"+this.getBID()+" Cid:"+this.getCID()+" DateOfIssue: "+this.getDateOfIssue()+" Amount:"+this.getPrice();
+
+    public String toString() {
+        return "Bid:" + this.getBID() + " Cid:" + this.getCID() + " DateOfIssue: " + this.getDateOfIssue() + " Amount:" + this.getPrice();
     }
 }

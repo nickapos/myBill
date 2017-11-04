@@ -15,74 +15,76 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * LoadConstantTables.java
  *
  * Created on 8 Ιούλιος 2005, 10:53 πμ
  */
-
 package gr.oncrete.nick.mybill.RDBMS;
+
 import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.FileHandlerReadFile;
+import gr.oncrete.nick.mybill.BusinessLogic.ShutdownDB;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author nickapos
  */
-public class LoadConstantTables extends BasicTableOperation
-{
-   
-   /** Creates a new instance of EmptyCOnstantTables */
-   public LoadConstantTables ()
-   {
-      //String initialDataDir= cfg.getInDataSetDirName ();
-      //String fileSep = cfg.getFileSeparator ();
-      ArrayList constantTables = new ArrayList ();//the collection of the constant files
-      //constantTables.add (initialDataDir+fileSep+"companies_data");
-      constantTables.add ("companies_data");
-      //constantTables.add ("bills_data");
-      
-      Iterator it= constantTables.iterator ();
-      ArrayList commands = new ArrayList ();//the list that will hold all the commands
-      while(it.hasNext ())
-      {
-         String nextFile =(String)it.next ();
-         FileHandlerReadFile file = new FileHandlerReadFile (nextFile);
-         file.readFile ();
-         ArrayList contents =file.returnContents ();
-         commands.addAll (contents);
-      }
-      DatabaseConnection.setAutoCommitOff ();
-      this.fillTable (commands);//the call of the function that will fill the commands
-   }
-   
-   /**
-    *
-    *This function accepts an ArrayList that holds all the commands
-    *about to be added in the database. It iterates over it and
-    *fill the tables with the data.
-    */
-   private void fillTable (ArrayList commands)
-   {
-      try
-      {
-         Iterator it = commands.iterator ();
-         while(it.hasNext ())
-         {
-            String next =(String)it.next ();
-            System.out.println (next);
-            //for some reason null values appear in the ArrayList. This is to exclude them.
-            if(next !=null)
-            DatabaseConnection.update (next);//execute query
-         }
-         DatabaseConnection.commitTransaction ();
-         //DatabaseConnection.shutdown ();
-      }
-      catch (SQLException sqle)
-      {
-         DatabaseConnection.rollbackTransaction ();
-         sqle.printStackTrace ();
-      }
-   }
+public class LoadConstantTables extends BasicTableOperation {
+
+    private final static Logger LOGGER = Logger.getLogger(LoadConstantTables.class.getName());
+
+    /**
+     * Creates a new instance of EmptyCOnstantTables
+     */
+    public LoadConstantTables() {
+        //String initialDataDir= cfg.getInDataSetDirName ();
+        //String fileSep = cfg.getFileSeparator ();
+        ArrayList constantTables = new ArrayList();//the collection of the constant files
+        //constantTables.add (initialDataDir+fileSep+"companies_data");
+        constantTables.add("companies_data");
+        //constantTables.add ("bills_data");
+
+        Iterator it = constantTables.iterator();
+        ArrayList commands = new ArrayList();//the list that will hold all the commands
+        while (it.hasNext()) {
+            String nextFile = (String) it.next();
+            FileHandlerReadFile file = new FileHandlerReadFile(nextFile);
+            file.readFile();
+            ArrayList contents = file.returnContents();
+            commands.addAll(contents);
+        }
+        DatabaseConnection.setAutoCommitOff();
+        this.fillTable(commands);//the call of the function that will fill the commands
+    }
+
+    /**
+     *
+     * This function accepts an ArrayList that holds all the commands about to
+     * be added in the database. It iterates over it and fill the tables with
+     * the data.
+     */
+    private void fillTable(ArrayList commands) {
+        try {
+            Iterator it = commands.iterator();
+            while (it.hasNext()) {
+                String next = (String) it.next();
+                LOGGER.log(Level.INFO, next);
+                //for some reason null values appear in the ArrayList. This is to exclude them.
+                if (next != null) {
+                    DatabaseConnection.update(next);//execute query
+                }
+            }
+            DatabaseConnection.commitTransaction();
+            //DatabaseConnection.shutdown ();
+        }
+        catch (SQLException sqle) {
+            DatabaseConnection.rollbackTransaction();
+            sqle.printStackTrace();
+        }
+    }
 }

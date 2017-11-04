@@ -14,7 +14,6 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package gr.oncrete.nick.mybill.test.BusinessLogic;
 
 import gr.oncrete.nick.mybill.BusinessLogic.InvertRecord;
@@ -27,7 +26,6 @@ import org.junit.Test;
  */
 public class CheckInvertRecordTest {
 
-  
     /**
      *
      */
@@ -66,19 +64,16 @@ public class CheckInvertRecordTest {
     public void tearDown() throws Exception {
     }
 
-    
-   
-
     /**
      * test 0 length id
      */
     @Test
     public void checkZeroLengthID() {
         System.out.println("test 0 length id");
-        String a="";
-        InvertRecord instance = new InvertRecord();       
-        assertTrue(instance.convertID(a)==-3);
-           
+        String a = "";
+        InvertRecord instance = new InvertRecord();
+        assertTrue(instance.convertID(a) == -3);
+
     }
 
     /**
@@ -88,11 +83,9 @@ public class CheckInvertRecordTest {
     public void checkNonIntID() {
         System.out.println("test non int id");
         String a = "1.1";
-        InvertRecord instance = new InvertRecord();       
-        assertTrue(instance.convertID(a)==-1);
-           
+        InvertRecord instance = new InvertRecord();
+        assertTrue(instance.convertID(a) == -1);
+
     }
-    
-       
 
 }

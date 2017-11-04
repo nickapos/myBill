@@ -15,62 +15,61 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * FileHandler.java
  *
  * Created on 6 Ιούλιος 2005, 8:06 πμ
  */
-
 package gr.oncrete.nick.mybill.BusinessLogic.FileHandlers;
+
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author nickapos
  */
-public class FileHandlerOpenFile
-{
-   FileReader file;
-   
-   /** Creates a new instance of FileHandler
-    * @param name
-    */
-   public FileHandlerOpenFile (String name)
-   {
-      try
-      {
-         file = new FileReader(name);
-      }
-      catch ( FileNotFoundException fnf)
-      {
-         System.out.println("File Not Found") ;
-         System.exit(1);
-      }
-   }
-   
-   /**
-    *A method that closes the open File reader
-    */
-   
-   public void closeFile()
-   {
-      try
-      {
-         file.close ();
-      }
-      catch (IOException ioe)
-      {
-         System.out.println ("Tried to close the file but failed");
-         System.exit (1);
-      }
-   }
-   
-   /**
-    * This method returns the open file reader object
-    * @return This method returns the open file reader object
-    */
-   public FileReader getOpenFileReader()
-   {
-      return file;
-   }
-   
+public class FileHandlerOpenFile {
+
+    FileReader file;
+    private final static Logger LOGGER = Logger.getLogger(FileHandlerOpenFile.class.getName());
+
+    /**
+     * Creates a new instance of FileHandler
+     *
+     * @param name
+     */
+    public FileHandlerOpenFile(String name) {
+        try {
+            file = new FileReader(name);
+        }
+        catch (FileNotFoundException fnf) {
+            LOGGER.log(Level.SEVERE, "File Not Found");
+            System.exit(1);
+        }
+    }
+
+    /**
+     * A method that closes the open File reader
+     */
+    public void closeFile() {
+        try {
+            file.close();
+        }
+        catch (IOException ioe) {
+            LOGGER.log(Level.SEVERE, "Tried to close the file but failed");
+            System.exit(1);
+        }
+    }
+
+    /**
+     * This method returns the open file reader object
+     *
+     * @return This method returns the open file reader object
+     */
+    public FileReader getOpenFileReader() {
+        return file;
+    }
+
 }

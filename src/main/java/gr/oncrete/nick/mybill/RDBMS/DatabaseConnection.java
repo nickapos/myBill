@@ -15,7 +15,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * DatabaseConnection.java
  *
  * Created on 25 Μάϊος 2005, 7:38 μμ
@@ -31,6 +31,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -38,10 +40,13 @@ import java.util.LinkedList;
  */
 public class DatabaseConnection {
 
+    private final static Logger LOGGER = Logger.getLogger(DatabaseConnection.class.getName());
     static Connection conn;
     Config mp = new Config();
 
-    /** Creates a new instance of DatabaseConnection */
+    /**
+     * Creates a new instance of DatabaseConnection
+     */
     protected DatabaseConnection() {
         try {
             //mp.loadProperties();
@@ -53,10 +58,11 @@ public class DatabaseConnection {
                     mp.getDBUname(), // username
                     mp.getDBPass());                      // password
 
-
-        } catch (ClassNotFoundException clnf) {
+        }
+        catch (ClassNotFoundException clnf) {
             clnf.printStackTrace();
-        } catch (SQLException sqle) {
+        }
+        catch (SQLException sqle) {
             sqle.printStackTrace();
         }
     }
@@ -76,10 +82,11 @@ public class DatabaseConnection {
                     mp.getDBUname(), // username
                     mp.getDBPass());                      // password
 
-
-        } catch (ClassNotFoundException clnf) {
+        }
+        catch (ClassNotFoundException clnf) {
             clnf.printStackTrace();
-        } catch (SQLException sqle) {
+        }
+        catch (SQLException sqle) {
             sqle.printStackTrace();
         }
     }
@@ -98,6 +105,7 @@ public class DatabaseConnection {
         return _instance;
 
     }
+
     /**
      *
      * @return
@@ -118,7 +126,8 @@ public class DatabaseConnection {
     static public void shutdown() {
         try {
             conn.close();    // if there are no other open connection
-        } catch (SQLException sqle) {
+        }
+        catch (SQLException sqle) {
             sqle.printStackTrace();
         }
     }
@@ -152,11 +161,11 @@ public class DatabaseConnection {
 
     /**
      *
-     *This method is supposed to return its result
-     *in a way that can be used by the calling method.
-     *Something like an arraylist or a linked list.
-     * one string field per line (arraylist)
-     * @param expression 
+     * This method is supposed to return its result in a way that can be used by
+     * the calling method. Something like an arraylist or a linked list. one
+     * string field per line (arraylist)
+     *
+     * @param expression
      * @return
      * @throws SQLException
      */
@@ -178,10 +187,10 @@ public class DatabaseConnection {
 
     /**
      *
-     *This method is supposed to return its result
-     *in a way that can be used by the calling method.
-     *Something like an arraylist or a linked list.
-     * one string array per line (arraylist)
+     * This method is supposed to return its result in a way that can be used by
+     * the calling method. Something like an arraylist or a linked list. one
+     * string array per line (arraylist)
+     *
      * @param expression
      * @return
      * @throws SQLException
@@ -204,10 +213,10 @@ public class DatabaseConnection {
 
     /**
      *
-     *This method is supposed to return its result
-     *in a way that can be used by the calling method.
-     *Something like an arraylist or a linked list.
-     * one string array per line (linked list)
+     * This method is supposed to return its result in a way that can be used by
+     * the calling method. Something like an arraylist or a linked list. one
+     * string array per line (linked list)
+     *
      * @param expression
      * @return
      * @throws SQLException
@@ -242,7 +251,7 @@ public class DatabaseConnection {
         int i = st.executeUpdate(expression);    // run the query
 
         if (i == -1) {
-            System.out.println("db error : " + expression);
+            LOGGER.log(Level.INFO, String.format("db error : %s", expression));
         }
 
         st.close();
@@ -250,8 +259,7 @@ public class DatabaseConnection {
 
     /**
      *
-     *A function that prints out the
-     *contents of the Result Set
+     * A function that prints out the contents of the Result Set
      *
      * @param rs
      * @throws SQLException
@@ -263,31 +271,28 @@ public class DatabaseConnection {
         ResultSetMetaData meta = rs.getMetaData();
         int colmax = meta.getColumnCount();
         int i;
-        Object o = null;
 
         // the result set is a cursor into the data.  You can only
         // point to one row at a time
         // assume we are pointing to BEFORE the first row
         // rs.next() points to next row and returns true
         // or false if there is no next row, which breaks the loop
-        for (; rs.next();) {
+        while (rs.next()) {
             for (i = 0; i < colmax; ++i) {
-                o = rs.getObject(i + 1);    // Is SQL the first column is indexed
+                Object o = rs.getObject(i + 1);    // Is SQL the first column is indexed
 
-                // with 1 not 0
-                //System.out.print(o.toString() + " ");
+                LOGGER.log(Level.INFO, o.toString());
             }
-
-            //System.out.println(" ");
         }
     }
 
     /**
      *
-     *An overloaded function like the above with the only difference
-     *that it puts the data of the Result Set in an array list
-     *and then prints them out in the console.
-     *The array list is then processed from the calling function.
+     * An overloaded function like the above with the only difference that it
+     * puts the data of the Result Set in an array list and then prints them out
+     * in the console. The array list is then processed from the calling
+     * function.
+     *
      * @param rs
      * @param lst
      * @throws SQLException
@@ -304,7 +309,7 @@ public class DatabaseConnection {
         // assume we are pointing to BEFORE the first row
         // rs.next() points to next row and returns true
         // or false if there is no next row, which breaks the loop
-        for (; rs.next();) {
+        while (rs.next()) {
             String o = null;
             for (i = 0; i < colmax; ++i) {
                 if (rs.getString(i + 1) != null) {
@@ -315,19 +320,17 @@ public class DatabaseConnection {
                 }
                 lst.add(o.toString());
             }
-
-            //System.out.println (" ");
         }
     }
 
     /**
      *
-     *An overloaded function like the above with the only difference
-     *that it puts the data of the Result Set in an linked list
-     *as a string array per line. each column in a table cell and all together form
-     * a row.
-     *The array list is then processed from the calling function.
-     * @param rs 
+     * An overloaded function like the above with the only difference that it
+     * puts the data of the Result Set in an linked list as a string array per
+     * line. each column in a table cell and all together form a row. The array
+     * list is then processed from the calling function.
+     *
+     * @param rs
      * @param lst
      * @throws SQLException
      */
@@ -354,19 +357,18 @@ public class DatabaseConnection {
                 }
             }
             lst.add(s);
-            //System.out.println (" ");
         }
     }
 
     /**
      *
-     *An overloaded function like the above with the only difference
-     *that it puts the data of the Result Set in an array list
-     *as a string array per line. each column in a table cell and all together form
-     * a row.
-     *The array list is then processed from the calling function.
-     * @param rs 
-     * @param lst 
+     * An overloaded function like the above with the only difference that it
+     * puts the data of the Result Set in an array list as a string array per
+     * line. each column in a table cell and all together form a row. The array
+     * list is then processed from the calling function.
+     *
+     * @param rs
+     * @param lst
      * @throws SQLException
      */
     static public void dumpArrayPerRow(ResultSet rs, ArrayList<String[]> lst) throws SQLException {
@@ -381,7 +383,7 @@ public class DatabaseConnection {
         // assume we are pointing to BEFORE the first row
         // rs.next() points to next row and returns true
         // or false if there is no next row, which breaks the loop
-        for (; rs.next();) {
+        while (rs.next()) {
             String[] s = new String[colmax];
             for (i = 0; i < colmax; ++i) {
                 if (rs.getString(i + 1) != null) {
@@ -392,65 +394,61 @@ public class DatabaseConnection {
                 }
             }
             lst.add(s);
-            //System.out.println (" ");
         }
     }
 
     /**
-     *This method is used to set
-     *the autocommit flag off and
-     *so enabling the transactional
-     *behaviour of the database
+     * This method is used to set the autocommit flag off and so enabling the
+     * transactional behaviour of the database
      */
     static public void setAutoCommitOff() {
         try {
             conn.setAutoCommit(false);
-        } catch (SQLException sqle) {
+        }
+        catch (SQLException sqle) {
             sqle.printStackTrace();
         }
     }
 
     /**
-     *This method is used to set
-     *the autocommit flag on and
-     *so disabling the transactional
-     *behaviour of the database.
+     * This method is used to set the autocommit flag on and so disabling the
+     * transactional behaviour of the database.
      *
-     *Now each sql command will be commited
-     *exactly after its execution automatically.
+     * Now each sql command will be commited exactly after its execution
+     * automatically.
      */
     static public void setAutoCommitOn() {
         try {
             conn.setAutoCommit(true);
-        } catch (SQLException sqle) {
+        }
+        catch (SQLException sqle) {
             sqle.printStackTrace();
         }
     }
 
     /**
      *
-     *This method calls the jdbc
-     *method rollback for transaction
-     *rollback.
+     * This method calls the jdbc method rollback for transaction rollback.
      */
     static public void rollbackTransaction() {
         try {
             conn.rollback();
-        } catch (SQLException sqle) {
+        }
+        catch (SQLException sqle) {
             sqle.printStackTrace();
         }
     }
 
     /**
      *
-     *This method calls the jdbc
-     *method commit.
-     *It commits the current transaction
+     * This method calls the jdbc method commit. It commits the current
+     * transaction
      */
     static public void commitTransaction() {
         try {
             conn.commit();
-        } catch (SQLException sqle) {
+        }
+        catch (SQLException sqle) {
             sqle.printStackTrace();
         }
     }

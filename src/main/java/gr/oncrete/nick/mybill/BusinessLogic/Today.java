@@ -15,10 +15,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package gr.oncrete.nick.mybill.BusinessLogic;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 /**
- * this class will return in a string the date of today properly formated for the database
+ * this class will return in a string the date of today properly formated for
+ * the database
+ *
  * @author nickapos
  */
 public class Today {
@@ -27,7 +31,7 @@ public class Today {
     }
 
     public String getToday() {
-        
+
         Date d = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         return dateFormat.format(d);

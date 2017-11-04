@@ -15,7 +15,7 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -25,7 +25,9 @@ import gr.oncrete.nick.mybill.RDBMS.SelectFromTable;
 import java.util.*;
 
 /**
- * This class creates a sorted list of the companies for the dropdown menu in insert bill tab
+ * This class creates a sorted list of the companies for the dropdown menu in
+ * insert bill tab
+ *
  * @author nickapos
  */
 public class Companies {
@@ -48,27 +50,10 @@ public class Companies {
     private void companies() {
         SelectFromTable sel = new SelectFromTable();
         ArrayList a = sel.executeQuery(sql);
-        //System.out.println("results are " + a.size());
-        /*Iterator i = a.iterator();
-        while(i.hasNext())
-        {
-
-        System.out.println(i.next());
-        }*/
 
         for (int o = 0; o < a.size(); o += 2) {
             companiesMap.put(a.get(o), a.get(o + 1));
         }
-
-        /* Debug for the hash map
-        Set set = companies.keySet();
-        Iterator e = set.iterator();
-        while(e.hasNext())
-        {
-        String r = (String) e.next();
-        System.out.println("key " +r+ " value "+companies.get(r));
-        }
-         */
 
     }
 
@@ -82,7 +67,7 @@ public class Companies {
         Iterator<String> e = set.iterator();
         while (e.hasNext()) {
             String r = e.next();
-            cNamesArrayList.add((String)companiesMap.get(r));
+            cNamesArrayList.add((String) companiesMap.get(r));
         }
         Collections.sort(cNamesArrayList);
         String[] cNameStr = cNamesArrayList.toArray(new String[cNamesArrayList.size()]);

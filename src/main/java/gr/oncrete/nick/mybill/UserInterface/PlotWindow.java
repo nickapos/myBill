@@ -22,31 +22,35 @@ import java.awt.*;
 import javax.swing.*;
 
 /**
- *  <p> A simple Swing frame that can be used to display a plot panel.
- *  </p>
+ * <p>
+ * A simple Swing frame that can be used to display a plot panel.
+ * </p>
  *
- *  <p>  Modified by:  Joseph A. Huwaldt  </p>
+ * <p>
+ * Modified by: Joseph A. Huwaldt  </p>
  *
- *  @author  Joseph A. Huwaldt   Date:  September 22, 2000
- *  @version December 12, 2000
- **/
+ * @author Joseph A. Huwaldt Date: September 22, 2000
+ * @version December 12, 2000
+ *
+ */
 public class PlotWindow extends JFrame {
 
     /**
      *
      */
-    public PlotWindow()
-    {
-        
+    public PlotWindow() {
+
     }
+
     //-------------------------------------------------------------------------
     /**
-     *  Creates a plot window that displays the specified plot panel.
+     * Creates a plot window that displays the specified plot panel.
      *
-     *  @param  name   The title to show in the window's title bar.
-     *  @param  plot   The plot panel to be displayed in this window.
+     * @param name The title to show in the window's title bar.
+     * @param plot The plot panel to be displayed in this window.
      *
-     **/
+     *
+     */
     public PlotWindow(String name, PlotPanel plot) {
         super(name);
 
@@ -78,7 +82,6 @@ public class PlotWindow extends JFrame {
         PlotPanel panel = new PlotPanel(aPlot);
         panel.setBackground(Color.white);
 
-
         PlotWindow window = new PlotWindow(plotLabel, panel);
         window.setSize(500, 300);
         window.setLocation(50, 50);
@@ -89,8 +92,8 @@ public class PlotWindow extends JFrame {
     //-------------------------------------------------------------------------
 
     /**
-     *  A simple method to test this PlotWindow by creating a couple of Plot2D
-     *  plots and putting them in windows.
+     * A simple method to test this PlotWindow by creating a couple of Plot2D
+     * plots and putting them in windows.
      *
      * @param args
      */
@@ -115,15 +118,11 @@ public class PlotWindow extends JFrame {
         PlotPanel panel = new PlotPanel(aPlot);
         panel.setBackground(Color.white);
 
-
         PlotWindow window = new PlotWindow("SimplePlotXY Plot Window", panel);
         window.setSize(500, 300);
         window.setLocation(50, 50);
         window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         window.show();
-
-
-
 
     }
 }

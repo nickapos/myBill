@@ -24,7 +24,6 @@
 package gr.oncrete.nick.mybill.UserInterface;
 
 import gr.oncrete.nick.mybill.BusinessLogic.FindRecurringPayments;
-import java.util.*;
 import java.util.stream.IntStream;
 import javax.swing.JComboBox;
 
@@ -87,11 +86,6 @@ public class PresentRecurringPayments extends javax.swing.JFrame {
 
         recordFreqComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "6", "7", "8", "9", "10", "11", "12" }));
         recordFreqComboBox.setSelectedItem(IntStream.rangeClosed(2005, 2100));
-        recordFreqComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                recordFreqComboBoxActionPerformed(evt);
-            }
-        });
         cetnerPanel1.add(recordFreqComboBox);
 
         periodEndingjLabel1.setText(bundle.getString("PresentRecurringPayments.periodEndingjLabel1.text")); // NOI18N
@@ -140,14 +134,6 @@ public class PresentRecurringPayments extends javax.swing.JFrame {
         totalLabel.setText(String.format("%6.2f", recPayments.returnMostFrequentTransactionsSum()));
 
     }//GEN-LAST:event_goButtonActionPerformed
-
-    private void recordFreqComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordFreqComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recordFreqComboBoxActionPerformed
-    private String getNumOfRowsLine(List a, String results) {
-        return results + "\n\n" + java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("NUMBER OF ROWS ") + " " + a.size();
-
-    }
 
     /**
      * @param args the command line arguments

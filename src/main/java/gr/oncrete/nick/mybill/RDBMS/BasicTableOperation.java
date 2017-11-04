@@ -15,7 +15,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * EmptyConstantTables.java
  *
  * Created on 8 Ιούλιος 2005, 10:53 πμ
@@ -32,7 +32,9 @@ public class BasicTableOperation {
     //DatabaseConnection d; not needed anymore since the databaseconnection has been made singleton
     //DatabaseConnection d= new DatabaseConnection ("hsql://localhost/");
 
-    /** Creates a new instance of EmptyCOnstantTables */
+    /**
+     * Creates a new instance of EmptyCOnstantTables
+     */
     public BasicTableOperation() {
         //String databaseDir =cfg.getDataDirName ();
         //String databaseName = cfg.getDatabaseName ();
@@ -55,7 +57,8 @@ public class BasicTableOperation {
     }
 
     /**
-     * A method that when called will terminate the database connection after commiting all changes
+     * A method that when called will terminate the database connection after
+     * commiting all changes
      *
      */
     public void closeConnection() {

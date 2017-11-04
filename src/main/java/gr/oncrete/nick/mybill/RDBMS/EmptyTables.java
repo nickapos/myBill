@@ -15,42 +15,38 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-/*
+ /*
  * EmptyConstantTables.java
  *
  * Created on 8 Ιούλιος 2005, 10:53 πμ
  */
-
 package gr.oncrete.nick.mybill.RDBMS;
+
 import java.sql.SQLException;
 
 /**
  *
  * @author nickapos
  */
-public class EmptyTables extends BasicTableOperation
-{
-   
-   /** Creates a new instance of EmptyCOnstantTables */
-   public EmptyTables ()
-   {
-      super.initiateDBConnection();
-      DatabaseConnection.setAutoCommitOff ();
-      try
-      {
-         DatabaseConnection.update ("delete from companies");
-         DatabaseConnection.update ("delete from categories ");
-         DatabaseConnection.commitTransaction ();
-         
-      }
-      catch (SQLException sqle)
-      {
-         DatabaseConnection.rollbackTransaction ();
-         sqle.printStackTrace ();
-      }
-      //DatabaseConnection.shutdown ();
-   }
-   
-   
-   
+public class EmptyTables extends BasicTableOperation {
+
+    /**
+     * Creates a new instance of EmptyCOnstantTables
+     */
+    public EmptyTables() {
+        super.initiateDBConnection();
+        DatabaseConnection.setAutoCommitOff();
+        try {
+            DatabaseConnection.update("delete from companies");
+            DatabaseConnection.update("delete from categories ");
+            DatabaseConnection.commitTransaction();
+
+        }
+        catch (SQLException sqle) {
+            DatabaseConnection.rollbackTransaction();
+            sqle.printStackTrace();
+        }
+        //DatabaseConnection.shutdown ();
+    }
+
 }

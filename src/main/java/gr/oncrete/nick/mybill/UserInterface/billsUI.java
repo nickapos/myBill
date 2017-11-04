@@ -24,7 +24,6 @@
 package gr.oncrete.nick.mybill.UserInterface;
 
 import gr.oncrete.nick.mybill.BusinessLogic.*;
-import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.MyFileWriter;
 import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.NewThreadFileWriter;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.*;
 import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateBillRecord;
@@ -35,6 +34,8 @@ import java.awt.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -43,6 +44,7 @@ import javax.swing.*;
  */
 public class billsUI extends javax.swing.JFrame {
 
+    private final static Logger LOGGER = Logger.getLogger(ShutdownDB.class.getName());
     //just the plot panel
     PlotPanel plPanel;
     Today today = new Today();
@@ -153,7 +155,7 @@ public class billsUI extends javax.swing.JFrame {
         reportButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        operationsMenu = new javax.swing.JMenu();
         importMenu = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -167,7 +169,7 @@ public class billsUI extends javax.swing.JFrame {
         emptyDBMenuItem = new javax.swing.JMenuItem();
         executeSqlMenuItem = new javax.swing.JMenuItem();
         shutdownMenuItem = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
+        toolsjMenu = new javax.swing.JMenu();
         validateVatMenuItem = new javax.swing.JMenuItem();
         manageCategoriesMenuItem = new javax.swing.JMenuItem();
         mergeOperationsJMenu = new javax.swing.JMenu();
@@ -180,7 +182,7 @@ public class billsUI extends javax.swing.JFrame {
         RecurringPaymentsForLastYearMenuItem = new javax.swing.JMenuItem();
         presentTransactionsPerCompanyMenuItem = new javax.swing.JMenuItem();
         invertRecordMenuItem = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        aboutMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -205,11 +207,6 @@ public class billsUI extends javax.swing.JFrame {
         InsertEditBillPanel.add(jLabel6);
 
         billIdTextField.setEditable(false);
-        billIdTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                billIdTextFieldActionPerformed(evt);
-            }
-        });
         InsertEditBillPanel.add(billIdTextField);
 
         jLabel1.setText(bundle.getString("billsUI.jLabel1.text")); // NOI18N
@@ -283,11 +280,6 @@ public class billsUI extends javax.swing.JFrame {
         InsertEditBillPanel.add(jLabel22);
 
         billCommentTextField.setText(bundle.getString("billsUI.billCommentTextField.text")); // NOI18N
-        billCommentTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                billCommentTextFieldActionPerformed(evt);
-            }
-        });
         InsertEditBillPanel.add(billCommentTextField);
 
         billRetrieveButton.setText(bundle.getString("billsUI.billRetrieveButton.text")); // NOI18N
@@ -325,11 +317,6 @@ public class billsUI extends javax.swing.JFrame {
         InsertEditIncome.add(jLabel16);
 
         incomeIDTextField.setEditable(false);
-        incomeIDTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                incomeIDTextFieldActionPerformed(evt);
-            }
-        });
         InsertEditIncome.add(incomeIDTextField);
 
         jLabel17.setText(bundle.getString("billsUI.jLabel17.text")); // NOI18N
@@ -554,7 +541,7 @@ public class billsUI extends javax.swing.JFrame {
 
         tabs.addTab(bundle.getString("billsUI.ReportsPanel.TabConstraints.tabTitle"), ReportsPanel); // NOI18N
 
-        jMenu1.setText(bundle.getString("billsUI.jMenu1.text")); // NOI18N
+        operationsMenu.setText(bundle.getString("billsUI.operationsMenu.text")); // NOI18N
 
         importMenu.setText(bundle.getString("billsUI.importMenu.text")); // NOI18N
 
@@ -574,7 +561,7 @@ public class billsUI extends javax.swing.JFrame {
         });
         importMenu.add(jMenuItem1);
 
-        jMenu1.add(importMenu);
+        operationsMenu.add(importMenu);
 
         exportMenu.setText(bundle.getString("billsUI.exportMenu.text")); // NOI18N
 
@@ -618,7 +605,7 @@ public class billsUI extends javax.swing.JFrame {
         });
         exportMenu.add(exportQIF);
 
-        jMenu1.add(exportMenu);
+        operationsMenu.add(exportMenu);
 
         emptyDBMenyItem.setText(bundle.getString("billsUI.emptyDBMenyItem.text")); // NOI18N
 
@@ -630,7 +617,7 @@ public class billsUI extends javax.swing.JFrame {
         });
         emptyDBMenyItem.add(emptyDBMenuItem);
 
-        jMenu1.add(emptyDBMenyItem);
+        operationsMenu.add(emptyDBMenyItem);
 
         executeSqlMenuItem.setText(bundle.getString("billsUI.executeSqlMenuItem.text")); // NOI18N
         executeSqlMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -638,7 +625,7 @@ public class billsUI extends javax.swing.JFrame {
                 executeSqlMenuItemActionPerformed(evt);
             }
         });
-        jMenu1.add(executeSqlMenuItem);
+        operationsMenu.add(executeSqlMenuItem);
 
         shutdownMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
         shutdownMenuItem.setText(bundle.getString("billsUI.shutdownMenuItem.text")); // NOI18N
@@ -647,16 +634,11 @@ public class billsUI extends javax.swing.JFrame {
                 shutdownMenuItemActionPerformed(evt);
             }
         });
-        jMenu1.add(shutdownMenuItem);
+        operationsMenu.add(shutdownMenuItem);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(operationsMenu);
 
-        jMenu3.setText(bundle.getString("billsUI.jMenu3.text")); // NOI18N
-        jMenu3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu3ActionPerformed(evt);
-            }
-        });
+        toolsjMenu.setText(bundle.getString("billsUI.toolsjMenu.text")); // NOI18N
 
         validateVatMenuItem.setText(bundle.getString("billsUI.validateVatMenuItem.text")); // NOI18N
         validateVatMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -664,7 +646,7 @@ public class billsUI extends javax.swing.JFrame {
                 validateVatMenuItemActionPerformed(evt);
             }
         });
-        jMenu3.add(validateVatMenuItem);
+        toolsjMenu.add(validateVatMenuItem);
 
         manageCategoriesMenuItem.setText(bundle.getString("billsUI.manageCategoriesMenuItem.text")); // NOI18N
         manageCategoriesMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -672,7 +654,7 @@ public class billsUI extends javax.swing.JFrame {
                 manageCategoriesMenuItemActionPerformed(evt);
             }
         });
-        jMenu3.add(manageCategoriesMenuItem);
+        toolsjMenu.add(manageCategoriesMenuItem);
 
         mergeOperationsJMenu.setText(bundle.getString("billsUI.mergeOperationsJMenu.text")); // NOI18N
 
@@ -692,7 +674,7 @@ public class billsUI extends javax.swing.JFrame {
         });
         mergeOperationsJMenu.add(jMenuItem10);
 
-        jMenu3.add(mergeOperationsJMenu);
+        toolsjMenu.add(mergeOperationsJMenu);
 
         changeDBCurrencyMenuItem.setText(bundle.getString("billsUI.changeDBCurrencyMenuItem.text")); // NOI18N
         changeDBCurrencyMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -700,7 +682,7 @@ public class billsUI extends javax.swing.JFrame {
                 changeDBCurrencyMenuItemActionPerformed(evt);
             }
         });
-        jMenu3.add(changeDBCurrencyMenuItem);
+        toolsjMenu.add(changeDBCurrencyMenuItem);
 
         calculateAmortizationMenuItem.setText(bundle.getString("billsUI.calculateAmortizationMenuItem.text")); // NOI18N
         calculateAmortizationMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -708,7 +690,7 @@ public class billsUI extends javax.swing.JFrame {
                 calculateAmortizationMenuItemActionPerformed(evt);
             }
         });
-        jMenu3.add(calculateAmortizationMenuItem);
+        toolsjMenu.add(calculateAmortizationMenuItem);
 
         Analytics.setText("Analytics");
 
@@ -736,7 +718,7 @@ public class billsUI extends javax.swing.JFrame {
         });
         Analytics.add(presentTransactionsPerCompanyMenuItem);
 
-        jMenu3.add(Analytics);
+        toolsjMenu.add(Analytics);
 
         invertRecordMenuItem.setText(bundle.getString("billsUI.invertRecordMenuItem.text")); // NOI18N
         invertRecordMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -744,11 +726,11 @@ public class billsUI extends javax.swing.JFrame {
                 invertRecordMenuItemActionPerformed(evt);
             }
         });
-        jMenu3.add(invertRecordMenuItem);
+        toolsjMenu.add(invertRecordMenuItem);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(toolsjMenu);
 
-        jMenu2.setText(bundle.getString("billsUI.jMenu2.text")); // NOI18N
+        aboutMenu.setText(bundle.getString("billsUI.aboutMenu.text")); // NOI18N
 
         aboutMenuItem.setText(bundle.getString("billsUI.aboutMenuItem.text")); // NOI18N
         aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -756,9 +738,9 @@ public class billsUI extends javax.swing.JFrame {
                 aboutMenuItemActionPerformed(evt);
             }
         });
-        jMenu2.add(aboutMenuItem);
+        aboutMenu.add(aboutMenuItem);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(aboutMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -779,10 +761,6 @@ public class billsUI extends javax.swing.JFrame {
     private void billGoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billGoButtonActionPerformed
         this.billAction();
     }//GEN-LAST:event_billGoButtonActionPerformed
-
-    private void billIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billIdTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_billIdTextFieldActionPerformed
 
     private void inserEditBillComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inserEditBillComboBoxActionPerformed
         //an alaksei to status na vriskei to id kai analoga na thetei ta diafora values
@@ -842,7 +820,6 @@ public class billsUI extends javax.swing.JFrame {
         if (a == 1 || a == 2)//if selected value is edit or delete
         {
             String id = this.companyDetailsIDTextField.getText();
-            //System.out.println("id is "+id);
             if (id.length() > 0) {
                 SelectCompanyDetails z = new SelectCompanyDetails();
                 z.SelectCompanyDetailsWithID(id);
@@ -883,6 +860,7 @@ public class billsUI extends javax.swing.JFrame {
         PopupMessageFrame mes = new PopupMessageFrame();
         mes.setNotification(java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("THE-DATABASE-ENGINE-AND-THE-APPLICATION-WILL-SHUTDOWN"));
         ShutdownDB s = new ShutdownDB();
+        LOGGER.log(Level.INFO, s.toString());
         System.exit(0);
 }//GEN-LAST:event_shutdownMenuItemActionPerformed
 
@@ -952,12 +930,7 @@ public class billsUI extends javax.swing.JFrame {
             reportParametersFinalComboBox.setModel(new javax.swing.DefaultComboBoxModel(years));
         }
 
-
     }//GEN-LAST:event_reportComboBoxActionPerformed
-
-    private void incomeIDTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incomeIDTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_incomeIDTextFieldActionPerformed
 
     private void incomeActionComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_incomeActionComboBoxActionPerformed
         //an alaksei to status na vriskei to id kai analoga na thetei ta diafora values
@@ -1026,10 +999,6 @@ public class billsUI extends javax.swing.JFrame {
         m.displayApp();
     }//GEN-LAST:event_manageCategoriesMenuItemActionPerformed
 
-    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenu3ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String outStr = "";
         outStr = outStr + "Date:" + this.getDateTime() + "\n\n";
@@ -1050,16 +1019,13 @@ public class billsUI extends javax.swing.JFrame {
             }
             JFileChooser fc = new JFileChooser(System.getProperty("user.home"));
             int option = fc.showSaveDialog(null);
-            if (option == JFileChooser.APPROVE_OPTION) {
-                if (fc.getSelectedFile() != null) {
-                    String curDir = fc.getCurrentDirectory().getAbsolutePath();
-                    String theFileToSave = fc.getName(fc.getSelectedFile());
-                    //this.writeFile(curDir + System.getProperty("file.separator") + theFileToSave, outStr);
-                    this.writeFileNewThread(curDir + System.getProperty("file.separator") + theFileToSave, outStr);
-                }
+            if (option == JFileChooser.APPROVE_OPTION && fc.getSelectedFile() != null) {
+                String curDir = fc.getCurrentDirectory().getAbsolutePath();
+                String theFileToSave = fc.getName(fc.getSelectedFile());
+                //this.writeFile(curDir + System.getProperty("file.separator") + theFileToSave, outStr);
+                this.writeFileNewThread(curDir + System.getProperty("file.separator") + theFileToSave, outStr);
             }
         }
-        // System.out.println(outStr);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void dateOfIssueTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateOfIssueTextFieldActionPerformed
@@ -1122,10 +1088,6 @@ public class billsUI extends javax.swing.JFrame {
         mcr.displayApp();
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
-    private void billCommentTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_billCommentTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_billCommentTextFieldActionPerformed
-
     private void showRatesFrameButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showRatesFrameButton1ActionPerformed
         ExchangeRatesFrame exrf = new ExchangeRatesFrame(foreignCurrencyTextField, foreignCurrencyTextField1);
         exrf.presentExchangeRateFrame();
@@ -1137,7 +1099,7 @@ public class billsUI extends javax.swing.JFrame {
             this.foreignCurrencyTextField1.setEnabled(true);
         } else {
             this.foreignCurrencyTextField1.setEnabled(false);
-        }        // TODO add your handling code here:
+        }
     }//GEN-LAST:event_foreignCurrencyCheckBox1ActionPerformed
 
     private void invertRecordMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_invertRecordMenuItemActionPerformed
@@ -1147,13 +1109,11 @@ public class billsUI extends javax.swing.JFrame {
     }//GEN-LAST:event_invertRecordMenuItemActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
         ImportBankStatementFrame importStatement = new ImportBankStatementFrame();
         importStatement.showImportStatemenFrame();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void companyDetailsCNameTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_companyDetailsCNameTextFieldKeyReleased
-        // TODO add your handling code here://System.out.println("descComp: "+descCompName+" and its hash code is: "+descCompName.hashCode());
         //Making sure afm is less than 9 digits, while allowing for smaller numbers to be allowed without problem
         String descCompName = companyDetailsCNameTextField.getText();
         String afmFull = Integer.toString(descCompName.hashCode());
@@ -1178,12 +1138,12 @@ public class billsUI extends javax.swing.JFrame {
 
     private void AnalyticsForPeriodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnalyticsForPeriodActionPerformed
         PresentTransactionsAnalyticsForPeriod tp = new PresentTransactionsAnalyticsForPeriod();
-        tp.displayApp();        
+        tp.displayApp();
     }//GEN-LAST:event_AnalyticsForPeriodActionPerformed
 
     private void RecurringPaymentsForLastYearMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RecurringPaymentsForLastYearMenuItemActionPerformed
         PresentRecurringPayments tp = new PresentRecurringPayments();
-        tp.displayApp(); 
+        tp.displayApp();
     }//GEN-LAST:event_RecurringPaymentsForLastYearMenuItemActionPerformed
 
     /**
@@ -1204,6 +1164,7 @@ public class billsUI extends javax.swing.JFrame {
     private javax.swing.JPanel InsertEditIncome;
     private javax.swing.JMenuItem RecurringPaymentsForLastYearMenuItem;
     private javax.swing.JPanel ReportsPanel;
+    private javax.swing.JMenu aboutMenu;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JTextField billAmountTextField;
     private javax.swing.JTextField billCommentTextField;
@@ -1276,9 +1237,6 @@ public class billsUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
@@ -1287,6 +1245,7 @@ public class billsUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem manageCategoriesMenuItem;
     private javax.swing.JMenu mergeOperationsJMenu;
+    private javax.swing.JMenu operationsMenu;
     private javax.swing.JMenuItem presentTransactionsPerCompanyMenuItem;
     private javax.swing.JButton reportButton;
     private javax.swing.JComboBox reportComboBox;
@@ -1299,6 +1258,7 @@ public class billsUI extends javax.swing.JFrame {
     private javax.swing.JButton showRatesFrameButton1;
     private javax.swing.JMenuItem shutdownMenuItem;
     private javax.swing.JTabbedPane tabs;
+    private javax.swing.JMenu toolsjMenu;
     private javax.swing.JMenuItem validateVatMenuItem;
     // End of variables declaration//GEN-END:variables
 
@@ -1422,7 +1382,6 @@ public class billsUI extends javax.swing.JFrame {
      *
      */
     private void reportPresentCompanies() {
-        //TODO: change this with a faster algorithm, like the bill report
         SelectAllCompaniesIDS compIDS = new SelectAllCompaniesIDS();
         java.util.LinkedList cIdList = (LinkedList) compIDS.getAllRows();
         String[] columnNames = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("COMPANY ID"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("COMPANY NAME"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("COMPANY AFM"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("CATEGORY")};
@@ -1815,33 +1774,6 @@ public class billsUI extends javax.swing.JFrame {
     }
 
     /**
-     * method used to export the database into csv's
-     *
-     * @param filename
-     * @param a
-     */
-    private void writeFile(String filename, ArrayList a) {
-        MyFileWriter m = new MyFileWriter();
-        m.createFile(filename);
-        Iterator i = a.iterator();
-        while (i.hasNext()) {
-            String nextLine = (String) i.next();
-            if (nextLine.length() > 0) {
-                System.out.println(nextLine);
-                m.writeToFile(nextLine);
-            }
-        }
-        m.closeFile();
-    }
-
-    private void writeFile(String filename, String a) {
-        MyFileWriter m = new MyFileWriter();
-        m.createFile(filename);
-        m.writeToFile(a);
-        m.closeFile();
-    }
-
-    /**
      * this method can be used to write a file in a new separate thread
      *
      * @param filename
@@ -1864,8 +1796,8 @@ public class billsUI extends javax.swing.JFrame {
         while (i.hasNext()) {
             String nextLine = (String) i.next();
             if (nextLine.length() > 0) {
-                content = content + nextLine + "\n";
-                System.out.println(nextLine);
+                content += nextLine + "\n";
+                LOGGER.log(Level.INFO, nextLine);
             }
         }
         NewThreadFileWriter m = new NewThreadFileWriter(filename, content);
@@ -1908,6 +1840,7 @@ public class billsUI extends javax.swing.JFrame {
         {
             if (dop.length() > 0 && dofi.length() > 0 && billAmt.length() > 0 && company.length() > 0) {
                 InsertBills ins = new InsertBills(company, billAmt, dofi, dop, comment);
+                LOGGER.log(Level.INFO, ins.toString());
                 this.clearBillTextFields();
             }
 
@@ -1918,6 +1851,7 @@ public class billsUI extends javax.swing.JFrame {
 
             if (bid.length() > 0 && dop.length() > 0 && dofi.length() > 0 && billAmt.length() > 0 && company.length() > 0) {
                 UpdateBillRecord u = new UpdateBillRecord(bid, company, billAmt, dofi, dop, comment);
+                LOGGER.log(Level.INFO, u.toString());
                 this.clearBillTextFields();
             }
 
@@ -1926,6 +1860,7 @@ public class billsUI extends javax.swing.JFrame {
             String bid = billIdTextField.getText();
             if (bid.length() > 0) {
                 DeleteBill del = new DeleteBill(bid);
+                LOGGER.log(Level.INFO, del.toString());
                 this.clearBillTextFields();
             }
 
@@ -1952,6 +1887,7 @@ public class billsUI extends javax.swing.JFrame {
         {
             if (dop.length() > 0 && amt.length() > 0 && company.length() > 0) {
                 InsertIncome ins = new InsertIncome(company, amt, dop, comment);
+                LOGGER.log(Level.INFO, ins.toString());
                 this.clearIncomeTextFields();
             }
         } else if (a == 1)//if selected value is edit
@@ -1959,6 +1895,7 @@ public class billsUI extends javax.swing.JFrame {
             String inid = incomeIDTextField.getText();
             if (inid.length() > 0 && dop.length() > 0 && amt.length() > 0 && company.length() > 0) {
                 UpdateIncomeRecord u = new UpdateIncomeRecord(inid, company, amt, dop, comment);
+                LOGGER.log(Level.INFO, u.toString());
                 this.clearIncomeTextFields();
             }
         } else if (a == 2)//if selected value is delete
@@ -1966,6 +1903,7 @@ public class billsUI extends javax.swing.JFrame {
             String inid = incomeIDTextField.getText();
             if (inid.length() > 0) {
                 DeleteIncome del = new DeleteIncome(inid);
+                LOGGER.log(Level.INFO, del.toString());
                 this.clearIncomeTextFields();
             }
 
@@ -2006,6 +1944,7 @@ public class billsUI extends javax.swing.JFrame {
             categ.selectCatByName(catName);
             if (cid.length() > 0 && cAfm.length() > 0 && cName.length() > 0 && categ.getCatID().length() > 0) {
                 UpdateCompanyRecord u = new UpdateCompanyRecord(cid, cName, cAfm, categ.getCatID());
+                LOGGER.log(Level.INFO, u.toString());
                 this.clearCompanyTextFields();
             }
 
@@ -2013,6 +1952,7 @@ public class billsUI extends javax.swing.JFrame {
         {
             String id = this.companyDetailsIDTextField.getText();
             DeleteCompany d = new DeleteCompany(id);
+            LOGGER.log(Level.INFO, d.toString());
             this.clearCompanyTextFields();
         }
 

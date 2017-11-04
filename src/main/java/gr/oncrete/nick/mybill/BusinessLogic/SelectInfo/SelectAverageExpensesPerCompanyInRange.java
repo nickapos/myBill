@@ -61,17 +61,15 @@ public class SelectAverageExpensesPerCompanyInRange {
             sql = sql1 + sql2 + startPeriod + "'" + sql3 + endPeriod + "'" + sql4 + orderByNumOfRecords;
         } else if (orderBy.equals("Amount")) {
             sql = sql1 + sql2 + startPeriod + "'" + sql3 + endPeriod + "'" + sql4 + orderByAmount;
-        } else if(orderBy.equals("Average")){
+        } else if (orderBy.equals("Average")) {
             sql = sql1 + sql2 + startPeriod + "'" + sql3 + endPeriod + "'" + sql4 + orderByAverage;
-        }
-        else {
+        } else {
             sql = sql1 + sql2 + startPeriod + "'" + sql3 + endPeriod + "'" + sql4 + orderByAmount;
         }
         this.splitResults(sql);
     }
 
     private void splitResults(String sql) {
-        //System.out.println(sql);
         List<String> a = sel.executeQuery(sql);
         List<List<String>> partitionedList = Lists.partition(a, 5);
         analyticsRecordList = partitionedList.stream().map(n -> new AnalyticsRecord(n.get(0), n.get(1), n.get(2), n.get(3), n.get(4))).collect(Collectors.toList());
@@ -79,13 +77,11 @@ public class SelectAverageExpensesPerCompanyInRange {
 
     public String toString() {
         String results = analyticsRecordList.stream().map(n -> n.toString()).collect(Collectors.joining("\n"));
-        //System.out.println(results);
         return results;
     }
 
     public List<String> getCidList() {
         List<String> cidList = analyticsRecordList.stream().map(n -> n.getCid()).collect(Collectors.toList());
-        //System.out.println(cidList.toString());
         return cidList;
     }
 
@@ -132,7 +128,7 @@ public class SelectAverageExpensesPerCompanyInRange {
         public String getAvPrice() {
             return new DecimalFormat("####.##").format(this.getAvPriceDouble());
         }
-        
+
         public double getAvPriceDouble() {
             return Double.valueOf(avPrice);
         }
@@ -158,7 +154,7 @@ public class SelectAverageExpensesPerCompanyInRange {
         }
 
         public String toString() {
-            return String.format(" Num Of Records: %s Total Amount: %s  Average Amount: %s  Company Name: %s" , this.getNumberOfRecords() , this.getTotalAmount(), this.getAvPrice(), this.getCompanyName());
+            return String.format(" Num Of Records: %s Total Amount: %s  Average Amount: %s  Company Name: %s", this.getNumberOfRecords(), this.getTotalAmount(), this.getAvPrice(), this.getCompanyName());
         }
 
     }

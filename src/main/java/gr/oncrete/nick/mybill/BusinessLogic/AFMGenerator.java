@@ -14,7 +14,6 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package gr.oncrete.nick.mybill.BusinessLogic;
 
 /**
@@ -23,13 +22,12 @@ package gr.oncrete.nick.mybill.BusinessLogic;
  */
 public class AFMGenerator {
 
-    
     CheckAFM u;
+
     /**
      *
      */
-    public AFMGenerator()
-    {
+    public AFMGenerator() {
 
     }
 
@@ -38,16 +36,13 @@ public class AFMGenerator {
      * @param a
      * @param nomafm
      */
-    public AFMGenerator(int a,int nomafm)
-    {
-      for(int i=a;i<a+nomafm;i++)
-      {
-          u=new CheckAFM(""+i);
-          if(u.returnResult())
-          {
-              System.out.println(u.getAfm());
-          }
-      }
+    public AFMGenerator(int a, int nomafm) {
+        for (int i = a; i < a + nomafm; i++) {
+            u = new CheckAFM("" + i);
+            if (u.returnResult()) {
+                System.out.println(u.getAfm());
+            }
+        }
     }
 
 }

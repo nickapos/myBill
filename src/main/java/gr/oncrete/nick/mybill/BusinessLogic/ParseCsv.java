@@ -26,7 +26,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-
 /**
  *
  * @author nickapos
@@ -51,27 +50,31 @@ public class ParseCsv {
      *
      * @param file
      * @param delim
-     * @return 
+     * @return
      */
     public ArrayList<ArrayList> parseData(String file, char delim) {
         ArrayList<ArrayList> content = new ArrayList();
         fileName = file;
         BufferedReader br = null;
         try {
-            CSVReader reader = new CSVReader(new FileReader(fileName),delim);
+            CSVReader reader = new CSVReader(new FileReader(fileName), delim);
             String[] nextLine;
             while ((nextLine = reader.readNext()) != null) {
                 // nextLine[] is an array of values from the line
-                content.add(new ArrayList( Arrays.asList(nextLine)));
+                content.add(new ArrayList(Arrays.asList(nextLine)));
             }
 
-        } catch (FileNotFoundException e) {
-        } catch (IOException e) {
-        } finally {
+        }
+        catch (FileNotFoundException e) {
+        }
+        catch (IOException e) {
+        }
+        finally {
             if (br != null) {
                 try {
                     br.close();
-                } catch (IOException e) {
+                }
+                catch (IOException e) {
                 }
             }
         }
