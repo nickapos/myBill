@@ -16,7 +16,7 @@
  */
 package gr.oncrete.nick.mybill.test.BusinessLogic;
 
-import gr.oncrete.nick.mybill.BusinessLogic.InsertBills;
+import gr.oncrete.nick.mybill.businesslogic.InsertBills;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
