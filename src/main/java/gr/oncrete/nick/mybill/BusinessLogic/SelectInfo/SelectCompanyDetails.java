@@ -70,7 +70,6 @@ public class SelectCompanyDetails {
     }
 
     private void splitResults(String sql) {
-        //System.out.println(sql);
         ArrayList<String> a = sel.executeQuery(sql);
 
         if (a.size() > 0) {
@@ -79,7 +78,6 @@ public class SelectCompanyDetails {
             name = a.get(1);
             afm = a.get(2);
             catid = a.get(3);
-            //System.out.println(id+name+afm);
         }
     }
 

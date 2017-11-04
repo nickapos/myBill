@@ -22,6 +22,8 @@
 package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
 
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -29,14 +31,8 @@ import java.util.*;
  */
 public class SelectAllBillsDetails extends SelectAllIDS {
 
-    /**
-     *
-     */
+    private final static Logger LOGGER = Logger.getLogger(SelectAllBillsDetails.class.getName());
     protected List rows = new LinkedList();
-    ;
-    /**
-     *
-     */
     protected String sql1 = "SELECT bid,companyname,dateofissue,dayofpayment,price,comment FROM bills a left join companies b on a.cid=b.cid";
 
     /**
@@ -56,19 +52,11 @@ public class SelectAllBillsDetails extends SelectAllIDS {
         super.runQueryL(sql1);
         LinkedList results = (LinkedList) this.getIds();
         if (results.isEmpty()) {
-            System.out.println("result set is empty. Dump database operation aborted");
+            LOGGER.log(Level.INFO, "result set is empty. Dump database operation not proceeding");
             results = new LinkedList<String>();
             //System.exit(1);
 
         } else {
-
-            /*for (int i = 0; i < results.size(); i += 5) {
-                //with ids
-                String [] row = { (String)results.get(i),(String) results.get(i + 1),(String) results.get(i + 2),(String) results.get(i + 3),(String) results.get(i + 4) };
-
-                rows.add(row);
-                //System.out.println(row);
-            }*/
             rows = results;
         }
     }

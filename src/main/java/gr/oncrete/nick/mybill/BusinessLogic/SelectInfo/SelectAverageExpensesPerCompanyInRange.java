@@ -70,7 +70,6 @@ public class SelectAverageExpensesPerCompanyInRange {
     }
 
     private void splitResults(String sql) {
-        //System.out.println(sql);
         List<String> a = sel.executeQuery(sql);
         List<List<String>> partitionedList = Lists.partition(a, 5);
         analyticsRecordList = partitionedList.stream().map(n -> new AnalyticsRecord(n.get(0), n.get(1), n.get(2), n.get(3), n.get(4))).collect(Collectors.toList());
@@ -78,13 +77,11 @@ public class SelectAverageExpensesPerCompanyInRange {
 
     public String toString() {
         String results = analyticsRecordList.stream().map(n -> n.toString()).collect(Collectors.joining("\n"));
-        //System.out.println(results);
         return results;
     }
 
     public List<String> getCidList() {
         List<String> cidList = analyticsRecordList.stream().map(n -> n.getCid()).collect(Collectors.toList());
-        //System.out.println(cidList.toString());
         return cidList;
     }
 

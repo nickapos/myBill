@@ -44,7 +44,6 @@ public class SelectReportIncomeSumsPerMonthYear extends SelectReportExpensesSums
         String sqlb = "-01-01' and dateofpayment <= '";
         String sqlc = "-12-31'  group by month(dateofpayment) order by month(dateofpayment)";
         sql = sqla + year + sqlb + year + sqlc;
-        //System.out.println(sql);
         super.runQuery(sql);
     }
 }

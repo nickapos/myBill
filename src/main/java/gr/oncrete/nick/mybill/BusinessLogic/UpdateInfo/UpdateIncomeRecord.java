@@ -49,7 +49,6 @@ public class UpdateIncomeRecord extends UpdateRecord {
             } else {
                 sql1 = sql + i.getID() + "', amount=" + amount + ", dateofpayment='" + dateofpayment + "' where inid=" + inid;
             }
-            //System.out.println(sql1);
             super.runQuery(sql1);
         }
     }
@@ -69,8 +68,6 @@ public class UpdateIncomeRecord extends UpdateRecord {
             } else {
                 sql1 = sql + companyID + "', amount=" + amount + ", dateofpayment='" + dateofpayment + "' where inid=" + inid;
             }
-
-            //System.out.println(sql1);
             super.runQuery(sql1);
         }
     }

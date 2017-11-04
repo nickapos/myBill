@@ -17,6 +17,8 @@
 package gr.oncrete.nick.mybill.test.BusinessLogic;
 
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.DumpDatabaseinQIF;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -25,6 +27,8 @@ import org.junit.Test;
  * @author nickapos
  */
 public class QIFTest {
+
+    private final static Logger LOGGER = Logger.getLogger(QIFTest.class.getName());
 
     /**
      *
@@ -69,8 +73,8 @@ public class QIFTest {
      */
     @Test
     public void testCheckQIF() {
-        System.out.println("check reference qif");
 
+        LOGGER.log(Level.INFO, "check reference qif");
         String category = "General Category";
         String company = "My Company";
         String amount = "1.43";

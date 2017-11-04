@@ -24,6 +24,8 @@ package gr.oncrete.nick.mybill.RDBMS;
 
 import gr.oncrete.nick.mybill.UserInterface.PopupMessageFrame;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,6 +33,7 @@ import java.sql.SQLException;
  */
 public class InsertIntoTable extends BasicTableOperation {
 
+    private final static Logger LOGGER = Logger.getLogger(BasicTableOperation.class.getName());
     boolean succesfullCompletion = false;
     String sql = "";
 
@@ -60,9 +63,9 @@ public class InsertIntoTable extends BasicTableOperation {
         }
         catch (SQLException sqle) {
             this.warningPopUp();
-            System.out.println("Rolling Back");
+            LOGGER.log(Level.INFO, "Rolling Back");
             DatabaseConnection.rollbackTransaction();
-            System.out.println("Exception encountered. Insertion Cancelled");
+            LOGGER.log(Level.INFO, "Exception encountered. Insertion Cancelled");
             //sqle.printStackTrace();
         }
         //DatabaseConnection.shutdown ();

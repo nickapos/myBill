@@ -27,12 +27,16 @@ import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.NewThreadFileWriter;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.DumpDatabase;
 import java.text.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author nickapos
  */
 public class ExportCSVByPeriod extends javax.swing.JFrame {
+
+    private final static Logger LOGGER = Logger.getLogger(ExportCSVByPeriod.class.getName());
 
     /**
      * Creates new form AboutWindow
@@ -106,8 +110,6 @@ public class ExportCSVByPeriod extends javax.swing.JFrame {
         Date std = (Date) startDateSpinner.getValue();
         Date edd = (Date) endDateSpinner.getValue();
         SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd");
-        //System.out.println(""+df1.format(std));
-        //System.out.println(""+df1.format(edd));
         try {
             df1.parse("" + df1.format(std));
             df1.parse("" + df1.format(edd));
@@ -117,8 +119,7 @@ public class ExportCSVByPeriod extends javax.swing.JFrame {
             this.writeFileNewThread("period_" + df1.format(std) + "_" + df1.format(edd) + ".csv", a);
         }
         catch (ParseException pe) {
-            System.out.println("invalid date " + std);
-            System.out.println("invalid date " + edd);
+            LOGGER.log(Level.WARNING, String.format("invalid date %s invalid date %s ", std, edd));
         }
 
     }//GEN-LAST:event_validateButtonActionPerformed

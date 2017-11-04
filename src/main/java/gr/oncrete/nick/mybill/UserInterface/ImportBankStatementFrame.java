@@ -219,7 +219,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
 
     private void ImportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ImportButtonActionPerformed
         String bankName = (String) bankComboBox.getSelectedItem();
-        System.out.println("Selected Bank: " + bankName);
+        LOGGER.log(Level.INFO, String.format("Selected Bank: %s", bankName));
         Object[][] data = getTableData(recordTable);
         if (bankName.equals("TSB") || bankName.equals("Bank of Scotland")) {
             this.importTSBData(data);
@@ -231,7 +231,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         } else if (bankName.equals("Fidor UK") || bankName.equals("Fidor DE")) {
             this.importFidorData(data, bankName);
         } else {
-            System.out.println("No parsing template found");
+            LOGGER.log(Level.INFO, "No parsing template found");
         }
     }//GEN-LAST:event_ImportButtonActionPerformed
 
@@ -244,9 +244,9 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = fc.getSelectedFile();
             //This is where a real application would open the file.
-            System.out.println("Opening: " + file.getAbsolutePath());
+            LOGGER.log(Level.INFO, String.format("Opening: %s", file.getAbsolutePath()));
             String bankName = (String) bankComboBox.getSelectedItem();
-            System.out.println("Selected Bank: " + bankName);
+            LOGGER.log(Level.INFO, String.format("Selected Bank: %s", bankName));
             if (bankName.equals("TSB")) {
                 ParseTSBCsv tsb = new ParseTSBCsv();
                 ArrayList contentList = tsb.parseData(file.getAbsolutePath(), ',');
@@ -284,10 +284,10 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                 selectAllButton.setEnabled(true);
                 unselectAllButton.setEnabled(true);
             } else {
-                System.out.println("No parsing template found");
+                LOGGER.log(Level.INFO, "No parsing template found");
             }
         } else {
-            System.out.println("Open command cancelled by user.");
+            LOGGER.log(Level.INFO, "Open command cancelled by user.");
         }
     }//GEN-LAST:event_loadFileButtonActionPerformed
     /**
@@ -298,7 +298,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
      */
     private void displayStatementContent(ArrayList contentList, ParseCsv parser) {
         Object[][] contentStrArr = this.convertArrayListTo2DStringArray(contentList, parser.getNumOfFields());
-        System.out.println("The last columnt is:" + parser.getNumOfFields());
+        LOGGER.log(Level.INFO, String.format("The last columnt is: %s", parser.getNumOfFields()));
         String[] columnNames = parser.getColumnNames();
         if (contentList.size() > 0) {
             recordTable.setModel(new ImportBankStatementTableModel(contentStrArr, columnNames, parser.getNumOfFields()));
@@ -335,7 +335,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
 
     private void selectUnselectRecords(boolean set) {
         String bankName = (String) bankComboBox.getSelectedItem();
-        System.out.println("Selected Bank: " + bankName);
+        LOGGER.log(Level.INFO, String.format("Selected Bank: %s", bankName));
         Object[][] data = getTableData(recordTable);
         int length = data.length;
         int boolColumn = -1;
@@ -344,7 +344,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         } else if (bankName.equals("Pancretan Bank")) {
             boolColumn = 8;
         } else {
-            System.out.println("No parsing template found");
+            LOGGER.log(Level.INFO, "No parsing template found");
         }
         ImportBankStatementTableModel model = (ImportBankStatementTableModel) recordTable.getModel();
         for (int i = 0; i < length; i++) {
@@ -405,7 +405,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         int lineCounter = 0;
         while (iterContent.hasNext()) {
             ArrayList line = (ArrayList) iterContent.next();
-            System.out.println(line.toString());
+            LOGGER.log(Level.INFO, line.toString());
             for (int fieldCount = 0; fieldCount < numOfFields; fieldCount++) {
                 csvStringArr[lineCounter][fieldCount] = line.get(fieldCount);
             }
@@ -413,7 +413,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
 
             lineCounter++;
         }
-        System.out.println("Total no of columns: " + numOfFields);
+        LOGGER.log(Level.INFO, String.format("Total no of columns:: %s", numOfFields));
         return csvStringArr;
     }
 
@@ -451,8 +451,6 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                 String creditAm = (String) data[i][6];
                 //retrieve the category details
                 String categId = getCategID();
-
-                //System.out.println("descComp: "+descCompName+" and its hash code is: "+descCompName.hashCode());
                 //Making sure afm is less than 9 digits, while allowing for smaller numbers to be allowed without problem
                 String afmFull = Integer.toString(descCompName.hashCode());
                 String afm = "";
@@ -465,16 +463,10 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                 //get the category id for the import
                 String companyID = getCompID(descCompName, afm, categId);
                 if (debitAm.length() > 0) {
-                    //System.out.println("This a withdrawal");
-                    //System.out.println("I will import");
-                    //System.out.println("Record data:" +"Company"+companyID+" "+ this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " withdrawal:" + debitAm);
                     InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(debitAm), this.tsbCorrectDate(unCorrectedDate), this.tsbCorrectDate(unCorrectedDate), "Auto imported field");
                     LOGGER.log(Level.INFO, bill.toString());
 
                 } else {
-                    //System.out.println("This a deposit");
-                    //System.out.println("I will import");
-                    //System.out.println("Record data:" +"Company"+companyID+" "+ this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + creditAm);
                     InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(creditAm), this.tsbCorrectDate(unCorrectedDate), "Auto imported field");
                     LOGGER.log(Level.INFO, income.toString());
                 }
@@ -482,8 +474,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                 recordsImportedLabel.setText("" + importedRecordNo);
 
             } else {
-                System.out.println("I will not import");
-                System.out.println("Record number: " + i);
+                LOGGER.log(Level.INFO, "I will not import, record number: %d", i);
             }
         }
     }
@@ -515,7 +506,6 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             if (descCompName.contentEquals("")) {
                 descCompName = "Pancretabank Internal";
             }
-            //System.out.println("descComp: "+descCompName+" and its hash code is: "+descCompName.hashCode());
             //Making sure afm is less than 9 digits, while allowing for smaller numbers to be allowed without problem
             String afmFull = Integer.toString(descCompName.hashCode());
             String afm = "";
@@ -533,16 +523,10 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                 //get the category id for the import
                 String companyID = getCompID(descCompName, afm, categId);
                 if (recordType.equalsIgnoreCase("Withdrawal") || recordType.equalsIgnoreCase("Ανάληψη")) {
-                    //System.out.println("This a withdrawal");
-                    //System.out.println("I will import");
-                    //System.out.println("Record data:" + "Company:" + companyID + " Corrected Date: " + this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company des:" + descCompName + " withdrawal:" + this.applyExchangeRate(amount));
                     InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.pancretaCorrectDate(unCorrectedDate), this.pancretaCorrectDate(unCorrectedDate), "Auto imported field");
                     LOGGER.log(Level.INFO, bill.toString());
 
                 } else if (recordType.equalsIgnoreCase("Deposit") || recordType.equalsIgnoreCase("Κατάθεση")) {
-                    //System.out.println("This a deposit");
-                    //System.out.println("I will import");
-                    //System.out.println("Record data:" +"Company"+companyID+" "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + amount);
                     InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.pancretaCorrectDate(unCorrectedDate), "Auto imported field");
                     LOGGER.log(Level.INFO, income.toString());
                 }
@@ -550,8 +534,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                 recordsImportedLabel.setText("" + importedRecordNo);
 
             } else {
-                System.out.println("I will not import");
-                System.out.println("Record data:" + this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + "-" + amount);
+                LOGGER.log(Level.INFO, String.format("I will not import, Record data: %s afm: %s company: %s - %d ", this.pancretaCorrectDate(unCorrectedDate), afm, descCompName, amount));
             }
         }
     }
@@ -578,7 +561,6 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             if (descCompName.contentEquals("")) {
                 descCompName = "N26";
             }
-            //System.out.println("descComp: "+descCompName+" and its hash code is: "+descCompName.hashCode());
             //Making sure afm is less than 9 digits, while allowing for smaller numbers to be allowed without problem
             String afmFull = Integer.toString(descCompName.hashCode());
             String afm = "";
@@ -593,17 +575,11 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                 String companyID = getCompID(descCompName, afm, categId);
                 double amountD = Double.parseDouble(amount);
                 if (amountD < 0) {
-                    //System.out.println("This a withdrawal");
-                    //System.out.println("I will import");
-                    //System.out.println("Record data:" +"Company:"+companyID+" Corrected Date: "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company des:" + descCompName + " withdrawal:" + this.applyExchangeRate(amount));
                     amount = String.format("%.2f", -amountD);
                     InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(amount), date, date, "Auto imported field");
                     LOGGER.log(Level.INFO, bill.toString());
 
                 } else if (amountD > 0) {
-                    //System.out.println("This a deposit");
-                    //System.out.println("I will import");
-                    //System.out.println("Record data:" +"Company"+companyID+" "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + amount);
                     InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(amount), date, "Auto imported field");
                     LOGGER.log(Level.INFO, income.toString());
                 }
@@ -611,8 +587,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                 recordsImportedLabel.setText("" + importedRecordNo);
 
             } else {
-                System.out.println("I will not import");
-                System.out.println("Record data:" + date + " afm:" + afm + " company:" + descCompName + "-" + amount);
+                LOGGER.log(Level.INFO, String.format("I will not import. Record data: %s afm: %s company: %s - %s", date, afm, descCompName, amount));
             }
         }
     }
@@ -640,7 +615,6 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             if (desc1.contentEquals("")) {
                 desc1 = "Fidor Internal";
             }
-            //System.out.println("descComp: "+descCompName+" and its hash code is: "+descCompName.hashCode());
             //Making sure afm is less than 9 digits, while allowing for smaller numbers to be allowed without problem
             String afmFull = Integer.toString(desc1.hashCode());
             String afm = "";
@@ -662,17 +636,11 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                 String corrDateStripChar = unCorrectedDate.replaceAll("\\.", "/");
                 String corrDate = this.tsbCorrectDate(corrDateStripChar);
                 if (amountD < 0) {
-                    //System.out.println("This a withdrawal");
-                    //System.out.println("I will import");
-                    //System.out.println("Record data:" +"Company:"+companyID+" Corrected Date: "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company des:" + descCompName + " withdrawal:" + this.applyExchangeRate(amount));
                     amount = String.format("%.2f", -amountD);
                     InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(amount), corrDate, corrDate, desc2 + " Auto imported field");
                     LOGGER.log(Level.INFO, bill.toString());
 
                 } else if (amountD > 0) {
-                    //System.out.println("This a deposit");
-                    //System.out.println("I will import");
-                    //System.out.println("Record data:" +"Company"+companyID+" "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + amount);
                     amount = String.format("%.2f", amountD);
                     InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(amount), corrDate, desc2 + " Auto imported field");
                     LOGGER.log(Level.INFO, income.toString());
@@ -681,7 +649,6 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                 recordsImportedLabel.setText("" + importedRecordNo);
 
             } else {
-                System.out.println();
                 LOGGER.log(Level.SEVERE, "I will not import");
                 LOGGER.log(Level.SEVERE, "Record data:" + this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + desc1 + "-" + amount);
             }
@@ -699,7 +666,6 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         String day = splitDate[0];
         String month = splitDate[1];
         String year = splitDate[2];
-        //System.out.println("year:"+year+"month:"+month+"day:"+day);
         return year + "-" + month + "-" + day;
     }
 
@@ -714,7 +680,6 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         String day = splitDate[1];
         String month = splitDate[0];
         String year = splitDate[2];
-        //System.out.println("year: "+year+"month: "+month+"day: "+day);
         return year + "-" + month + "-" + day;
     }
 
@@ -734,7 +699,6 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         if (company.resultsExist()) {
             companyId = company.getID();
         } else {
-            //System.out.println("I am going to enter the following company details"+name+"-"+afm+"-"+catid);
             InsertCompany in = new InsertCompany();
             in.insertCompany(name, afm, catid);
             SelectCompanyDetails newCompany = new SelectCompanyDetails();
@@ -765,10 +729,9 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         df.setDecimalFormatSymbols(symbols);
         try {
             amountD = df.parse(amount).doubleValue();
-            //System.out.println("Double amount parsed"+amountD);
         }
         catch (ParseException e) {
-            System.out.println(e);
+            LOGGER.log(Level.INFO, e.toString());
         }
         return amountD;
     }

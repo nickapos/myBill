@@ -23,15 +23,20 @@
 package gr.oncrete.nick.mybill.RDBMS;
 
 import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.FileHandlerReadFile;
+import gr.oncrete.nick.mybill.BusinessLogic.ShutdownDB;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author nickapos
  */
 public class LoadConstantTables extends BasicTableOperation {
+
+    private final static Logger LOGGER = Logger.getLogger(LoadConstantTables.class.getName());
 
     /**
      * Creates a new instance of EmptyCOnstantTables
@@ -68,7 +73,7 @@ public class LoadConstantTables extends BasicTableOperation {
             Iterator it = commands.iterator();
             while (it.hasNext()) {
                 String next = (String) it.next();
-                System.out.println(next);
+                LOGGER.log(Level.INFO, next);
                 //for some reason null values appear in the ArrayList. This is to exclude them.
                 if (next != null) {
                     DatabaseConnection.update(next);//execute query

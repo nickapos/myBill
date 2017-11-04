@@ -83,7 +83,7 @@ public class ExecuteSqlWindow extends javax.swing.JFrame {
 
     private void executeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_executeButtonActionPerformed
         String sqlcommand = sqlTextArea.getText();
-        System.out.println(sqlcommand);
+        LOGGER.log(Level.INFO, sqlcommand);
         if (sqlcommand.length() > 0) {
             InsertIntoTable in = new InsertIntoTable(sqlcommand);
             LOGGER.log(Level.INFO, in.toString());

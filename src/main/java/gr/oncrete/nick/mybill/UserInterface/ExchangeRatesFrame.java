@@ -187,7 +187,6 @@ public class ExchangeRatesFrame extends javax.swing.JFrame {
      * @param evt
      */
     private void useItButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useItButtonActionPerformed
-        //System.out.println("Selected row num is: "+reportRatesTable.getSelectedRow());
         if (exchangeData != null && expensesFcTextField != null && incomeFcTextField != null) {
             String selectedValue = exchangeData[reportRatesTable.getSelectedRow()][1];
             expensesFcTextField.setText(selectedValue);

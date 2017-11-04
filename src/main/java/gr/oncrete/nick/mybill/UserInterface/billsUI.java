@@ -820,7 +820,6 @@ public class billsUI extends javax.swing.JFrame {
         if (a == 1 || a == 2)//if selected value is edit or delete
         {
             String id = this.companyDetailsIDTextField.getText();
-            //System.out.println("id is "+id);
             if (id.length() > 0) {
                 SelectCompanyDetails z = new SelectCompanyDetails();
                 z.SelectCompanyDetailsWithID(id);
@@ -1027,7 +1026,6 @@ public class billsUI extends javax.swing.JFrame {
                 this.writeFileNewThread(curDir + System.getProperty("file.separator") + theFileToSave, outStr);
             }
         }
-        // System.out.println(outStr);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void dateOfIssueTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateOfIssueTextFieldActionPerformed
@@ -1798,8 +1796,8 @@ public class billsUI extends javax.swing.JFrame {
         while (i.hasNext()) {
             String nextLine = (String) i.next();
             if (nextLine.length() > 0) {
-                content = content + nextLine + "\n";
-                System.out.println(nextLine);
+                content += nextLine + "\n";
+                LOGGER.log(Level.INFO, nextLine);
             }
         }
         NewThreadFileWriter m = new NewThreadFileWriter(filename, content);

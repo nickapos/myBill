@@ -25,12 +25,16 @@ package gr.oncrete.nick.mybill.UserInterface;
 
 import gr.oncrete.nick.mybill.BusinessLogic.CheckAFM;
 import gr.oncrete.nick.mybill.BusinessLogic.CheckVAT;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author nickapos
  */
 public class ValidateAFM extends javax.swing.JFrame {
+
+    private final static Logger LOGGER = Logger.getLogger(ValidateAFM.class.getName());
 
     /**
      * Creates new form AboutWindow
@@ -87,7 +91,7 @@ public class ValidateAFM extends javax.swing.JFrame {
 
     private void validateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateButtonActionPerformed
         String incAFM = afmTextField.getText();
-        System.out.println(incAFM);
+        LOGGER.log(Level.INFO, incAFM);
         CheckAFM c = new CheckAFM(incAFM);
         CheckVAT cv = new CheckVAT(incAFM);
         if (c.returnResult() && !cv.returnResult()) {

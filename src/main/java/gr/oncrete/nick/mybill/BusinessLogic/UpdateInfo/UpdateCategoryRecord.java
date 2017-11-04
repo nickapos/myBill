@@ -37,7 +37,6 @@ public class UpdateCategoryRecord extends UpdateRecord {
     public UpdateCategoryRecord(String oldName, String name) {
         //String sql1=sql+name+"' where catid="+id;
         String sql1 = sql + name + "' where categoryname='" + oldName + "'";
-        //System.out.println(sql1);
         super.runQuery(sql1);
     }
 

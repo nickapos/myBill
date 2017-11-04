@@ -251,7 +251,7 @@ public class DatabaseConnection {
         int i = st.executeUpdate(expression);    // run the query
 
         if (i == -1) {
-            System.out.println("db error : " + expression);
+            LOGGER.log(Level.INFO, String.format("db error : %s", expression));
         }
 
         st.close();
@@ -283,8 +283,6 @@ public class DatabaseConnection {
 
                 LOGGER.log(Level.INFO, o.toString());
             }
-
-            //System.out.println(" ");
         }
     }
 
@@ -322,8 +320,6 @@ public class DatabaseConnection {
                 }
                 lst.add(o.toString());
             }
-
-            //System.out.println (" ");
         }
     }
 
@@ -361,7 +357,6 @@ public class DatabaseConnection {
                 }
             }
             lst.add(s);
-            //System.out.println (" ");
         }
     }
 
@@ -399,7 +394,6 @@ public class DatabaseConnection {
                 }
             }
             lst.add(s);
-            //System.out.println (" ");
         }
     }
 

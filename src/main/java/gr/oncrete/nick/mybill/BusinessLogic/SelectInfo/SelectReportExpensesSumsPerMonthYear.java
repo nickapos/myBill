@@ -50,7 +50,6 @@ public class SelectReportExpensesSumsPerMonthYear extends SelectAllIDS {
         String sqlb = "-01-01' and dayofpayment <= '";
         String sqlc = "-12-31'  group by month(dayofpayment) order by month(dayofpayment)";
         sql = sqla + year + sqlb + year + sqlc;
-        //System.out.println(sql);
         super.runQuery(sql);
     }
 

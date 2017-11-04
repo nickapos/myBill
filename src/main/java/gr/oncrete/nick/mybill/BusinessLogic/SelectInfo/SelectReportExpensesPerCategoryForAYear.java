@@ -43,7 +43,6 @@ public class SelectReportExpensesPerCategoryForAYear extends SelectAllIDS {
         if (year.length() > 0) {
             String sql = sql1 + year + "-01-01' and c.dayofpayment<='" + year + "-12-31' " + sql2;
             super.runQuery(sql);
-            //System.out.println(sql);
         }
     }
 

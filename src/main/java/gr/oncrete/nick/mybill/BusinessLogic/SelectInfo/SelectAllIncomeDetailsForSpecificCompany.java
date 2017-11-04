@@ -22,12 +22,16 @@
 package gr.oncrete.nick.mybill.BusinessLogic.SelectInfo;
 
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author nickapos
  */
 public class SelectAllIncomeDetailsForSpecificCompany extends SelectAllIncomeDetails {
+
+    private final static Logger LOGGER = Logger.getLogger(SelectAllIncomeDetailsForSpecificCompany.class.getName());
 
     /**
      *
@@ -47,7 +51,7 @@ public class SelectAllIncomeDetailsForSpecificCompany extends SelectAllIncomeDet
         super.runQueryL(this.sql1);
         LinkedList results = (LinkedList) this.getIds();
         if (results.isEmpty()) {
-            System.out.println("result set is empty. Dump database operation aborted");
+            LOGGER.log(Level.INFO, "result set is empty. Dump database operation aborted");
             results = new LinkedList<String>();
             //System.exit(1);
 
@@ -59,7 +63,6 @@ public class SelectAllIncomeDetailsForSpecificCompany extends SelectAllIncomeDet
                 //String row = a[0]+a[1]+a[2]+a[3]+a[4];
                 String row = java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString(" DATE OF PAYMENT: ") + a[3] + "," + java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString(" AMOUNT: ") + a[2];
                 rows.add(row);
-                //System.out.println(row);
             }
         }
     }

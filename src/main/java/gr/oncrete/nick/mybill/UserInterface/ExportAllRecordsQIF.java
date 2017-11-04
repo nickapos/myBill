@@ -26,6 +26,8 @@ package gr.oncrete.nick.mybill.UserInterface;
 import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.NewThreadFileWriter;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.DumpDatabaseinQIF;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -33,6 +35,7 @@ import java.util.*;
  */
 public class ExportAllRecordsQIF extends javax.swing.JFrame {
 
+    private final static Logger LOGGER = Logger.getLogger(ExportAllRecordsQIF.class.getName());
     //the counter that will hold the number of affected rows
     int counter = 0;
 
@@ -132,8 +135,8 @@ public class ExportAllRecordsQIF extends javax.swing.JFrame {
         while (i.hasNext()) {
             String nextLine = (String) i.next();
             if (nextLine.length() > 0) {
-                content = content + nextLine + "\n";
-                System.out.println(nextLine);
+                content += nextLine + "\n";
+                LOGGER.log(Level.INFO, nextLine);
                 this.updateRowsAffectedCount(++counter);
             }
         }

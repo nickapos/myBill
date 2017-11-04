@@ -26,12 +26,16 @@ package gr.oncrete.nick.mybill.UserInterface;
 import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.NewThreadFileWriter;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.DumpDatabase;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author nickapos
  */
 public class ExportCSVByYear extends javax.swing.JFrame {
+
+    private final static Logger LOGGER = Logger.getLogger(ExportCSVByYear.class.getName());
 
     /**
      * Creates new form AboutWindow
@@ -103,7 +107,6 @@ public class ExportCSVByYear extends javax.swing.JFrame {
     private void validateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validateButtonActionPerformed
 
         String selYear = (String) yearsComboBox.getSelectedItem();
-        //System.out.println("Selected year "+ selYear);
         DumpDatabase dump = new DumpDatabase();
         ArrayList a = dump.getEforiaCsv("" + selYear);
         //this.writeFile("eforia-"+df1.format(d1)+".csv", a);
@@ -150,8 +153,9 @@ public class ExportCSVByYear extends javax.swing.JFrame {
         while (i.hasNext()) {
             String nextLine = (String) i.next();
             if (nextLine.length() > 0) {
-                content = content + nextLine + "\n";
+                content += nextLine + "\n";
                 System.out.println(nextLine);
+                LOGGER.log(Level.INFO, nextLine);
                 this.updateRowsAffectedCount(++counter);
             }
         }

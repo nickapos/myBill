@@ -39,7 +39,6 @@ public class UpdateCompanyRecord extends UpdateRecord {
      */
     public UpdateCompanyRecord(String id, String name, String afm, String catid) {
         String sql1 = sql + name + "', afm='" + afm + "', catid=" + catid + " where cid=" + id;
-        //System.out.println(sql1);
         super.runQuery(sql1);
     }
 

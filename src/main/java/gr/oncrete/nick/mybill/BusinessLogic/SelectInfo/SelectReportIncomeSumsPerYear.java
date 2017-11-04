@@ -38,7 +38,6 @@ public class SelectReportIncomeSumsPerYear extends SelectReportTotalIncomeSums {
         String sql2 = "-01-01' and dateofpayment <='";
         String sql3 = "-12-31'  group by companies.companyname order by sum(amount)";
         sql = sql0 + year + sql2 + year + sql3;
-        //System.out.println(sql);
         super.runQuery(sql);
     }
 

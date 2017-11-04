@@ -25,6 +25,8 @@ package gr.oncrete.nick.mybill.RDBMS;
 import gr.oncrete.nick.mybill.BusinessLogic.FileHandlers.FileHandlerReadFile;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -33,6 +35,7 @@ import java.util.Iterator;
 public class CreateDatabaseTables extends BasicTableOperation {
     //String initialDataDir = cfg.getInDataSetDirName ();
 
+    private final static Logger LOGGER = Logger.getLogger(CreateDatabaseTables.class.getName());
     TransactionSQLOperations trans = new TransactionSQLOperations();
     String schemaFile = "db_schema";
     String dropTableFile = "drop_tables_sql";
@@ -77,7 +80,7 @@ public class CreateDatabaseTables extends BasicTableOperation {
         while (it.hasNext()) {
             contentLine = (String) it.next();
             if (contentLine != null) {
-                System.out.println("Executing " + contentLine);
+                LOGGER.log(Level.INFO, String.format("Executing %s", contentLine));
                 trans.executeUpdate(contentLine);
             }
         }

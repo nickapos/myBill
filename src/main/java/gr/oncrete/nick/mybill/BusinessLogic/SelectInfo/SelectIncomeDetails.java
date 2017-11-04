@@ -63,7 +63,6 @@ public class SelectIncomeDetails {
     }
 
     private void splitResults(String sql) {
-        //System.out.println(sql);
         ArrayList<String> a = sel.executeQuery(sql);
 
         if (a.size() > 0) {
@@ -73,7 +72,6 @@ public class SelectIncomeDetails {
             amount = a.get(2);
             dateofpayment = a.get(3);
             comment = a.get(4);
-            //System.out.println(id+name+afm);
         }
     }
 

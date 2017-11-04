@@ -38,7 +38,6 @@ public class SelectReportExpenseSumsPerYear extends SelectReportTotalExpenseSums
         String sql2 = "-01-01' and dayofpayment <='";
         String sql3 = "-12-31'  group by companies.companyname, companies.afm order by sum(price)";
         sql = sql0 + year + sql2 + year + sql3;
-        //System.out.println(sql);
         super.runQuery(sql);
     }
 

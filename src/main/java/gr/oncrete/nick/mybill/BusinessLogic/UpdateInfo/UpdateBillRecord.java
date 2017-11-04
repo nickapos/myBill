@@ -58,7 +58,6 @@ public class UpdateBillRecord extends UpdateRecord {
         } else {
             sql1 = sql + i.getID() + ", price=" + price + ", dateofissue='" + dateOfissue + "', dayofpayment='" + dayOfPayment + "' where bid=" + bid;
         }
-        //System.out.println(sql1);
         super.runQuery(sql1);
 
     }
@@ -79,8 +78,6 @@ public class UpdateBillRecord extends UpdateRecord {
         } else {
             sql1 = sql + cid + ", price=" + price + ", dateofissue='" + dateOfissue + "', dayofpayment='" + dayOfPayment + "' where bid=" + bid;
         }
-
-        //System.out.println(sql1);
         super.runQuery(sql1);
 
     }
