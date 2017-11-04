@@ -54,9 +54,6 @@
               <Connection code="IntStream.rangeClosed(2005, 2100)" type="code"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="periodStartYearActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="periodStartMonth">
           <Properties>
@@ -64,9 +61,6 @@
               <Connection code="new javax.swing.DefaultComboBoxModel(this.getMonthsCombo())" type="code"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="periodStartMonthActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="periodStartDay">
           <Properties>
@@ -74,9 +68,6 @@
               <Connection code="new javax.swing.DefaultComboBoxModel(this.getDaysCombo())" type="code"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="periodStartDayActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="periodEndingjLabel">
           <Properties>
@@ -96,9 +87,6 @@
               <Connection code="new javax.swing.DefaultComboBoxModel(this.getMonthsCombo())" type="code"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="periodEndMonthActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="periodEndDay">
           <Properties>
@@ -106,9 +94,6 @@
               <Connection code="new javax.swing.DefaultComboBoxModel(this.getDaysCombo())" type="code"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="periodEndDayActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>

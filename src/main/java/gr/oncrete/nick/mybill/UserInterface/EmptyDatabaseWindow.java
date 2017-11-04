@@ -106,7 +106,6 @@ private final static Logger LOGGER = Logger.getLogger(EmptyDatabaseWindow.class.
     }//GEN-LAST:event_yesButtonActionPerformed
 
     private void noButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noButtonActionPerformed
-        // TODO add your handling code here:
         setVisible(false); //you can't see me!
         dispose(); //Destroy the JFrame object
     }//GEN-LAST:event_noButtonActionPerformed

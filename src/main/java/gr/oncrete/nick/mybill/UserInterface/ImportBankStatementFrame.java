@@ -36,12 +36,15 @@ import gr.oncrete.nick.mybill.BusinessLogic.ParsePancretaBankCsv;
 import gr.oncrete.nick.mybill.BusinessLogic.ParseTSBCsv;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.Category;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
+import gr.oncrete.nick.mybill.BusinessLogic.ShutdownDB;
 import java.io.File;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -51,7 +54,7 @@ import javax.swing.table.DefaultTableModel;
  * @author nickapos
  */
 public class ImportBankStatementFrame extends javax.swing.JFrame {
-
+private final static Logger LOGGER = Logger.getLogger(ImportBankStatementFrame.class.getName());
     /**
      * Creates new form AboutWindow
      */
@@ -311,14 +314,14 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         } else {
             this.foreignExchangeTextField.setEnabled(false);
             this.foreignExchangeTextField.setEditable(false);
-        }        // TODO add your handling code here:
+        }        
     }//GEN-LAST:event_foreignExchangeCheckBoxActionPerformed
 
     private void showRatesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showRatesButtonActionPerformed
 //Textratestextfield foreignCurrencyTextField
         //foreignCurrencyCheckBox
         ExchangeRatesFrame exrf = new ExchangeRatesFrame(foreignExchangeTextField, foreignExchangeTextField);
-        exrf.presentExchangeRateFrame();        // TODO add your handling code here:
+        exrf.presentExchangeRateFrame();        
     }//GEN-LAST:event_showRatesButtonActionPerformed
 
     private void selectAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAllButtonActionPerformed
@@ -465,12 +468,14 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " withdrawal:" + debitAm);
                     InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(debitAm), this.tsbCorrectDate(unCorrectedDate), this.tsbCorrectDate(unCorrectedDate), "Auto imported field");
+                    LOGGER.log(Level.INFO,bill.toString());
 
                 } else {
                     //System.out.println("This a deposit");
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + creditAm);
                     InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(creditAm), this.tsbCorrectDate(unCorrectedDate), "Auto imported field");
+                    LOGGER.log(Level.INFO,income.toString());
                 }
                 importedRecordNo++;
                 recordsImportedLabel.setText("" + importedRecordNo);
@@ -531,12 +536,14 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                     //System.out.println("I will import");
                     //System.out.println("Record data:" + "Company:" + companyID + " Corrected Date: " + this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company des:" + descCompName + " withdrawal:" + this.applyExchangeRate(amount));
                     InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.pancretaCorrectDate(unCorrectedDate), this.pancretaCorrectDate(unCorrectedDate), "Auto imported field");
+                    LOGGER.log(Level.INFO,bill.toString());
 
                 } else if (recordType.equalsIgnoreCase("Deposit") || recordType.equalsIgnoreCase("Κατάθεση")) {
                     //System.out.println("This a deposit");
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + amount);
                     InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.pancretaCorrectDate(unCorrectedDate), "Auto imported field");
+                    LOGGER.log(Level.INFO,income.toString());
                 }
                 importedRecordNo++;
                 recordsImportedLabel.setText("" + importedRecordNo);
@@ -590,12 +597,14 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                     //System.out.println("Record data:" +"Company:"+companyID+" Corrected Date: "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company des:" + descCompName + " withdrawal:" + this.applyExchangeRate(amount));
                     amount = String.format("%.2f", -amountD);
                     InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(amount), date, date, "Auto imported field");
+                    LOGGER.log(Level.INFO,bill.toString());
 
                 } else if (amountD > 0) {
                     //System.out.println("This a deposit");
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + amount);
                     InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(amount), date, "Auto imported field");
+                    LOGGER.log(Level.INFO,income.toString());
                 }
                 importedRecordNo++;
                 recordsImportedLabel.setText("" + importedRecordNo);
@@ -657,6 +666,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                     //System.out.println("Record data:" +"Company:"+companyID+" Corrected Date: "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company des:" + descCompName + " withdrawal:" + this.applyExchangeRate(amount));
                     amount = String.format("%.2f", -amountD);
                     InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(amount), corrDate, corrDate, desc2 + " Auto imported field");
+                    LOGGER.log(Level.INFO,bill.toString());
 
                 } else if (amountD > 0) {
                     //System.out.println("This a deposit");
@@ -664,13 +674,15 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + amount);
                     amount = String.format("%.2f", amountD);
                     InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(amount), corrDate, desc2 + " Auto imported field");
+                    LOGGER.log(Level.INFO,income.toString());
                 }
                 importedRecordNo++;
                 recordsImportedLabel.setText("" + importedRecordNo);
 
             } else {
-                System.out.println("I will not import");
-                System.out.println("Record data:" + this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + desc1 + "-" + amount);
+                System.out.println();
+                LOGGER.log(Level.SEVERE,"I will not import");
+                LOGGER.log(Level.SEVERE,"Record data:" + this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + desc1 + "-" + amount);                
             }
         }
     }

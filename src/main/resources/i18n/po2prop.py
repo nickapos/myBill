@@ -70,7 +70,7 @@ class reprop:
             names = data.cldr_plural_categories
             location = unit.getlocations()[0]
             for category, text in zip(names, unit.target.strings):
-                # TODO: for now we assume all forms are present. We need to
+                # for now we assume all forms are present. We need to
                 # fill in the rest after mapping things to the proper CLDR names.
                 if category == 'zero':
                     # [zero] cases are translated as separate units

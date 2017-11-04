@@ -152,26 +152,6 @@ public class ExportCSVByPeriod extends javax.swing.JFrame {
     }
 
     /**
-     * method used to export the database into csv's
-     *
-     * @param filename
-     * @param a
-     */
-    private void writeFile(String filename, ArrayList a) {
-        MyFileWriter m = new MyFileWriter();
-        m.createFile(filename);
-        Iterator i = a.iterator();
-        while (i.hasNext()) {
-            String nextLine = (String) i.next();
-            if (nextLine.length() > 0) {
-                System.out.println(nextLine);
-                m.writeToFile(nextLine);
-            }
-        }
-        m.closeFile();
-    }
-
-    /**
      * this method can be used to write a file
      * in a new separate thread
      * @param filename

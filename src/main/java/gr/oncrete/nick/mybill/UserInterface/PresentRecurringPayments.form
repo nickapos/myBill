@@ -64,9 +64,6 @@
               <Connection code="IntStream.rangeClosed(2005, 2100)" type="code"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="recordFreqComboBoxActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="periodEndingjLabel1">
           <Properties>

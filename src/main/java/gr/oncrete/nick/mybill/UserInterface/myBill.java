@@ -36,7 +36,7 @@ public class myBill {
         EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                Config cfg = new Config();
+                //Config cfg = new Config();
                 billsUI a = new billsUI();
                 a.setVisible(true);
             }

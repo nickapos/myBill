@@ -175,14 +175,4 @@ public class MergeCategoriesFrame extends javax.swing.JFrame {
         return com.categoriesNames();
     }
 
-    private void refreshCatIDCombo() {
-        catToRemainComboBox.setModel(new javax.swing.DefaultComboBoxModel(this.getCategoriesCombo()));
-    }
-
-    /**
-     * refresh the combo at the mail interface
-     */
-    private void refreshMainCatIDCombo() {
-        box.setModel(new javax.swing.DefaultComboBoxModel(this.getCategoriesCombo()));
-    }
 }

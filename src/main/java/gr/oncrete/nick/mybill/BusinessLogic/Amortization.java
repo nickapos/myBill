@@ -17,6 +17,8 @@
 package gr.oncrete.nick.mybill.BusinessLogic;
 
 import java.text.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *This class will calculate the amortization when given the payout period, the interest rate and the initial amount
@@ -33,7 +35,7 @@ import java.text.*;
 public class Amortization {
 
     private double lamount, lrate, lnumberOfMonths, lpaymentFrequency = 1,installment=-1;
-
+private final static Logger LOGGER = Logger.getLogger(Amortization.class.getName());
     /**
      *
      *
@@ -64,6 +66,7 @@ public class Amortization {
 
 
         System.out.println("epitokio periodoy" + epitokioPeriodou);
+        //LOGGER.log(Level.INFO,in.toString());
         System.out.println("arithmos periodwn" + arithmosPeriodwn);
         double result = lamount / this.calcSyntelesti(epitokioPeriodou, arithmosPeriodwn);
         //save the result in the installment instance variable

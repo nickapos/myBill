@@ -190,7 +190,6 @@ public class ExchangeRatesFrame extends javax.swing.JFrame {
             expensesFcTextField.setText(selectedValue);
             incomeFcTextField.setText(selectedValue);
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_useItButtonActionPerformed
 
     /**

@@ -69,12 +69,6 @@ public class InvertRecordWindow extends javax.swing.JFrame {
 
         jLabel2.setText(bundle.getString("RECORD ID")); // NOI18N
         jPanel1.add(jLabel2);
-
-        recordIdTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                recordIdTextFieldActionPerformed(evt);
-            }
-        });
         jPanel1.add(recordIdTextField);
         jPanel1.add(jLabel4);
 
@@ -97,10 +91,6 @@ public class InvertRecordWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void recordIdTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordIdTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recordIdTextFieldActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         InvertRecord invr = new InvertRecord();

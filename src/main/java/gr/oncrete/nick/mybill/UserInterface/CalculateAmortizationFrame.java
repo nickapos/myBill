@@ -78,11 +78,6 @@ public class CalculateAmortizationFrame extends javax.swing.JFrame {
         getContentPane().add(periodLabel);
 
         periodTextField.setText(bundle.getString("CalculateAmortizationFrame.periodTextField.text")); // NOI18N
-        periodTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                periodTextFieldActionPerformed(evt);
-            }
-        });
         getContentPane().add(periodTextField);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -140,10 +135,6 @@ public class CalculateAmortizationFrame extends javax.swing.JFrame {
             calcAmortizationTableButton.setEnabled(true);
         }
     }//GEN-LAST:event_calculateButtonActionPerformed
-
-    private void periodTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_periodTextFieldActionPerformed
 
     private void calcAmortizationTableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcAmortizationTableButtonActionPerformed
 

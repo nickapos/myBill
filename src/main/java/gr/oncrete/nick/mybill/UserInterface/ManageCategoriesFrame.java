@@ -26,7 +26,10 @@ package gr.oncrete.nick.mybill.UserInterface;
 import gr.oncrete.nick.mybill.BusinessLogic.Categories;
 import gr.oncrete.nick.mybill.BusinessLogic.DeleteCategory;
 import gr.oncrete.nick.mybill.BusinessLogic.InsertCategory;
+import gr.oncrete.nick.mybill.BusinessLogic.ShutdownDB;
 import gr.oncrete.nick.mybill.BusinessLogic.UpdateInfo.UpdateCategoryRecord;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 
 /**
@@ -34,6 +37,7 @@ import javax.swing.JComboBox;
  * @author nickapos
  */
 public class ManageCategoriesFrame extends javax.swing.JFrame {
+    private final static Logger LOGGER = Logger.getLogger(ManageCategoriesFrame.class.getName());
     JComboBox box;
     String[] comboBoxActions = {java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("INSERT"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("EDIT"), java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("DELETE")};//the dropdown list at the action combo boxes
     /** Creates new form AboutWindow
@@ -102,12 +106,6 @@ public class ManageCategoriesFrame extends javax.swing.JFrame {
         catIDComboBox.setModel(new javax.swing.DefaultComboBoxModel(this.getCategoriesCombo()));
         catIDComboBox.setEnabled(false);
         rightPanel.add(catIDComboBox);
-
-        catNameTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                catNameTextFieldActionPerformed(evt);
-            }
-        });
         rightPanel.add(catNameTextField);
 
         getContentPane().add(rightPanel, java.awt.BorderLayout.EAST);
@@ -130,10 +128,6 @@ public class ManageCategoriesFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void catNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_catNameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_catNameTextFieldActionPerformed
-
     private void catActionComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_catActionComboBoxActionPerformed
         int a = catActionComboBox.getSelectedIndex();
         if (a == 0) //the action is insert
@@ -155,6 +149,7 @@ public class ManageCategoriesFrame extends javax.swing.JFrame {
             String catName = this.catNameTextField.getText();
             if (catName.length() > 0) {
                 InsertCategory inC = new InsertCategory(catName);
+                LOGGER.log(Level.INFO,inC.toString());
                 this.emptyFields();
                 this.refreshMainCatIDCombo();
             }
@@ -164,7 +159,7 @@ public class ManageCategoriesFrame extends javax.swing.JFrame {
             String newName = catNameTextField.getText();
             if (newName.length() > 0) {
                 UpdateCategoryRecord u = new UpdateCategoryRecord(oldCatName,newName);
-
+LOGGER.log(Level.INFO,u.toString());
                 this.emptyFields();
                 this.refreshMainCatIDCombo();
             }
