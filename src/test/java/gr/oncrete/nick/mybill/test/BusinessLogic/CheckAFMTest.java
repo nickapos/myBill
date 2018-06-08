@@ -16,7 +16,7 @@
  */
 package gr.oncrete.nick.mybill.test.BusinessLogic;
 
-import gr.oncrete.nick.mybill.businesslogic.CheckAFM;
+import gr.oncrete.nick.mybill.BusinessLogic.CheckAFM;
 import static org.junit.Assert.*;
 import org.junit.Test;
 

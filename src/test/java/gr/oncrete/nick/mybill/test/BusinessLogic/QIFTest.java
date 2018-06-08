@@ -16,7 +16,7 @@
  */
 package gr.oncrete.nick.mybill.test.BusinessLogic;
 
-import gr.oncrete.nick.mybill.businesslogic.selectinfo.DumpDatabaseinQIF;
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.DumpDatabaseinQIF;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static org.junit.Assert.*;
