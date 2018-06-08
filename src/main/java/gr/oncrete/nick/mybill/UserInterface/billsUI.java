@@ -184,6 +184,8 @@ public class billsUI extends javax.swing.JFrame {
         changeDBCurrencyMenuItem = new javax.swing.JMenuItem();
         calculateAmortizationMenuItem = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        analyticsForPeriodMenuItem = new javax.swing.JMenuItem();
+        recurringPaymentsForLastYearMenuItem = new javax.swing.JMenuItem();
         presentTransactionsPerCompanyMenuItem = new javax.swing.JMenuItem();
         invertRecordMenuItem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
@@ -243,7 +245,7 @@ public class billsUI extends javax.swing.JFrame {
         dateOfPaymentTextField.setText(today.getToday());
         InsertEditBillPanel.add(dateOfPaymentTextField);
 
-        foreignCurrencySelPanel.setLayout(new java.awt.FlowLayout(0));
+        foreignCurrencySelPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jLabel19.setText(bundle.getString("billsUI.jLabel19.text")); // NOI18N
         foreignCurrencySelPanel.add(jLabel19);
@@ -350,7 +352,7 @@ public class billsUI extends javax.swing.JFrame {
         incomeDateTextField.setText(today.getToday());
         InsertEditIncome.add(incomeDateTextField);
 
-        foreignCurrencySelPanel1.setLayout(new java.awt.FlowLayout(0));
+        foreignCurrencySelPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
 
         jLabel24.setText(bundle.getString("billsUI.jLabel24.text")); // NOI18N
         foreignCurrencySelPanel1.add(jLabel24);
@@ -717,6 +719,22 @@ public class billsUI extends javax.swing.JFrame {
         jMenu3.add(calculateAmortizationMenuItem);
 
         jMenu4.setText(bundle.getString("billsUI.jMenu4.text")); // NOI18N
+
+        analyticsForPeriodMenuItem.setText(bundle.getString("billsUI.analyticsForPeriodMenuItem.text")); // NOI18N
+        analyticsForPeriodMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                analyticsForPeriodMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu4.add(analyticsForPeriodMenuItem);
+
+        recurringPaymentsForLastYearMenuItem.setText(bundle.getString("billsUI.recurringPaymentsForLastYearMenuItem.text")); // NOI18N
+        recurringPaymentsForLastYearMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recurringPaymentsForLastYearMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu4.add(recurringPaymentsForLastYearMenuItem);
 
         presentTransactionsPerCompanyMenuItem.setText(bundle.getString("billsUI.presentTransactionsPerCompanyMenuItem.text")); // NOI18N
         presentTransactionsPerCompanyMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -1166,6 +1184,16 @@ public class billsUI extends javax.swing.JFrame {
         cvsp.displayGUI();
     }//GEN-LAST:event_exportCVSPeriodActionPerformed
 
+    private void analyticsForPeriodMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analyticsForPeriodMenuItemActionPerformed
+        PresentTransactionsAnalyticsForPeriod tp = new PresentTransactionsAnalyticsForPeriod();
+        tp.displayApp();
+    }//GEN-LAST:event_analyticsForPeriodMenuItemActionPerformed
+
+    private void recurringPaymentsForLastYearMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recurringPaymentsForLastYearMenuItemActionPerformed
+        PresentRecurringPayments tp = new PresentRecurringPayments();
+        tp.displayApp();
+    }//GEN-LAST:event_recurringPaymentsForLastYearMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1182,6 +1210,7 @@ public class billsUI extends javax.swing.JFrame {
     private javax.swing.JPanel InsertEditIncome;
     private javax.swing.JPanel ReportsPanel;
     private javax.swing.JMenuItem aboutMenuItem;
+    private javax.swing.JMenuItem analyticsForPeriodMenuItem;
     private javax.swing.JTextField billAmountTextField;
     private javax.swing.JTextField billCommentTextField;
     private javax.swing.JButton billGoButton;
@@ -1267,6 +1296,7 @@ public class billsUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem manageCategoriesMenuItem;
     private javax.swing.JMenu mergeOperationsJMenu;
     private javax.swing.JMenuItem presentTransactionsPerCompanyMenuItem;
+    private javax.swing.JMenuItem recurringPaymentsForLastYearMenuItem;
     private javax.swing.JButton reportButton;
     private javax.swing.JComboBox reportComboBox;
     private javax.swing.JPanel reportPanel;
