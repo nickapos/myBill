@@ -47,13 +47,20 @@
         <Component class="javax.swing.JComboBox" name="bankComboBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
+              <StringArray count="7">
                 <StringItem index="0" value="TSB"/>
                 <StringItem index="1" value="Bank of Scotland"/>
                 <StringItem index="2" value="Pancretan Bank"/>
+                <StringItem index="3" value="N26"/>
+                <StringItem index="4" value="Fidor UK"/>
+                <StringItem index="5" value="Fidor DE"/>
+                <StringItem index="6" value="Alpha Bank"/>
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bankComboBoxActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="categoryLabel">
           <Properties>

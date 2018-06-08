@@ -94,7 +94,12 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         bankLabel.setText(bundle.getString("ImportBankStatementFrame.bankLabel.text")); // NOI18N
         jPanel1.add(bankLabel);
 
-        bankComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TSB", "Bank of Scotland", "Pancretan Bank" }));
+        bankComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TSB", "Bank of Scotland", "Pancretan Bank", "N26", "Fidor UK", "Fidor DE", "Alpha Bank" }));
+        bankComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bankComboBoxActionPerformed(evt);
+            }
+        });
         jPanel1.add(bankComboBox);
 
         categoryLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -300,6 +305,10 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
     private void unselectAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unselectAllButtonActionPerformed
         this.selectUnselectRecords(false);
     }//GEN-LAST:event_unselectAllButtonActionPerformed
+
+    private void bankComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bankComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bankComboBoxActionPerformed
 
     private void selectUnselectRecords(boolean set){
         String bankName = (String) bankComboBox.getSelectedItem();
