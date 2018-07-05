@@ -559,10 +559,10 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
      * @return
      */
     private String tsbCorrectDate(String uncDate) {
-        String[] splitDate = uncDate.split("/");
-        String day = splitDate[0];
+        String[] splitDate = uncDate.split("-");
+        String year = splitDate[0];
         String month = splitDate[1];
-        String year = splitDate[2];
+        String day = splitDate[2];
         //System.out.println("year:"+year+"month:"+month+"day:"+day);
         return year + "-" + month + "-" + day;
     }
