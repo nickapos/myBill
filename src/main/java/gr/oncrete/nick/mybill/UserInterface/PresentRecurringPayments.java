@@ -1,16 +1,16 @@
 /*
  *  Copyright (C) 2010 nickapos
- * 
+ *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
- * 
+ *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
- * 
+ *
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -24,8 +24,6 @@
 package gr.oncrete.nick.mybill.UserInterface;
 
 import gr.oncrete.nick.mybill.BusinessLogic.FindRecurringPayments;
-import java.util.*;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import javax.swing.JComboBox;
 
@@ -88,11 +86,6 @@ public class PresentRecurringPayments extends javax.swing.JFrame {
 
         recordFreqComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "6", "7", "8", "9", "10", "11", "12" }));
         recordFreqComboBox.setSelectedItem(IntStream.rangeClosed(2005, 2100));
-        recordFreqComboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                recordFreqComboBoxActionPerformed(evt);
-            }
-        });
         cetnerPanel1.add(recordFreqComboBox);
 
         periodEndingjLabel1.setText(bundle.getString("PresentRecurringPayments.periodEndingjLabel1.text")); // NOI18N
@@ -141,14 +134,6 @@ public class PresentRecurringPayments extends javax.swing.JFrame {
         totalLabel.setText(String.format("%6.2f", recPayments.returnMostFrequentTransactionsSum()));
 
     }//GEN-LAST:event_goButtonActionPerformed
-
-    private void recordFreqComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordFreqComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_recordFreqComboBoxActionPerformed
-    private String getNumOfRowsLine(List a, String results) {
-        return results + "\n\n" + java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("NUMBER OF ROWS ") + " " + a.size();
-
-    }
 
     /**
      * @param args the command line arguments

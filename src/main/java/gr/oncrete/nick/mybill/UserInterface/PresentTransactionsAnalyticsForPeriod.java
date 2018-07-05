@@ -1,16 +1,16 @@
 /*
  *  Copyright (C) 2010 nickapos
- * 
+ *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
  *  the Free Software Foundation, either version 3 of the License, or
  *  (at your option) any later version.
- * 
+ *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
- * 
+ *
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -23,11 +23,11 @@
  */
 package gr.oncrete.nick.mybill.UserInterface;
 
+import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectAverageExpensesPerCompanyInRange;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import javax.swing.JComboBox;
-import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectAverageExpensesPerCompanyInRange;
 
 /**
  *
@@ -94,27 +94,12 @@ public class PresentTransactionsAnalyticsForPeriod extends javax.swing.JFrame {
 
         periodStartYear.setModel(new javax.swing.DefaultComboBoxModel(this.getYearsCombo()));
         periodStartYear.setSelectedItem(IntStream.rangeClosed(2005, 2100));
-        periodStartYear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                periodStartYearActionPerformed(evt);
-            }
-        });
         northPanel.add(periodStartYear);
 
         periodStartMonth.setModel(new javax.swing.DefaultComboBoxModel(this.getMonthsCombo()));
-        periodStartMonth.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                periodStartMonthActionPerformed(evt);
-            }
-        });
         northPanel.add(periodStartMonth);
 
         periodStartDay.setModel(new javax.swing.DefaultComboBoxModel(this.getDaysCombo()));
-        periodStartDay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                periodStartDayActionPerformed(evt);
-            }
-        });
         northPanel.add(periodStartDay);
 
         periodEndingjLabel.setText("Period ending");
@@ -124,19 +109,9 @@ public class PresentTransactionsAnalyticsForPeriod extends javax.swing.JFrame {
         northPanel.add(periodEndYear);
 
         periodEndMonth.setModel(new javax.swing.DefaultComboBoxModel(this.getMonthsCombo()));
-        periodEndMonth.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                periodEndMonthActionPerformed(evt);
-            }
-        });
         northPanel.add(periodEndMonth);
 
         periodEndDay.setModel(new javax.swing.DefaultComboBoxModel(this.getDaysCombo()));
-        periodEndDay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                periodEndDayActionPerformed(evt);
-            }
-        });
         northPanel.add(periodEndDay);
 
         jLabel1.setText(bundle.getString("PresentTransactionsAnalyticsForPeriod.jLabel1.text")); // NOI18N
@@ -189,9 +164,6 @@ public class PresentTransactionsAnalyticsForPeriod extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void periodStartYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodStartYearActionPerformed
-    }//GEN-LAST:event_periodStartYearActionPerformed
-
     private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goButtonActionPerformed
         String startYear = (String) periodStartYear.getSelectedItem();
         String startMonth = (String) periodStartMonth.getSelectedItem();
@@ -227,22 +199,6 @@ public class PresentTransactionsAnalyticsForPeriod extends javax.swing.JFrame {
         resultTextArea.setText(resultStr);
     }//GEN-LAST:event_goButtonActionPerformed
 
-    private void periodStartDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodStartDayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_periodStartDayActionPerformed
-
-    private void periodStartMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodStartMonthActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_periodStartMonthActionPerformed
-
-    private void periodEndMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodEndMonthActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_periodEndMonthActionPerformed
-
-    private void periodEndDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodEndDayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_periodEndDayActionPerformed
-
     private void numOfRecordsRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numOfRecordsRadioButtonActionPerformed
         amountRadioButton.setSelected(false);
         averageRadioButton.setSelected(false);
@@ -257,10 +213,6 @@ public class PresentTransactionsAnalyticsForPeriod extends javax.swing.JFrame {
         numOfRecordsRadioButton.setSelected(false);
         amountRadioButton.setSelected(false);
     }//GEN-LAST:event_averageRadioButtonActionPerformed
-    private String getNumOfRowsLine(List a, String results) {
-        return results + "\n\n" + java.util.ResourceBundle.getBundle("i18n/myBillUIBundle").getString("NUMBER OF ROWS ") + " " + a.size();
-
-    }
 
     /**
      * @param args the command line arguments
