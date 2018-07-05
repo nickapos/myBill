@@ -216,12 +216,15 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         String bankName = (String) bankComboBox.getSelectedItem();
         System.out.println("Selected Bank: " + bankName);
         Object[][] data = getTableData(recordTable);
-        if (bankName.equals("TSB") || bankName.equals("Bank of Scotland")) {
+        if (bankName.equals("TSB")) {
             this.importTSBData(data);
 
         } else if (bankName.equals("Pancretan Bank")) {
             this.importPancretabankData(data);
-        } else {
+        } else if (bankName.equals("Bank of Scotland")) {
+            this.importBOSData(data);
+        }
+        else {
             System.out.println("No parsing template found");
         }
     }//GEN-LAST:event_ImportButtonActionPerformed
@@ -491,6 +494,64 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
     }
 
     /**
+     * This method will convert the incoming data from a BOS export to the
+     * appropriate format for the database
+     *
+     * @param data
+     */
+    private void importBOSData(Object[][] data) {
+        int importedRecordNo = 0;
+        int noOfLines = data.length;
+        for (int i = 0; i < noOfLines; i++) {
+            String unCorrectedDate = (String) data[i][0];
+            boolean importField = (boolean) data[i][8];
+            
+            //this if block will be activated if both the import field is checked and the first character of the date field is numeric. 
+            //if there is a header in here that means that this wont be numeric and the import will be skipped
+            if (importField&& Character.isDigit(unCorrectedDate.charAt(0))) {
+
+                
+                String descCompName = (String) data[i][4];
+                String debitAm = (String) data[i][5];
+                String creditAm = (String) data[i][6];
+                //retrieve the category details
+                String categId = getCategID();
+
+            //System.out.println("descComp: "+descCompName+" and its hash code is: "+descCompName.hashCode());
+                //Making sure afm is less than 9 digits, while allowing for smaller numbers to be allowed without problem
+                String afmFull = Integer.toString(descCompName.hashCode());
+                String afm = "";
+                if (afmFull.length() > 9) {
+                    afm = afmFull.substring(0, 9);
+                } else {
+                    afm = afmFull;
+                }
+
+                //get the category id for the import
+                String companyID = getCompID(descCompName, afm, categId);
+                if (debitAm.length() > 0) {
+                    //System.out.println("This a withdrawal");
+                    //System.out.println("I will import");
+                    //System.out.println("Record data:" +"Company"+companyID+" "+ this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " withdrawal:" + debitAm);
+                    InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(debitAm), this.bosCorrectDate(unCorrectedDate), this.bosCorrectDate(unCorrectedDate), "Auto imported field");
+
+                } else {
+                    //System.out.println("This a deposit");
+                    //System.out.println("I will import");
+                    //System.out.println("Record data:" +"Company"+companyID+" "+ this.correctDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + creditAm);
+                    InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(creditAm), this.bosCorrectDate(unCorrectedDate), "Auto imported field");
+                }
+                importedRecordNo++;
+                recordsImportedLabel.setText("" + importedRecordNo);
+
+            } else {
+                System.out.println("I will not import");
+                System.out.println("Record number: " +i);
+            }
+        }
+    }
+
+    /**
      * This method will convert the incoming data from a TSB export to the
      * appropriate format for the database
      *
@@ -566,6 +627,23 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         //System.out.println("year:"+year+"month:"+month+"day:"+day);
         return year + "-" + month + "-" + day;
     }
+    
+    /**
+     * Convert the incoming date to the date used by the database for BOS data
+     *
+     * @param uncDate
+     * @return
+     */
+    private String bosCorrectDate(String uncDate) {
+        String[] splitDate = uncDate.split("/");
+        String day = splitDate[0];
+        String month = splitDate[1];
+        String year = splitDate[2];
+        //System.out.println("year:"+year+"month:"+month+"day:"+day);
+        return year + "-" + month + "-" + day;
+    }
+    
+    
 
     /**
      * Convert the incoming date to the date used by the database for tsb data
