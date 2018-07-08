@@ -545,7 +545,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                 recordsImportedLabel.setText("" + importedRecordNo);
 
             } else {
-                System.out.println("I will not import");
+                System.out.println("Detected row that does not contain a date. I will not import");
                 System.out.println("Record number: " +i);
             }
         }
