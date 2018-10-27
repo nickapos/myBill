@@ -15,7 +15,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
+ /*
  * AboutWindow.java
  * This class will create a window with a text area and depending on the need
  * will present in the text are a message, be it an about or a readme.
@@ -38,6 +38,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JFileChooser;
 import javax.swing.JTable;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -223,8 +225,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             this.importPancretabankData(data);
         } else if (bankName.equals("Bank of Scotland")) {
             this.importBOSData(data);
-        }
-        else {
+        } else {
             System.out.println("No parsing template found");
         }
     }//GEN-LAST:event_ImportButtonActionPerformed
@@ -233,6 +234,9 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
 
         //Create a file chooser
         final JFileChooser fc = new JFileChooser();
+        FileFilter csvFilter = new FileNameExtensionFilter(
+                "CSV files", "csv");
+        fc.addChoosableFileFilter(csvFilter);
         //In response to a button click:
         int returnVal = fc.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -247,45 +251,43 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                 this.displayStatementContent(contentList, tsb);
                 selectAllButton.setEnabled(true);
                 unselectAllButton.setEnabled(true);
-            } else if ( bankName.equals("Bank of Scotland")) {
+            } else if (bankName.equals("Bank of Scotland")) {
                 ParseBOSCsv bos = new ParseBOSCsv();
                 ArrayList contentList = bos.filterMonthsAndNegValues(file.getAbsolutePath());
                 this.displayStatementContent(contentList, bos);
                 selectAllButton.setEnabled(true);
                 unselectAllButton.setEnabled(true);
-            } 
-            else if (bankName.equals("Pancretan Bank")) {
+            } else if (bankName.equals("Pancretan Bank")) {
+                ParsePancretaBankCsv panc = new ParsePancretaBankCsv(",", 8);
+                ArrayList contentList = panc.parseData(file.getAbsolutePath());
+                this.displayStatementContent(contentList, panc);
+                selectAllButton.setEnabled(true);
+                unselectAllButton.setEnabled(true);
+            } else if (bankName.equals("N26")) {
                 ParsePancretaBankCsv panc = new ParsePancretaBankCsv(";", 8);
                 ArrayList contentList = panc.parseData(file.getAbsolutePath());
                 this.displayStatementContent(contentList, panc);
                 selectAllButton.setEnabled(true);
                 unselectAllButton.setEnabled(true);
-            }else if (bankName.equals("N26")) {
+            } else if (bankName.equals("Fidor UK")) {
                 ParsePancretaBankCsv panc = new ParsePancretaBankCsv(";", 8);
                 ArrayList contentList = panc.parseData(file.getAbsolutePath());
                 this.displayStatementContent(contentList, panc);
                 selectAllButton.setEnabled(true);
                 unselectAllButton.setEnabled(true);
-            }else if (bankName.equals("Fidor UK")) {
+            } else if (bankName.equals("Fidor DE")) {
                 ParsePancretaBankCsv panc = new ParsePancretaBankCsv(";", 8);
                 ArrayList contentList = panc.parseData(file.getAbsolutePath());
                 this.displayStatementContent(contentList, panc);
                 selectAllButton.setEnabled(true);
                 unselectAllButton.setEnabled(true);
-            }else if (bankName.equals("Fidor DE")) {
+            } else if (bankName.equals("Alpha Bank")) {
                 ParsePancretaBankCsv panc = new ParsePancretaBankCsv(";", 8);
                 ArrayList contentList = panc.parseData(file.getAbsolutePath());
                 this.displayStatementContent(contentList, panc);
                 selectAllButton.setEnabled(true);
                 unselectAllButton.setEnabled(true);
-            }else if (bankName.equals("Alpha Bank")) {
-                ParsePancretaBankCsv panc = new ParsePancretaBankCsv(";", 8);
-                ArrayList contentList = panc.parseData(file.getAbsolutePath());
-                this.displayStatementContent(contentList, panc);
-                selectAllButton.setEnabled(true);
-                unselectAllButton.setEnabled(true);
-            }
-            else {
+            } else {
                 System.out.println("No parsing template found");
             }
         } else {
@@ -338,26 +340,25 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bankComboBoxActionPerformed
 
-    private void selectUnselectRecords(boolean set){
+    private void selectUnselectRecords(boolean set) {
         String bankName = (String) bankComboBox.getSelectedItem();
         System.out.println("Selected Bank: " + bankName);
         Object[][] data = getTableData(recordTable);
-        int length=data.length;
-        int boolColumn=-1;
+        int length = data.length;
+        int boolColumn = -1;
         if (bankName.equals("TSB") || bankName.equals("Bank of Scotland")) {
-            boolColumn=8;
+            boolColumn = 8;
         } else if (bankName.equals("Pancretan Bank")) {
-            boolColumn=8;
+            boolColumn = 8;
         } else {
             System.out.println("No parsing template found");
         }
         ImportBankStatementTableModel model = (ImportBankStatementTableModel) recordTable.getModel();
-        for(int i=0;i<length;i++)
-        {
+        for (int i = 0; i < length; i++) {
             model.setValueAt(set, i, boolColumn);
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -447,19 +448,18 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         for (int i = 0; i < noOfLines; i++) {
             String unCorrectedDate = (String) data[i][0];
             boolean importField = (boolean) data[i][8];
-            
+
             //this if block will be activated if both the import field is checked and the first character of the date field is numeric. 
             //if there is a header in here that means that this wont be numeric and the import will be skipped
-            if (importField&& Character.isDigit(unCorrectedDate.charAt(0))) {
+            if (importField && Character.isDigit(unCorrectedDate.charAt(0))) {
 
-                
                 String descCompName = (String) data[i][4];
                 String debitAm = (String) data[i][5];
                 String creditAm = (String) data[i][6];
                 //retrieve the category details
                 String categId = getCategID();
 
-            //System.out.println("descComp: "+descCompName+" and its hash code is: "+descCompName.hashCode());
+                //System.out.println("descComp: "+descCompName+" and its hash code is: "+descCompName.hashCode());
                 //Making sure afm is less than 9 digits, while allowing for smaller numbers to be allowed without problem
                 String afmFull = Integer.toString(descCompName.hashCode());
                 String afm = "";
@@ -488,7 +488,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
 
             } else {
                 System.out.println("I will not import");
-                System.out.println("Record number: " +i);
+                System.out.println("Record number: " + i);
             }
         }
     }
@@ -505,19 +505,18 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         for (int i = 0; i < noOfLines; i++) {
             String unCorrectedDate = (String) data[i][0];
             boolean importField = (boolean) data[i][8];
-            
+
             //this if block will be activated if both the import field is checked and the first character of the date field is numeric. 
             //if there is a header in here that means that this wont be numeric and the import will be skipped
-            if (importField&& Character.isDigit(unCorrectedDate.charAt(0))) {
+            if (importField && Character.isDigit(unCorrectedDate.charAt(0))) {
 
-                
                 String descCompName = (String) data[i][4];
                 String debitAm = (String) data[i][5];
                 String creditAm = (String) data[i][6];
                 //retrieve the category details
                 String categId = getCategID();
 
-            //System.out.println("descComp: "+descCompName+" and its hash code is: "+descCompName.hashCode());
+                //System.out.println("descComp: "+descCompName+" and its hash code is: "+descCompName.hashCode());
                 //Making sure afm is less than 9 digits, while allowing for smaller numbers to be allowed without problem
                 String afmFull = Integer.toString(descCompName.hashCode());
                 String afm = "";
@@ -546,7 +545,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
 
             } else {
                 System.out.println("Detected row that does not contain a date. I will not import");
-                System.out.println("Record number: " +i);
+                System.out.println("Record number: " + i);
             }
         }
     }
@@ -627,7 +626,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         //System.out.println("year:"+year+"month:"+month+"day:"+day);
         return year + "-" + month + "-" + day;
     }
-    
+
     /**
      * Convert the incoming date to the date used by the database for BOS data
      *
@@ -642,8 +641,6 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         //System.out.println("year:"+year+"month:"+month+"day:"+day);
         return year + "-" + month + "-" + day;
     }
-    
-    
 
     /**
      * Convert the incoming date to the date used by the database for tsb data
