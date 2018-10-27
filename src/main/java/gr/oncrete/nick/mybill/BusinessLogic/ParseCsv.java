@@ -17,13 +17,16 @@
  */
 package gr.oncrete.nick.mybill.BusinessLogic;
 
+import org.apache.commons.csv.CSVFormat;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import org.apache.commons.csv.CSVRecord;
 
 /**
  *
@@ -31,24 +34,37 @@ import java.util.HashMap;
  */
 public class ParseCsv {
 
-    protected String fileName = "";
     protected String delimiter = ",";
     protected int numberOfFields = 1;
-    
-    private String[] header= {};
-    
+
+    private String[] header = {};
 
     public ParseCsv() {
 
     }
 
-    public ParseCsv( int fields) {
+    public ParseCsv(int fields) {
         this.setNumberOfFields(fields);
     }
 
-    public ParseCsv( String delim, int fields) {
+    public ParseCsv(String delim, int fields) {
         this.setDelimiter(delim);
         this.setNumberOfFields(fields);
+    }
+
+    public ArrayList<ArrayList> parseOpenCsvData(String file) {
+        ArrayList<ArrayList> content = new ArrayList();
+        try {
+            Reader in = new FileReader(file);
+            Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(in);
+            for (CSVRecord record : records) {
+                String lastName = record.get("Last Name");
+                String firstName = record.get("First Name");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return content;
     }
 
     /**
@@ -58,11 +74,10 @@ public class ParseCsv {
      */
     public ArrayList<ArrayList> parseData(String file) {
         ArrayList<ArrayList> content = new ArrayList();
-        fileName = file;
-        BufferedReader br = null;
+        BufferedReader br;
         try {
             String line;
-            br = new BufferedReader(new FileReader(fileName));
+            br = new BufferedReader(new FileReader(file));
             while ((line = br.readLine()) != null) {
 
                 String[] lineArr = line.split(delimiter);
@@ -75,7 +90,6 @@ public class ParseCsv {
                     content.add(lineContent);
                 }
             }
-            
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -101,18 +115,15 @@ public class ParseCsv {
         numberOfFields = fields;
     }
 
-   
-
     public int getNumOfFields() {
         return numberOfFields;
     }
-    
-    public String[] getColumnNames()
-    {
+
+    public String[] getColumnNames() {
         return header;
     }
-    
-    protected HashMap<String, Integer> initializeMonNumMap(){
+
+    protected HashMap<String, Integer> initializeMonNumMap() {
         HashMap<String, Integer> monthNumMap = new HashMap<String, Integer>();
         monthNumMap.put("Jan", 1);
         monthNumMap.put("Feb", 2);
