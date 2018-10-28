@@ -34,6 +34,7 @@ import gr.oncrete.nick.mybill.BusinessLogic.ParseTSBCsv;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.Category;
 import gr.oncrete.nick.mybill.BusinessLogic.SelectInfo.SelectCompanyDetails;
 import java.io.File;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JFileChooser;
@@ -260,7 +261,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             } else if (bankName.equals("Pancretan Bank")) {
                 ParsePancretaBankCsv panc = new ParsePancretaBankCsv(",", 7);
                 ArrayList contentList = panc.parseApacheCommonsCsvData(file.getAbsolutePath());
-                this.displayStatementContent(contentList, panc,7);
+                this.displayStatementContent(contentList, panc, 7);
                 selectAllButton.setEnabled(true);
                 unselectAllButton.setEnabled(true);
             } else if (bankName.equals("N26")) {
@@ -304,23 +305,24 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         Object[][] contentStrArr = this.convertArrayListTo2DStringArray(contentList, parser.getNumOfFields());
         String[] columnNames = parser.getColumnNames();
         if (contentList.size() > 0) {
-            recordTable.setModel(new ImportBankStatementTableModel(contentStrArr, columnNames));            
+            recordTable.setModel(new ImportBankStatementTableModel(contentStrArr, columnNames));
             recordTable.setAutoCreateRowSorter(true);//add a primitive sort by column function
         }
     }
+
     /**
-     * populate the table with the incoming data, the last parameter is the 
+     * populate the table with the incoming data, the last parameter is the
      * column that needs to be treated as booelan
      *
      * @param contentList
      * @param parser
      * @param boolColumn
      */
-    private void displayStatementContent(ArrayList contentList, ParseCsv parser,int boolColumn) {
+    private void displayStatementContent(ArrayList contentList, ParseCsv parser, int boolColumn) {
         Object[][] contentStrArr = this.convertArrayListTo2DStringArray(contentList, parser.getNumOfFields());
         String[] columnNames = parser.getColumnNames();
         if (contentList.size() > 0) {
-            recordTable.setModel(new ImportBankStatementTableModel(contentStrArr, columnNames,boolColumn));            
+            recordTable.setModel(new ImportBankStatementTableModel(contentStrArr, columnNames, boolColumn));
             recordTable.setAutoCreateRowSorter(true);//add a primitive sort by column function
         }
     }
@@ -576,17 +578,14 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         int noOfLines = data.length;
         for (int i = 0; i < noOfLines; i++) {
             String recordType = (String) data[i][0];
-            String unCorrectedDate = (String) data[i][1];
-            String descCompName = (String) data[i][4];
-            String amountWithCur = (String) data[i][6];
+            String unCorrectedDate = (String) data[i][5];
+            String descCompName = (String) data[i][6];
+            String deposit = (String) data[i][1];
+            String withdrwal = (String) data[i][3];
 
-            boolean importField = (boolean) data[i][8];
+            boolean importField = (boolean) data[i][7];
             //retrieve the category details
             String categId = getCategID();
-
-            //Stripping EUR out of the amount string
-            String[] amountCurArr = amountWithCur.split(" ");
-            String amount = amountCurArr[0];
 
             //If we have an empty comment, its probably an internal transfer.
             if (descCompName.contentEquals("")) {
@@ -605,24 +604,40 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             if (importField) {
                 //get the category id for the import
                 String companyID = getCompID(descCompName, afm, categId);
-                if (recordType.equalsIgnoreCase("Withdrawal")) {
+                if (withdrwal.length() > 1) {
                     //System.out.println("This a withdrawal");
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company:"+companyID+" Corrected Date: "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company des:" + descCompName + " withdrawal:" + this.applyExchangeRate(amount));
-                    InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.pancretaCorrectDate(unCorrectedDate), this.pancretaCorrectDate(unCorrectedDate), "Auto imported field");
+                    try {
+                        Number withdrwalF = NumberFormat.getInstance().parse(withdrwal);
+                        String amount = withdrwalF.toString();
+                        InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.pancretaCorrectDate(unCorrectedDate), this.pancretaCorrectDate(unCorrectedDate), "Auto imported field");
+                    }
+                    catch (Exception e) {
+                        System.out.println("Somthing is wrong with the number format");
+                        System.out.println(e.getStackTrace());
+                    }
 
-                } else if (recordType.equalsIgnoreCase("Deposit")) {
+                } else if (deposit.length() > 1) {
                     //System.out.println("This a deposit");
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + amount);
-                    InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.pancretaCorrectDate(unCorrectedDate), "Auto imported field");
+                    try {
+                        Number depositF = NumberFormat.getInstance().parse(deposit);
+                        String amount = depositF.toString();
+                        InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.pancretaCorrectDate(unCorrectedDate), "Auto imported field");
+                    }
+                    catch (Exception e) {
+                        System.out.println("Somthing is wrong with the number format");
+                        System.out.println(e.getStackTrace());
+                    }
                 }
                 importedRecordNo++;
                 recordsImportedLabel.setText("" + importedRecordNo);
 
             } else {
                 System.out.println("I will not import");
-                System.out.println("Record data:" + this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + "-" + amount);
+                System.out.println("Record data:" + this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + "Withdrawl" + withdrwal + " Deposit" + deposit);
             }
         }
     }
@@ -665,8 +680,8 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
      */
     private String pancretaCorrectDate(String uncDate) {
         String[] splitDate = uncDate.split("/");
-        String day = splitDate[1];
-        String month = splitDate[0];
+        String day = splitDate[0];
+        String month = splitDate[1];
         String year = splitDate[2];
         //System.out.println("year: "+year+"month: "+month+"day: "+day);
         return year + "-" + month + "-" + day;
