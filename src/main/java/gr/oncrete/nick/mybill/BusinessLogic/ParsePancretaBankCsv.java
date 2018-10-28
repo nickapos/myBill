@@ -23,9 +23,9 @@ package gr.oncrete.nick.mybill.BusinessLogic;
  */
 public class ParsePancretaBankCsv extends ParseCsv {
     //tsb has 8 fields in its csv
-    static final int numOfFields = 8;
-    private String[] header= {"W / D","Date","ValueDate","Description","Comments","Cheque Number","Amount","BookBalance","Import"};
-
+    static final int numOfFields = 7;
+    private String[] header= {"Αριθμός Συναλλαγής","Ποσό Πίστωσης","Νόμισμα","Ποσό Χρέωσης","Λογιστικό Υπόλοιπο","Ημερομηνία Συναλλαγής","Περιγραφή","Import"};
+    
     public ParsePancretaBankCsv() {
         super(numOfFields);
 

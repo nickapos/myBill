@@ -258,9 +258,9 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                 selectAllButton.setEnabled(true);
                 unselectAllButton.setEnabled(true);
             } else if (bankName.equals("Pancretan Bank")) {
-                ParsePancretaBankCsv panc = new ParsePancretaBankCsv(",", 8);
-                ArrayList contentList = panc.parseData(file.getAbsolutePath());
-                this.displayStatementContent(contentList, panc);
+                ParsePancretaBankCsv panc = new ParsePancretaBankCsv(",", 7);
+                ArrayList contentList = panc.parseApacheCommonsCsvData(file.getAbsolutePath());
+                this.displayStatementContent(contentList, panc,7);
                 selectAllButton.setEnabled(true);
                 unselectAllButton.setEnabled(true);
             } else if (bankName.equals("N26")) {
@@ -304,8 +304,23 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         Object[][] contentStrArr = this.convertArrayListTo2DStringArray(contentList, parser.getNumOfFields());
         String[] columnNames = parser.getColumnNames();
         if (contentList.size() > 0) {
-            recordTable.setModel(new ImportBankStatementTableModel(contentStrArr, columnNames));
-            //recordTable.setModel(new MyTableModel(contentStrArr, columnNames));
+            recordTable.setModel(new ImportBankStatementTableModel(contentStrArr, columnNames));            
+            recordTable.setAutoCreateRowSorter(true);//add a primitive sort by column function
+        }
+    }
+    /**
+     * populate the table with the incoming data, the last parameter is the 
+     * column that needs to be treated as booelan
+     *
+     * @param contentList
+     * @param parser
+     * @param boolColumn
+     */
+    private void displayStatementContent(ArrayList contentList, ParseCsv parser,int boolColumn) {
+        Object[][] contentStrArr = this.convertArrayListTo2DStringArray(contentList, parser.getNumOfFields());
+        String[] columnNames = parser.getColumnNames();
+        if (contentList.size() > 0) {
+            recordTable.setModel(new ImportBankStatementTableModel(contentStrArr, columnNames,boolColumn));            
             recordTable.setAutoCreateRowSorter(true);//add a primitive sort by column function
         }
     }
@@ -349,7 +364,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
         if (bankName.equals("TSB") || bankName.equals("Bank of Scotland")) {
             boolColumn = 8;
         } else if (bankName.equals("Pancretan Bank")) {
-            boolColumn = 8;
+            boolColumn = 7;
         } else {
             System.out.println("No parsing template found");
         }

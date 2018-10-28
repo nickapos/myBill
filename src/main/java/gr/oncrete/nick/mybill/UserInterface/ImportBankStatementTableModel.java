@@ -75,7 +75,7 @@ class ImportBankStatementTableModel extends javax.swing.table.DefaultTableModel 
      */
     @Override
     public boolean isCellEditable(int row, int column) {
-        boolean[] canEdit=this.getcanEditArr(9, 8);
+        boolean[] canEdit=this.getcanEditArr(booleanColumn+1, booleanColumn);
         return canEdit[column];
     }
 }

@@ -26,6 +26,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 import org.apache.commons.csv.CSVRecord;
 
 /**
@@ -52,14 +53,21 @@ public class ParseCsv {
         this.setNumberOfFields(fields);
     }
 
-    public ArrayList<ArrayList> parseOpenCsvData(String file) {
+    public ArrayList<ArrayList> parseApacheCommonsCsvData(String file) {
         ArrayList<ArrayList> content = new ArrayList();
         try {
             Reader in = new FileReader(file);
-            Iterable<CSVRecord> records = CSVFormat.EXCEL.parse(in);
+            Iterable<CSVRecord> records = CSVFormat.EXCEL.withHeader().parse(in);
             for (CSVRecord record : records) {
-                String lastName = record.get("Last Name");
-                String firstName = record.get("First Name");
+                Map recordMap=record.toMap();
+                ArrayList<String> lineContent = new ArrayList<String>(recordMap.values());
+                if (lineContent.size() != numberOfFields) {
+                    System.out.println("Received a csvrecord line with more fields than expected. I am going to ignore it. Expected number of fields:"
+                            + numberOfFields);
+                    System.out.println("Line contents: " + lineContent.toString());
+                } else {
+                    content.add(lineContent);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -74,7 +82,7 @@ public class ParseCsv {
      */
     public ArrayList<ArrayList> parseData(String file) {
         ArrayList<ArrayList> content = new ArrayList();
-        BufferedReader br;
+        BufferedReader br=null;
         try {
             String line;
             br = new BufferedReader(new FileReader(file));
