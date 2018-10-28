@@ -37,6 +37,7 @@ import java.io.File;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Locale;
 import javax.swing.JFileChooser;
 import javax.swing.JTable;
 import javax.swing.filechooser.FileFilter;
@@ -600,7 +601,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
             } else {
                 afm = afmFull;
             }
-
+            Locale grLocale = new Locale.Builder().setLanguage("el").setRegion("GR").build();
             if (importField) {
                 //get the category id for the import
                 String companyID = getCompID(descCompName, afm, categId);
@@ -609,7 +610,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company:"+companyID+" Corrected Date: "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company des:" + descCompName + " withdrawal:" + this.applyExchangeRate(amount));
                     try {
-                        Number withdrwalF = NumberFormat.getInstance().parse(withdrwal);
+                        Number withdrwalF = NumberFormat.getInstance(grLocale).parse(withdrwal);
                         String amount = withdrwalF.toString();
                         InsertBills bill = new InsertBills(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.pancretaCorrectDate(unCorrectedDate), this.pancretaCorrectDate(unCorrectedDate), "Auto imported field");
                     }
@@ -623,7 +624,7 @@ public class ImportBankStatementFrame extends javax.swing.JFrame {
                     //System.out.println("I will import");
                     //System.out.println("Record data:" +"Company"+companyID+" "+ this.pancretaCorrectDate(unCorrectedDate) + " afm:" + afm + " company:" + descCompName + " deposit:" + amount);
                     try {
-                        Number depositF = NumberFormat.getInstance().parse(deposit);
+                        Number depositF = NumberFormat.getInstance(grLocale).parse(deposit);
                         String amount = depositF.toString();
                         InsertIncome income = new InsertIncome(Integer.parseInt(companyID), this.applyExchangeRate(amount), this.pancretaCorrectDate(unCorrectedDate), "Auto imported field");
                     }
